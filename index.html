@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChemDecoded - Making Science Accessible</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-flask"></i>
+                <span>ChemDecoded</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Making Chemistry Research <span class="highlight">Accessible</span> to Everyone</h1>
+                <p class="hero-subtitle">We break down the latest chemistry and chemical engineering research into simple, engaging stories that high school students can understand and enjoy.</p>
+                <div class="hero-buttons">
+                    <a href="blog.html" class="btn btn-primary">Explore Latest Posts</a>
+                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="chemistry-animation">
+                    <div class="molecule">
+                        <div class="atom atom-1"></div>
+                        <div class="atom atom-2"></div>
+                        <div class="atom atom-3"></div>
+                        <div class="bond bond-1"></div>
+                        <div class="bond bond-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About ChemDecoded</h2>
+                <p>Bridging the gap between cutting-edge research and high school education</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                <h3>Our Mission</h3>
+                <p>I believe that the latest chemistry research shouldn't be locked behind complex jargon and paywalls. As a high school student passionate about chemistry, I work to translate groundbreaking discoveries into stories that inspire other students like me.</p>
+                
+                <h3>About the Creator</h3>
+                <p>Hi! I'm Aundrea Gadsby, a high school student from New Jersey with a deep passion for chemistry. I created this website and write all the blog posts myself. My goal is to make cutting-edge chemistry research accessible to fellow students who are curious about science but might find academic papers intimidating.</p>
+                
+                <h3>What I Do</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Summarize recent research papers from top chemistry journals</li>
+                    <li><i class="fas fa-check"></i> Explain complex concepts using everyday analogies</li>
+                    <li><i class="fas fa-check"></i> Connect research to real-world applications</li>
+                    <li><i class="fas fa-check"></i> Publish new content every two weeks</li>
+                </ul>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <div class="stat-number">30+</div>
+                        <div class="stat-label">Research Papers Summarized</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Free Access</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">Bi-weekly</div>
+                        <div class="stat-label">New Content</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get in Touch</h2>
+                <p>Have questions or suggestions? We'd love to hear from you!</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p>Aundrea Gadsby</p>
+                            <p>gadsbyaundrea@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Response Time</h4>
+                            <p>We typically respond within 24 hours</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <h4>Join Our Community</h4>
+                            <p>Connect with other chemistry enthusiasts</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" action="mailto:gadsbyaundrea@gmail.com" method="post" enctype="text/plain">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-flask"></i>
+                        <span>ChemDecoded</span>
+                    </div>
+                    <p>Making chemistry research accessible to everyone, one summary at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to get notified about new posts</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email">
+                        <button type="submit">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ChemDecoded. All rights reserved.</p>
+                <p>Making science accessible to the next generation of scientists.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
