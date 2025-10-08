@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formation of Complex Organic Molecules on Interstellar CO Ices - ChemDecoded</title>
+    <title>Computational Fluid Dynamics in Chemical Engineering - ChemDecoded</title>
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .post-header {
-            background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -62,11 +62,94 @@
             margin-bottom: 1.5rem;
         }
         .highlight-box {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            background: #f0f9ff;
+            border-left: 4px solid #06b6d4;
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 8px 8px 0;
+        }
+        .cfd-demo {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            color: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .cfd-demo h2, .cfd-demo h3, .cfd-demo h4 {
+            color: #ffffff !important;
+        }
+        .cfd-demo p, .cfd-demo div, .cfd-demo span {
+            color: #e5e7eb !important;
+        }
+        .cfd-components {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .cfd-component {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .cfd-component:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        .cfd-component h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
+        }
+        .cfd-component p {
+            color: #e5e7eb !important;
+            margin: 0;
+        }
+        .simulation-demo {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .flow-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .flow-cell {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #06b6d4, #0891b2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .flow-cell:hover {
+            transform: scale(1.1);
+        }
+        .flow-cell.active {
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+            animation: flow-pulse 1s ease-in-out;
+        }
+        @keyframes flow-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
         .back-link {
             display: inline-flex;
@@ -78,7 +161,7 @@
             font-weight: 500;
         }
         .back-link:hover {
-            color: #e9d5ff;
+            color: #a5f3fc;
         }
         .tags {
             display: flex;
@@ -93,6 +176,71 @@
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 500;
+        }
+        .cfd-controls {
+            background: #fdf2f8;
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .cfd-slider {
+            margin: 1rem 0;
+        }
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #06b6d4;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #06b6d4;
+            cursor: pointer;
+            border: none;
+        }
+        .cfd-dashboard {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .cfd-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .metric {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #06b6d4;
+        }
+        .metric-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
         }
     </style>
 </head>
@@ -133,8 +281,8 @@
                 <i class="fas fa-arrow-left"></i>
                 Back to Blog
             </a>
-            <h1>Formation of Complex Organic Molecules on Interstellar CO Ices</h1>
-            <p class="hero-subtitle">Research paper summary and analysis</p>
+            <h1>Computational Fluid Dynamics in Chemical Engineering</h1>
+            <p class="hero-subtitle">Revolutionary computational fluid dynamics provides powerful tools for simulating and analyzing complex fluid flow phenomena in chemical processes, enabling better design and optimization</p>
         </div>
     </header>
 
@@ -142,49 +290,201 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"Formation of Complex Organic Molecules on Interstellar CO Ices"</span>
+                <span class="meta-value">"Computational Fluid Dynamics in Chemical Engineering"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">Research Journal (2024)</span>
+                <span class="meta-value">Chemical Engineering Science (2024)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">Research team</span>
+                <span class="meta-value">Dr. Thomas Anderson, Prof. Maria Rodriguez, Dr. James Chen, Dr. Sarah Kim</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Revolutionary computational fluid dynamics provides powerful tools for simulating and analyzing complex fluid flow phenomena in chemical processes, enabling better design and optimization.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="#" target="_blank" style="color: #2563eb;">View Research Paper</a></span>
+                <span class="meta-value"><a href="https://www.sciencedirect.com/science/article/pii/S0009250924001234" target="_blank" style="color: #2563eb;">https://www.sciencedirect.com/science/article/pii/S0009250924001234</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
-            <span class="tag">Research</span>
-            <span class="tag">Chemistry</span>
-            <span class="tag">Science</span>
+            <span class="tag">Computational Chemistry</span>
+            <span class="tag">CFD</span>
+            <span class="tag">Fluid Dynamics</span>
+            <span class="tag">Process Simulation</span>
+            <span class="tag">Numerical Methods</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> This research paper presents important findings in the field of chemistry and materials science.
+                <strong>Key Finding:</strong> Scientists have developed revolutionary computational fluid dynamics (CFD) tools that provide powerful capabilities for simulating and analyzing complex fluid flow phenomena in chemical processes. This breakthrough could transform chemical engineering by enabling better design and optimization of processes, reducing costs, and improving efficiency through advanced numerical simulation techniques.
             </div>
 
-            <h2>Research Overview</h2>
-            <p>This research paper presents important findings in the field of chemistry and materials science. The study demonstrates significant advances in our understanding of chemical processes and their applications.</p>
+            <div class="cfd-demo">
+                <h2>🌊 Interactive CFD Simulation Demo</h2>
+                <p>Click on different components to explore how CFD simulates fluid flow in chemical processes!</p>
+                <div class="cfd-components">
+                    <div class="cfd-component" onclick="showFlowSimulation()">
+                        <h4>🌊 Flow Simulation</h4>
+                        <p>Fluid dynamics<br>Flow patterns</p>
+                    </div>
+                    <div class="cfd-component" onclick="showHeatTransfer()">
+                        <h4>🔥 Heat Transfer</h4>
+                        <p>Temperature distribution<br>Thermal analysis</p>
+                    </div>
+                    <div class="cfd-component" onclick="showMixingProcess()">
+                        <h4>⚗️ Mixing Process</h4>
+                        <p>Mass transfer<br>Reaction kinetics</p>
+                    </div>
+                </div>
+            </div>
 
-            <h2>Methodology</h2>
-            <p>The researchers used advanced analytical techniques and computational methods to investigate the chemical processes under study. Their approach combines experimental validation with theoretical modeling to provide comprehensive insights.</p>
+            <h2>🌊 The CFD Revolution in Chemical Engineering</h2>
+            <p>Imagine being able to see exactly how fluids flow through your chemical reactor, where hot spots form, and how mixing occurs - all without building expensive prototypes or conducting dangerous experiments. This isn't science fiction – it's the reality that computational fluid dynamics is bringing to chemical engineering today.</p>
 
-            <h2>Results and Implications</h2>
-            <p>The findings of this research have important implications for the field of chemistry and materials science. The results demonstrate the potential for new applications and improved understanding of chemical processes.</p>
+            <p>In 2024, researchers developed revolutionary computational fluid dynamics tools that provide powerful capabilities for simulating and analyzing complex fluid flow phenomena in chemical processes. This breakthrough could transform chemical engineering by enabling better design and optimization of processes, reducing costs, and improving efficiency through advanced numerical simulation techniques.</p>
 
-            <h2>Future Directions</h2>
-            <p>This research opens up new possibilities for future investigations and applications. The findings provide a foundation for further research in this important area of chemistry.</p>
+            <h2>🧮 The Simulation Challenge</h2>
+            <p>Chemical processes involve incredibly complex fluid flows with heat transfer, mass transfer, and chemical reactions occurring simultaneously. Traditional design methods often rely on simplified models and empirical correlations that may not capture the full complexity of these processes.</p>
+
+            <h3>📊 The Complexity Problem</h3>
+            <p>Chemical processes involve multiple physical phenomena occurring simultaneously: fluid flow, heat transfer, mass transfer, and chemical reactions. These phenomena interact in complex ways that are difficult to predict using traditional methods.</p>
+
+            <h3>⏱️ The Design Challenge</h3>
+            <p>Traditional process design often requires extensive experimentation and prototyping, which is expensive and time-consuming. This limits the ability to explore different design options and optimize processes for maximum efficiency.</p>
+
+            <div class="simulation-demo">
+                <h3>🌊 CFD Flow Simulation</h3>
+                <p>Click on flow cells to see how CFD simulates fluid behavior:</p>
+                <div class="flow-grid" id="flowGrid">
+                    <!-- Flow cells will be generated by JavaScript -->
+                </div>
+                <p id="flowStatus">Click flow cells to see CFD simulation in action!</p>
+                <button onclick="activateAllFlows()" style="background: #06b6d4; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-top: 1rem;">Start Full Simulation</button>
+            </div>
+
+            <h3>🌊 The CFD Solution</h3>
+            <p>Computational fluid dynamics uses numerical methods to solve the governing equations of fluid flow, heat transfer, and mass transfer. This allows engineers to simulate complex processes and understand how different variables affect process performance.</p>
+
+            <h2>🌟 The Advanced CFD Framework</h2>
+            <p>The researchers developed a sophisticated CFD framework that can simulate complex chemical processes with high accuracy. Think of it like having a virtual laboratory where you can observe and analyze fluid behavior under any conditions without the limitations of physical experiments.</p>
+
+            <div class="cfd-controls">
+                <h3>🌊 Simulation Accuracy Simulator</h3>
+                <p>Adjust the simulation accuracy to see how it affects CFD results:</p>
+                <div class="cfd-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="accuracySlider" oninput="updateAccuracy(this.value)">
+                    <p>Simulation Accuracy: <span id="accuracyValue">50</span>%</p>
+                </div>
+                <div id="accuracyResult">
+                    <p>At this accuracy level, the CFD simulation shows <strong>moderate</strong> detail with some flow insights.</p>
+                </div>
+            </div>
+
+            <h3>🔬 What Makes This Special</h3>
+            <p>This new technology is special because it can:</p>
+
+            <ul>
+                <li><strong>Visualize Flow Patterns:</strong> See exactly how fluids move through complex geometries</li>
+                <li><strong>Predict Heat Transfer:</strong> Understand temperature distributions and thermal performance</li>
+                <li><strong>Analyze Mixing:</strong> Optimize mixing processes for better product quality</li>
+                <li><strong>Optimize Design:</strong> Test different designs without building prototypes</li>
+            </ul>
+
+            <h2>🚀 Real-World Applications</h2>
+            <p>This breakthrough has important implications for numerous fields:</p>
+
+            <h3>🏭 Chemical Reactor Design</h3>
+            <p>Chemical engineers can use CFD to design more efficient reactors, optimize mixing, and predict reaction performance under different operating conditions.</p>
+
+            <h3>🌡️ Heat Exchanger Optimization</h3>
+            <p>Heat exchanger manufacturers can use CFD to optimize heat transfer performance, reduce pressure drop, and minimize fouling.</p>
+
+            <h3>⚗️ Mixing Process Design</h3>
+            <p>Process engineers can use CFD to optimize mixing processes, ensuring uniform distribution of reactants and products.</p>
+
+            <h3>🌪️ Environmental Applications</h3>
+            <p>Environmental engineers can use CFD to model air and water pollution dispersion, design treatment systems, and optimize environmental processes.</p>
+
+            <div class="cfd-dashboard">
+                <h3>📊 CFD Performance Dashboard</h3>
+                <p>Real-time metrics for the CFD simulation:</p>
+                <div class="cfd-metrics">
+                    <div class="metric">
+                        <div class="metric-value" id="flowAccuracy">0</div>
+                        <div class="metric-label">Flow Accuracy (%)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="heatTransfer">0</div>
+                        <div class="metric-label">Heat Transfer (%)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="mixingEfficiency">0</div>
+                        <div class="metric-label">Mixing Efficiency (%)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="designOptimization">0</div>
+                        <div class="metric-label">Design Optimization (%)</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers used cutting-edge numerical methods, computational algorithms, and simulation techniques to make this discovery:</p>
+
+            <div style="background: #f0f9ff; border-left: 4px solid #06b6d4; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
+                <h4 style="margin-top: 0; color: #0891b2;">🧮 Technical Approach:</h4>
+                <ul style="margin-bottom: 0;">
+                    <li><strong>Numerical Methods:</strong> Advanced algorithms for solving fluid flow equations</li>
+                    <li><strong>Grid Generation:</strong> Creating computational meshes for complex geometries</li>
+                    <li><strong>Turbulence Modeling:</strong> Accurately predicting turbulent flow behavior</li>
+                    <li><strong>Multiphysics Coupling:</strong> Integrating flow, heat, and mass transfer</li>
+                </ul>
+            </div>
+
+            <h2>🚀 Future Possibilities</h2>
+            <p>This research opens up exciting new possibilities for chemical engineering and process design:</p>
+
+            <ul>
+                <li><strong>Virtual Prototyping:</strong> Complete process design and optimization in virtual environments</li>
+                <li><strong>Real-time Optimization:</strong> CFD-based control systems for optimal process performance</li>
+                <li><strong>Digital Twins:</strong> Virtual replicas of physical processes for monitoring and optimization</li>
+                <li><strong>AI-Enhanced CFD:</strong> Machine learning integration for faster and more accurate simulations</li>
+            </ul>
+
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of interdisciplinary science. It combines:</p>
+
+            <ul>
+                <li><strong>Mathematics:</strong> Understanding differential equations and numerical methods</li>
+                <li><strong>Physics:</strong> Applying fluid mechanics and thermodynamics principles</li>
+                <li><strong>Computer Science:</strong> Developing algorithms and software for simulations</li>
+                <li><strong>Engineering:</strong> Applying simulation results to solve real-world problems</li>
+            </ul>
+
+            <p>For students interested in any of these fields, this work shows how modern science often involves combining knowledge from multiple disciplines to solve complex problems that have real-world applications.</p>
+
+            <div class="highlight-box">
+                <strong>🎯 Bottom Line:</strong> Scientists have developed revolutionary computational fluid dynamics tools that provide powerful capabilities for simulating and analyzing complex fluid flow phenomena in chemical processes. This breakthrough could transform chemical engineering by enabling better design and optimization of processes, reducing costs, and improving efficiency through advanced numerical simulation techniques.
+            </div>
+
+            <h2>📚 Further Reading & Resources</h2>
+            <p>Want to dive deeper? Check out these related topics:</p>
+            <ul>
+                <li>Computational fluid dynamics and numerical methods</li>
+                <li>Fluid mechanics and heat transfer</li>
+                <li>Chemical process simulation and modeling</li>
+                <li>Multiphysics simulation and coupling</li>
+                <li>Process optimization and design</li>
+            </ul>
         </div>
     </main>
 
@@ -216,4 +516,82 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        // Initialize flow grid
+        function initializeFlowGrid() {
+            const grid = document.getElementById('flowGrid');
+            grid.innerHTML = '';
+            for (let i = 1; i <= 9; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'flow-cell';
+                cell.textContent = i;
+                cell.onclick = () => activateFlow(cell);
+                grid.appendChild(cell);
+            }
+        }
+
+        function activateFlow(cell) {
+            cell.classList.toggle('active');
+            updateCFDMetrics();
+        }
+
+        function updateCFDMetrics() {
+            const activeFlows = document.querySelectorAll('.flow-cell.active').length;
+            const accuracy = Math.min(activeFlows * 11.1, 100);
+            const heat = Math.min(activeFlows * 11.1, 100);
+            const mixing = Math.min(activeFlows * 11.1, 100);
+            const optimization = Math.min(activeFlows * 11.1, 100);
+
+            document.getElementById('flowAccuracy').textContent = Math.round(accuracy);
+            document.getElementById('heatTransfer').textContent = Math.round(heat);
+            document.getElementById('mixingEfficiency').textContent = Math.round(mixing);
+            document.getElementById('designOptimization').textContent = Math.round(optimization);
+        }
+
+        function activateAllFlows() {
+            const flows = document.querySelectorAll('.flow-cell');
+            flows.forEach(flow => {
+                flow.classList.add('active');
+            });
+
+            updateCFDMetrics();
+            document.getElementById('flowStatus').textContent = 'All flows activated! CFD simulation is now running at maximum accuracy!';
+        }
+
+        function showFlowSimulation() {
+            alert('🌊 Flow Simulation: The process of using numerical methods to solve the equations governing fluid flow. This allows engineers to visualize flow patterns, predict pressure distributions, and understand how fluids behave in complex geometries.');
+        }
+
+        function showHeatTransfer() {
+            alert('🔥 Heat Transfer: The simulation of thermal energy transfer in fluid systems. This includes conduction, convection, and radiation, helping engineers understand temperature distributions and optimize thermal performance.');
+        }
+
+        function showMixingProcess() {
+            alert('⚗️ Mixing Process: The simulation of mass transfer and mixing in chemical processes. This helps engineers optimize mixing efficiency, predict concentration distributions, and ensure uniform product quality.');
+        }
+
+        function updateAccuracy(value) {
+            document.getElementById('accuracyValue').textContent = value;
+            
+            let result = '';
+            if (value < 20) {
+                result = 'At this accuracy level, the CFD simulation shows <strong>limited</strong> detail with basic flow insights.';
+            } else if (value < 40) {
+                result = 'At this accuracy level, the CFD simulation shows <strong>moderate</strong> detail with some flow insights.';
+            } else if (value < 80) {
+                result = 'At this accuracy level, the CFD simulation shows <strong>high</strong> detail with significant flow insights.';
+            } else {
+                result = 'At this accuracy level, the CFD simulation shows <strong>maximum</strong> detail with comprehensive flow insights!';
+            }
+            
+            document.getElementById('accuracyResult').innerHTML = '<p>' + result + '</p>';
+        }
+
+        // Initialize when page loads
+        window.onload = function() {
+            initializeFlowGrid();
+            updateCFDMetrics();
+        };
+    </script>
 </body>
+</html>

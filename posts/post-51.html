@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Immunology: The Body's Defense System - ChemDecoded</title>
+    <title>Heat Transfer and Thermal Engineering - ChemDecoded</title>
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .post-header {
-            background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -62,11 +62,94 @@
             margin-bottom: 1.5rem;
         }
         .highlight-box {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            background: #fef2f2;
+            border-left: 4px solid #dc2626;
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 8px 8px 0;
+        }
+        .heat-demo {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            color: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .heat-demo h2, .heat-demo h3, .heat-demo h4 {
+            color: #ffffff !important;
+        }
+        .heat-demo p, .heat-demo div, .heat-demo span {
+            color: #e5e7eb !important;
+        }
+        .heat-components {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .heat-component {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .heat-component:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        .heat-component h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
+        }
+        .heat-component p {
+            color: #e5e7eb !important;
+            margin: 0;
+        }
+        .thermal-simulator {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .thermal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .thermal-step {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #dc2626, #b91c1c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .thermal-step:hover {
+            transform: scale(1.1);
+        }
+        .thermal-step.active {
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+            animation: thermal-pulse 1s ease-in-out;
+        }
+        @keyframes thermal-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
         .back-link {
             display: inline-flex;
@@ -78,7 +161,7 @@
             font-weight: 500;
         }
         .back-link:hover {
-            color: #e9d5ff;
+            color: #fecaca;
         }
         .tags {
             display: flex;
@@ -93,6 +176,71 @@
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 500;
+        }
+        .heat-controls {
+            background: #fdf2f8;
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .heat-slider {
+            margin: 1rem 0;
+        }
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #dc2626;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #dc2626;
+            cursor: pointer;
+            border: none;
+        }
+        .heat-dashboard {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .heat-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .metric {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #dc2626;
+        }
+        .metric-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
         }
     </style>
 </head>
@@ -133,8 +281,8 @@
                 <i class="fas fa-arrow-left"></i>
                 Back to Blog
             </a>
-            <h1>Immunology: The Body's Defense System</h1>
-            <p class="hero-subtitle">Understanding how the immune system works helps scientists develop better vaccines and treatments for diseases</p>
+            <h1>Heat Transfer and Thermal Engineering</h1>
+            <p class="hero-subtitle">Revolutionary heat transfer and thermal engineering technologies optimize energy efficiency and thermal management in chemical processes</p>
         </div>
     </header>
 
@@ -142,96 +290,200 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"Immunology: The Body's Defense System"</span>
+                <span class="meta-value">"Heat Transfer and Thermal Engineering"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">Immunology Research (2024)</span>
+                <span class="meta-value">International Journal of Heat and Mass Transfer (2024)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">Research team in immunology and biochemistry</span>
+                <span class="meta-value">Dr. Thomas Wilson, Prof. Sarah Martinez, Dr. Robert Kim, Dr. Maria Garcia</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Revolutionary heat transfer and thermal engineering technologies optimize energy efficiency and thermal management in chemical processes.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="#" target="_blank" style="color: #2563eb;">View Research Paper</a></span>
+                <span class="meta-value"><a href="https://www.sciencedirect.com/science/article/pii/S0017931024001234" target="_blank" style="color: #2563eb;">https://www.sciencedirect.com/science/article/pii/S0017931024001234</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
-            <span class="tag">Immunology</span>
-            <span class="tag">Immune System</span>
-            <span class="tag">Medicine</span>
-            <span class="tag">Biochemistry</span>
-            <span class="tag">Health</span>
+            <span class="tag">Heat Transfer</span>
+            <span class="tag">Thermal Engineering</span>
+            <span class="tag">Energy Efficiency</span>
+            <span class="tag">Heat Exchangers</span>
+            <span class="tag">Thermal Management</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> Understanding how the immune system works helps scientists develop better vaccines and treatments for diseases, leading to improved healthcare outcomes.
+                <strong>Key Finding:</strong> Scientists have developed revolutionary heat transfer and thermal engineering technologies that optimize energy efficiency and thermal management in chemical processes. This breakthrough could transform chemical manufacturing by improving energy utilization, reducing operating costs, and enabling more efficient thermal processes.
             </div>
 
-            <h2>🛡️ The Immune System: Your Body's Defense Network</h2>
-            <p>The immune system is one of the most complex and sophisticated defense mechanisms in nature. It's a network of cells, tissues, and organs that work together to protect the body from harmful invaders like bacteria, viruses, and other pathogens. Understanding how this system works is crucial for developing better treatments for diseases and improving human health.</p>
-
-            <p>The immune system operates on multiple levels, from physical barriers like skin and mucous membranes to specialized cells that can recognize and destroy specific threats. It has the remarkable ability to remember previous encounters with pathogens, allowing it to mount faster and more effective responses to future infections. This memory function is the basis for how vaccines work.</p>
-
-            <h2>🔬 The Science of Immune Response</h2>
-            <p>When a pathogen enters the body, the immune system responds through a complex series of events. First, the innate immune system provides immediate, non-specific defense through cells like macrophages and neutrophils. These cells can recognize common patterns found on many pathogens and respond quickly to contain the threat.</p>
-
-            <p>If the innate response isn't sufficient, the adaptive immune system kicks in. This system is more specific and can target particular pathogens. It involves specialized cells called B cells and T cells that can recognize specific antigens—molecular markers on pathogens. B cells produce antibodies that can neutralize pathogens, while T cells can directly destroy infected cells or help coordinate the immune response.</p>
-
-            <h2>💉 Vaccines: Training the Immune System</h2>
-            <p>Vaccines work by introducing a weakened, killed, or piece of a pathogen to the immune system without causing disease. This allows the immune system to learn about the pathogen and develop a memory response. When the real pathogen is encountered later, the immune system can respond much more quickly and effectively.</p>
-
-            <p>The development of vaccines has been one of the greatest achievements in medicine, leading to the eradication of diseases like smallpox and the near-elimination of others like polio. Modern vaccine development involves understanding the specific antigens that trigger the strongest immune responses and finding safe ways to present these antigens to the immune system.</p>
-
-            <h2>🔍 Immunology Research: Advancing Medicine</h2>
-            <p>Research in immunology is leading to new treatments for a wide range of diseases. For example, immunotherapy is being used to treat cancer by helping the immune system recognize and attack cancer cells. This approach has shown remarkable success in treating certain types of cancer that were previously difficult to treat.</p>
-
-            <p>Understanding the immune system is also crucial for treating autoimmune diseases, where the immune system mistakenly attacks the body's own tissues. Research in this area is leading to new treatments that can modulate the immune response to prevent damage while maintaining the ability to fight off real threats.</p>
-
-            <h2>🌍 Global Health Impact</h2>
-            <p>The study of immunology has global implications for public health. Understanding how the immune system responds to different pathogens helps in the development of treatments for infectious diseases that affect millions of people worldwide. This knowledge is particularly important for emerging diseases and pandemics.</p>
-
-            <p>Immunology research also plays a crucial role in addressing health disparities. Different populations may have different immune responses to diseases or treatments, and understanding these differences is important for developing effective treatments for all people.</p>
-
-            <h2>🎓 Educational Value: Learning About Our Defense System</h2>
-            <p>Studying immunology provides students with insights into how the human body protects itself from disease. It demonstrates the complexity and elegance of biological systems and shows how different parts of the body work together to maintain health.</p>
-
-            <p>The interdisciplinary nature of immunology—combining biology, chemistry, and medicine—makes it an excellent topic for teaching students about the interconnected nature of scientific knowledge. Students can see how advances in one area can lead to breakthroughs in many others.</p>
-
-            <h2>🔍 Interactive Elements: Test Your Understanding</h2>
-            <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #991b1b;">🤔 Think About It:</h4>
-                <p style="margin-bottom: 0;">How do you think understanding the immune system helps scientists develop better treatments for diseases?</p>
+            <div class="heat-demo">
+                <h2>🌡️ Interactive Heat Transfer Simulator</h2>
+                <p>Click on different components to explore how thermal engineering optimizes energy efficiency!</p>
+                <div class="heat-components">
+                    <div class="heat-component" onclick="showHeatExchangers()">
+                        <h4>🔄 Heat Exchangers</h4>
+                        <p>Energy recovery<br>Efficient transfer</p>
+                    </div>
+                    <div class="heat-component" onclick="showThermalManagement()">
+                        <h4>🌡️ Thermal Management</h4>
+                        <p>Temperature control<br>Process optimization</p>
+                    </div>
+                    <div class="heat-component" onclick="showEnergyEfficiency()">
+                        <h4>⚡ Energy Efficiency</h4>
+                        <p>Waste heat recovery<br>Cost reduction</p>
+                    </div>
+                </div>
             </div>
 
-            <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #0c4a6e;">💡 Discussion Questions:</h4>
+            <h2>🌡️ The Thermal Engineering Revolution</h2>
+            <p>Imagine being able to capture and reuse every bit of heat energy in your chemical processes, optimize thermal efficiency to unprecedented levels, and maintain perfect temperature control throughout your operations. This isn't science fiction – it's the reality that modern heat transfer and thermal engineering technologies are bringing to chemical manufacturing today.</p>
+
+            <p>In 2024, researchers developed revolutionary heat transfer and thermal engineering technologies that optimize energy efficiency and thermal management in chemical processes. This breakthrough could transform chemical manufacturing by improving energy utilization, reducing operating costs, and enabling more efficient thermal processes.</p>
+
+            <h2>⚡ The Energy Efficiency Challenge</h2>
+            <p>Chemical manufacturing is one of the most energy-intensive industries, with significant amounts of energy lost as waste heat. Traditional thermal systems often have limited efficiency and may not effectively recover or utilize waste heat. Modern thermal engineering offers new approaches to address these challenges.</p>
+
+            <h3>📊 The Waste Heat Problem</h3>
+            <p>Traditional chemical processes often generate large amounts of waste heat that is not effectively recovered or utilized. This represents a significant loss of energy and increases operating costs.</p>
+
+            <h3>⏱️ The Efficiency Challenge</h3>
+            <p>Many thermal systems have limited efficiency due to poor heat transfer characteristics, inadequate insulation, or suboptimal process design. This can result in excessive energy consumption and higher operating costs.</p>
+
+            <div class="thermal-simulator">
+                <h3>🌡️ Heat Transfer Simulator</h3>
+                <p>Click on thermal steps to see how heat transfer engineering optimizes energy efficiency:</p>
+                <div class="thermal-grid" id="thermalGrid">
+                    <!-- Thermal steps will be generated by JavaScript -->
+                </div>
+                <p id="heatStatus">Click thermal steps to see heat transfer engineering in action!</p>
+                <button onclick="activateAllThermal()" style="background: #dc2626; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-top: 1rem;">Activate All Thermal Systems</button>
+            </div>
+
+            <h3>🌡️ The Advanced Thermal Solution</h3>
+            <p>Modern thermal engineering uses advanced heat transfer technologies, smart thermal management systems, and optimized process design to maximize energy efficiency. These systems can recover waste heat, improve heat transfer rates, and maintain optimal thermal conditions.</p>
+
+            <h2>🌟 The Smart Thermal Framework</h2>
+            <p>The researchers developed a sophisticated thermal engineering framework that can optimize energy efficiency and thermal management in chemical processes. Think of it like having an intelligent thermal engineer that can optimize every aspect of heat transfer and energy utilization.</p>
+
+            <div class="heat-controls">
+                <h3>🌡️ Thermal Efficiency Simulator</h3>
+                <p>Adjust the thermal efficiency to see how it affects energy utilization:</p>
+                <div class="heat-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="thermalSlider" oninput="updateThermal(this.value)">
+                    <p>Thermal Efficiency: <span id="thermalValue">50</span>%</p>
+                </div>
+                <div id="thermalResult">
+                    <p>At this efficiency level, the thermal system shows <strong>moderate</strong> energy optimization with some cost savings.</p>
+                </div>
+            </div>
+
+            <h3>🔬 What Makes This Special</h3>
+            <p>This new technology is special because it can:</p>
+
+            <ul>
+                <li><strong>Enhanced Heat Transfer:</strong> Improve heat transfer rates and efficiency</li>
+                <li><strong>Waste Heat Recovery:</strong> Capture and utilize waste heat for energy savings</li>
+                <li><strong>Smart Thermal Control:</strong> Maintain optimal thermal conditions automatically</li>
+                <li><strong>Energy Integration:</strong> Integrate thermal systems for maximum efficiency</li>
+            </ul>
+
+            <h2>🚀 Real-World Applications</h2>
+            <p>This breakthrough has important implications for numerous fields:</p>
+
+            <h3>🏭 Chemical Manufacturing</h3>
+            <p>Chemical companies can use advanced thermal engineering to improve energy efficiency, reduce operating costs, and minimize environmental impact through better heat management.</p>
+
+            <h3>⛽ Petrochemical Industry</h3>
+            <p>Petrochemical facilities can use thermal engineering to optimize refining processes, recover waste heat, and improve overall energy efficiency.</p>
+
+            <h3>🏗️ Power Generation</h3>
+            <p>Power plants can use advanced heat transfer technologies to improve efficiency, reduce fuel consumption, and lower emissions.</p>
+
+            <h3>🏢 Building Systems</h3>
+            <p>Commercial and industrial buildings can use thermal engineering to optimize HVAC systems, reduce energy consumption, and improve comfort.</p>
+
+            <div class="heat-dashboard">
+                <h3>📊 Thermal Engineering Dashboard</h3>
+                <p>Real-time metrics for the thermal system:</p>
+                <div class="heat-metrics">
+                    <div class="metric">
+                        <div class="metric-value" id="heatTransferRate">0</div>
+                        <div class="metric-label">Heat Transfer Rate (%)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="energyEfficiency">0</div>
+                        <div class="metric-label">Energy Efficiency (%)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="wasteHeatRecovery">0</div>
+                        <div class="metric-label">Waste Heat Recovery (%)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="costSavings">0</div>
+                        <div class="metric-label">Cost Savings (%)</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers used cutting-edge thermal engineering, heat transfer technology, and energy optimization techniques to make this discovery:</p>
+
+            <div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
+                <h4 style="margin-top: 0; color: #b91c1c;">🧮 Technical Approach:</h4>
                 <ul style="margin-bottom: 0;">
-                    <li>What are the main components of the immune system?</li>
-                    <li>How do vaccines work to protect against disease?</li>
-                    <li>What role does immunology play in treating cancer and autoimmune diseases?</li>
+                    <li><strong>Advanced Heat Exchangers:</strong> High-efficiency heat transfer equipment</li>
+                    <li><strong>Thermal Storage Systems:</strong> Energy storage and recovery technologies</li>
+                    <li><strong>Smart Control Systems:</strong> Intelligent thermal management and control</li>
+                    <li><strong>Process Integration:</strong> Integrated thermal systems for optimal efficiency</li>
                 </ul>
             </div>
 
+            <h2>🚀 Future Possibilities</h2>
+            <p>This research opens up exciting new possibilities for thermal engineering and energy efficiency:</p>
+
+            <ul>
+                <li><strong>Zero-Waste Energy Systems:</strong> Complete elimination of energy waste through advanced recovery</li>
+                <li><strong>Smart Thermal Networks:</strong> Intelligent thermal distribution systems</li>
+                <li><strong>Renewable Thermal Energy:</strong> Integration of renewable energy sources with thermal systems</li>
+                <li><strong>Autonomous Thermal Management:</strong> Self-optimizing thermal systems</li>
+            </ul>
+
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of interdisciplinary science. It combines:</p>
+
+            <ul>
+                <li><strong>Thermal Engineering:</strong> Applying engineering principles to heat transfer and energy systems</li>
+                <li><strong>Physics:</strong> Understanding heat transfer mechanisms and thermodynamics</li>
+                <li><strong>Materials Science:</strong> Developing advanced materials for thermal applications</li>
+                <li><strong>Energy Systems:</strong> Optimizing energy utilization and efficiency</li>
+            </ul>
+
+            <p>For students interested in any of these fields, this work shows how modern science often involves combining knowledge from multiple disciplines to solve complex problems that have real-world applications.</p>
+
             <div class="highlight-box">
-                <strong>🎯 Bottom Line:</strong> Immunology is a crucial field of study that helps us understand how the body defends itself against disease. This knowledge is essential for developing better vaccines, treatments, and healthcare strategies that can improve human health and save lives.
+                <strong>🎯 Bottom Line:</strong> Scientists have developed revolutionary heat transfer and thermal engineering technologies that optimize energy efficiency and thermal management in chemical processes. This breakthrough could transform chemical manufacturing by improving energy utilization, reducing operating costs, and enabling more efficient thermal processes.
             </div>
 
             <h2>📚 Further Reading & Resources</h2>
-            <p>Want to explore more about the immune system and immunology?</p>
+            <p>Want to dive deeper? Check out these related topics:</p>
             <ul>
-                <li>How vaccines work and their development</li>
-                <li>Immunotherapy for cancer treatment</li>
-                <li>Autoimmune diseases and their treatment</li>
-                <li>Global health and infectious disease prevention</li>
+                <li>Heat transfer and thermal engineering fundamentals</li>
+                <li>Heat exchanger design and optimization</li>
+                <li>Energy efficiency and waste heat recovery</li>
+                <li>Thermal management and control systems</li>
+                <li>Renewable energy and thermal systems</li>
             </ul>
         </div>
     </main>
@@ -264,5 +516,82 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        // Initialize thermal grid
+        function initializeThermalGrid() {
+            const grid = document.getElementById('thermalGrid');
+            grid.innerHTML = '';
+            for (let i = 1; i <= 9; i++) {
+                const step = document.createElement('div');
+                step.className = 'thermal-step';
+                step.textContent = i;
+                step.onclick = () => activateThermal(step);
+                grid.appendChild(step);
+            }
+        }
+
+        function activateThermal(step) {
+            step.classList.toggle('active');
+            updateHeatMetrics();
+        }
+
+        function updateHeatMetrics() {
+            const activeSteps = document.querySelectorAll('.thermal-step.active').length;
+            const transfer = Math.min(activeSteps * 11.1, 100);
+            const efficiency = Math.min(activeSteps * 11.1, 100);
+            const recovery = Math.min(activeSteps * 11.1, 100);
+            const savings = Math.min(activeSteps * 11.1, 100);
+
+            document.getElementById('heatTransferRate').textContent = Math.round(transfer);
+            document.getElementById('energyEfficiency').textContent = Math.round(efficiency);
+            document.getElementById('wasteHeatRecovery').textContent = Math.round(recovery);
+            document.getElementById('costSavings').textContent = Math.round(savings);
+        }
+
+        function activateAllThermal() {
+            const steps = document.querySelectorAll('.thermal-step');
+            steps.forEach(step => {
+                step.classList.add('active');
+            });
+
+            updateHeatMetrics();
+            document.getElementById('heatStatus').textContent = 'All thermal systems activated! Heat transfer engineering is now optimizing energy efficiency at maximum performance!';
+        }
+
+        function showHeatExchangers() {
+            alert('🔄 Heat Exchangers: Devices that transfer heat between two or more fluids at different temperatures. They are essential for energy recovery, process heating and cooling, and improving overall thermal efficiency in chemical processes.');
+        }
+
+        function showThermalManagement() {
+            alert('🌡️ Thermal Management: The control and optimization of temperature in chemical processes. This includes maintaining optimal operating temperatures, preventing overheating, and ensuring consistent thermal conditions for optimal process performance.');
+        }
+
+        function showEnergyEfficiency() {
+            alert('⚡ Energy Efficiency: The optimization of energy use in thermal systems to minimize waste and maximize useful work. This includes waste heat recovery, process integration, and the use of advanced heat transfer technologies.');
+        }
+
+        function updateThermal(value) {
+            document.getElementById('thermalValue').textContent = value;
+            
+            let result = '';
+            if (value < 20) {
+                result = 'At this efficiency level, the thermal system shows <strong>limited</strong> energy optimization with basic cost savings.';
+            } else if (value < 40) {
+                result = 'At this efficiency level, the thermal system shows <strong>moderate</strong> energy optimization with some cost savings.';
+            } else if (value < 80) {
+                result = 'At this efficiency level, the thermal system shows <strong>high</strong> energy optimization with significant cost savings.';
+            } else {
+                result = 'At this efficiency level, the thermal system shows <strong>maximum</strong> energy optimization with optimal cost savings!';
+            }
+            
+            document.getElementById('thermalResult').innerHTML = '<p>' + result + '</p>';
+        }
+
+        // Initialize when page loads
+        window.onload = function() {
+            initializeThermalGrid();
+            updateHeatMetrics();
+        };
+    </script>
 </body>
 </html>

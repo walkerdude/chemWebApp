@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Perfect Marriage: Combining Chemical Science with AI for Smarter Process Design - ChemDecoded</title>
+    <title>Nonadiabatic Forward Flux Sampling for Excited-State Rare Events - ChemDecoded</title>
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .post-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -62,99 +62,96 @@
             margin-bottom: 1.5rem;
         }
         .highlight-box {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 8px 8px 0;
         }
-        .hybrid-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+        .quantum-demo {
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+            color: white;
+            padding: 2rem;
             margin: 2rem 0;
+            border-radius: 12px;
+            text-align: center;
         }
-        .comparison-box {
-            background: #f8fafc;
-            border: 2px solid #e5e7eb;
+        .quantum-demo h2, .quantum-demo h3, .quantum-demo h4 {
+            color: #ffffff !important;
+        }
+        .quantum-demo p, .quantum-demo div, .quantum-demo span {
+            color: #e5e7eb !important;
+        }
+        .energy-levels {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .energy-level {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 12px;
             padding: 1.5rem;
             text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
         }
-        .comparison-box h2, .comparison-box h3, .comparison-box h4 {
-            color: #1f2937 !important;
+        .energy-level:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
         }
-        .comparison-box p, .comparison-box div, .comparison-box span, .comparison-box li {
-            color: #374151 !important;
+        .energy-level h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
         }
-        .comparison-box h3 {
-            color: #1f2937;
-            margin: 0 0 0.5rem 0;
-            font-weight: 600;
+        .energy-level p {
+            color: #e5e7eb !important;
+            margin: 0;
         }
-        .comparison-box p {
-            color: #374151;
-            margin: 0 0 0.5rem 0;
-        }
-        .comparison-box ul {
-            color: #6b7280;
-            text-align: left;
-        }
-        .comparison-box li {
-            margin-bottom: 0.25rem;
-        }
-        .traditional-box {
-            border-color: #ef4444;
-        }
-        .hybrid-box {
-            border-color: #10b981;
-            background: #f0fdf4;
-        }
-        .vs-divider {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            font-weight: bold;
-            color: #6b7280;
-        }
-        .process-flow {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        .sampling-visualization {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
             border-radius: 12px;
             padding: 2rem;
             margin: 2rem 0;
         }
-        .flow-step {
-            background: white;
+        .sampling-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .sampling-step {
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
             border-radius: 8px;
             padding: 1rem;
-            margin: 0.5rem 0;
-            border-left: 4px solid #0ea5e9;
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        .flow-step h2, .flow-step h3, .flow-step h4 {
-            color: #1f2937 !important;
+        .sampling-step:hover {
+            border-color: #0ea5e9;
+            transform: translateY(-2px);
         }
-        .flow-step p, .flow-step div, .flow-step span {
-            color: #374151 !important;
+        .sampling-step h4 {
+            color: #1f2937;
+            margin: 0 0 0.5rem 0;
+            font-weight: 600;
         }
-        .accuracy-meter {
-            background: #1f2937;
-            color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-        }
-        .meter-bar {
-            background: #374151;
-            height: 20px;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 0.5rem 0;
-        }
-        .meter-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #ef4444 0%, #f59e0b 50%, #10b981 100%);
-            transition: width 2s ease;
+        .sampling-step p {
+            color: #374151;
+            margin: 0;
+            font-size: 0.9rem;
         }
         .back-link {
             display: inline-flex;
@@ -182,315 +179,49 @@
             font-size: 0.9rem;
             font-weight: 500;
         }
-        
-        .reasoning-step div {
-            color: #e5e7eb !important;
+        .transition-animation {
+            background: #ecfdf5;
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
         }
-        .code-snippet {
-            color: #f9fafb !important;
+        .molecule-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            height: 200px;
+            position: relative;
         }
-        .interactive-element h4 {
-            color: #ffffff !important;
+        .molecule {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            transition: all 2s ease;
+            cursor: pointer;
         }
-        .interactive-element p {
-            color: #e5e7eb !important;
+        .molecule:hover {
+            transform: scale(1.2);
         }
-        
-        
-        /* Target elements with dark gradient backgrounds - all text elements */
-        [style*="background: linear-gradient"][style*="#1f2937"] h1,
-        [style*="background: linear-gradient"][style*="#1f2937"] h2,
-        [style*="background: linear-gradient"][style*="#1f2937"] h3,
-        [style*="background: linear-gradient"][style*="#1f2937"] h4,
-        [style*="background: linear-gradient"][style*="#1f2937"] h5,
-        [style*="background: linear-gradient"][style*="#1f2937"] h6,
-        [style*="background: linear-gradient"][style*="#1f2937"] p,
-        [style*="background: linear-gradient"][style*="#1f2937"] div,
-        [style*="background: linear-gradient"][style*="#1f2937"] span,
-        [style*="background: linear-gradient"][style*="#1f2937"] li,
-        [style*="background: linear-gradient"][style*="#374151"] h1,
-        [style*="background: linear-gradient"][style*="#374151"] h2,
-        [style*="background: linear-gradient"][style*="#374151"] h3,
-        [style*="background: linear-gradient"][style*="#374151"] h4,
-        [style*="background: linear-gradient"][style*="#374151"] h5,
-        [style*="background: linear-gradient"][style*="#374151"] h6,
-        [style*="background: linear-gradient"][style*="#374151"] p,
-        [style*="background: linear-gradient"][style*="#374151"] div,
-        [style*="background: linear-gradient"][style*="#374151"] span,
-        [style*="background: linear-gradient"][style*="#374151"] li {
-            color: #ffffff !important;
+        .energy-barrier {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 4px;
+            height: 100px;
+            background: linear-gradient(to bottom, #ef4444, #fbbf24, #10b981);
+            border-radius: 2px;
         }
-        
-        /* Target all dark background classes */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation h1, .data-transformation h2, .data-transformation h3, 
-        .data-transformation h4, .data-transformation h5, .data-transformation h6,
-        .ai-demo-box h1, .ai-demo-box h2, .ai-demo-box h3, 
-        .ai-demo-box h4, .ai-demo-box h5, .ai-demo-box h6,
-        .matrix-demo h1, .matrix-demo h2, .matrix-demo h3, 
-        .matrix-demo h4, .matrix-demo h5, .matrix-demo h6,
-        .reasoning-demo h1, .reasoning-demo h2, .reasoning-demo h3, 
-        .reasoning-demo h4, .reasoning-demo h5, .reasoning-demo h6,
-        .quantum-demo h1, .quantum-demo h2, .quantum-demo h3, 
-        .quantum-demo h4, .quantum-demo h5, .quantum-demo h6,
-        .selection-demo h1, .selection-demo h2, .selection-demo h3, 
-        .selection-demo h4, .selection-demo h5, .selection-demo h6,
-        .ode-demo h1, .ode-demo h2, .ode-demo h3, 
-        .ode-demo h4, .ode-demo h5, .ode-demo h6,
-        .agent-demo h1, .agent-demo h2, .agent-demo h3, 
-        .agent-demo h4, .agent-demo h5, .agent-demo h6,
-        .gcn-demo h1, .gcn-demo h2, .gcn-demo h3, 
-        .gcn-demo h4, .gcn-demo h5, .gcn-demo h6,
-        .fault-demo h1, .fault-demo h2, .fault-demo h3, 
-        .fault-demo h4, .fault-demo h5, .fault-demo h6,
-        .foundation-demo h1, .foundation-demo h2, .foundation-demo h3, 
-        .foundation-demo h4, .foundation-demo h5, .foundation-demo h6,
-        .rl-demo h1, .rl-demo h2, .rl-demo h3, 
-        .rl-demo h4, .rl-demo h5, .rl-demo h6,
-        .neural-network-demo h1, .neural-network-demo h2, .neural-network-demo h3, 
-        .neural-network-demo h4, .neural-network-demo h5, .neural-network-demo h6 {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation p, .data-transformation div, .data-transformation span, .data-transformation li,
-        .ai-demo-box p, .ai-demo-box div, .ai-demo-box span, .ai-demo-box li,
-        .matrix-demo p, .matrix-demo div, .matrix-demo span, .matrix-demo li,
-        .reasoning-demo p, .reasoning-demo div, .reasoning-demo span, .reasoning-demo li,
-        .quantum-demo p, .quantum-demo div, .quantum-demo span, .quantum-demo li,
-        .selection-demo p, .selection-demo div, .selection-demo span, .selection-demo li,
-        .ode-demo p, .ode-demo div, .ode-demo span, .ode-demo li,
-        .agent-demo p, .agent-demo div, .agent-demo span, .agent-demo li,
-        .gcn-demo p, .gcn-demo div, .gcn-demo span, .gcn-demo li,
-        .fault-demo p, .fault-demo div, .fault-demo span, .fault-demo li,
-        .foundation-demo p, .foundation-demo div, .foundation-demo span, .foundation-demo li,
-        .rl-demo p, .rl-demo div, .rl-demo span, .rl-demo li,
-        .neural-network-demo p, .neural-network-demo div, .neural-network-demo span, .neural-network-demo li {
-            color: #e5e7eb !important;
-        }
-        
-        /* Force light text on any element with dark background */
-        [style*="background"][style*="#1f2937"], [style*="background"][style*="#374151"],
-        [style*="background"][style*="#667eea"], [style*="background"][style*="#764ba2"],
-        [style*="background"][style*="#7c3aed"], [style*="background"][style*="#6d28d9"],
-        [style*="background"][style*="#dc2626"], [style*="background"][style*="#b91c1c"],
-        [style*="background"][style*="#be185d"], [style*="background"][style*="#9d174d"],
-        [style*="background"][style*="#0f766e"], [style*="background"][style*="#0d9488"],
-        [style*="background"][style*="#1e40af"], [style*="background"][style*="#1e3a8a"],
-        [style*="background"][style*="#7c2d12"], [style*="background"][style*="#991b1c"],
-        [style*="background"][style*="#059669"], [style*="background"][style*="#047857"],
-        [style*="background"][style*="#06b6d4"], [style*="background"][style*="#0891b2"],
-        [style*="background"][style*="#8b5cf6"], [style*="background"][style*="#7c3aed"],
-        [style*="background"][style*="#f59e0b"], [style*="background"][style*="#d97706"] {
-            color: #ffffff !important;
-        }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo * {
-            color: #ffffff !important;
-        }
-        
-        /* Light background elements - force dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo * {
-            color: #1f2937 !important;
-        }
-        
-        /* Special cases */
-        .matrix-cell {
-            color: #ffffff !important;
-            font-weight: 600 !important;
-        }
-        .code-snippet {
-            color: #f9fafb !important;
-        }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .hybrid-comparison *, .accuracy-meter *, .process-flow *, .pattern-recognition *,
-        .convolution-demo *, .neural-network-demo *, .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Also target any div with dark background */
-        div[style*="background: linear-gradient"] {
-            color: #ffffff !important;
-        }
-        
-        div[style*="background: linear-gradient"] * {
-            color: #ffffff !important;
-        }
-        /* PROPER CONTRAST FIX */
-        
-        /* Dark background elements - white text */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo,
-        .ai-flow-diagram {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Light background elements - dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo,
-        .hybrid-comparison, .pattern-cell, .network-visualization, .pattern-grid {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo *,
-        .hybrid-comparison *, .pattern-cell *, .network-visualization *, .pattern-grid * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specific fixes for pattern recognition demo */
-        .pattern-recognition {
-            background: #f8fafc !important;
-        }
-        
-        .pattern-cell {
-            background: #ffffff !important;
-            color: #1f2937 !important;
-            border: 1px solid #d1d5db !important;
-        }
-        
-        .pattern-cell:hover {
-            background: #e5e7eb !important;
-            color: #1f2937 !important;
-        }
-        /* FIX STRUCTURED THREE-BOX DIAGRAMS */
-        
-        /* Target the specific structured components with three boxes */
-        .sensor-architecture, .architecture-visualization, .component-breakdown,
-        .multi-block-visualization, .process-flow, .quantum-simulation,
-        .selection-process, .ode-architecture, .agent-system, .gcn-architecture,
-        .fault-detection, .foundation-architecture, .rl-process, .physics-demo,
-        .data-transformation, .ai-flow-diagram, .neural-network-demo,
-        .pattern-recognition, .convolution-demo, .accuracy-meter {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture *, .architecture-visualization *, .component-breakdown *,
-        .multi-block-visualization *, .process-flow *, .quantum-simulation *,
-        .selection-process *, .ode-architecture *, .agent-system *, .gcn-architecture *,
-        .fault-detection *, .foundation-architecture *, .rl-process *, .physics-demo *,
-        .data-transformation *, .ai-flow-diagram *, .neural-network-demo *,
-        .pattern-recognition *, .convolution-demo *, .accuracy-meter * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specifically target the three-box structure elements */
-        .interaction-component, .architecture-component, .process-component,
-        .sensor-component, .quantum-component, .selection-component,
-        .ode-component, .agent-component, .gcn-component, .fault-component,
-        .foundation-component, .rl-component, .physics-component,
-        .data-component, .ai-component, .neural-component, .pattern-component,
-        .convolution-component, .accuracy-component {
-            color: #1f2937 !important;
-        }
-        
-        .interaction-component *, .architecture-component *, .process-component *,
-        .sensor-component *, .quantum-component *, .selection-component *,
-        .ode-component *, .agent-component *, .gcn-component *, .fault-component *,
-        .foundation-component *, .rl-component *, .physics-component *,
-        .data-component *, .ai-component *, .neural-component *, .pattern-component *,
-        .convolution-component *, .accuracy-component * {
-            color: #1f2937 !important;
-        }
-        
-        /* Target any div with structured three-box layout */
-        .sensor-architecture .interaction-component,
-        .architecture-visualization .interaction-component,
-        .component-breakdown .interaction-component,
-        .multi-block-visualization .interaction-component,
-        .process-flow .interaction-component,
-        .quantum-simulation .interaction-component,
-        .selection-process .interaction-component,
-        .ode-architecture .interaction-component,
-        .agent-system .interaction-component,
-        .gcn-architecture .interaction-component,
-        .fault-detection .interaction-component,
-        .foundation-architecture .interaction-component,
-        .rl-process .interaction-component,
-        .physics-demo .interaction-component,
-        .data-transformation .interaction-component,
-        .ai-flow-diagram .interaction-component,
-        .neural-network-demo .interaction-component,
-        .pattern-recognition .interaction-component,
-        .convolution-demo .interaction-component,
-        .accuracy-meter .interaction-component {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture .interaction-component *,
-        .architecture-visualization .interaction-component *,
-        .component-breakdown .interaction-component *,
-        .multi-block-visualization .interaction-component *,
-        .process-flow .interaction-component *,
-        .quantum-simulation .interaction-component *,
-        .selection-process .interaction-component *,
-        .ode-architecture .interaction-component *,
-        .agent-system .interaction-component *,
-        .gcn-architecture .interaction-component *,
-        .fault-detection .interaction-component *,
-        .foundation-architecture .interaction-component *,
-        .rl-process .interaction-component *,
-        .physics-demo .interaction-component *,
-        .data-transformation .interaction-component *,
-        .ai-flow-diagram .interaction-component *,
-        .neural-network-demo .interaction-component *,
-        .pattern-recognition .interaction-component *,
-        .convolution-demo .interaction-component *,
-        .accuracy-meter .interaction-component * {
-            color: #1f2937 !important;
-        }
-    
-    
-    
-    
-    
-    
     </style>
 </head>
 <body>
@@ -530,8 +261,8 @@
                 <i class="fas fa-arrow-left"></i>
                 Back to Blog
             </a>
-            <h1>The Perfect Marriage: Combining Chemical Science with AI for Smarter Process Design</h1>
-            <p class="hero-subtitle">How hybrid models are revolutionizing chemical engineering by merging traditional science with artificial intelligence</p>
+            <h1>Nonadiabatic Forward Flux Sampling for Excited-State Rare Events</h1>
+            <p class="hero-subtitle">Catching molecules in the act of quantum jumping between energy states during photochemical reactions</p>
         </div>
     </header>
 
@@ -539,278 +270,186 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"A Hybrid Science-Guided Machine Learning Approach for Modeling and Optimizing Chemical Processes"</span>
+                <span class="meta-value">"Nonadiabatic Forward Flux Sampling for Excited-State Rare Events"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">AIChE Journal (2021) Preprint on arXiv</span>
+                <span class="meta-value">Preprint (2022)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">Niket Sharma, Y. A. Liu</span>
+                <span class="meta-value">Madlen Maria Reiner, Brigitta Bachmair, Maximilian X. Tiefenbacher, Sebastian Mai, Leticia González, Philipp Marquetand, Christoph Dellago</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Introduces a nonadiabatic version of forward flux sampling to study rare photochemical events involving electronic transitions in excited states.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="https://arxiv.org/abs/2112.01475" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2112.01475</a></span>
+                <span class="meta-value"><a href="https://arxiv.org/abs/2208.00686" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2208.00686</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
-            <span class="tag">Hybrid AI</span>
-            <span class="tag">Chemical Processes</span>
-            <span class="tag">Process Design</span>
-            <span class="tag">Machine Learning</span>
-            <span class="tag">Chemical Engineering</span>
+            <span class="tag">Computational Chemistry</span>
+            <span class="tag">Photochemistry</span>
+            <span class="tag">Quantum Mechanics</span>
+            <span class="tag">Molecular Dynamics</span>
+            <span class="tag">Excited States</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> Combines first-principles chemical knowledge with data-driven learning to create hybrid models that improve accuracy and interpretability in process design.
+                <strong>Key Finding:</strong> Scientists have developed a new computational method to study rare photochemical events—those fleeting moments when molecules absorb light and jump between quantum energy states. This breakthrough allows researchers to capture and analyze these ultra-fast processes that were previously impossible to study.
             </div>
 
-            <div class="hybrid-comparison">
-                <div class="comparison-box traditional-box">
-                    <h3>🔬 Traditional Approach</h3>
-                    <p><strong>First-Principles Only</strong></p>
-                    <ul style="text-align: left;">
-                        <li>Based on physical laws</li>
-                        <li>Highly interpretable</li>
-                        <li>Limited by complexity</li>
-                        <li>Accuracy: 70-80%</li>
-                    </ul>
+            <div class="quantum-demo">
+                <h2>⚡ Interactive Quantum Jump Simulator</h2>
+                <p>Click on different energy levels to see how molecules transition between quantum states!</p>
+                <div class="energy-levels">
+                    <div class="energy-level" onclick="showGroundState()">
+                        <h4>🟢 Ground State</h4>
+                        <p>Lowest energy<br>Most stable</p>
+                    </div>
+                    <div class="energy-level" onclick="showExcitedState()">
+                        <h4>🟡 Excited State</h4>
+                        <p>Higher energy<br>Unstable</p>
+                    </div>
+                    <div class="energy-level" onclick="showTransition()">
+                        <h4>⚡ Transition</h4>
+                        <p>Quantum jump<br>Ultra-fast</p>
                 </div>
-                <div class="vs-divider">VS</div>
-                <div class="comparison-box hybrid-box">
-                    <h3>🤖 Pure AI Approach</h3>
-                    <p><strong>Data-Driven Only</strong></p>
-                    <ul style="text-align: left;">
-                        <li>Learns from data patterns</li>
-                        <li>High accuracy</li>
-                        <li>Black box model</li>
-                        <li>Accuracy: 85-90%</li>
-                    </ul>
                 </div>
             </div>
 
-            <div class="accuracy-meter">
-                <h4 style="color: #10b981; margin-top: 0;">📊 Model Accuracy Comparison</h4>
-                <div>
-                    <p>Traditional Models: <span id="traditional-accuracy">0%</span></p>
-                    <div class="meter-bar">
-                        <div class="meter-fill" id="traditional-bar" style="width: 0%"></div>
+            <h2>🔬 The Quantum Dance: When Molecules Absorb Light</h2>
+            <p>Picture this: A molecule sits quietly in its lowest energy state, minding its own business. Suddenly, a photon of light strikes it, and in a fraction of a femtosecond (that's 0.000000000000001 seconds!), the molecule jumps to a higher energy state. This is the quantum dance of photochemistry—and it's one of the most important processes in nature.</p>
+
+            <p>From photosynthesis in plants to vision in our eyes, from solar panels to chemical reactions, photochemical processes are everywhere. But here's the problem: these quantum jumps happen so fast and are so rare that traditional methods can't capture them. It's like trying to photograph a hummingbird's wings in flight—you need special techniques.</p>
+
+            <p>In 2022, a team of Austrian and German researchers developed a revolutionary computational method that finally allows scientists to study these elusive quantum transitions in detail.</p>
+
+            <h2>🎯 The Challenge: Catching Quantum Events</h2>
+            <p>Studying photochemical reactions is like trying to catch lightning in a bottle. The challenges are immense:</p>
+
+            <h3>⚡ Speed of Light (Literally)</h3>
+            <p>When a molecule absorbs light, the electronic transition happens in femtoseconds—faster than the blink of an eye by a factor of a million. Traditional experimental methods simply can't keep up with this speed.</p>
+
+            <h3>🎲 Rare Events</h3>
+            <p>Most of the time, molecules just sit there doing nothing. The interesting quantum jumps are incredibly rare—they might happen only once in a million attempts. It's like waiting for a specific lottery number to come up.</p>
+
+            <h3>🌊 Quantum Complexity</h3>
+            <p>Unlike classical physics, quantum mechanics doesn't follow our everyday intuition. Molecules can exist in multiple states simultaneously, and the transitions between states are governed by probability, not certainty.</p>
+
+            <div class="sampling-visualization">
+                <h3>🔬 Forward Flux Sampling: The New Approach</h3>
+                <p>The researchers developed a clever method called "Nonadiabatic Forward Flux Sampling" that works like a molecular detective:</p>
+                <div class="sampling-steps">
+                    <div class="sampling-step" onclick="explainStep(1)">
+                        <h4>1️⃣ Identify</h4>
+                        <p>Find the starting state</p>
+                    </div>
+                    <div class="sampling-step" onclick="explainStep(2)">
+                        <h4>2️⃣ Sample</h4>
+                        <p>Generate transition paths</p>
+                </div>
+                    <div class="sampling-step" onclick="explainStep(3)">
+                        <h4>3️⃣ Analyze</h4>
+                        <p>Study quantum jumps</p>
+                    </div>
+                    <div class="sampling-step" onclick="explainStep(4)">
+                        <h4>4️⃣ Predict</h4>
+                        <p>Calculate reaction rates</p>
                     </div>
                 </div>
-                <div>
-                    <p>Pure AI Models: <span id="ai-accuracy">0%</span></p>
-                    <div class="meter-bar">
-                        <div class="meter-fill" id="ai-bar" style="width: 0%"></div>
-                    </div>
-                </div>
-                <div>
-                    <p>Hybrid Models: <span id="hybrid-accuracy">0%</span></p>
-                    <div class="meter-bar">
-                        <div class="meter-fill" id="hybrid-bar" style="width: 0%"></div>
-                    </div>
-                </div>
             </div>
 
-            <h2>🤝 The Perfect Partnership: Science Meets AI</h2>
-            <p>Imagine you're trying to design a new chemical process. You have two powerful tools at your disposal: centuries of accumulated chemical knowledge (the "why" behind reactions) and modern artificial intelligence (the "how" to find patterns in data). What if you could combine both? That's exactly what researchers Niket Sharma and Y. A. Liu achieved in their groundbreaking 2021 study.</p>
+            <h2>🧮 The Science Behind the Method</h2>
+            <p>The new method is based on a clever mathematical trick. Instead of trying to simulate every possible molecular configuration (which would take forever), the algorithm focuses on the most important pathways—the ones that actually lead to quantum transitions.</p>
 
-            <p>This research represents a paradigm shift in chemical engineering. Instead of choosing between traditional scientific models and modern AI, they created something entirely new: hybrid models that get the best of both worlds.</p>
+            <h3>🎯 Smart Sampling Strategy</h3>
+            <p>Think of it like this: Instead of searching for a needle in a haystack by examining every piece of hay, the algorithm uses quantum mechanics to predict where the needle is most likely to be, then focuses the search there.</p>
 
-            <div class="process-flow">
-                <h3>🔄 The Hybrid Process Flow</h3>
-                <div class="flow-step">
-                    <h4>1. Scientific Foundation</h4>
-                    <p>Start with established chemical principles and physical laws</p>
+            <h3>⚡ Nonadiabatic Dynamics</h3>
+            <p>The method accounts for "nonadiabatic" effects—situations where the electronic and nuclear motions of molecules are strongly coupled. This is crucial because in photochemical reactions, electrons and nuclei don't move independently; they influence each other in complex ways.</p>
+
+            <div class="transition-animation">
+                <h3>🔄 Molecular Transition Animation</h3>
+                <p>Click the molecule to see a quantum transition in action:</p>
+                <div class="molecule-container">
+                    <div class="energy-barrier"></div>
+                    <div class="molecule" id="molecule" onclick="animateTransition()">M</div>
                 </div>
-                <div class="flow-step">
-                    <h4>2. Data Integration</h4>
-                    <p>Feed in real-world process data and experimental results</p>
-                </div>
-                <div class="flow-step">
-                    <h4>3. AI Enhancement</h4>
-                    <p>Use machine learning to find patterns and optimize parameters</p>
-                </div>
-                <div class="flow-step">
-                    <h4>4. Hybrid Model</h4>
-                    <p>Combine scientific knowledge with AI insights for best results</p>
-                </div>
+                <p id="transitionStatus">Click the molecule to start the quantum transition!</p>
             </div>
 
-            <h2>⚖️ The Great Debate: Traditional vs. AI Models</h2>
-            <p>For years, chemical engineers have faced a difficult choice when designing processes:</p>
+            <h2>🌟 Real-World Applications</h2>
+            <p>This breakthrough has profound implications for numerous fields:</p>
 
-            <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #92400e;">🔬 Traditional First-Principles Models: The Tried and True</h4>
-                <p style="margin-bottom: 1rem;">Traditional first-principles models have been the backbone of chemical engineering for decades. These models are <strong>scientifically interpretable</strong> - you can look at the equations and understand exactly why a reaction behaves the way it does. They're based on fundamental laws of physics and chemistry, making them inherently reliable and trustworthy. Engineers can trace every prediction back to basic scientific principles.</p>
-                
-                <p style="margin-bottom: 0;">However, these models have significant limitations. They're <strong>complex to develop</strong> and require deep expertise in both chemistry and mathematics. They're also <strong>computationally expensive</strong>, often requiring hours or days to solve complex optimization problems. Perhaps most importantly, they may <strong>miss subtle patterns</strong> in the data that don't fit neatly into established scientific frameworks. It's like trying to understand a symphony by only looking at the sheet music - you miss the nuances and harmonies that make it beautiful.</p>
-            </div>
+            <h3>🌱 Photosynthesis Research</h3>
+            <p>Understanding how plants convert sunlight into energy requires studying the quantum transitions in chlorophyll molecules. This new method could help scientists design more efficient artificial photosynthesis systems.</p>
+
+            <h3>🔋 Solar Energy</h3>
+            <p>Solar panels rely on photochemical processes to convert light into electricity. By understanding these quantum transitions better, engineers can design more efficient solar cells.</p>
+
+            <h3>💊 Drug Development</h3>
+            <p>Many drugs work by interacting with light-sensitive molecules in our bodies. Understanding photochemical processes could lead to better treatments for diseases like cancer and vision disorders.</p>
+
+            <h3>🌍 Environmental Chemistry</h3>
+            <p>Many environmental processes, from ozone formation to pollutant degradation, involve photochemical reactions. This research could help us better understand and protect our environment.</p>
+
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers combined several advanced techniques:</p>
 
             <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #0c4a6e;">🤖 Pure AI/ML Models: The New Frontier</h4>
-                <p style="margin-bottom: 1rem;">Pure AI and machine learning models represent the cutting edge of data analysis. They're <strong>incredibly fast</strong>, capable of processing massive datasets in minutes rather than hours. They excel at <strong>finding complex patterns</strong> that would be impossible for humans to detect manually. These models are purely <strong>data-driven</strong>, learning directly from real-world observations without any preconceived notions about how things should work.</p>
-                
-                <p style="margin-bottom: 0;">But this strength is also their weakness. The <strong>"black box" nature</strong> of these models means that even their creators often can't explain why they make specific predictions. They may <strong>violate physical laws</strong> by suggesting impossible operating conditions that look good in the data but would never work in reality. This makes them <strong>hard to trust</strong> in safety-critical applications where understanding the "why" is just as important as knowing the "what." It's like having a brilliant but mysterious advisor who's always right but never explains their reasoning.</p>
-            </div>
-
-            <p>The researchers asked a revolutionary question: "Why choose when you can have both?"</p>
-
-            <h2>🧬 The Hybrid Approach: Best of Both Worlds</h2>
-            <p>Sharma and Liu developed a sophisticated framework that seamlessly integrates chemical science with machine learning. Here's how it works:</p>
-
-            <h3>🔗 The Integration Strategy</h3>
-            <p>The hybrid approach works like a perfect partnership between a seasoned chemist and a brilliant data scientist:</p>
-
-            <div style="background: #ecfdf5; border-left: 4px solid #10b981; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #065f46;">🎯 Hybrid Model Components:</h4>
+                <h4 style="margin-top: 0; color: #0c4a6e;">🧮 Technical Components:</h4>
                 <ul style="margin-bottom: 0;">
-                    <li><strong>Physics-Based Foundation:</strong> Built on fundamental chemical and physical laws</li>
-                    <li><strong>Data-Driven Enhancement:</strong> AI learns from real-world process data</li>
-                    <li><strong>Constraint Enforcement:</strong> Ensures predictions obey thermodynamic and kinetic principles</li>
-                    <li><strong>Interpretability Layer:</strong> Provides scientific explanations for AI decisions</li>
+                    <li><strong>Forward Flux Sampling:</strong> Efficiently samples rare transition events</li>
+                    <li><strong>Nonadiabatic Dynamics:</strong> Accounts for quantum coupling effects</li>
+                    <li><strong>Surface Hopping:</strong> Models electronic state transitions</li>
+                    <li><strong>Quantum-Classical Hybrid:</strong> Combines quantum and classical mechanics</li>
                 </ul>
             </div>
 
-            <h3>🔄 The Learning Process</h3>
-            <p>Think of it like training a student who already knows the basics of chemistry. The hybrid model:</p>
-            <ol>
-                <li><strong>Starts with scientific knowledge:</strong> Uses established chemical principles as the foundation</li>
-                <li><strong>Learns from data:</strong> AI components identify patterns in real process data</li>
-                <li><strong>Validates against physics:</strong> Ensures all predictions make scientific sense</li>
-                <li><strong>Provides explanations:</strong> Shows why the model made specific predictions</li>
-            </ol>
+            <h2>🚀 Future Possibilities</h2>
+            <p>This research opens up exciting new possibilities for studying photochemical processes:</p>
 
-            <h2>🏭 Real-World Applications: Where Hybrid Models Excel</h2>
-            <p>The researchers demonstrated their approach across multiple chemical processes with remarkable results:</p>
-
-            <h3>⚗️ Chemical Reactor Design</h3>
-            <p>Traditional reactor design relies heavily on simplified models that may not capture all the complexities of real reactions. The hybrid approach:</p>
             <ul>
-                <li>Incorporates detailed reaction mechanisms from chemical kinetics</li>
-                <li>Learns optimal operating conditions from historical data</li>
-                <li>Predicts reactor performance with unprecedented accuracy</li>
-                <li>Provides insights into why certain conditions work better</li>
+                <li><strong>Ultrafast Spectroscopy:</strong> Better understanding of experimental results</li>
+                <li><strong>Catalyst Design:</strong> More efficient photochemical catalysts</li>
+                <li><strong>Materials Science:</strong> Light-responsive materials</li>
+                <li><strong>Quantum Computing:</strong> Understanding quantum coherence in molecules</li>
             </ul>
 
-            <h3>🌡️ Process Optimization</h3>
-            <p>Optimizing chemical processes is like tuning a complex instrument. The hybrid models:</p>
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of computational chemistry to solve problems that are impossible to study experimentally. It shows how modern science combines:</p>
+
             <ul>
-                <li>Balance multiple objectives (yield, energy, cost, safety)</li>
-                <li>Respect physical constraints (temperature limits, material properties)</li>
-                <li>Adapt to changing conditions in real-time</li>
-                <li>Explain their optimization decisions to engineers</li>
-        </ul>
-
-            <h2>📊 The Results: Quantifying Success</h2>
-            <p>The performance improvements achieved by hybrid models are impressive:</p>
-
-            <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #0c4a6e;">📈 Performance Metrics:</h4>
-                <ul style="margin-bottom: 0;">
-                    <li><strong>Accuracy Improvement:</strong> 20-40% better predictions than pure AI models</li>
-                    <li><strong>Computational Efficiency:</strong> 50-70% faster than traditional physics-based models</li>
-                    <li><strong>Interpretability:</strong> 100% explainable decisions (vs. 0% for pure AI)</li>
-                    <li><strong>Reliability:</strong> Never violates fundamental chemical laws</li>
-                </ul>
-        </div>
-
-            <h2>🔬 The Science Behind the Magic</h2>
-            <p>The technical implementation involves several sophisticated techniques:</p>
-
-            <h3>🧮 Mathematical Framework</h3>
-            <p>The hybrid models use advanced mathematical approaches:</p>
-            <ul>
-                <li><strong>Physics-Informed Neural Networks (PINNs):</strong> Neural networks that incorporate physical laws as constraints</li>
-                <li><strong>Multi-fidelity Modeling:</strong> Combines high-accuracy (expensive) and low-accuracy (cheap) models</li>
-                <li><strong>Bayesian Optimization:</strong> Efficiently explores the design space while respecting constraints</li>
-                <li><strong>Uncertainty Quantification:</strong> Provides confidence intervals for all predictions</li>
+                <li><strong>Quantum Mechanics:</strong> Understanding the fundamental laws of nature</li>
+                <li><strong>Computer Science:</strong> Developing algorithms to solve complex problems</li>
+                <li><strong>Mathematics:</strong> Creating models to describe molecular behavior</li>
+                <li><strong>Chemistry:</strong> Applying knowledge to real-world problems</li>
             </ul>
 
-            <h3>🔍 Interpretability Techniques</h3>
-            <p>Making AI decisions understandable is crucial for engineering applications:</p>
-            <ul>
-                <li><strong>Sensitivity Analysis:</strong> Shows which input variables most affect the output</li>
-                <li><strong>Feature Importance:</strong> Identifies the most important chemical/physical factors</li>
-                <li><strong>Counterfactual Explanations:</strong> Shows what would happen under different conditions</li>
-                <li><strong>Physics-Based Validation:</strong> Ensures predictions align with known chemical principles</li>
-            </ul>
+            <p>For students interested in any of these fields, this work illustrates how interdisciplinary research leads to breakthrough discoveries.</p>
 
-            <h2>🚀 Industry Impact: Transforming Chemical Manufacturing</h2>
-            <p>The implications of this research extend far beyond academic curiosity:</p>
-
-            <h3>💰 Economic Benefits</h3>
-            <ul>
-                <li><strong>Faster Process Development:</strong> Reduce time-to-market for new chemicals by 30-50%</li>
-                <li><strong>Improved Efficiency:</strong> Optimize existing processes for 10-20% better performance</li>
-                <li><strong>Reduced Costs:</strong> Minimize expensive experimental trials through better predictions</li>
-                <li><strong>Enhanced Safety:</strong> Predict and prevent hazardous conditions before they occur</li>
-            </ul>
-
-        <h3>🌍 Environmental Impact</h3>
-            <p>More efficient processes mean better environmental outcomes:</p>
-            <ul>
-                <li>Reduced energy consumption through optimized operating conditions</li>
-                <li>Minimized waste generation by better understanding process behavior</li>
-                <li>Improved resource utilization through more accurate predictions</li>
-                <li>Safer operations through better hazard prediction</li>
-        </ul>
-
-            <h2>🎓 Educational Implications: Preparing Future Engineers</h2>
-            <p>This research highlights the evolving nature of chemical engineering education:</p>
-
-            <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #991b1b;">🎯 Skills for Future Chemical Engineers:</h4>
-                <ul style="margin-bottom: 0;">
-                    <li><strong>Traditional Chemistry:</strong> Understanding fundamental principles remains crucial</li>
-                    <li><strong>Data Science:</strong> Ability to work with large datasets and AI tools</li>
-                    <li><strong>Computational Skills:</strong> Programming and numerical methods</li>
-                    <li><strong>Systems Thinking:</strong> Understanding complex interactions in chemical processes</li>
-                </ul>
-            </div>
-
-            <h2>🔮 The Future: What's Next?</h2>
-            <p>This research opens exciting possibilities for the future of chemical engineering:</p>
-            <ul>
-                <li><strong>Autonomous Process Design:</strong> AI systems that can design entire chemical processes</li>
-                <li><strong>Real-Time Optimization:</strong> Continuous process improvement based on live data</li>
-                <li><strong>Digital Twins:</strong> Virtual replicas of chemical plants for testing and optimization</li>
-                <li><strong>Sustainable Chemistry:</strong> AI-guided design of environmentally friendly processes</li>
-        </ul>
-
-            <h2>🔍 Interactive Elements: Test Your Understanding</h2>
-            <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #991b1b;">🤔 Think About It:</h4>
-                <p style="margin-bottom: 0;">Imagine you're designing a hybrid model for a chemical process. What traditional chemical knowledge would you want to include? What kind of data would you need to collect? How would you ensure the model's predictions are trustworthy?</p>
-        </div>
-
-            <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #0c4a6e;">💡 Discussion Questions:</h4>
-                <ul style="margin-bottom: 0;">
-                    <li>Why is it important for AI models in chemical engineering to be interpretable?</li>
-                    <li>How might hybrid models change the way chemical processes are designed in the future?</li>
-                    <li>What challenges do you think researchers might face when combining traditional science with AI?</li>
-                </ul>
-            </div>
-
-        <div class="highlight-box">
-                <strong>🎯 Bottom Line:</strong> This research represents a breakthrough in chemical engineering methodology. By combining the reliability and interpretability of traditional scientific models with the pattern-finding power of artificial intelligence, we're entering an era where chemical process design can be both more accurate and more understandable. The future of chemical engineering is hybrid, intelligent, and scientifically grounded.
+            <div class="highlight-box">
+                <strong>🎯 Bottom Line:</strong> Scientists have developed a revolutionary computational method to study rare photochemical events—those ultra-fast quantum jumps that occur when molecules absorb light. This breakthrough allows researchers to capture and analyze processes that were previously impossible to study, opening new possibilities for understanding photosynthesis, solar energy, and many other light-driven processes.
         </div>
 
             <h2>📚 Further Reading & Resources</h2>
-            <p>Want to explore more about this fascinating intersection of science and AI?</p>
+            <p>Want to dive deeper? Check out these related topics:</p>
             <ul>
-                <li>Physics-informed neural networks in engineering</li>
-                <li>Machine learning applications in chemical process optimization</li>
-                <li>Interpretable AI in scientific applications</li>
-                <li>Digital transformation in the chemical industry</li>
+                <li>Photochemistry and photochemical reactions</li>
+                <li>Quantum mechanics in chemistry</li>
+                <li>Molecular dynamics simulations</li>
+                <li>Excited state chemistry</li>
+                <li>Computational chemistry methods</li>
             </ul>
         </div>
     </main>
@@ -844,36 +483,41 @@
 
     <script src="../script.js"></script>
     <script>
-        // Animate accuracy meters on page load
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                animateAccuracyMeter('traditional-accuracy', 'traditional-bar', 75);
-                setTimeout(() => {
-                    animateAccuracyMeter('ai-accuracy', 'ai-bar', 87);
-                    setTimeout(() => {
-                        animateAccuracyMeter('hybrid-accuracy', 'hybrid-bar', 95);
-                    }, 500);
-                }, 500);
-            }, 1000);
-        });
+        function showGroundState() {
+            alert('🟢 Ground State: The lowest energy state where molecules are most stable. This is where molecules spend most of their time, like a ball resting at the bottom of a valley.');
+        }
 
-        function animateAccuracyMeter(accuracyId, barId, targetValue) {
-            const accuracyElement = document.getElementById(accuracyId);
-            const barElement = document.getElementById(barId);
+        function showExcitedState() {
+            alert('🟡 Excited State: A higher energy state that molecules reach after absorbing light. This state is unstable and short-lived, like a ball balanced on a hilltop.');
+        }
+
+        function showTransition() {
+            alert('⚡ Quantum Transition: The ultra-fast jump between energy states when a molecule absorbs or emits light. This happens in femtoseconds and is governed by quantum mechanics.');
+        }
+
+        function explainStep(step) {
+            const explanations = {
+                1: 'Identify: The algorithm first identifies the starting quantum state of the molecule, like finding the starting point of a journey.',
+                2: 'Sample: It generates many possible transition pathways, like exploring different routes to a destination.',
+                3: 'Analyze: The method studies each pathway to understand how quantum jumps occur, like analyzing traffic patterns.',
+                4: 'Predict: Finally, it calculates the probability and rate of transitions, like predicting travel times.'
+            };
+            alert(explanations[step]);
+        }
+
+        function animateTransition() {
+            const molecule = document.getElementById('molecule');
+            const status = document.getElementById('transitionStatus');
             
-            let currentValue = 0;
-            const increment = targetValue / 50; // 50 steps
+            status.textContent = 'Quantum transition in progress...';
+            molecule.style.background = 'linear-gradient(45deg, #ef4444, #fbbf24)';
+            molecule.style.transform = 'translateX(100px) scale(1.5)';
             
-            const timer = setInterval(() => {
-                currentValue += increment;
-                if (currentValue >= targetValue) {
-                    currentValue = targetValue;
-                    clearInterval(timer);
-                }
-                
-                accuracyElement.textContent = Math.round(currentValue) + '%';
-                barElement.style.width = currentValue + '%';
-            }, 40);
+            setTimeout(() => {
+                molecule.style.background = 'linear-gradient(45deg, #10b981, #3b82f6)';
+                molecule.style.transform = 'translateX(-100px) scale(1)';
+                status.textContent = 'Transition complete! Molecule has jumped to a new quantum state.';
+            }, 2000);
         }
     </script>
 </body>

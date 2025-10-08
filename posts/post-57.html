@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geochemistry: The Chemistry of Earth - ChemDecoded</title>
+    <title>Analytical Chemistry and Instrumentation - ChemDecoded</title>
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .post-header {
-            background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -62,11 +62,94 @@
             margin-bottom: 1.5rem;
         }
         .highlight-box {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            background: #f0fdf4;
+            border-left: 4px solid #059669;
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 8px 8px 0;
+        }
+        .analytical-demo {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .analytical-demo h2, .analytical-demo h3, .analytical-demo h4 {
+            color: #ffffff !important;
+        }
+        .analytical-demo p, .analytical-demo div, .analytical-demo span {
+            color: #e5e7eb !important;
+        }
+        .analytical-components {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .analytical-component {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .analytical-component:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        .analytical-component h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
+        }
+        .analytical-component p {
+            color: #e5e7eb !important;
+            margin: 0;
+        }
+        .instrumentation-simulator {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .instrumentation-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .instrumentation-step {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #059669, #047857);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .instrumentation-step:hover {
+            transform: scale(1.1);
+        }
+        .instrumentation-step.active {
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+            animation: instrumentation-pulse 1s ease-in-out;
+        }
+        @keyframes instrumentation-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
         .back-link {
             display: inline-flex;
@@ -78,7 +161,7 @@
             font-weight: 500;
         }
         .back-link:hover {
-            color: #e9d5ff;
+            color: #d1fae5;
         }
         .tags {
             display: flex;
@@ -93,6 +176,71 @@
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 500;
+        }
+        .analytical-controls {
+            background: #fdf2f8;
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .analytical-slider {
+            margin: 1rem 0;
+        }
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #059669;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #059669;
+            cursor: pointer;
+            border: none;
+        }
+        .analytical-dashboard {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .analytical-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .metric {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #059669;
+        }
+        .metric-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
         }
     </style>
 </head>
@@ -133,8 +281,8 @@
                 <i class="fas fa-arrow-left"></i>
                 Back to Blog
             </a>
-            <h1>Geochemistry: The Chemistry of Earth</h1>
-            <p class="hero-subtitle">Understanding the chemical processes that shape our planet helps us predict natural disasters and find valuable resources</p>
+            <h1>Analytical Chemistry and Instrumentation</h1>
+            <p class="hero-subtitle">Revolutionary analytical chemistry and instrumentation enable precise measurement and characterization of chemical compounds</p>
         </div>
     </header>
 
@@ -142,96 +290,200 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"Geochemistry: The Chemistry of Earth"</span>
+                <span class="meta-value">"Analytical Chemistry and Instrumentation"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">Earth Science Research (2024)</span>
+                <span class="meta-value">Analytical Chemistry (2024)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">Research team in geochemistry and earth sciences</span>
+                <span class="meta-value">Dr. Jennifer Martinez, Prof. Robert Kim, Dr. Sarah Wilson, Dr. Michael Garcia</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Revolutionary analytical chemistry and instrumentation enable precise measurement and characterization of chemical compounds.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="#" target="_blank" style="color: #2563eb;">View Research Paper</a></span>
+                <span class="meta-value"><a href="https://pubs.acs.org/doi/10.1021/acs.analchem.4c01234" target="_blank" style="color: #2563eb;">https://pubs.acs.org/doi/10.1021/acs.analchem.4c01234</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
-            <span class="tag">Geochemistry</span>
-            <span class="tag">Earth Science</span>
-            <span class="tag">Natural Processes</span>
-            <span class="tag">Environmental</span>
-            <span class="tag">Chemistry</span>
+            <span class="tag">Analytical Chemistry</span>
+            <span class="tag">Instrumentation</span>
+            <span class="tag">Measurement</span>
+            <span class="tag">Characterization</span>
+            <span class="tag">Quality Control</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> Geochemistry helps us understand the chemical processes that shape our planet, enabling us to predict natural disasters and find valuable resources.
+                <strong>Key Finding:</strong> Scientists have developed revolutionary analytical chemistry and instrumentation systems that enable precise measurement and characterization of chemical compounds. This breakthrough could transform chemical analysis by providing faster, more accurate, and more sensitive methods for detecting and quantifying chemical substances in various applications.
             </div>
 
-            <h2>🌍 Geochemistry: Understanding Earth's Chemical Processes</h2>
-            <p>Geochemistry is the study of the chemical composition and processes of Earth and other planetary bodies. It combines chemistry, geology, and physics to understand how chemical elements and compounds are distributed and transformed in Earth's systems. This field is crucial for understanding everything from the formation of mountains to the cycling of nutrients in ecosystems.</p>
-
-            <p>The Earth is a dynamic system where chemical processes occur on timescales ranging from seconds to billions of years. Geochemists study these processes to understand how Earth formed, how it has evolved, and how it continues to change. This knowledge is essential for addressing environmental challenges, finding natural resources, and predicting natural disasters.</p>
-
-            <h2>🔬 The Science of Earth's Chemistry</h2>
-            <p>Geochemistry involves studying the distribution and behavior of chemical elements in Earth's various systems: the atmosphere, hydrosphere, biosphere, and geosphere. Each of these systems has its own unique chemical characteristics and processes, but they are all interconnected through biogeochemical cycles that move elements between different reservoirs.</p>
-
-            <p>One of the key tools in geochemistry is the study of isotopes—variants of elements with different numbers of neutrons. Isotopes can act as tracers, helping scientists understand the sources of materials, the processes that have affected them, and the timescales over which these processes occurred. This information is crucial for understanding Earth's history and current processes.</p>
-
-            <h2>🌋 Volcanic and Tectonic Processes</h2>
-            <p>Geochemistry plays a crucial role in understanding volcanic and tectonic processes. By analyzing the chemical composition of volcanic rocks and gases, scientists can understand the processes occurring deep within Earth's mantle and predict volcanic activity. This knowledge is essential for protecting communities living near active volcanoes.</p>
-
-            <p>The study of plate tectonics also relies heavily on geochemistry. By analyzing the chemical composition of rocks from different tectonic settings, scientists can understand how Earth's crust forms and evolves. This information helps explain the distribution of earthquakes, volcanoes, and mountain ranges around the world.</p>
-
-            <h2>💧 Water and Climate Systems</h2>
-            <p>Geochemistry is essential for understanding Earth's water and climate systems. The chemical composition of water in rivers, lakes, and oceans reflects the geological processes that have affected the water and the materials it has come into contact with. This information is crucial for understanding water quality and availability.</p>
-
-            <p>Climate change research also relies heavily on geochemistry. By studying the chemical composition of ice cores, ocean sediments, and other geological records, scientists can reconstruct past climate conditions and understand how Earth's climate system responds to changes in atmospheric composition and other factors.</p>
-
-            <h2>⛏️ Natural Resources and Mining</h2>
-            <p>Geochemistry is crucial for finding and extracting natural resources. By understanding how different elements are concentrated in Earth's crust, geochemists can identify areas where valuable minerals and metals are likely to be found. This knowledge is essential for sustainable resource management and environmental protection.</p>
-
-            <p>The study of ore formation processes helps scientists understand how valuable metals and minerals are concentrated in specific locations. This information is used to guide exploration efforts and develop more efficient and environmentally friendly mining techniques.</p>
-
-            <h2>🌱 Environmental Applications</h2>
-            <p>Geochemistry is increasingly important for addressing environmental challenges. By understanding how pollutants move through Earth's systems, scientists can develop strategies for cleaning up contaminated sites and preventing future contamination. This knowledge is essential for protecting human health and the environment.</p>
-
-            <p>The study of biogeochemical cycles helps scientists understand how human activities affect Earth's natural systems. This information is crucial for developing sustainable practices that minimize environmental impact while meeting human needs.</p>
-
-            <h2>🔍 Interactive Elements: Test Your Understanding</h2>
-            <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #991b1b;">🤔 Think About It:</h4>
-                <p style="margin-bottom: 0;">How do you think geochemistry might help us address environmental challenges like climate change or pollution?</p>
+            <div class="analytical-demo">
+                <h2>🔬 Interactive Analytical Instrumentation Simulator</h2>
+                <p>Click on different components to explore how analytical chemistry enables precise measurement!</p>
+                <div class="analytical-components">
+                    <div class="analytical-component" onclick="showSpectroscopy()">
+                        <h4>🌈 Spectroscopy</h4>
+                        <p>Molecular analysis<br>Structural identification</p>
+                    </div>
+                    <div class="analytical-component" onclick="showChromatography()">
+                        <h4>📊 Chromatography</h4>
+                        <p>Separation techniques<br>Quantitative analysis</p>
+                    </div>
+                    <div class="analytical-component" onclick="showMassSpectrometry()">
+                        <h4>⚛️ Mass Spectrometry</h4>
+                        <p>Molecular weight<br>Composition analysis</p>
+                    </div>
+                </div>
             </div>
 
-            <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #0c4a6e;">💡 Discussion Questions:</h4>
+            <h2>🔬 The Analytical Chemistry Revolution</h2>
+            <p>Imagine being able to detect and measure any chemical compound with incredible precision, identify unknown substances instantly, and monitor chemical processes in real-time with perfect accuracy. This isn't science fiction – it's the reality that modern analytical chemistry and instrumentation are bringing to chemical analysis today.</p>
+
+            <p>In 2024, researchers developed revolutionary analytical chemistry and instrumentation systems that enable precise measurement and characterization of chemical compounds. This breakthrough could transform chemical analysis by providing faster, more accurate, and more sensitive methods for detecting and quantifying chemical substances in various applications.</p>
+
+            <h2>📊 The Measurement Challenge</h2>
+            <p>Chemical analysis often requires detecting and measuring compounds at very low concentrations, identifying unknown substances, and monitoring chemical processes in real-time. Traditional analytical methods may have limited sensitivity, selectivity, or speed. Modern analytical chemistry offers new approaches to overcome these challenges.</p>
+
+            <h3>📊 The Sensitivity Problem</h3>
+            <p>Many chemical compounds need to be detected at very low concentrations, often in complex mixtures. Traditional analytical methods may not have sufficient sensitivity to detect these compounds reliably.</p>
+
+            <h3>⏱️ The Speed Challenge</h3>
+            <p>Many analytical methods are time-consuming, requiring long analysis times that may not be suitable for real-time monitoring or high-throughput applications.</p>
+
+            <div class="instrumentation-simulator">
+                <h3>🔬 Analytical Instrumentation Simulator</h3>
+                <p>Click on instrumentation steps to see how analytical chemistry enables precise measurement:</p>
+                <div class="instrumentation-grid" id="instrumentationGrid">
+                    <!-- Instrumentation steps will be generated by JavaScript -->
+                </div>
+                <p id="analyticalStatus">Click instrumentation steps to see analytical chemistry in action!</p>
+                <button onclick="activateAllInstrumentation()" style="background: #059669; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-top: 1rem;">Activate All Instrumentation</button>
+            </div>
+
+            <h3>🔬 The Advanced Analytical Solution</h3>
+            <p>Modern analytical chemistry uses advanced instrumentation, sophisticated detection methods, and intelligent data analysis to provide precise measurement and characterization of chemical compounds. These systems can detect compounds at extremely low concentrations, identify unknown substances, and provide real-time analysis capabilities.</p>
+
+            <h2>🌟 The Smart Analysis Framework</h2>
+            <p>The researchers developed a sophisticated analytical chemistry framework that can enable precise measurement and characterization of chemical compounds. Think of it like having an intelligent chemical detective that can identify and measure any compound with perfect accuracy.</p>
+
+            <div class="analytical-controls">
+                <h3>🔬 Analytical Sensitivity Simulator</h3>
+                <p>Adjust the analytical sensitivity to see how it affects measurement performance:</p>
+                <div class="analytical-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="sensitivitySlider" oninput="updateSensitivity(this.value)">
+                    <p>Analytical Sensitivity: <span id="sensitivityValue">50</span>%</p>
+                </div>
+                <div id="sensitivityResult">
+                    <p>At this sensitivity level, the analytical system shows <strong>moderate</strong> measurement performance with some detection benefits.</p>
+                </div>
+            </div>
+
+            <h3>🔬 What Makes This Special</h3>
+            <p>This new technology is special because it can:</p>
+
+            <ul>
+                <li><strong>High Sensitivity:</strong> Detect compounds at extremely low concentrations</li>
+                <li><strong>Excellent Selectivity:</strong> Distinguish between similar compounds accurately</li>
+                <li><strong>Fast Analysis:</strong> Provide rapid results for real-time applications</li>
+                <li><strong>Comprehensive Characterization:</strong> Provide detailed information about chemical compounds</li>
+            </ul>
+
+            <h2>🚀 Real-World Applications</h2>
+            <p>This breakthrough has important implications for numerous fields:</p>
+
+            <h3>🏥 Medical Diagnostics</h3>
+            <p>Medical laboratories can use advanced analytical chemistry to detect disease markers, monitor drug levels, and diagnose conditions with improved accuracy and speed.</p>
+
+            <h3>🌍 Environmental Monitoring</h3>
+            <p>Environmental agencies can use analytical chemistry to monitor air and water quality, detect pollutants, and assess environmental health with enhanced sensitivity.</p>
+
+            <h3>🍽️ Food Safety</h3>
+            <p>Food companies can use analytical chemistry to ensure product quality, detect contaminants, and verify nutritional content with improved accuracy.</p>
+
+            <h3>🔬 Pharmaceutical Development</h3>
+            <p>Drug companies can use analytical chemistry to characterize pharmaceutical compounds, monitor drug purity, and ensure product quality throughout development and manufacturing.</p>
+
+            <div class="analytical-dashboard">
+                <h3>📊 Analytical Chemistry Dashboard</h3>
+                <p>Real-time metrics for the analytical system:</p>
+                <div class="analytical-metrics">
+                    <div class="metric">
+                        <div class="metric-value" id="detectionLimit">0</div>
+                        <div class="metric-label">Detection Limit (ppm)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="accuracy">0</div>
+                        <div class="metric-label">Accuracy (%)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="analysisSpeed">0</div>
+                        <div class="metric-label">Analysis Speed (samples/min)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="selectivity">0</div>
+                        <div class="metric-label">Selectivity (%)</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers used cutting-edge analytical chemistry, instrumentation technology, and data analysis techniques to make this discovery:</p>
+
+            <div style="background: #f0fdf4; border-left: 4px solid #059669; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
+                <h4 style="margin-top: 0; color: #047857;">🧮 Technical Approach:</h4>
                 <ul style="margin-bottom: 0;">
-                    <li>What are the main systems that geochemists study?</li>
-                    <li>How can geochemistry help predict natural disasters?</li>
-                    <li>What role does geochemistry play in finding natural resources?</li>
+                    <li><strong>Advanced Instrumentation:</strong> High-performance analytical instruments with enhanced capabilities</li>
+                    <li><strong>Detection Methods:</strong> Sophisticated detection techniques for improved sensitivity</li>
+                    <li><strong>Data Analysis:</strong> Intelligent algorithms for data processing and interpretation</li>
+                    <li><strong>Automation:</strong> Automated systems for high-throughput analysis</li>
                 </ul>
             </div>
 
+            <h2>🚀 Future Possibilities</h2>
+            <p>This research opens up exciting new possibilities for analytical chemistry and instrumentation:</p>
+
+            <ul>
+                <li><strong>Portable Analysis:</strong> Handheld devices for on-site chemical analysis</li>
+                <li><strong>AI-Powered Analysis:</strong> Artificial intelligence for automated compound identification</li>
+                <li><strong>Real-Time Monitoring:</strong> Continuous monitoring systems for chemical processes</li>
+                <li><strong>Miniaturized Instruments:</strong> Compact analytical devices for field applications</li>
+            </ul>
+
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of interdisciplinary science. It combines:</p>
+
+            <ul>
+                <li><strong>Chemistry:</strong> Understanding chemical properties and interactions</li>
+                <li><strong>Physics:</strong> Understanding analytical techniques and instrumentation</li>
+                <li><strong>Engineering:</strong> Developing advanced analytical instruments</li>
+                <li><strong>Computer Science:</strong> Creating intelligent data analysis systems</li>
+            </ul>
+
+            <p>For students interested in any of these fields, this work shows how modern science often involves combining knowledge from multiple disciplines to solve complex problems that have real-world applications.</p>
+
             <div class="highlight-box">
-                <strong>🎯 Bottom Line:</strong> Geochemistry is a vital field that helps us understand the chemical processes that shape our planet. This knowledge is essential for addressing environmental challenges, finding natural resources, and predicting natural disasters, making geochemistry crucial for the sustainable management of Earth's systems.
+                <strong>🎯 Bottom Line:</strong> Scientists have developed revolutionary analytical chemistry and instrumentation systems that enable precise measurement and characterization of chemical compounds. This breakthrough could transform chemical analysis by providing faster, more accurate, and more sensitive methods for detecting and quantifying chemical substances in various applications.
             </div>
 
             <h2>📚 Further Reading & Resources</h2>
-            <p>Want to explore more about geochemistry and earth sciences?</p>
+            <p>Want to dive deeper? Check out these related topics:</p>
             <ul>
-                <li>How Earth's chemical systems work</li>
-                <li>Volcanic and tectonic processes</li>
-                <li>Water and climate systems</li>
-                <li>Natural resource exploration and environmental protection</li>
+                <li>Analytical chemistry and instrumentation fundamentals</li>
+                <li>Spectroscopy and molecular analysis techniques</li>
+                <li>Chromatography and separation methods</li>
+                <li>Mass spectrometry and composition analysis</li>
+                <li>Quality control and method validation</li>
             </ul>
         </div>
     </main>
@@ -264,5 +516,82 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        // Initialize instrumentation grid
+        function initializeInstrumentationGrid() {
+            const grid = document.getElementById('instrumentationGrid');
+            grid.innerHTML = '';
+            for (let i = 1; i <= 9; i++) {
+                const step = document.createElement('div');
+                step.className = 'instrumentation-step';
+                step.textContent = i;
+                step.onclick = () => activateInstrumentation(step);
+                grid.appendChild(step);
+            }
+        }
+
+        function activateInstrumentation(step) {
+            step.classList.toggle('active');
+            updateAnalyticalMetrics();
+        }
+
+        function updateAnalyticalMetrics() {
+            const activeSteps = document.querySelectorAll('.instrumentation-step.active').length;
+            const limit = Math.max(1000 - (activeSteps * 111), 1);
+            const accuracy = Math.min(activeSteps * 11.1, 100);
+            const speed = Math.min(activeSteps * 10, 100);
+            const selectivity = Math.min(activeSteps * 11.1, 100);
+
+            document.getElementById('detectionLimit').textContent = Math.round(limit);
+            document.getElementById('accuracy').textContent = Math.round(accuracy);
+            document.getElementById('analysisSpeed').textContent = Math.round(speed);
+            document.getElementById('selectivity').textContent = Math.round(selectivity);
+        }
+
+        function activateAllInstrumentation() {
+            const steps = document.querySelectorAll('.instrumentation-step');
+            steps.forEach(step => {
+                step.classList.add('active');
+            });
+
+            updateAnalyticalMetrics();
+            document.getElementById('analyticalStatus').textContent = 'All instrumentation activated! Analytical chemistry is now enabling precise measurement at maximum efficiency!';
+        }
+
+        function showSpectroscopy() {
+            alert('🌈 Spectroscopy: Analytical techniques that use the interaction of light with matter to identify and characterize chemical compounds. This includes UV-Vis, IR, NMR, and other spectroscopic methods for molecular analysis.');
+        }
+
+        function showChromatography() {
+            alert('📊 Chromatography: Separation techniques that separate mixtures into individual components based on their different affinities for stationary and mobile phases. This includes HPLC, GC, and other chromatographic methods for quantitative analysis.');
+        }
+
+        function showMassSpectrometry() {
+            alert('⚛️ Mass Spectrometry: Analytical technique that measures the mass-to-charge ratio of ions to identify and quantify chemical compounds. It provides information about molecular weight, structure, and composition of chemical substances.');
+        }
+
+        function updateSensitivity(value) {
+            document.getElementById('sensitivityValue').textContent = value;
+            
+            let result = '';
+            if (value < 20) {
+                result = 'At this sensitivity level, the analytical system shows <strong>limited</strong> measurement performance with basic detection benefits.';
+            } else if (value < 40) {
+                result = 'At this sensitivity level, the analytical system shows <strong>moderate</strong> measurement performance with some detection benefits.';
+            } else if (value < 80) {
+                result = 'At this sensitivity level, the analytical system shows <strong>high</strong> measurement performance with significant detection benefits.';
+            } else {
+                result = 'At this sensitivity level, the analytical system shows <strong>maximum</strong> measurement performance with optimal detection benefits!';
+            }
+            
+            document.getElementById('sensitivityResult').innerHTML = '<p>' + result + '</p>';
+        }
+
+        // Initialize when page loads
+        window.onload = function() {
+            initializeInstrumentationGrid();
+            updateAnalyticalMetrics();
+        };
+    </script>
 </body>
 </html>

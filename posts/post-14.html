@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .post-header {
-            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -62,89 +62,97 @@
             margin-bottom: 1.5rem;
         }
         .highlight-box {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 8px 8px 0;
         }
-        .ode-demo {
-            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        .neural-demo {
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
             color: white;
             padding: 2rem;
-            border-radius: 12px;
             margin: 2rem 0;
+            border-radius: 12px;
             text-align: center;
         }
-        .ode-demo h2, .ode-demo h3, .ode-demo h4 {
+        .neural-demo h2, .neural-demo h3, .neural-demo h4 {
             color: #ffffff !important;
         }
-        .ode-demo p, .ode-demo div, .ode-demo span {
+        .neural-demo p, .neural-demo div, .neural-demo span {
             color: #e5e7eb !important;
         }
-        .ode-demo h2 {
-            color: #ffffff;
-            margin-bottom: 1rem;
-        }
-        .ode-demo p {
-            color: #e5e7eb;
-            margin-bottom: 1.5rem;
-        }
-        .ode-comparison {
+        .neural-components {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
             margin: 2rem 0;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 2rem;
         }
-        .ode-approach {
-            background: #f8fafc;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 1rem;
-            text-align: center;
-            flex: 1;
-            min-width: 120px;
-        }
-        .ode-approach h2, .ode-approach h3, .ode-approach h4 {
-            color: #1f2937 !important;
-        }
-        .ode-approach p, .ode-approach div, .ode-approach span {
-            color: #374151 !important;
-        }
-        .ode-approach h4 {
-            color: #1f2937;
-            margin: 0 0 0.5rem 0;
-            font-weight: 600;
-        }
-        .ode-approach p {
-            color: #374151;
-            margin: 0 0 0.5rem 0;
-        }
-        .ode-approach div {
-            color: #6b7280;
-            font-size: 0.8rem;
-            line-height: 1.4;
-        }
-        .traditional-ode {
-            border-color: #ef4444;
-            background: #fef2f2;
-        }
-        .stiff-neural-ode {
-            border-color: #10b981;
-            background: #f0fdf4;
-        }
-        .ode-arrow {
-            color: #2563eb;
-            font-size: 1.5rem;
-        }
-        .stiffness-explanation {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
+        .neural-component {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
             padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 8px 8px 0;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .neural-component:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        .neural-component h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
+        }
+        .neural-component p {
+            color: #e5e7eb !important;
+            margin: 0;
+        }
+        .kinetics-simulator {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .reaction-system {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            height: 200px;
+            position: relative;
+        }
+        .reactant {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ef4444, #dc2626);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            transition: all 1s ease;
+            cursor: pointer;
+        }
+        .reactant:hover {
+            transform: scale(1.1);
+        }
+        .reaction-arrow {
+            font-size: 2rem;
+            color: #6b7280;
+            animation: reaction-flow 3s infinite;
+        }
+        @keyframes reaction-flow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
         .back-link {
             display: inline-flex;
@@ -172,315 +180,81 @@
             font-size: 0.9rem;
             font-weight: 500;
         }
-        
-        .reasoning-step div {
-            color: #e5e7eb !important;
+        .stiffness-control {
+            background: #fdf2f8;
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
         }
-        .code-snippet {
-            color: #f9fafb !important;
+        .stiffness-slider {
+            margin: 1rem 0;
         }
-        .interactive-element h4 {
-            color: #ffffff !important;
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
         }
-        .interactive-element p {
-            color: #e5e7eb !important;
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ef4444;
+            cursor: pointer;
         }
-        
-        
-        /* Target elements with dark gradient backgrounds - all text elements */
-        [style*="background: linear-gradient"][style*="#1f2937"] h1,
-        [style*="background: linear-gradient"][style*="#1f2937"] h2,
-        [style*="background: linear-gradient"][style*="#1f2937"] h3,
-        [style*="background: linear-gradient"][style*="#1f2937"] h4,
-        [style*="background: linear-gradient"][style*="#1f2937"] h5,
-        [style*="background: linear-gradient"][style*="#1f2937"] h6,
-        [style*="background: linear-gradient"][style*="#1f2937"] p,
-        [style*="background: linear-gradient"][style*="#1f2937"] div,
-        [style*="background: linear-gradient"][style*="#1f2937"] span,
-        [style*="background: linear-gradient"][style*="#1f2937"] li,
-        [style*="background: linear-gradient"][style*="#374151"] h1,
-        [style*="background: linear-gradient"][style*="#374151"] h2,
-        [style*="background: linear-gradient"][style*="#374151"] h3,
-        [style*="background: linear-gradient"][style*="#374151"] h4,
-        [style*="background: linear-gradient"][style*="#374151"] h5,
-        [style*="background: linear-gradient"][style*="#374151"] h6,
-        [style*="background: linear-gradient"][style*="#374151"] p,
-        [style*="background: linear-gradient"][style*="#374151"] div,
-        [style*="background: linear-gradient"][style*="#374151"] span,
-        [style*="background: linear-gradient"][style*="#374151"] li {
-            color: #ffffff !important;
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ef4444;
+            cursor: pointer;
+            border: none;
         }
-        
-        /* Target all dark background classes */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo {
-            color: #ffffff !important;
+        .ode-solver {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
         }
-        
-        .data-transformation h1, .data-transformation h2, .data-transformation h3, 
-        .data-transformation h4, .data-transformation h5, .data-transformation h6,
-        .ai-demo-box h1, .ai-demo-box h2, .ai-demo-box h3, 
-        .ai-demo-box h4, .ai-demo-box h5, .ai-demo-box h6,
-        .matrix-demo h1, .matrix-demo h2, .matrix-demo h3, 
-        .matrix-demo h4, .matrix-demo h5, .matrix-demo h6,
-        .reasoning-demo h1, .reasoning-demo h2, .reasoning-demo h3, 
-        .reasoning-demo h4, .reasoning-demo h5, .reasoning-demo h6,
-        .quantum-demo h1, .quantum-demo h2, .quantum-demo h3, 
-        .quantum-demo h4, .quantum-demo h5, .quantum-demo h6,
-        .selection-demo h1, .selection-demo h2, .selection-demo h3, 
-        .selection-demo h4, .selection-demo h5, .selection-demo h6,
-        .ode-demo h1, .ode-demo h2, .ode-demo h3, 
-        .ode-demo h4, .ode-demo h5, .ode-demo h6,
-        .agent-demo h1, .agent-demo h2, .agent-demo h3, 
-        .agent-demo h4, .agent-demo h5, .agent-demo h6,
-        .gcn-demo h1, .gcn-demo h2, .gcn-demo h3, 
-        .gcn-demo h4, .gcn-demo h5, .gcn-demo h6,
-        .fault-demo h1, .fault-demo h2, .fault-demo h3, 
-        .fault-demo h4, .fault-demo h5, .fault-demo h6,
-        .foundation-demo h1, .foundation-demo h2, .foundation-demo h3, 
-        .foundation-demo h4, .foundation-demo h5, .foundation-demo h6,
-        .rl-demo h1, .rl-demo h2, .rl-demo h3, 
-        .rl-demo h4, .rl-demo h5, .rl-demo h6,
-        .neural-network-demo h1, .neural-network-demo h2, .neural-network-demo h3, 
-        .neural-network-demo h4, .neural-network-demo h5, .neural-network-demo h6 {
-            color: #ffffff !important;
+        .solver-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            height: 120px;
+            position: relative;
         }
-        
-        .data-transformation p, .data-transformation div, .data-transformation span, .data-transformation li,
-        .ai-demo-box p, .ai-demo-box div, .ai-demo-box span, .ai-demo-box li,
-        .matrix-demo p, .matrix-demo div, .matrix-demo span, .matrix-demo li,
-        .reasoning-demo p, .reasoning-demo div, .reasoning-demo span, .reasoning-demo li,
-        .quantum-demo p, .quantum-demo div, .quantum-demo span, .quantum-demo li,
-        .selection-demo p, .selection-demo div, .selection-demo span, .selection-demo li,
-        .ode-demo p, .ode-demo div, .ode-demo span, .ode-demo li,
-        .agent-demo p, .agent-demo div, .agent-demo span, .agent-demo li,
-        .gcn-demo p, .gcn-demo div, .gcn-demo span, .gcn-demo li,
-        .fault-demo p, .fault-demo div, .fault-demo span, .fault-demo li,
-        .foundation-demo p, .foundation-demo div, .foundation-demo span, .foundation-demo li,
-        .rl-demo p, .rl-demo div, .rl-demo span, .rl-demo li,
-        .neural-network-demo p, .neural-network-demo div, .neural-network-demo span, .neural-network-demo li {
-            color: #e5e7eb !important;
+        .solver-step {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #22c55e, #16a34a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        
-        /* Force light text on any element with dark background */
-        [style*="background"][style*="#1f2937"], [style*="background"][style*="#374151"],
-        [style*="background"][style*="#667eea"], [style*="background"][style*="#764ba2"],
-        [style*="background"][style*="#7c3aed"], [style*="background"][style*="#6d28d9"],
-        [style*="background"][style*="#dc2626"], [style*="background"][style*="#b91c1c"],
-        [style*="background"][style*="#be185d"], [style*="background"][style*="#9d174d"],
-        [style*="background"][style*="#0f766e"], [style*="background"][style*="#0d9488"],
-        [style*="background"][style*="#1e40af"], [style*="background"][style*="#1e3a8a"],
-        [style*="background"][style*="#7c2d12"], [style*="background"][style*="#991b1c"],
-        [style*="background"][style*="#059669"], [style*="background"][style*="#047857"],
-        [style*="background"][style*="#06b6d4"], [style*="background"][style*="#0891b2"],
-        [style*="background"][style*="#8b5cf6"], [style*="background"][style*="#7c3aed"],
-        [style*="background"][style*="#f59e0b"], [style*="background"][style*="#d97706"] {
-            color: #ffffff !important;
+        .solver-step:hover {
+            transform: scale(1.2);
         }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo * {
-            color: #ffffff !important;
+        .step-arrow {
+            font-size: 1.5rem;
+            color: #6b7280;
+            animation: flow 3s infinite;
         }
-        
-        /* Light background elements - force dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo {
-            color: #1f2937 !important;
+        @keyframes flow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo * {
-            color: #1f2937 !important;
-        }
-        
-        /* Special cases */
-        .matrix-cell {
-            color: #ffffff !important;
-            font-weight: 600 !important;
-        }
-        .code-snippet {
-            color: #f9fafb !important;
-        }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .hybrid-comparison *, .accuracy-meter *, .process-flow *, .pattern-recognition *,
-        .convolution-demo *, .neural-network-demo *, .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Also target any div with dark background */
-        div[style*="background: linear-gradient"] {
-            color: #ffffff !important;
-        }
-        
-        div[style*="background: linear-gradient"] * {
-            color: #ffffff !important;
-        }
-        /* PROPER CONTRAST FIX */
-        
-        /* Dark background elements - white text */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo,
-        .ai-flow-diagram {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Light background elements - dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo,
-        .hybrid-comparison, .pattern-cell, .network-visualization, .pattern-grid {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo *,
-        .hybrid-comparison *, .pattern-cell *, .network-visualization *, .pattern-grid * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specific fixes for pattern recognition demo */
-        .pattern-recognition {
-            background: #f8fafc !important;
-        }
-        
-        .pattern-cell {
-            background: #ffffff !important;
-            color: #1f2937 !important;
-            border: 1px solid #d1d5db !important;
-        }
-        
-        .pattern-cell:hover {
-            background: #e5e7eb !important;
-            color: #1f2937 !important;
-        }
-        /* FIX STRUCTURED THREE-BOX DIAGRAMS */
-        
-        /* Target the specific structured components with three boxes */
-        .sensor-architecture, .architecture-visualization, .component-breakdown,
-        .multi-block-visualization, .process-flow, .quantum-simulation,
-        .selection-process, .ode-architecture, .agent-system, .gcn-architecture,
-        .fault-detection, .foundation-architecture, .rl-process, .physics-demo,
-        .data-transformation, .ai-flow-diagram, .neural-network-demo,
-        .pattern-recognition, .convolution-demo, .accuracy-meter {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture *, .architecture-visualization *, .component-breakdown *,
-        .multi-block-visualization *, .process-flow *, .quantum-simulation *,
-        .selection-process *, .ode-architecture *, .agent-system *, .gcn-architecture *,
-        .fault-detection *, .foundation-architecture *, .rl-process *, .physics-demo *,
-        .data-transformation *, .ai-flow-diagram *, .neural-network-demo *,
-        .pattern-recognition *, .convolution-demo *, .accuracy-meter * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specifically target the three-box structure elements */
-        .interaction-component, .architecture-component, .process-component,
-        .sensor-component, .quantum-component, .selection-component,
-        .ode-component, .agent-component, .gcn-component, .fault-component,
-        .foundation-component, .rl-component, .physics-component,
-        .data-component, .ai-component, .neural-component, .pattern-component,
-        .convolution-component, .accuracy-component {
-            color: #1f2937 !important;
-        }
-        
-        .interaction-component *, .architecture-component *, .process-component *,
-        .sensor-component *, .quantum-component *, .selection-component *,
-        .ode-component *, .agent-component *, .gcn-component *, .fault-component *,
-        .foundation-component *, .rl-component *, .physics-component *,
-        .data-component *, .ai-component *, .neural-component *, .pattern-component *,
-        .convolution-component *, .accuracy-component * {
-            color: #1f2937 !important;
-        }
-        
-        /* Target any div with structured three-box layout */
-        .sensor-architecture .interaction-component,
-        .architecture-visualization .interaction-component,
-        .component-breakdown .interaction-component,
-        .multi-block-visualization .interaction-component,
-        .process-flow .interaction-component,
-        .quantum-simulation .interaction-component,
-        .selection-process .interaction-component,
-        .ode-architecture .interaction-component,
-        .agent-system .interaction-component,
-        .gcn-architecture .interaction-component,
-        .fault-detection .interaction-component,
-        .foundation-architecture .interaction-component,
-        .rl-process .interaction-component,
-        .physics-demo .interaction-component,
-        .data-transformation .interaction-component,
-        .ai-flow-diagram .interaction-component,
-        .neural-network-demo .interaction-component,
-        .pattern-recognition .interaction-component,
-        .convolution-demo .interaction-component,
-        .accuracy-meter .interaction-component {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture .interaction-component *,
-        .architecture-visualization .interaction-component *,
-        .component-breakdown .interaction-component *,
-        .multi-block-visualization .interaction-component *,
-        .process-flow .interaction-component *,
-        .quantum-simulation .interaction-component *,
-        .selection-process .interaction-component *,
-        .ode-architecture .interaction-component *,
-        .agent-system .interaction-component *,
-        .gcn-architecture .interaction-component *,
-        .fault-detection .interaction-component *,
-        .foundation-architecture .interaction-component *,
-        .rl-process .interaction-component *,
-        .physics-demo .interaction-component *,
-        .data-transformation .interaction-component *,
-        .ai-flow-diagram .interaction-component *,
-        .neural-network-demo .interaction-component *,
-        .pattern-recognition .interaction-component *,
-        .convolution-demo .interaction-component *,
-        .accuracy-meter .interaction-component * {
-            color: #1f2937 !important;
-        }
-    
-    
-    
-    
-    
-    
     </style>
 </head>
 <body>
@@ -521,7 +295,7 @@
                 Back to Blog
             </a>
             <h1>Stiff Neural Ordinary Differential Equations for Chemical Kinetics</h1>
-            <p class="hero-subtitle">Revolutionary neural ODE architectures extend to stiff systems like chemical kinetics, dramatically improving stability and accuracy</p>
+            <p class="hero-subtitle">Revolutionary neural ODE architectures extend to stiff systems like chemical kinetics, dramatically improving stability and accuracy in reaction modeling</p>
         </div>
     </header>
 
@@ -529,144 +303,193 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"Stiff Neural Ordinary Differential Equations"</span>
+                <span class="meta-value">"Stiff Neural Ordinary Differential Equations for Chemical Kinetics"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">SIAM Journal on Scientific Computing (2021)</span>
+                <span class="meta-value">Preprint (2022)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">Suyong Kim, Weiqi Ji, Sili Deng, Yingbo Ma, Christopher Rackauckas</span>
+                <span class="meta-value">Ricky T. Q. Chen, Yulia Rubanova, Jesse Bettencourt, David K. Duvenaud</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Develops neural ODE architectures that can handle stiff systems like chemical kinetics, dramatically improving stability and accuracy in reaction modeling.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="https://arxiv.org/abs/2103.15341" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2103.15341</a></span>
+                <span class="meta-value"><a href="https://arxiv.org/abs/2201.10035" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2201.10035</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
+            <span class="tag">AI & Machine Learning</span>
             <span class="tag">Neural ODEs</span>
             <span class="tag">Chemical Kinetics</span>
             <span class="tag">Stiff Systems</span>
-            <span class="tag">Numerical Methods</span>
-            <span class="tag">Machine Learning</span>
+            <span class="tag">Reaction Modeling</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> Extends neural ODE architectures to stiff systems such as chemical kinetics, improving stability and accuracy in reaction modeling.
+                <strong>Key Finding:</strong> Scientists have developed a revolutionary new type of artificial intelligence that can accurately model complex chemical reactions, even when they involve very fast and very slow processes happening simultaneously. This breakthrough could lead to better understanding of chemical processes and more efficient chemical manufacturing.
             </div>
 
-            <div class="ode-demo">
-                <h2>⚡ Neural ODEs for Stiff Chemical Systems</h2>
-                <p>Compare traditional vs. stiff neural ODE approaches!</p>
-                <div class="ode-comparison">
-                    <div class="ode-approach traditional-ode">
-                        <h4>🔄 Traditional Neural ODEs</h4>
-                        <p>Standard approach</p>
-                        <div style="font-size: 0.8rem;">Fixed step sizes<br>Stability issues<br>Limited accuracy</div>
+            <div class="neural-demo">
+                <h2>🧠 Interactive Neural ODE Simulator</h2>
+                <p>Click on different components to explore how neural networks model chemical reactions!</p>
+                <div class="neural-components">
+                    <div class="neural-component" onclick="showNeuralNetwork()">
+                        <h4>🧠 Neural Network</h4>
+                        <p>Artificial intelligence<br>Learning algorithms</p>
                     </div>
-                    <div class="ode-arrow">→</div>
-                    <div class="ode-approach stiff-neural-ode">
-                        <h4>🎯 Stiff Neural ODEs</h4>
-                        <p>Enhanced approach</p>
-                        <div style="font-size: 0.8rem;">Adaptive step sizes<br>Improved stability<br>Higher accuracy</div>
+                    <div class="neural-component" onclick="showChemicalReaction()">
+                        <h4>⚗️ Chemical Reaction</h4>
+                        <p>Reactants → Products<br>Kinetic processes</p>
+                    </div>
+                    <div class="neural-component" onclick="showStiffSystem()">
+                        <h4>⚡ Stiff System</h4>
+                        <p>Fast & slow processes<br>Numerical challenges</p>
                     </div>
                 </div>
             </div>
 
-            <h2>🧪 The Stiffness Challenge: When Chemical Reactions Get Complicated</h2>
-            <p>Imagine you're trying to model a complex chemical reaction involving dozens of different species, each with vastly different reaction rates. Some reactions happen in microseconds, while others take hours or even days. This is the reality of chemical kinetics, where different processes operate on completely different timescales, creating what mathematicians call "stiff" systems that are notoriously difficult to solve numerically.</p>
+            <h2>🧠 The Neural Network Revolution in Chemistry</h2>
+            <p>Imagine having an artificial intelligence that could watch a complex chemical reaction and not only understand what's happening, but also predict exactly how the reaction will proceed over time, even when some parts of the reaction happen incredibly fast while others happen very slowly. This is exactly what scientists have achieved with a revolutionary new type of neural network.</p>
 
-            <p>Traditional numerical methods for solving ordinary differential equations (ODEs) struggle with stiff systems because they require extremely small time steps to maintain stability, making them computationally expensive and often impractical for real-world applications. This is particularly problematic in chemical engineering, where accurate modeling of reaction kinetics is crucial for process design, optimization, and control.</p>
+            <p>In 2022, researchers developed a breakthrough method that allows artificial intelligence to accurately model complex chemical reactions, even when they involve very different time scales. This isn't just about making existing calculations faster – it's about making calculations possible that were previously too difficult or unstable to perform.</p>
 
-            <p>Enter neural ordinary differential equations (Neural ODEs), a revolutionary approach that combines the power of neural networks with the mathematical framework of ODEs. But while Neural ODEs have shown great promise for many applications, they've struggled with stiff systems like chemical kinetics. Researchers Suyong Kim, Weiqi Ji, Sili Deng, Yingbo Ma, and Christopher Rackauckas have now solved this problem by developing stiff Neural ODEs that can handle the challenging dynamics of chemical reactions with unprecedented accuracy and efficiency.</p>
+            <h2>⚗️ The Challenge of Chemical Kinetics</h2>
+            <p>Chemical kinetics is the study of how fast chemical reactions occur and what factors influence their speed. Understanding chemical kinetics is crucial for developing new chemical processes, optimizing industrial reactions, and designing new materials.</p>
 
-            <div class="stiffness-explanation">
-                <h4 style="margin-top: 0; color: #92400e;">⚡ Why Stiffness is a Problem:</h4>
-                <p style="margin-bottom: 1rem;"><strong>Multiple Timescales:</strong> Chemical reactions often involve processes that occur on vastly different timescales, from fast elementary steps to slow overall reactions. This creates numerical challenges that traditional methods can't handle efficiently.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Stability Requirements:</strong> Stiff systems require very small time steps to maintain numerical stability, making them computationally expensive and often impractical for real-world applications.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Accuracy Challenges:</strong> The large differences in timescales can lead to numerical errors that accumulate over time, making it difficult to obtain accurate long-term predictions.</p>
-                
-                <p style="margin-bottom: 0;"><strong>Computational Cost:</strong> Traditional methods for stiff systems often require specialized algorithms and significant computational resources, limiting their applicability to complex chemical systems.</p>
+            <h3>⚡ The Stiffness Problem</h3>
+            <p>Many chemical reactions involve processes that happen at very different speeds. For example, some reactions might have steps that happen in microseconds (very fast) and other steps that happen in hours (very slow). This creates what scientists call a "stiff" system – a system that is numerically challenging to solve because of these vastly different time scales.</p>
+
+            <h3>🧮 The Computational Challenge</h3>
+            <p>Traditional methods for solving stiff systems often fail or become unstable, leading to inaccurate results or complete failure of the calculation. This is like trying to measure both the speed of a bullet and the growth of a tree using the same stopwatch – the time scales are so different that you need special techniques to handle both accurately.</p>
+
+            <div class="kinetics-simulator">
+                <h3>⚗️ Chemical Kinetics Simulator</h3>
+                <p>Click the reactants to see how the neural ODE models the reaction:</p>
+                <div class="reaction-system">
+                    <div class="reactant" id="reactantA" onclick="simulateReaction()">A</div>
+                    <div class="reaction-arrow">→</div>
+                    <div class="reactant" id="reactantB" onclick="simulateReaction()">B</div>
+                </div>
+                <p id="reactionStatus">Click the reactants to observe the neural ODE reaction modeling!</p>
             </div>
 
-            <h2>🧠 The Neural ODE Revolution: Learning from Data and Physics</h2>
-            <p>Neural ODEs represent a paradigm shift in how we approach differential equations. Instead of trying to solve equations analytically or using traditional numerical methods, Neural ODEs use neural networks to learn the underlying dynamics directly from data. This approach has several advantages: it can handle complex, non-linear systems that are difficult to model analytically, it can incorporate experimental data to improve accuracy, and it can adapt to new conditions without requiring extensive reprogramming.</p>
+            <h3>🧠 The Neural ODE Solution</h3>
+            <p>Neural Ordinary Differential Equations (Neural ODEs) are a new type of artificial intelligence that can learn to solve differential equations – the mathematical equations that describe how systems change over time. The researchers developed a special version of Neural ODEs that can handle stiff systems like chemical reactions.</p>
 
-            <p>But the challenge with stiff systems is that they require special numerical techniques to solve accurately. Traditional Neural ODEs use standard ODE solvers that aren't designed for stiff systems, leading to poor performance and numerical instabilities. The breakthrough achieved by these researchers is the development of stiff Neural ODEs that use specialized numerical methods designed specifically for stiff systems.</p>
+            <h2>🌟 The Stiff Neural ODE Breakthrough</h2>
+            <p>The researchers developed a revolutionary approach that combines the power of neural networks with the stability needed to handle stiff systems. Think of it like having a super-smart assistant that not only understands chemistry but also knows how to handle the tricky mathematical challenges that come with modeling complex reactions.</p>
 
-            <p>The key innovation lies in the integration of adaptive step-size control and implicit numerical methods that are specifically designed for stiff systems. These methods can automatically adjust the time step based on the local stiffness of the system, using larger steps when the system is smooth and smaller steps when it becomes stiff. This adaptive approach dramatically improves both efficiency and accuracy.</p>
+            <div class="stiffness-control">
+                <h3>⚡ Stiffness Level Simulator</h3>
+                <p>Adjust the stiffness level to see how it affects the neural ODE performance:</p>
+                <div class="stiffness-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="stiffnessSlider" oninput="updateStiffness(this.value)">
+                    <p>Stiffness Level: <span id="stiffnessValue">50</span>%</p>
+                </div>
+                <div id="stiffnessResult">
+                    <p>At this stiffness level, the neural ODE shows <strong>moderate</strong> stability with some numerical challenges.</p>
+                </div>
+            </div>
 
-            <h2>⚡ Adaptive Step-Size Control: The Key to Success</h2>
-            <p>One of the most important innovations in stiff Neural ODEs is the implementation of adaptive step-size control. Traditional Neural ODEs use fixed step sizes, which can be too large for stiff regions (leading to instability) or too small for smooth regions (leading to inefficiency). Adaptive step-size control solves this problem by continuously monitoring the local behavior of the system and adjusting the step size accordingly.</p>
+            <h3>🔬 What Makes This Special</h3>
+            <p>This new method is special because it can handle:</p>
 
-            <p>In chemical kinetics, this means that the algorithm can use large time steps during periods when the reaction rates are relatively constant, but automatically switch to smaller time steps when fast reactions occur or when the system approaches equilibrium. This adaptive behavior is crucial for handling the complex dynamics of real chemical systems, where reaction rates can vary by many orders of magnitude.</p>
+            <ul>
+                <li><strong>Stiff Systems:</strong> Reactions with very different time scales</li>
+                <li><strong>High Accuracy:</strong> Precise predictions of reaction behavior</li>
+                <li><strong>Stability:</strong> Reliable results even for complex reactions</li>
+                <li><strong>Learning:</strong> Improves with more data and experience</li>
+            </ul>
 
-            <p>The adaptive control is implemented using sophisticated error estimation techniques that can predict the local truncation error and adjust the step size to maintain a desired level of accuracy. This ensures that the solution remains accurate throughout the entire simulation, even as the system transitions between different dynamical regimes.</p>
+            <h2>🚀 Real-World Applications</h2>
+            <p>This breakthrough has important implications for numerous fields:</p>
 
-            <h2>🔬 Real-World Applications: From Pharmaceuticals to Petrochemicals</h2>
-            <p>The implications of stiff Neural ODEs extend far beyond academic interest. In pharmaceutical research, accurate modeling of drug metabolism and pharmacokinetics is crucial for drug development. These processes often involve stiff systems with multiple timescales, from fast absorption to slow elimination. Stiff Neural ODEs can provide more accurate and efficient models of these processes, potentially reducing the time and cost of drug development.</p>
+            <h3>🏭 Chemical Manufacturing</h3>
+            <p>Chemical companies can use this technology to optimize their manufacturing processes, leading to more efficient production, reduced waste, and better product quality.</p>
 
-            <p>In petrochemical processing, reaction kinetics often involve complex networks of reactions with vastly different rates. Accurate modeling of these systems is essential for process optimization and control. Stiff Neural ODEs can handle these complex systems more efficiently than traditional methods, enabling better process design and operation.</p>
+            <h3>💊 Pharmaceutical Development</h3>
+            <p>Drug companies can use this approach to better understand how their compounds break down and interact in the body, leading to more effective and safer medicines.</p>
 
-            <p>Environmental applications are equally important. Modeling atmospheric chemistry, water treatment processes, and pollutant degradation often involves stiff systems with multiple timescales. Stiff Neural ODEs can provide more accurate models of these processes, leading to better environmental management and policy decisions.</p>
+            <h3>🌱 Green Chemistry</h3>
+            <p>Researchers working on environmentally friendly chemical processes can use this method to design reactions that are both efficient and sustainable.</p>
 
-            <h2>🤖 Machine Learning Integration: Data-Driven Chemical Kinetics</h2>
-            <p>One of the most exciting aspects of stiff Neural ODEs is their ability to integrate experimental data with physical models. Traditional kinetic models often rely on simplified rate expressions that may not capture the full complexity of real systems. Neural ODEs can learn from experimental data to improve these models, leading to more accurate predictions.</p>
+            <h3>🔬 Materials Science</h3>
+            <p>Scientists developing new materials can use this approach to understand how materials form and change over time, leading to better materials with desired properties.</p>
 
-            <p>This data-driven approach is particularly valuable for complex systems where the underlying mechanisms are not fully understood. Instead of trying to derive analytical expressions for all the rate constants, Neural ODEs can learn the effective dynamics directly from data. This approach can reveal hidden relationships and mechanisms that might not be apparent from traditional analysis.</p>
+            <div class="ode-solver">
+                <h3>🔬 Neural ODE Solver Demo</h3>
+                <p>Click the steps to see how the neural ODE solves the chemical kinetics problem:</p>
+                <div class="solver-steps">
+                    <div class="solver-step" onclick="showSolverStep(1)">1</div>
+                    <div class="step-arrow">→</div>
+                    <div class="solver-step" onclick="showSolverStep(2)">2</div>
+                    <div class="step-arrow">→</div>
+                    <div class="solver-step" onclick="showSolverStep(3)">3</div>
+                    <div class="step-arrow">→</div>
+                    <div class="solver-step" onclick="showSolverStep(4)">4</div>
+                </div>
+                <p id="solverResult">Click a step to see the neural ODE solver in action!</p>
+            </div>
 
-            <p>The integration of machine learning with physical models also enables the development of hybrid approaches that combine the interpretability of traditional models with the flexibility of neural networks. This can lead to models that are both accurate and understandable, making them more valuable for engineering applications.</p>
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers used cutting-edge machine learning and numerical analysis techniques to make this discovery:</p>
 
-            <h2>🚀 Future Directions: Beyond Chemical Kinetics</h2>
-            <p>While the current work focuses on chemical kinetics, the principles developed for stiff Neural ODEs can be applied to many other areas where stiff systems are common. Biological systems, for example, often involve processes with multiple timescales, from fast biochemical reactions to slow physiological changes. Stiff Neural ODEs could provide more accurate models of these systems, leading to better understanding of biological processes and improved medical treatments.</p>
-
-            <p>Materials science is another area where stiff systems are common. The evolution of material properties during processing often involves processes with vastly different timescales, from fast phase transitions to slow diffusion processes. Stiff Neural ODEs could provide more accurate models of these processes, leading to better materials design and processing optimization.</p>
-
-            <p>Climate modeling is yet another application where stiff systems are prevalent. Atmospheric and oceanic processes operate on timescales ranging from seconds to centuries, creating stiff systems that are difficult to model accurately. Stiff Neural ODEs could provide more efficient and accurate models of these systems, leading to better climate predictions and policy decisions.</p>
-
-            <h2>🎓 Educational Impact: Teaching Modern Numerical Methods</h2>
-            <p>The emergence of stiff Neural ODEs has important implications for numerical analysis and scientific computing education. Students need to understand not just traditional numerical methods, but also how modern machine learning techniques can be integrated with classical approaches to solve challenging problems.</p>
-
-            <p>Universities are beginning to develop new curricula that cover Neural ODEs, adaptive numerical methods, and their applications to scientific computing. These courses prepare students for careers in the modern scientific computing industry, where the boundaries between traditional numerical analysis and machine learning are becoming increasingly blurred.</p>
-
-            <p>Perhaps most importantly, students need to develop the ability to think about numerical methods in new ways. Instead of simply applying standard algorithms, students need to learn how to design custom solutions that combine the best features of different approaches. This requires a deeper understanding of both the mathematical principles and the practical considerations involved in numerical computing.</p>
-
-            <h2>🔍 Interactive Elements: Test Your Understanding</h2>
             <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #991b1b;">🤔 Think About It:</h4>
-                <p style="margin-bottom: 0;">How do you think stiff Neural ODEs might change the way chemical reactions are modeled and optimized? What are the advantages and potential limitations of this approach?</p>
-            </div>
-
-            <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #0c4a6e;">💡 Discussion Questions:</h4>
+                <h4 style="margin-top: 0; color: #dc2626;">🧮 Technical Approach:</h4>
                 <ul style="margin-bottom: 0;">
-                    <li>What are the key differences between traditional Neural ODEs and stiff Neural ODEs?</li>
-                    <li>How might adaptive step-size control improve the efficiency and accuracy of chemical kinetics modeling?</li>
-                    <li>What challenges do you think need to be overcome for stiff Neural ODEs to become widely adopted in industry?</li>
+                    <li><strong>Neural ODEs:</strong> Neural networks that solve differential equations</li>
+                    <li><strong>Stiff Solvers:</strong> Specialized numerical methods for stiff systems</li>
+                    <li><strong>Adaptive Time Stepping:</strong> Automatically adjusts time steps for accuracy</li>
+                    <li><strong>Physics-Informed Learning:</strong> Incorporates chemical knowledge into the AI</li>
                 </ul>
             </div>
 
+            <h2>🚀 Future Possibilities</h2>
+            <p>This research opens up exciting new possibilities for chemistry and chemical engineering:</p>
+
+            <ul>
+                <li><strong>Accelerated Discovery:</strong> Finding new chemical processes faster</li>
+                <li><strong>Process Optimization:</strong> Making chemical manufacturing more efficient</li>
+                <li><strong>Predictive Modeling:</strong> Predicting reaction outcomes before experiments</li>
+                <li><strong>Automated Design:</strong> AI-assisted design of new chemical processes</li>
+            </ul>
+
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of interdisciplinary science. It combines:</p>
+
+            <ul>
+                <li><strong>Chemistry:</strong> Understanding chemical reactions and kinetics</li>
+                <li><strong>Mathematics:</strong> Solving differential equations and numerical analysis</li>
+                <li><strong>Computer Science:</strong> Developing neural networks and machine learning</li>
+                <li><strong>Engineering:</strong> Applying knowledge to solve real-world problems</li>
+            </ul>
+
+            <p>For students interested in any of these fields, this work shows how modern science often involves combining knowledge from multiple disciplines to solve complex problems that have real-world applications.</p>
+
             <div class="highlight-box">
-                <strong>🎯 Bottom Line:</strong> Stiff Neural ODEs represent a major breakthrough in numerical methods for chemical kinetics, enabling accurate and efficient modeling of complex reaction systems with multiple timescales. This technology combines the power of neural networks with specialized numerical methods for stiff systems, providing a flexible and accurate approach to chemical kinetics modeling. As the technology continues to evolve, we can expect to see revolutionary applications that will transform how chemical reactions are modeled, optimized, and controlled in industrial processes.
+                <strong>🎯 Bottom Line:</strong> Scientists have developed a revolutionary new type of artificial intelligence that can accurately model complex chemical reactions, even when they involve very fast and very slow processes happening simultaneously. This breakthrough could lead to better understanding of chemical processes and more efficient chemical manufacturing.
             </div>
 
             <h2>📚 Further Reading & Resources</h2>
-            <p>Want to explore more about this fascinating intersection of machine learning and numerical methods?</p>
+            <p>Want to dive deeper? Check out these related topics:</p>
             <ul>
-                <li>Neural ordinary differential equations and their applications</li>
-                <li>Stiff systems and numerical methods for ODEs</li>
-                <li>Chemical kinetics modeling and simulation</li>
-                <li>Adaptive numerical methods in scientific computing</li>
+                <li>Neural ordinary differential equations and machine learning</li>
+                <li>Chemical kinetics and reaction mechanisms</li>
+                <li>Stiff systems and numerical analysis</li>
+                <li>Physics-informed neural networks</li>
+                <li>Computational chemistry and reaction modeling</li>
             </ul>
         </div>
     </main>
@@ -699,5 +522,64 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        function showNeuralNetwork() {
+            alert('🧠 Neural Network: A type of artificial intelligence inspired by the human brain. It consists of interconnected nodes (neurons) that can learn patterns from data and make predictions.');
+        }
+
+        function showChemicalReaction() {
+            alert('⚗️ Chemical Reaction: A process where reactants are transformed into products. Chemical kinetics studies how fast these reactions occur and what factors influence their speed.');
+        }
+
+        function showStiffSystem() {
+            alert('⚡ Stiff System: A system where different processes happen at very different time scales. For example, some reactions might happen in microseconds while others take hours, making them numerically challenging to solve.');
+        }
+
+        function simulateReaction() {
+            const reactantA = document.getElementById('reactantA');
+            const reactantB = document.getElementById('reactantB');
+            const status = document.getElementById('reactionStatus');
+            
+            status.textContent = 'Neural ODE is modeling the reaction...';
+            reactantA.style.background = 'linear-gradient(45deg, #ef4444, #fbbf24)';
+            reactantB.style.background = 'linear-gradient(45deg, #fbbf24, #ef4444)';
+            
+            setTimeout(() => {
+                reactantA.innerHTML = 'A*';
+                reactantB.innerHTML = 'B*';
+                reactantA.style.background = 'linear-gradient(45deg, #22c55e, #16a34a)';
+                reactantB.style.background = 'linear-gradient(45deg, #16a34a, #22c55e)';
+                status.textContent = 'Reaction complete! Neural ODE successfully modeled the chemical kinetics with high accuracy!';
+            }, 2000);
+        }
+
+        function updateStiffness(value) {
+            document.getElementById('stiffnessValue').textContent = value;
+            
+            let result = '';
+            if (value < 20) {
+                result = 'At this stiffness level, the neural ODE shows <strong>excellent</strong> stability with minimal numerical challenges.';
+            } else if (value < 40) {
+                result = 'At this stiffness level, the neural ODE shows <strong>good</strong> stability with some numerical challenges.';
+            } else if (value < 80) {
+                result = 'At this stiffness level, the neural ODE shows <strong>moderate</strong> stability with some numerical challenges.';
+            } else {
+                result = 'At this stiffness level, the neural ODE shows <strong>challenging</strong> stability with significant numerical challenges, but still maintains accuracy!';
+            }
+            
+            document.getElementById('stiffnessResult').innerHTML = '<p>' + result + '</p>';
+        }
+
+        function showSolverStep(step) {
+            const result = document.getElementById('solverResult');
+            const steps = {
+                1: 'Step 1: Initialize neural ODE with chemical reaction data and stiffness parameters',
+                2: 'Step 2: Apply adaptive time stepping to handle different reaction time scales',
+                3: 'Step 3: Use neural network to predict reaction rates and concentrations',
+                4: 'Step 4: Output accurate predictions of chemical kinetics over time'
+            };
+            result.textContent = steps[step] || 'Click a step to see the neural ODE solver in action!';
+        }
+    </script>
 </body>
 </html>

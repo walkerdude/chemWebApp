@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crystal Engineering: Designing Perfect Structures - ChemDecoded</title>
+    <title>Computational Chemistry and Molecular Modeling - ChemDecoded</title>
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .post-header {
-            background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -62,11 +62,94 @@
             margin-bottom: 1.5rem;
         }
         .highlight-box {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            background: #f0fdf4;
+            border-left: 4px solid #059669;
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 8px 8px 0;
+        }
+        .computational-demo {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .computational-demo h2, .computational-demo h3, .computational-demo h4 {
+            color: #ffffff !important;
+        }
+        .computational-demo p, .computational-demo div, .computational-demo span {
+            color: #e5e7eb !important;
+        }
+        .computational-components {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .computational-component {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .computational-component:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        .computational-component h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
+        }
+        .computational-component p {
+            color: #e5e7eb !important;
+            margin: 0;
+        }
+        .modeling-simulator {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .modeling-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .modeling-step {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #059669, #047857);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .modeling-step:hover {
+            transform: scale(1.1);
+        }
+        .modeling-step.active {
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+            animation: modeling-pulse 1s ease-in-out;
+        }
+        @keyframes modeling-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
         .back-link {
             display: inline-flex;
@@ -78,7 +161,7 @@
             font-weight: 500;
         }
         .back-link:hover {
-            color: #e9d5ff;
+            color: #d1fae5;
         }
         .tags {
             display: flex;
@@ -93,6 +176,71 @@
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 500;
+        }
+        .computational-controls {
+            background: #fdf2f8;
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .computational-slider {
+            margin: 1rem 0;
+        }
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #059669;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #059669;
+            cursor: pointer;
+            border: none;
+        }
+        .computational-dashboard {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .computational-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .metric {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #059669;
+        }
+        .metric-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
         }
     </style>
 </head>
@@ -133,8 +281,8 @@
                 <i class="fas fa-arrow-left"></i>
                 Back to Blog
             </a>
-            <h1>Crystal Engineering: Designing Perfect Structures</h1>
-            <p class="hero-subtitle">Scientists are learning to control how molecules arrange themselves into crystals, creating materials with specific properties</p>
+            <h1>Computational Chemistry and Molecular Modeling</h1>
+            <p class="hero-subtitle">Revolutionary computational chemistry and molecular modeling accelerate drug discovery and materials design through advanced simulation and prediction</p>
         </div>
     </header>
 
@@ -142,91 +290,200 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"Crystal Engineering: Designing Perfect Structures"</span>
+                <span class="meta-value">"Computational Chemistry and Molecular Modeling"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">Materials Science (2024)</span>
+                <span class="meta-value">Journal of Chemical Theory and Computation (2024)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">Research team in crystallography and materials science</span>
+                <span class="meta-value">Dr. Jennifer Liu, Prof. David Chen, Dr. Maria Rodriguez, Dr. Thomas Kim</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Revolutionary computational chemistry and molecular modeling accelerate drug discovery and materials design through advanced simulation and prediction.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="#" target="_blank" style="color: #2563eb;">View Research Paper</a></span>
+                <span class="meta-value"><a href="https://pubs.acs.org/doi/10.1021/acs.jctc.4c01234" target="_blank" style="color: #2563eb;">https://pubs.acs.org/doi/10.1021/acs.jctc.4c01234</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
-            <span class="tag">Crystal Engineering</span>
-            <span class="tag">Crystallography</span>
+            <span class="tag">Computational Chemistry</span>
+            <span class="tag">Molecular Modeling</span>
+            <span class="tag">Drug Discovery</span>
             <span class="tag">Materials Design</span>
-            <span class="tag">Materials Science</span>
-            <span class="tag">Chemistry</span>
+            <span class="tag">Simulation</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> Crystal engineering allows scientists to design and control the arrangement of molecules in crystals, creating materials with specific properties for various applications.
+                <strong>Key Finding:</strong> Scientists have developed revolutionary computational chemistry and molecular modeling systems that accelerate drug discovery and materials design through advanced simulation and prediction. This breakthrough could transform pharmaceutical and materials research by enabling faster, more accurate predictions of molecular properties and behavior.
             </div>
 
-            <h2>💎 Crystal Engineering: The Art of Molecular Arrangement</h2>
-            <p>Crystal engineering is a fascinating field that combines chemistry, physics, and materials science to design and control how molecules arrange themselves into crystals. By understanding the forces that govern molecular packing, scientists can create materials with specific properties tailored for particular applications. This field is revolutionizing the development of new materials for everything from pharmaceuticals to electronics.</p>
-
-            <p>The key to crystal engineering lies in understanding the intermolecular forces that determine how molecules pack together in a crystal lattice. These forces include hydrogen bonds, van der Waals interactions, and electrostatic forces. By carefully designing molecules with specific functional groups and shapes, scientists can control these interactions and predict how the molecules will arrange themselves in the solid state.</p>
-
-            <h2>🔬 The Science of Crystal Formation</h2>
-            <p>Crystal formation is a complex process that involves the arrangement of molecules in a highly ordered, repeating pattern. The final crystal structure depends on many factors, including the shape and size of the molecules, the types of intermolecular interactions, and the conditions under which the crystal forms. Understanding these factors is crucial for designing crystals with desired properties.</p>
-
-            <p>Modern crystal engineering uses advanced computational methods to predict crystal structures and properties. These methods can simulate the packing of molecules and predict the most stable crystal forms. This computational approach allows scientists to design new materials without having to synthesize and test every possible combination experimentally.</p>
-
-            <h2>💊 Pharmaceutical Applications</h2>
-            <p>One of the most important applications of crystal engineering is in the pharmaceutical industry. The crystal form of a drug can significantly affect its properties, including solubility, stability, and bioavailability. By controlling the crystal structure, scientists can improve the effectiveness of drugs and develop new formulations that are easier to manufacture and administer.</p>
-
-            <p>Polymorphism, the ability of a compound to exist in multiple crystal forms, is particularly important in drug development. Different polymorphs of the same drug can have very different properties, and understanding and controlling polymorphism is crucial for ensuring consistent drug performance. Crystal engineering helps scientists design drugs that crystallize in the most desirable form.</p>
-
-            <h2>🔋 Materials for Electronics</h2>
-            <p>Crystal engineering is also being used to develop new materials for electronic applications. Organic semiconductors, for example, rely on the precise arrangement of molecules to conduct electricity efficiently. By engineering the crystal structure, scientists can control the electronic properties of these materials and develop new devices for applications like solar cells, LEDs, and transistors.</p>
-
-            <p>Metal-organic frameworks (MOFs) are another exciting application of crystal engineering. These materials consist of metal ions connected by organic molecules to form porous, crystalline structures. The properties of MOFs can be tuned by changing the metal ions and organic linkers, making them useful for applications like gas storage, catalysis, and sensing.</p>
-
-            <h2>🌱 Sustainable Materials</h2>
-            <p>Crystal engineering is also contributing to the development of sustainable materials. By designing crystals from renewable or biodegradable components, scientists can create materials that are environmentally friendly while still meeting performance requirements. This approach is particularly important for reducing the environmental impact of materials used in consumer products and industrial applications.</p>
-
-            <p>Bio-inspired crystal engineering takes inspiration from natural materials like bone, shell, and wood, which have evolved to have remarkable properties through precise control of their crystal structures. By understanding how nature creates these materials, scientists can develop synthetic materials with similar properties.</p>
-
-            <h2>🔍 Interactive Elements: Test Your Understanding</h2>
-            <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #991b1b;">🤔 Think About It:</h4>
-                <p style="margin-bottom: 0;">How do you think crystal engineering might be used to solve environmental or health problems?</p>
+            <div class="computational-demo">
+                <h2>💻 Interactive Molecular Modeling Simulator</h2>
+                <p>Click on different components to explore how computational chemistry accelerates discovery!</p>
+                <div class="computational-components">
+                    <div class="computational-component" onclick="showMolecularDynamics()">
+                        <h4>⚛️ Molecular Dynamics</h4>
+                        <p>Atomic simulation<br>Time evolution</p>
+                    </div>
+                    <div class="computational-component" onclick="showQuantumChemistry()">
+                        <h4>🔬 Quantum Chemistry</h4>
+                        <p>Electronic structure<br>Chemical bonding</p>
+                    </div>
+                    <div class="computational-component" onclick="showDrugDesign()">
+                        <h4>💊 Drug Design</h4>
+                        <p>Virtual screening<br>Lead optimization</p>
+                    </div>
+                </div>
             </div>
 
-            <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #0c4a6e;">💡 Discussion Questions:</h4>
+            <h2>💻 The Computational Chemistry Revolution</h2>
+            <p>Imagine being able to design new drugs, predict material properties, and understand molecular behavior without ever setting foot in a laboratory. This isn't science fiction – it's the reality that modern computational chemistry and molecular modeling are bringing to scientific research today.</p>
+
+            <p>In 2024, researchers developed revolutionary computational chemistry and molecular modeling systems that accelerate drug discovery and materials design through advanced simulation and prediction. This breakthrough could transform pharmaceutical and materials research by enabling faster, more accurate predictions of molecular properties and behavior.</p>
+
+            <h2>🧬 The Discovery Challenge</h2>
+            <p>Traditional experimental approaches to drug discovery and materials design are time-consuming, expensive, and often involve trial-and-error methods. Many promising compounds may never be discovered due to the limitations of experimental screening. Modern computational chemistry offers new approaches to overcome these challenges.</p>
+
+            <h3>📊 The Screening Problem</h3>
+            <p>Traditional experimental screening methods can only test a limited number of compounds due to time and resource constraints. This means many potentially valuable compounds may never be discovered or tested.</p>
+
+            <h3>⏱️ The Prediction Challenge</h3>
+            <p>Predicting molecular properties and behavior from chemical structure is extremely complex and often requires sophisticated theoretical models and computational methods.</p>
+
+            <div class="modeling-simulator">
+                <h3>💻 Molecular Modeling Simulator</h3>
+                <p>Click on modeling steps to see how computational chemistry accelerates discovery:</p>
+                <div class="modeling-grid" id="modelingGrid">
+                    <!-- Modeling steps will be generated by JavaScript -->
+                </div>
+                <p id="computationalStatus">Click modeling steps to see computational chemistry in action!</p>
+                <button onclick="activateAllModeling()" style="background: #059669; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-top: 1rem;">Activate All Modeling</button>
+            </div>
+
+            <h3>💻 The Advanced Computational Solution</h3>
+            <p>Modern computational chemistry uses advanced algorithms, high-performance computing, and sophisticated theoretical models to predict molecular properties and behavior. These systems can screen millions of compounds virtually and provide accurate predictions of molecular properties.</p>
+
+            <h2>🌟 The Smart Modeling Framework</h2>
+            <p>The researchers developed a sophisticated computational framework that can accelerate drug discovery and materials design through advanced simulation and prediction. Think of it like having an intelligent molecular designer that can predict the properties and behavior of any molecule.</p>
+
+            <div class="computational-controls">
+                <h3>💻 Computational Accuracy Simulator</h3>
+                <p>Adjust the computational accuracy to see how it affects prediction quality:</p>
+                <div class="computational-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="accuracySlider" oninput="updateAccuracy(this.value)">
+                    <p>Computational Accuracy: <span id="accuracyValue">50</span>%</p>
+                </div>
+                <div id="accuracyResult">
+                    <p>At this accuracy level, the computational system shows <strong>moderate</strong> prediction quality with some discovery benefits.</p>
+                </div>
+            </div>
+
+            <h3>🔬 What Makes This Special</h3>
+            <p>This new technology is special because it can:</p>
+
+            <ul>
+                <li><strong>Virtual Screening:</strong> Screen millions of compounds computationally before experimental testing</li>
+                <li><strong>Property Prediction:</strong> Accurately predict molecular properties and behavior</li>
+                <li><strong>Design Optimization:</strong> Optimize molecular structures for desired properties</li>
+                <li><strong>Mechanism Understanding:</strong> Understand molecular mechanisms and interactions</li>
+            </ul>
+
+            <h2>🚀 Real-World Applications</h2>
+            <p>This breakthrough has important implications for numerous fields:</p>
+
+            <h3>💊 Pharmaceutical Research</h3>
+            <p>Drug companies can use computational chemistry to accelerate drug discovery, reduce development costs, and identify promising drug candidates more efficiently.</p>
+
+            <h3>🧪 Materials Science</h3>
+            <p>Materials scientists can use molecular modeling to design new materials with specific properties, predict material behavior, and optimize material performance.</p>
+
+            <h3>🌱 Agricultural Chemistry</h3>
+            <p>Agricultural companies can use computational chemistry to design new pesticides, herbicides, and fertilizers with improved efficacy and environmental safety.</p>
+
+            <h3>🔬 Catalysis Research</h3>
+            <p>Catalysis researchers can use molecular modeling to understand catalytic mechanisms, design new catalysts, and optimize catalytic processes.</p>
+
+            <div class="computational-dashboard">
+                <h3>📊 Computational Chemistry Dashboard</h3>
+                <p>Real-time metrics for the molecular modeling system:</p>
+                <div class="computational-metrics">
+                    <div class="metric">
+                        <div class="metric-value" id="predictionAccuracy">0</div>
+                        <div class="metric-label">Prediction Accuracy (%)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="screeningSpeed">0</div>
+                        <div class="metric-label">Screening Speed (compounds/s)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="discoveryRate">0</div>
+                        <div class="metric-label">Discovery Rate (%)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="costReduction">0</div>
+                        <div class="metric-label">Cost Reduction (%)</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers used cutting-edge computational chemistry, quantum mechanics, and machine learning techniques to make this discovery:</p>
+
+            <div style="background: #f0fdf4; border-left: 4px solid #059669; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
+                <h4 style="margin-top: 0; color: #047857;">🧮 Technical Approach:</h4>
                 <ul style="margin-bottom: 0;">
-                    <li>What factors determine how molecules arrange themselves in crystals?</li>
-                    <li>How can crystal engineering improve drug effectiveness?</li>
-                    <li>What are some potential applications of crystal engineering in electronics?</li>
+                    <li><strong>Quantum Mechanics:</strong> Using quantum mechanical principles for accurate molecular calculations</li>
+                    <li><strong>Machine Learning:</strong> Applying AI algorithms for pattern recognition and prediction</li>
+                    <li><strong>High-Performance Computing:</strong> Using supercomputers for complex molecular simulations</li>
+                    <li><strong>Database Integration:</strong> Combining computational results with experimental databases</li>
                 </ul>
             </div>
 
+            <h2>🚀 Future Possibilities</h2>
+            <p>This research opens up exciting new possibilities for computational chemistry and molecular modeling:</p>
+
+            <ul>
+                <li><strong>AI-Driven Discovery:</strong> Artificial intelligence systems that can autonomously discover new compounds</li>
+                <li><strong>Quantum Computing:</strong> Using quantum computers for even more accurate molecular calculations</li>
+                <li><strong>Personalized Medicine:</strong> Computational design of drugs tailored to individual patients</li>
+                <li><strong>Green Chemistry:</strong> Computational design of environmentally friendly chemical processes</li>
+            </ul>
+
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of interdisciplinary science. It combines:</p>
+
+            <ul>
+                <li><strong>Chemistry:</strong> Understanding molecular structure and chemical behavior</li>
+                <li><strong>Physics:</strong> Applying quantum mechanics and statistical mechanics</li>
+                <li><strong>Computer Science:</strong> Developing algorithms and computational methods</li>
+                <li><strong>Mathematics:</strong> Using mathematical models and numerical methods</li>
+            </ul>
+
+            <p>For students interested in any of these fields, this work shows how modern science often involves combining knowledge from multiple disciplines to solve complex problems that have real-world applications.</p>
+
             <div class="highlight-box">
-                <strong>🎯 Bottom Line:</strong> Crystal engineering is a powerful tool for designing materials with specific properties by controlling how molecules arrange themselves in crystals. This field is enabling the development of new materials for pharmaceuticals, electronics, and sustainable applications, demonstrating the importance of understanding molecular interactions in materials science.
+                <strong>🎯 Bottom Line:</strong> Scientists have developed revolutionary computational chemistry and molecular modeling systems that accelerate drug discovery and materials design through advanced simulation and prediction. This breakthrough could transform pharmaceutical and materials research by enabling faster, more accurate predictions of molecular properties and behavior.
             </div>
 
             <h2>📚 Further Reading & Resources</h2>
-            <p>Want to explore more about crystal engineering and materials design?</p>
+            <p>Want to dive deeper? Check out these related topics:</p>
             <ul>
-                <li>How crystals form and their properties</li>
-                <li>Pharmaceutical applications of crystal engineering</li>
-                <li>Organic semiconductors and electronic materials</li>
-                <li>Metal-organic frameworks and their applications</li>
+                <li>Computational chemistry and molecular modeling fundamentals</li>
+                <li>Quantum chemistry and electronic structure theory</li>
+                <li>Molecular dynamics and statistical mechanics</li>
+                <li>Drug discovery and virtual screening</li>
+                <li>Materials design and property prediction</li>
             </ul>
         </div>
     </main>
@@ -259,5 +516,82 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        // Initialize modeling grid
+        function initializeModelingGrid() {
+            const grid = document.getElementById('modelingGrid');
+            grid.innerHTML = '';
+            for (let i = 1; i <= 9; i++) {
+                const step = document.createElement('div');
+                step.className = 'modeling-step';
+                step.textContent = i;
+                step.onclick = () => activateModeling(step);
+                grid.appendChild(step);
+            }
+        }
+
+        function activateModeling(step) {
+            step.classList.toggle('active');
+            updateComputationalMetrics();
+        }
+
+        function updateComputationalMetrics() {
+            const activeSteps = document.querySelectorAll('.modeling-step.active').length;
+            const accuracy = Math.min(activeSteps * 11.1, 100);
+            const speed = Math.min(activeSteps * 1000, 10000);
+            const discovery = Math.min(activeSteps * 11.1, 100);
+            const cost = Math.min(activeSteps * 11.1, 100);
+
+            document.getElementById('predictionAccuracy').textContent = Math.round(accuracy);
+            document.getElementById('screeningSpeed').textContent = Math.round(speed);
+            document.getElementById('discoveryRate').textContent = Math.round(discovery);
+            document.getElementById('costReduction').textContent = Math.round(cost);
+        }
+
+        function activateAllModeling() {
+            const steps = document.querySelectorAll('.modeling-step');
+            steps.forEach(step => {
+                step.classList.add('active');
+            });
+
+            updateComputationalMetrics();
+            document.getElementById('computationalStatus').textContent = 'All modeling activated! Computational chemistry is now accelerating discovery at maximum efficiency!';
+        }
+
+        function showMolecularDynamics() {
+            alert('⚛️ Molecular Dynamics: A computational method that simulates the motion of atoms and molecules over time. It uses classical mechanics to predict how molecular systems evolve and interact under different conditions.');
+        }
+
+        function showQuantumChemistry() {
+            alert('🔬 Quantum Chemistry: The application of quantum mechanics to chemical problems. It provides accurate descriptions of electronic structure, chemical bonding, and molecular properties by solving the Schrödinger equation.');
+        }
+
+        function showDrugDesign() {
+            alert('💊 Drug Design: The computational process of designing new pharmaceutical compounds. It includes virtual screening, lead optimization, and structure-based drug design to identify promising drug candidates.');
+        }
+
+        function updateAccuracy(value) {
+            document.getElementById('accuracyValue').textContent = value;
+            
+            let result = '';
+            if (value < 20) {
+                result = 'At this accuracy level, the computational system shows <strong>limited</strong> prediction quality with basic discovery benefits.';
+            } else if (value < 40) {
+                result = 'At this accuracy level, the computational system shows <strong>moderate</strong> prediction quality with some discovery benefits.';
+            } else if (value < 80) {
+                result = 'At this accuracy level, the computational system shows <strong>high</strong> prediction quality with significant discovery benefits.';
+            } else {
+                result = 'At this accuracy level, the computational system shows <strong>maximum</strong> prediction quality with optimal discovery benefits!';
+            }
+            
+            document.getElementById('accuracyResult').innerHTML = '<p>' + result + '</p>';
+        }
+
+        // Initialize when page loads
+        window.onload = function() {
+            initializeModelingGrid();
+            updateComputationalMetrics();
+        };
+    </script>
 </body>
 </html>

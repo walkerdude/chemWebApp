@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Physics-Informed Neural Networks: When AI Respects the Laws of Nature - ChemDecoded</title>
+    <title>Understanding Dynamics in Coarse-Grained Models: Universal Excess Entropy Scaling Relationship - ChemDecoded</title>
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .post-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -62,69 +62,138 @@
             margin-bottom: 1.5rem;
         }
         .highlight-box {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            background: #ecfdf5;
+            border-left: 4px solid #10b981;
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 8px 8px 0;
         }
-        .physics-demo {
-            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        .entropy-demo {
+            background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
             color: white;
             padding: 2rem;
-            border-radius: 12px;
             margin: 2rem 0;
+            border-radius: 12px;
             text-align: center;
         }
-        .equation-display {
-            background: #1f2937;
-            color: #f9fafb;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-            font-family: 'Courier New', monospace;
-            text-align: center;
+        .entropy-demo h2, .entropy-demo h3, .entropy-demo h4 {
+            color: #ffffff !important;
         }
-        .physics-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        .entropy-demo p, .entropy-demo div, .entropy-demo span {
+            color: #e5e7eb !important;
+        }
+        .entropy-components {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
             gap: 2rem;
-            margin: 2rem 0;
         }
-        .comparison-box {
-            background: #f8fafc;
-            border: 2px solid #e5e7eb;
+        .entropy-component {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 12px;
             padding: 1.5rem;
             text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
         }
-        .comparison-box h2, .comparison-box h3, .comparison-box h4 {
-            color: #1f2937 !important;
+        .entropy-component:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
         }
-        .comparison-box p, .comparison-box div, .comparison-box span, .comparison-box li {
-            color: #374151 !important;
+        .entropy-component h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
         }
-        .traditional-box {
-            border-color: #ef4444;
+        .entropy-component p {
+            color: #e5e7eb !important;
+            margin: 0;
         }
-        .pinn-box {
-            border-color: #10b981;
-            background: #f0fdf4;
+        .scaling-control {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
         }
-        .vs-divider {
+        .scaling-slider {
+            margin: 1rem 0;
+        }
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #0f766e;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #0f766e;
+            cursor: pointer;
+            border: none;
+        }
+        .dynamics-visualization {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .molecule-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            height: 200px;
+            position: relative;
+        }
+        .molecule {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            color: white;
             font-weight: bold;
-            color: #6b7280;
+            position: absolute;
+            transition: all 1s ease;
+            cursor: pointer;
         }
-        .physics-constraints {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 8px 8px 0;
+        .molecule:hover {
+            transform: scale(1.1);
+        }
+        .entropy-field {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px dashed #0f766e;
+            border-radius: 20px;
+            opacity: 0.3;
+            animation: entropy-pulse 3s infinite;
+        }
+        @keyframes entropy-pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
         }
         .back-link {
             display: inline-flex;
@@ -136,7 +205,7 @@
             font-weight: 500;
         }
         .back-link:hover {
-            color: #e9d5ff;
+            color: #a7f3d0;
         }
         .tags {
             display: flex;
@@ -152,315 +221,41 @@
             font-size: 0.9rem;
             font-weight: 500;
         }
-        
-        .reasoning-step div {
-            color: #e5e7eb !important;
+        .scaling-chart {
+            background: #fdf2f8;
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
         }
-        .code-snippet {
-            color: #f9fafb !important;
+        .chart-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            height: 200px;
+            margin: 1rem 0;
+            border-bottom: 2px solid #e5e7eb;
+            border-left: 2px solid #e5e7eb;
+            padding: 1rem;
         }
-        .interactive-element h4 {
-            color: #ffffff !important;
+        .chart-bar {
+            background: linear-gradient(to top, #0f766e, #5eead4);
+            width: 30px;
+            margin: 0 5px;
+            border-radius: 4px 4px 0 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        .interactive-element p {
-            color: #e5e7eb !important;
+        .chart-bar:hover {
+            background: linear-gradient(to top, #0d9488, #0f766e);
+            transform: scale(1.1);
         }
-        
-        
-        /* Target elements with dark gradient backgrounds - all text elements */
-        [style*="background: linear-gradient"][style*="#1f2937"] h1,
-        [style*="background: linear-gradient"][style*="#1f2937"] h2,
-        [style*="background: linear-gradient"][style*="#1f2937"] h3,
-        [style*="background: linear-gradient"][style*="#1f2937"] h4,
-        [style*="background: linear-gradient"][style*="#1f2937"] h5,
-        [style*="background: linear-gradient"][style*="#1f2937"] h6,
-        [style*="background: linear-gradient"][style*="#1f2937"] p,
-        [style*="background: linear-gradient"][style*="#1f2937"] div,
-        [style*="background: linear-gradient"][style*="#1f2937"] span,
-        [style*="background: linear-gradient"][style*="#1f2937"] li,
-        [style*="background: linear-gradient"][style*="#374151"] h1,
-        [style*="background: linear-gradient"][style*="#374151"] h2,
-        [style*="background: linear-gradient"][style*="#374151"] h3,
-        [style*="background: linear-gradient"][style*="#374151"] h4,
-        [style*="background: linear-gradient"][style*="#374151"] h5,
-        [style*="background: linear-gradient"][style*="#374151"] h6,
-        [style*="background: linear-gradient"][style*="#374151"] p,
-        [style*="background: linear-gradient"][style*="#374151"] div,
-        [style*="background: linear-gradient"][style*="#374151"] span,
-        [style*="background: linear-gradient"][style*="#374151"] li {
-            color: #ffffff !important;
+        .chart-label {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
         }
-        
-        /* Target all dark background classes */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation h1, .data-transformation h2, .data-transformation h3, 
-        .data-transformation h4, .data-transformation h5, .data-transformation h6,
-        .ai-demo-box h1, .ai-demo-box h2, .ai-demo-box h3, 
-        .ai-demo-box h4, .ai-demo-box h5, .ai-demo-box h6,
-        .matrix-demo h1, .matrix-demo h2, .matrix-demo h3, 
-        .matrix-demo h4, .matrix-demo h5, .matrix-demo h6,
-        .reasoning-demo h1, .reasoning-demo h2, .reasoning-demo h3, 
-        .reasoning-demo h4, .reasoning-demo h5, .reasoning-demo h6,
-        .quantum-demo h1, .quantum-demo h2, .quantum-demo h3, 
-        .quantum-demo h4, .quantum-demo h5, .quantum-demo h6,
-        .selection-demo h1, .selection-demo h2, .selection-demo h3, 
-        .selection-demo h4, .selection-demo h5, .selection-demo h6,
-        .ode-demo h1, .ode-demo h2, .ode-demo h3, 
-        .ode-demo h4, .ode-demo h5, .ode-demo h6,
-        .agent-demo h1, .agent-demo h2, .agent-demo h3, 
-        .agent-demo h4, .agent-demo h5, .agent-demo h6,
-        .gcn-demo h1, .gcn-demo h2, .gcn-demo h3, 
-        .gcn-demo h4, .gcn-demo h5, .gcn-demo h6,
-        .fault-demo h1, .fault-demo h2, .fault-demo h3, 
-        .fault-demo h4, .fault-demo h5, .fault-demo h6,
-        .foundation-demo h1, .foundation-demo h2, .foundation-demo h3, 
-        .foundation-demo h4, .foundation-demo h5, .foundation-demo h6,
-        .rl-demo h1, .rl-demo h2, .rl-demo h3, 
-        .rl-demo h4, .rl-demo h5, .rl-demo h6,
-        .neural-network-demo h1, .neural-network-demo h2, .neural-network-demo h3, 
-        .neural-network-demo h4, .neural-network-demo h5, .neural-network-demo h6 {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation p, .data-transformation div, .data-transformation span, .data-transformation li,
-        .ai-demo-box p, .ai-demo-box div, .ai-demo-box span, .ai-demo-box li,
-        .matrix-demo p, .matrix-demo div, .matrix-demo span, .matrix-demo li,
-        .reasoning-demo p, .reasoning-demo div, .reasoning-demo span, .reasoning-demo li,
-        .quantum-demo p, .quantum-demo div, .quantum-demo span, .quantum-demo li,
-        .selection-demo p, .selection-demo div, .selection-demo span, .selection-demo li,
-        .ode-demo p, .ode-demo div, .ode-demo span, .ode-demo li,
-        .agent-demo p, .agent-demo div, .agent-demo span, .agent-demo li,
-        .gcn-demo p, .gcn-demo div, .gcn-demo span, .gcn-demo li,
-        .fault-demo p, .fault-demo div, .fault-demo span, .fault-demo li,
-        .foundation-demo p, .foundation-demo div, .foundation-demo span, .foundation-demo li,
-        .rl-demo p, .rl-demo div, .rl-demo span, .rl-demo li,
-        .neural-network-demo p, .neural-network-demo div, .neural-network-demo span, .neural-network-demo li {
-            color: #e5e7eb !important;
-        }
-        
-        /* Force light text on any element with dark background */
-        [style*="background"][style*="#1f2937"], [style*="background"][style*="#374151"],
-        [style*="background"][style*="#667eea"], [style*="background"][style*="#764ba2"],
-        [style*="background"][style*="#7c3aed"], [style*="background"][style*="#6d28d9"],
-        [style*="background"][style*="#dc2626"], [style*="background"][style*="#b91c1c"],
-        [style*="background"][style*="#be185d"], [style*="background"][style*="#9d174d"],
-        [style*="background"][style*="#0f766e"], [style*="background"][style*="#0d9488"],
-        [style*="background"][style*="#1e40af"], [style*="background"][style*="#1e3a8a"],
-        [style*="background"][style*="#7c2d12"], [style*="background"][style*="#991b1c"],
-        [style*="background"][style*="#059669"], [style*="background"][style*="#047857"],
-        [style*="background"][style*="#06b6d4"], [style*="background"][style*="#0891b2"],
-        [style*="background"][style*="#8b5cf6"], [style*="background"][style*="#7c3aed"],
-        [style*="background"][style*="#f59e0b"], [style*="background"][style*="#d97706"] {
-            color: #ffffff !important;
-        }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo * {
-            color: #ffffff !important;
-        }
-        
-        /* Light background elements - force dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo * {
-            color: #1f2937 !important;
-        }
-        
-        /* Special cases */
-        .matrix-cell {
-            color: #ffffff !important;
-            font-weight: 600 !important;
-        }
-        .code-snippet {
-            color: #f9fafb !important;
-        }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .hybrid-comparison *, .accuracy-meter *, .process-flow *, .pattern-recognition *,
-        .convolution-demo *, .neural-network-demo *, .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Also target any div with dark background */
-        div[style*="background: linear-gradient"] {
-            color: #ffffff !important;
-        }
-        
-        div[style*="background: linear-gradient"] * {
-            color: #ffffff !important;
-        }
-        /* PROPER CONTRAST FIX */
-        
-        /* Dark background elements - white text */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo,
-        .ai-flow-diagram {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Light background elements - dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo,
-        .hybrid-comparison, .pattern-cell, .network-visualization, .pattern-grid {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo *,
-        .hybrid-comparison *, .pattern-cell *, .network-visualization *, .pattern-grid * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specific fixes for pattern recognition demo */
-        .pattern-recognition {
-            background: #f8fafc !important;
-        }
-        
-        .pattern-cell {
-            background: #ffffff !important;
-            color: #1f2937 !important;
-            border: 1px solid #d1d5db !important;
-        }
-        
-        .pattern-cell:hover {
-            background: #e5e7eb !important;
-            color: #1f2937 !important;
-        }
-        /* FIX STRUCTURED THREE-BOX DIAGRAMS */
-        
-        /* Target the specific structured components with three boxes */
-        .sensor-architecture, .architecture-visualization, .component-breakdown,
-        .multi-block-visualization, .process-flow, .quantum-simulation,
-        .selection-process, .ode-architecture, .agent-system, .gcn-architecture,
-        .fault-detection, .foundation-architecture, .rl-process, .physics-demo,
-        .data-transformation, .ai-flow-diagram, .neural-network-demo,
-        .pattern-recognition, .convolution-demo, .accuracy-meter {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture *, .architecture-visualization *, .component-breakdown *,
-        .multi-block-visualization *, .process-flow *, .quantum-simulation *,
-        .selection-process *, .ode-architecture *, .agent-system *, .gcn-architecture *,
-        .fault-detection *, .foundation-architecture *, .rl-process *, .physics-demo *,
-        .data-transformation *, .ai-flow-diagram *, .neural-network-demo *,
-        .pattern-recognition *, .convolution-demo *, .accuracy-meter * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specifically target the three-box structure elements */
-        .interaction-component, .architecture-component, .process-component,
-        .sensor-component, .quantum-component, .selection-component,
-        .ode-component, .agent-component, .gcn-component, .fault-component,
-        .foundation-component, .rl-component, .physics-component,
-        .data-component, .ai-component, .neural-component, .pattern-component,
-        .convolution-component, .accuracy-component {
-            color: #1f2937 !important;
-        }
-        
-        .interaction-component *, .architecture-component *, .process-component *,
-        .sensor-component *, .quantum-component *, .selection-component *,
-        .ode-component *, .agent-component *, .gcn-component *, .fault-component *,
-        .foundation-component *, .rl-component *, .physics-component *,
-        .data-component *, .ai-component *, .neural-component *, .pattern-component *,
-        .convolution-component *, .accuracy-component * {
-            color: #1f2937 !important;
-        }
-        
-        /* Target any div with structured three-box layout */
-        .sensor-architecture .interaction-component,
-        .architecture-visualization .interaction-component,
-        .component-breakdown .interaction-component,
-        .multi-block-visualization .interaction-component,
-        .process-flow .interaction-component,
-        .quantum-simulation .interaction-component,
-        .selection-process .interaction-component,
-        .ode-architecture .interaction-component,
-        .agent-system .interaction-component,
-        .gcn-architecture .interaction-component,
-        .fault-detection .interaction-component,
-        .foundation-architecture .interaction-component,
-        .rl-process .interaction-component,
-        .physics-demo .interaction-component,
-        .data-transformation .interaction-component,
-        .ai-flow-diagram .interaction-component,
-        .neural-network-demo .interaction-component,
-        .pattern-recognition .interaction-component,
-        .convolution-demo .interaction-component,
-        .accuracy-meter .interaction-component {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture .interaction-component *,
-        .architecture-visualization .interaction-component *,
-        .component-breakdown .interaction-component *,
-        .multi-block-visualization .interaction-component *,
-        .process-flow .interaction-component *,
-        .quantum-simulation .interaction-component *,
-        .selection-process .interaction-component *,
-        .ode-architecture .interaction-component *,
-        .agent-system .interaction-component *,
-        .gcn-architecture .interaction-component *,
-        .fault-detection .interaction-component *,
-        .foundation-architecture .interaction-component *,
-        .rl-process .interaction-component *,
-        .physics-demo .interaction-component *,
-        .data-transformation .interaction-component *,
-        .ai-flow-diagram .interaction-component *,
-        .neural-network-demo .interaction-component *,
-        .pattern-recognition .interaction-component *,
-        .convolution-demo .interaction-component *,
-        .accuracy-meter .interaction-component * {
-            color: #1f2937 !important;
-        }
-    
-    
-    
-    
-    
-    
     </style>
 </head>
 <body>
@@ -500,8 +295,8 @@
                 <i class="fas fa-arrow-left"></i>
                 Back to Blog
             </a>
-            <h1>Physics-Informed Neural Networks: When AI Respects the Laws of Nature</h1>
-            <p class="hero-subtitle">Revolutionary neural networks that combine machine learning with physical laws for accurate chemical process modeling</p>
+            <h1>Understanding Dynamics in Coarse-Grained Models: Universal Excess Entropy Scaling Relationship</h1>
+            <p class="hero-subtitle">Discovering the hidden mathematical relationship between molecular disorder and movement in complex systems</p>
         </div>
     </header>
 
@@ -509,161 +304,193 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"Physics-Informed Neural Networks for Dynamic Process Operations"</span>
+                <span class="meta-value">"Understanding Dynamics in Coarse-Grained Models: I. Universal Excess Entropy Scaling Relationship"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">Preprint (2024)</span>
+                <span class="meta-value">Preprint (2022)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">Multiple contributors in process systems engineering group</span>
+                <span class="meta-value">Jaehyeok Jin, Kenneth S. Schweizer, Gregory A. Voth</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Establishes a universal scaling relation between excess entropy and diffusion in coarse-grained molecular systems, linking thermodynamics to dynamic behavior.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="https://arxiv.org/abs/2406.01528" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2406.01528</a></span>
+                <span class="meta-value"><a href="https://arxiv.org/abs/2208.00078" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2208.00078</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
-            <span class="tag">Neural Networks</span>
-            <span class="tag">Physics-Informed</span>
-            <span class="tag">Process Dynamics</span>
-            <span class="tag">Machine Learning</span>
-            <span class="tag">Chemical Engineering</span>
+            <span class="tag">Computational Chemistry</span>
+            <span class="tag">Statistical Mechanics</span>
+            <span class="tag">Molecular Dynamics</span>
+            <span class="tag">Thermodynamics</span>
+            <span class="tag">Coarse-Grained Models</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> Introduces physics-informed neural networks (PINNs) for modeling chemical process dynamics while enforcing physical laws.
+                <strong>Key Finding:</strong> Scientists have discovered a universal mathematical relationship between molecular disorder (entropy) and molecular movement (diffusion) in complex systems. This breakthrough allows researchers to predict how fast molecules move just by knowing how disordered they are, opening new possibilities for understanding everything from protein folding to material properties.
             </div>
 
-            <div class="physics-demo">
-                <h2>⚛️ Physics-Informed AI in Action</h2>
-                <p>Watch how PINNs combine the power of neural networks with the reliability of physical laws!</p>
-                <div class="equation-display">
-                    <h4 style="color: #10b981; margin-top: 0;">🔬 The PINN Equation:</h4>
-                    <pre style="margin: 0; color: #f9fafb;">
-Loss = Data_Loss + Physics_Loss + Boundary_Loss
-
-Where:
-• Data_Loss = ||u_pred - u_observed||²
-• Physics_Loss = ||∂u/∂t + ∇·(u·v) - f||²  
-• Boundary_Loss = ||u_boundary - u_expected||²
-
-Result: AI that respects conservation laws!
-                    </pre>
+            <div class="entropy-demo">
+                <h2>🌊 Interactive Entropy-Dynamics Simulator</h2>
+                <p>Click on different components to see how molecular disorder affects movement!</p>
+                <div class="entropy-components">
+                    <div class="entropy-component" onclick="showEntropy()">
+                        <h4>🌪️ Excess Entropy</h4>
+                        <p>Molecular disorder<br>Thermodynamic chaos</p>
+                    </div>
+                    <div class="entropy-component" onclick="showDiffusion()">
+                        <h4>🏃 Molecular Diffusion</h4>
+                        <p>Movement speed<br>Dynamic behavior</p>
+                    </div>
+                    <div class="entropy-component" onclick="showScaling()">
+                        <h4>📐 Universal Scaling</h4>
+                        <p>Mathematical relationship<br>Predictive power</p>
+                    </div>
                 </div>
             </div>
 
-            <h2>🧠 The Problem with Pure AI: When Machines Ignore Physics</h2>
-            <p>Imagine you're training a neural network to predict the temperature distribution in a chemical reactor. You feed it thousands of data points, and it learns to make predictions with impressive accuracy. But then something strange happens - the AI suggests that heat can flow from a cold region to a hot region without any external energy input. This violates the fundamental laws of thermodynamics, but the AI doesn't know that because it was never taught the rules of physics.</p>
+            <h2>🔬 The Hidden Order in Molecular Chaos</h2>
+            <p>Imagine you're watching a crowd of people at a busy train station. Some people are standing still, others are walking slowly, and a few are running to catch their train. Now imagine you could predict exactly how fast each person would move just by looking at how disorganized the crowd is around them. This is essentially what scientists have discovered about molecules.</p>
 
-            <p>This is the fundamental challenge with traditional machine learning approaches in chemical engineering. They can find patterns in data and make accurate predictions, but they have no understanding of the underlying physical principles that govern chemical processes. They might suggest operating conditions that are mathematically optimal but physically impossible, or they might miss important constraints that are obvious to any engineer with a basic understanding of thermodynamics and fluid mechanics.</p>
+            <p>In 2022, researchers from the University of Illinois and the University of Chicago made a groundbreaking discovery: they found a universal mathematical relationship between molecular disorder (called "excess entropy") and molecular movement (called "diffusion"). This relationship works across all types of molecular systems, from simple liquids to complex biological molecules.</p>
 
-            <p>Enter Physics-Informed Neural Networks (PINNs) - a revolutionary approach that combines the pattern-recognition power of neural networks with the reliability and interpretability of physical laws. These networks don't just learn from data; they're also trained to respect the fundamental equations that govern chemical processes.</p>
+            <h2>🧮 The Science Behind the Discovery</h2>
+            <p>To understand this discovery, we need to think about two fundamental concepts in chemistry and physics:</p>
 
-            <div class="physics-comparison">
-                <div class="comparison-box traditional-box">
-                    <h3>🤖 Traditional Neural Networks</h3>
-                    <p><strong>Data-Driven Only</strong></p>
-                    <ul style="text-align: left;">
-                        <li>Learn patterns from data</li>
-                        <li>High accuracy on training data</li>
-                        <li>May violate physical laws</li>
-                        <li>Black box predictions</li>
-                        <li>Unreliable outside training range</li>
-                    </ul>
+            <h3>🌪️ Excess Entropy: The Measure of Molecular Chaos</h3>
+            <p>Entropy is a measure of disorder or randomness in a system. In molecular systems, excess entropy specifically measures how much more disordered the molecules are compared to a perfectly ordered crystal. Think of it like measuring how messy a room is compared to a perfectly organized one.</p>
+
+            <p>When molecules have high excess entropy, they're moving around chaotically, bumping into each other, and generally behaving in a disorganized way. When they have low excess entropy, they're more ordered and structured.</p>
+
+            <h3>🏃 Diffusion: The Speed of Molecular Movement</h3>
+            <p>Diffusion is how fast molecules move through a system. It's like measuring the average speed of people walking through that busy train station. Some molecules move quickly, others move slowly, and the overall diffusion rate tells us how fast the system as a whole is changing.</p>
+
+            <div class="scaling-control">
+                <h3>🎛️ Entropy-Diffusion Scaling Simulator</h3>
+                <p>Adjust the excess entropy to see how it affects molecular diffusion:</p>
+                <div class="scaling-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="entropySlider" oninput="updateEntropy(this.value)">
+                    <p>Excess Entropy: <span id="entropyValue">5.0</span></p>
                 </div>
-                <div class="vs-divider">VS</div>
-                <div class="comparison-box pinn-box">
-                    <h3>⚛️ Physics-Informed Neural Networks</h3>
-                    <p><strong>Data + Physics</strong></p>
-                    <ul style="text-align: left;">
-                        <li>Learn from data AND physics</li>
-                        <li>Respect conservation laws</li>
-                        <li>Scientifically interpretable</li>
-                        <li>Reliable extrapolation</li>
-                        <li>Physically consistent predictions</li>
-                    </ul>
+                <div id="diffusionResult">
+                    <p>At this entropy level, molecular diffusion is <strong>moderate</strong> due to balanced disorder and structure.</p>
                 </div>
             </div>
 
-            <h2>🔬 How PINNs Work: The Science Behind the Magic</h2>
-            <p>Physics-Informed Neural Networks work by incorporating physical laws directly into the training process. Instead of just minimizing the difference between predicted and observed values, they also minimize the violation of physical equations. This creates a network that not only fits the data but also respects the fundamental laws of nature.</p>
+            <h3>📐 The Universal Scaling Relationship</h3>
+            <p>The researchers discovered that there's a precise mathematical relationship between excess entropy and diffusion that works for all types of molecular systems. This relationship is called a "scaling law" because it scales (works) across different systems, temperatures, and pressures.</p>
 
-            <p>The key insight is that physical laws can be expressed as differential equations. For example, the conservation of mass in a chemical reactor can be written as ∂ρ/∂t + ∇·(ρv) = 0, where ρ is density, v is velocity, and t is time. PINNs are trained to satisfy these equations at every point in the domain, not just at the locations where data is available.</p>
+            <p>Think of it like discovering that there's a universal relationship between the height of a building and how long it takes to climb to the top. Once you know this relationship, you can predict climbing time for any building, regardless of its design or location.</p>
 
-            <div class="physics-constraints">
-                <h4 style="margin-top: 0; color: #92400e;">⚖️ Physical Laws Enforced by PINNs:</h4>
-                <p style="margin-bottom: 1rem;"><strong>Conservation of Mass:</strong> Matter cannot be created or destroyed, only transformed. PINNs ensure that the total mass in any control volume remains constant unless there are sources or sinks.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Conservation of Energy:</strong> Energy is conserved in all processes. PINNs respect the first law of thermodynamics, ensuring that energy changes are properly accounted for through heat transfer, work, and chemical reactions.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Conservation of Momentum:</strong> The momentum of a system is conserved unless acted upon by external forces. PINNs ensure that fluid flow predictions respect Newton's laws of motion.</p>
-                
-                <p style="margin-bottom: 0;"><strong>Chemical Kinetics:</strong> Reaction rates follow established kinetic models. PINNs incorporate rate equations to ensure that chemical transformations proceed according to known mechanisms and rate constants.</p>
+            <div class="dynamics-visualization">
+                <h3>🧪 Molecular Dynamics Simulator</h3>
+                <p>Click the molecule to see how entropy affects its movement:</p>
+                <div class="molecule-container">
+                    <div class="entropy-field"></div>
+                    <div class="molecule" id="molecule" onclick="simulateDynamics()">M</div>
+                </div>
+                <p id="dynamicsStatus">Click the molecule to observe entropy-driven dynamics!</p>
             </div>
 
-            <h2>🏭 Real-World Applications: Where PINNs Excel</h2>
-            <p>The applications of Physics-Informed Neural Networks in chemical engineering are vast and growing rapidly. One of the most promising areas is process optimization, where PINNs can find optimal operating conditions while ensuring that all physical constraints are satisfied. This is particularly valuable for complex processes where traditional optimization methods struggle with the computational complexity of solving the full set of governing equations.</p>
+            <h2>🔬 Coarse-Grained Models: The Key to Understanding</h2>
+            <p>The researchers used a technique called "coarse-grained modeling" to make this discovery. This is like studying a city by looking at neighborhoods instead of individual buildings. Instead of tracking every single atom in a molecule, coarse-grained models group atoms together and study how these groups behave.</p>
 
-            <p>Another exciting application is in process control, where PINNs can provide real-time predictions of process behavior. Unlike traditional control systems that rely on simplified models, PINNs can capture the full complexity of the process dynamics while maintaining physical consistency. This leads to more robust and reliable control strategies.</p>
+            <h3>🎯 Why Coarse-Grained Models Matter</h3>
+            <p>Coarse-grained models are crucial because they allow scientists to study complex systems that would be impossible to analyze with traditional methods. For example, studying a protein with thousands of atoms using traditional methods would take years of computer time. But with coarse-grained models, the same study can be done in hours.</p>
 
-            <p>PINNs are also proving valuable for process design and scale-up. When designing a new process or scaling up from laboratory to industrial scale, engineers need to predict how the process will behave under different conditions. Traditional methods often require extensive experimentation or complex simulations. PINNs can provide accurate predictions with much less computational effort, while ensuring that the predictions are physically realistic.</p>
+            <p>More importantly, coarse-grained models reveal patterns that are hidden when you look at individual atoms. It's like the difference between studying individual pixels in a photograph versus looking at the overall image. The individual pixels don't tell you much, but the overall image reveals the complete picture.</p>
 
-            <h2>📊 The Performance Advantage: Why PINNs Outperform Traditional Methods</h2>
-            <p>The performance advantages of Physics-Informed Neural Networks are remarkable. Because they incorporate physical laws into their training, they can make accurate predictions even with limited data. This is particularly valuable in chemical engineering, where experimental data is often expensive and time-consuming to obtain.</p>
-
-            <p>PINNs also excel at extrapolation - making predictions outside the range of training data. Traditional neural networks often fail catastrophically when asked to predict behavior under conditions they haven't seen before. PINNs, on the other hand, can make reliable predictions because they're constrained by physical laws that apply universally.</p>
-
-            <p>Perhaps most importantly, PINNs provide interpretable results. Unlike black-box neural networks, PINNs can explain their predictions in terms of the underlying physics. This makes them much more trustworthy for critical applications where understanding the "why" behind a prediction is as important as the prediction itself.</p>
-
-            <h2>🔮 The Future: PINNs and the Next Generation of Chemical Processes</h2>
-            <p>As Physics-Informed Neural Networks continue to evolve, we can expect to see even more sophisticated applications in chemical engineering. One exciting development is the integration of PINNs with digital twins - virtual replicas of physical processes that can be used for simulation, optimization, and control. These digital twins will be able to provide real-time insights into process behavior while maintaining complete physical consistency.</p>
-
-            <p>Another promising area is the development of PINNs that can handle multi-scale phenomena. Chemical processes often involve phenomena that occur at very different length and time scales - from molecular-level reactions to plant-wide dynamics. PINNs that can capture these multi-scale effects while maintaining physical consistency will be invaluable for process design and optimization.</p>
-
-            <p>The integration of PINNs with other emerging technologies, such as quantum computing and advanced materials, will open up entirely new possibilities for chemical process design. We may see processes that are optimized not just for efficiency and cost, but also for sustainability, safety, and environmental impact.</p>
-
-            <h2>🎓 Educational Implications: Training the Next Generation</h2>
-            <p>The emergence of Physics-Informed Neural Networks has important implications for chemical engineering education. Students need to understand not just the traditional aspects of chemical engineering, but also the principles of machine learning and how to integrate them with physical laws. This requires a new approach to education that combines fundamental engineering principles with modern computational methods.</p>
-
-            <p>Universities are beginning to develop new courses and programs that teach students how to work with PINNs and other physics-informed machine learning approaches. These programs emphasize the importance of understanding both the physics and the mathematics behind the methods, rather than just learning to use software tools.</p>
-
-            <p>The goal is to produce engineers who can effectively combine traditional chemical engineering knowledge with modern machine learning capabilities, creating a new generation of professionals who can leverage the power of AI while maintaining the reliability and interpretability that comes from understanding the underlying physics.</p>
-
-            <h2>🔍 Interactive Elements: Test Your Understanding</h2>
-            <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #991b1b;">🤔 Think About It:</h4>
-                <p style="margin-bottom: 0;">Why do you think it's important for AI systems to respect physical laws? What could go wrong if a process control system suggested operating conditions that violated thermodynamics?</p>
+            <div class="scaling-chart">
+                <h3>📊 Universal Scaling Relationship Chart</h3>
+                <p>Click on the bars to see how different systems follow the same scaling law:</p>
+                <div class="chart-container">
+                    <div class="chart-bar" style="height: 20%;" onclick="showDetails('simple-liquid')" title="Simple Liquid"></div>
+                    <div class="chart-bar" style="height: 40%;" onclick="showDetails('polymer-melt')" title="Polymer Melt"></div>
+                    <div class="chart-bar" style="height: 60%;" onclick="showDetails('protein-solution')" title="Protein Solution"></div>
+                    <div class="chart-bar" style="height: 80%;" onclick="showDetails('complex-mixture')" title="Complex Mixture"></div>
+                </div>
+                <div class="chart-label">
+                    <span>Simple</span>
+                    <span>Polymer</span>
+                    <span>Protein</span>
+                    <span>Complex</span>
+                </div>
             </div>
+
+            <h2>🌟 Real-World Applications</h2>
+            <p>This discovery has profound implications for numerous fields:</p>
+
+            <h3>🧬 Protein Folding and Drug Design</h3>
+            <p>Understanding how molecular disorder affects movement could help scientists design better drugs. Many drugs work by binding to specific proteins, and the rate at which this binding occurs depends on how fast the proteins are moving. By understanding the entropy-diffusion relationship, scientists could predict and optimize drug binding rates.</p>
+
+            <h3>🔋 Battery Technology</h3>
+            <p>Battery performance depends on how fast ions move through the electrolyte. The entropy-diffusion relationship could help engineers design better electrolytes by predicting how molecular disorder affects ion movement.</p>
+
+            <h3>🌱 Biological Systems</h3>
+            <p>Many biological processes, from enzyme catalysis to cell membrane transport, depend on molecular movement. Understanding the entropy-diffusion relationship could lead to new insights into how these processes work and how to control them.</p>
+
+            <h3>🏭 Industrial Processes</h3>
+            <p>Many industrial processes, from chemical manufacturing to food processing, depend on molecular movement and mixing. The entropy-diffusion relationship could help engineers optimize these processes for better efficiency and product quality.</p>
+
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers used advanced computational methods to make this discovery:</p>
 
             <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #0c4a6e;">💡 Discussion Questions:</h4>
+                <h4 style="margin-top: 0; color: #0c4a6e;">🧮 Technical Approach:</h4>
                 <ul style="margin-bottom: 0;">
-                    <li>How might PINNs change the way chemical processes are designed and optimized?</li>
-                    <li>What are the advantages of having AI systems that can explain their predictions in terms of physics?</li>
-                    <li>How do you think PINNs will affect the role of traditional process modeling and simulation?</li>
+                    <li><strong>Coarse-Grained Modeling:</strong> Groups atoms together to study large-scale behavior</li>
+                    <li><strong>Entropy Calculations:</strong> Measures molecular disorder using statistical mechanics</li>
+                    <li><strong>Diffusion Analysis:</strong> Tracks molecular movement and calculates diffusion rates</li>
+                    <li><strong>Scaling Analysis:</strong> Identifies universal relationships across different systems</li>
                 </ul>
             </div>
 
+            <h2>🚀 Future Possibilities</h2>
+            <p>This research opens up exciting new possibilities for understanding and controlling molecular systems:</p>
+
+            <ul>
+                <li><strong>Predictive Modeling:</strong> Predicting molecular behavior without expensive experiments</li>
+                <li><strong>Material Design:</strong> Designing materials with specific dynamic properties</li>
+                <li><strong>Process Optimization:</strong> Optimizing industrial processes for better efficiency</li>
+                <li><strong>Drug Discovery:</strong> Accelerating the development of new medications</li>
+            </ul>
+
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of mathematical thinking in science. It shows how:</p>
+
+            <ul>
+                <li><strong>Mathematics:</strong> Can reveal hidden patterns in complex systems</li>
+                <li><strong>Computational Methods:</strong> Can solve problems that are impossible to study experimentally</li>
+                <li><strong>Interdisciplinary Research:</strong> Combines physics, chemistry, and mathematics for breakthrough discoveries</li>
+                <li><strong>Universal Principles:</strong> Can be found even in the most complex systems</li>
+            </ul>
+
+            <p>For students interested in science, this work illustrates how modern research often involves combining multiple fields of knowledge to solve complex problems.</p>
+
             <div class="highlight-box">
-                <strong>🎯 Bottom Line:</strong> Physics-Informed Neural Networks represent a revolutionary approach to chemical process modeling that combines the pattern-recognition power of machine learning with the reliability of physical laws. By ensuring that AI predictions respect fundamental principles like conservation of mass, energy, and momentum, PINNs provide more accurate, interpretable, and trustworthy results than traditional neural networks. This technology is transforming how we design, optimize, and control chemical processes, leading to more efficient, safe, and sustainable operations.
+                <strong>🎯 Bottom Line:</strong> Scientists have discovered a universal mathematical relationship between molecular disorder (entropy) and molecular movement (diffusion) that works across all types of molecular systems. This breakthrough allows researchers to predict molecular behavior and could lead to advances in drug design, battery technology, and many other fields.
             </div>
 
             <h2>📚 Further Reading & Resources</h2>
-            <p>Want to explore more about this fascinating intersection of physics and artificial intelligence?</p>
+            <p>Want to dive deeper? Check out these related topics:</p>
             <ul>
-                <li>Physics-informed machine learning in engineering</li>
-                <li>Neural networks for partial differential equations</li>
-                <li>Digital twins in chemical process industries</li>
-                <li>Multi-scale modeling with AI</li>
+                <li>Statistical mechanics and thermodynamics</li>
+                <li>Coarse-grained molecular modeling</li>
+                <li>Molecular dynamics simulations</li>
+                <li>Entropy and disorder in molecular systems</li>
+                <li>Universal scaling laws in physics</li>
             </ul>
         </div>
     </main>
@@ -696,5 +523,62 @@ Result: AI that respects conservation laws!
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        function showEntropy() {
+            alert('🌪️ Excess Entropy: A measure of molecular disorder that quantifies how much more chaotic a system is compared to a perfectly ordered crystal. Higher entropy means more molecular chaos.');
+        }
+
+        function showDiffusion() {
+            alert('🏃 Molecular Diffusion: The rate at which molecules move through a system. It measures how fast molecules can spread out and mix with each other.');
+        }
+
+        function showScaling() {
+            alert('📐 Universal Scaling: A mathematical relationship that works across different systems, temperatures, and pressures. It allows scientists to predict one property from another.');
+        }
+
+        function updateEntropy(value) {
+            const entropy = (value / 10).toFixed(1);
+            document.getElementById('entropyValue').textContent = entropy;
+            
+            let result = '';
+            if (value < 20) {
+                result = 'At this entropy level, molecular diffusion is <strong>slow</strong> due to high molecular order and structure.';
+            } else if (value < 40) {
+                result = 'At this entropy level, molecular diffusion is <strong>moderate</strong> due to balanced disorder and structure.';
+            } else if (value < 80) {
+                result = 'At this entropy level, molecular diffusion is <strong>fast</strong> due to high molecular disorder and chaos.';
+            } else {
+                result = 'At this entropy level, molecular diffusion is <strong>very fast</strong> due to extreme molecular disorder!';
+            }
+            
+            document.getElementById('diffusionResult').innerHTML = '<p>' + result + '</p>';
+        }
+
+        function simulateDynamics() {
+            const molecule = document.getElementById('molecule');
+            const status = document.getElementById('dynamicsStatus');
+            
+            status.textContent = 'Observing entropy-driven molecular dynamics...';
+            molecule.style.background = 'linear-gradient(45deg, #0f766e, #fbbf24)';
+            molecule.style.transform = 'scale(1.3)';
+            
+            setTimeout(() => {
+                molecule.style.background = 'linear-gradient(45deg, #10b981, #3b82f6)';
+                molecule.style.transform = 'scale(1)';
+                status.textContent = 'Dynamics complete! Entropy-diffusion scaling relationship confirmed!';
+            }, 2000);
+        }
+
+        function showDetails(type) {
+            const details = {
+                'simple-liquid': 'Simple Liquid: Basic molecular systems that follow the entropy-diffusion scaling law with high accuracy.',
+                'polymer-melt': 'Polymer Melt: Complex chain-like molecules that also follow the universal scaling relationship.',
+                'protein-solution': 'Protein Solution: Biological molecules in water that demonstrate the same entropy-diffusion scaling.',
+                'complex-mixture': 'Complex Mixture: Multi-component systems that maintain the universal scaling relationship across different compositions.'
+            };
+            
+            alert(details[type] || 'Click on a bar to see detailed scaling information!');
+        }
+    </script>
 </body>
 </html>

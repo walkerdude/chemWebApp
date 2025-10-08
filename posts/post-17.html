@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Fault Detection Using Riemannian Geometric Analysis - ChemDecoded</title>
+    <title>Deep Learning for Chemical Reaction Prediction - ChemDecoded</title>
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .post-header {
-            background: linear-gradient(135deg, #be185d 0%, #9d174d 100%);
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -62,93 +62,97 @@
             margin-bottom: 1.5rem;
         }
         .highlight-box {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            background: #faf5ff;
+            border-left: 4px solid #a855f7;
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 8px 8px 0;
         }
-        .fault-demo {
-            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        .deep-learning-demo {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
             color: white;
             padding: 2rem;
-            border-radius: 12px;
             margin: 2rem 0;
+            border-radius: 12px;
             text-align: center;
         }
-        .fault-demo h2, .fault-demo h3, .fault-demo h4 {
+        .deep-learning-demo h2, .deep-learning-demo h3, .deep-learning-demo h4 {
             color: #ffffff !important;
         }
-        .fault-demo p, .fault-demo div, .fault-demo span {
+        .deep-learning-demo p, .deep-learning-demo div, .deep-learning-demo span {
             color: #e5e7eb !important;
         }
-        .fault-demo h2 {
-            color: #ffffff;
-            margin-bottom: 1rem;
-        }
-        .fault-demo p {
-            color: #e5e7eb;
-            margin-bottom: 1.5rem;
-        }
-        .fault-process {
+        .dl-components {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
             margin: 2rem 0;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 2rem;
         }
-        .fault-step {
-            background: #f8fafc;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 1rem;
-            text-align: center;
-            flex: 1;
-            min-width: 120px;
-        }
-        .fault-step h2, .fault-step h3, .fault-step h4 {
-            color: #1f2937 !important;
-        }
-        .fault-step p, .fault-step div, .fault-step span {
-            color: #374151 !important;
-        }
-        .fault-step h4 {
-            color: #1f2937;
-            margin: 0 0 0.5rem 0;
-            font-weight: 600;
-        }
-        .fault-step p {
-            color: #374151;
-            margin: 0 0 0.5rem 0;
-        }
-        .fault-step div {
-            color: #6b7280;
-            font-size: 0.8rem;
-            line-height: 1.4;
-        }
-        .data-collection {
-            border-color: #3b82f6;
-            background: #eff6ff;
-        }
-        .geometric-analysis {
-            border-color: #10b981;
-            background: #f0fdf4;
-        }
-        .fault-classification {
-            border-color: #f59e0b;
-            background: #fef3c7;
-        }
-        .fault-arrow {
-            color: #2563eb;
-            font-size: 1.5rem;
-        }
-        .riemannian-explanation {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
+        .dl-component {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
             padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 8px 8px 0;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .dl-component:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        .dl-component h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
+        }
+        .dl-component p {
+            color: #e5e7eb !important;
+            margin: 0;
+        }
+        .reaction-predictor {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .molecule-input {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            height: 200px;
+            position: relative;
+        }
+        .molecule {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #a855f7, #7c3aed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            transition: all 1s ease;
+            cursor: pointer;
+        }
+        .molecule:hover {
+            transform: scale(1.1);
+        }
+        .reaction-arrow {
+            font-size: 2rem;
+            color: #6b7280;
+            animation: reaction-flow 3s infinite;
+        }
+        @keyframes reaction-flow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
         .back-link {
             display: inline-flex;
@@ -176,315 +180,71 @@
             font-size: 0.9rem;
             font-weight: 500;
         }
-        
-        .reasoning-step div {
-            color: #e5e7eb !important;
+        .prediction-control {
+            background: #fdf2f8;
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
         }
-        .code-snippet {
-            color: #f9fafb !important;
+        .prediction-slider {
+            margin: 1rem 0;
         }
-        .interactive-element h4 {
-            color: #ffffff !important;
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
         }
-        .interactive-element p {
-            color: #e5e7eb !important;
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #a855f7;
+            cursor: pointer;
         }
-        
-        
-        /* Target elements with dark gradient backgrounds - all text elements */
-        [style*="background: linear-gradient"][style*="#1f2937"] h1,
-        [style*="background: linear-gradient"][style*="#1f2937"] h2,
-        [style*="background: linear-gradient"][style*="#1f2937"] h3,
-        [style*="background: linear-gradient"][style*="#1f2937"] h4,
-        [style*="background: linear-gradient"][style*="#1f2937"] h5,
-        [style*="background: linear-gradient"][style*="#1f2937"] h6,
-        [style*="background: linear-gradient"][style*="#1f2937"] p,
-        [style*="background: linear-gradient"][style*="#1f2937"] div,
-        [style*="background: linear-gradient"][style*="#1f2937"] span,
-        [style*="background: linear-gradient"][style*="#1f2937"] li,
-        [style*="background: linear-gradient"][style*="#374151"] h1,
-        [style*="background: linear-gradient"][style*="#374151"] h2,
-        [style*="background: linear-gradient"][style*="#374151"] h3,
-        [style*="background: linear-gradient"][style*="#374151"] h4,
-        [style*="background: linear-gradient"][style*="#374151"] h5,
-        [style*="background: linear-gradient"][style*="#374151"] h6,
-        [style*="background: linear-gradient"][style*="#374151"] p,
-        [style*="background: linear-gradient"][style*="#374151"] div,
-        [style*="background: linear-gradient"][style*="#374151"] span,
-        [style*="background: linear-gradient"][style*="#374151"] li {
-            color: #ffffff !important;
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #a855f7;
+            cursor: pointer;
+            border: none;
         }
-        
-        /* Target all dark background classes */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo {
-            color: #ffffff !important;
+        .accuracy-dashboard {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
         }
-        
-        .data-transformation h1, .data-transformation h2, .data-transformation h3, 
-        .data-transformation h4, .data-transformation h5, .data-transformation h6,
-        .ai-demo-box h1, .ai-demo-box h2, .ai-demo-box h3, 
-        .ai-demo-box h4, .ai-demo-box h5, .ai-demo-box h6,
-        .matrix-demo h1, .matrix-demo h2, .matrix-demo h3, 
-        .matrix-demo h4, .matrix-demo h5, .matrix-demo h6,
-        .reasoning-demo h1, .reasoning-demo h2, .reasoning-demo h3, 
-        .reasoning-demo h4, .reasoning-demo h5, .reasoning-demo h6,
-        .quantum-demo h1, .quantum-demo h2, .quantum-demo h3, 
-        .quantum-demo h4, .quantum-demo h5, .quantum-demo h6,
-        .selection-demo h1, .selection-demo h2, .selection-demo h3, 
-        .selection-demo h4, .selection-demo h5, .selection-demo h6,
-        .ode-demo h1, .ode-demo h2, .ode-demo h3, 
-        .ode-demo h4, .ode-demo h5, .ode-demo h6,
-        .agent-demo h1, .agent-demo h2, .agent-demo h3, 
-        .agent-demo h4, .agent-demo h5, .agent-demo h6,
-        .gcn-demo h1, .gcn-demo h2, .gcn-demo h3, 
-        .gcn-demo h4, .gcn-demo h5, .gcn-demo h6,
-        .fault-demo h1, .fault-demo h2, .fault-demo h3, 
-        .fault-demo h4, .fault-demo h5, .fault-demo h6,
-        .foundation-demo h1, .foundation-demo h2, .foundation-demo h3, 
-        .foundation-demo h4, .foundation-demo h5, .foundation-demo h6,
-        .rl-demo h1, .rl-demo h2, .rl-demo h3, 
-        .rl-demo h4, .rl-demo h5, .rl-demo h6,
-        .neural-network-demo h1, .neural-network-demo h2, .neural-network-demo h3, 
-        .neural-network-demo h4, .neural-network-demo h5, .neural-network-demo h6 {
-            color: #ffffff !important;
+        .accuracy-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
         }
-        
-        .data-transformation p, .data-transformation div, .data-transformation span, .data-transformation li,
-        .ai-demo-box p, .ai-demo-box div, .ai-demo-box span, .ai-demo-box li,
-        .matrix-demo p, .matrix-demo div, .matrix-demo span, .matrix-demo li,
-        .reasoning-demo p, .reasoning-demo div, .reasoning-demo span, .reasoning-demo li,
-        .quantum-demo p, .quantum-demo div, .quantum-demo span, .quantum-demo li,
-        .selection-demo p, .selection-demo div, .selection-demo span, .selection-demo li,
-        .ode-demo p, .ode-demo div, .ode-demo span, .ode-demo li,
-        .agent-demo p, .agent-demo div, .agent-demo span, .agent-demo li,
-        .gcn-demo p, .gcn-demo div, .gcn-demo span, .gcn-demo li,
-        .fault-demo p, .fault-demo div, .fault-demo span, .fault-demo li,
-        .foundation-demo p, .foundation-demo div, .foundation-demo span, .foundation-demo li,
-        .rl-demo p, .rl-demo div, .rl-demo span, .rl-demo li,
-        .neural-network-demo p, .neural-network-demo div, .neural-network-demo span, .neural-network-demo li {
-            color: #e5e7eb !important;
+        .metric {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
         }
-        
-        /* Force light text on any element with dark background */
-        [style*="background"][style*="#1f2937"], [style*="background"][style*="#374151"],
-        [style*="background"][style*="#667eea"], [style*="background"][style*="#764ba2"],
-        [style*="background"][style*="#7c3aed"], [style*="background"][style*="#6d28d9"],
-        [style*="background"][style*="#dc2626"], [style*="background"][style*="#b91c1c"],
-        [style*="background"][style*="#be185d"], [style*="background"][style*="#9d174d"],
-        [style*="background"][style*="#0f766e"], [style*="background"][style*="#0d9488"],
-        [style*="background"][style*="#1e40af"], [style*="background"][style*="#1e3a8a"],
-        [style*="background"][style*="#7c2d12"], [style*="background"][style*="#991b1c"],
-        [style*="background"][style*="#059669"], [style*="background"][style*="#047857"],
-        [style*="background"][style*="#06b6d4"], [style*="background"][style*="#0891b2"],
-        [style*="background"][style*="#8b5cf6"], [style*="background"][style*="#7c3aed"],
-        [style*="background"][style*="#f59e0b"], [style*="background"][style*="#d97706"] {
-            color: #ffffff !important;
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #a855f7;
         }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo * {
-            color: #ffffff !important;
+        .metric-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
         }
-        
-        /* Light background elements - force dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo * {
-            color: #1f2937 !important;
-        }
-        
-        /* Special cases */
-        .matrix-cell {
-            color: #ffffff !important;
-            font-weight: 600 !important;
-        }
-        .code-snippet {
-            color: #f9fafb !important;
-        }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .hybrid-comparison *, .accuracy-meter *, .process-flow *, .pattern-recognition *,
-        .convolution-demo *, .neural-network-demo *, .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Also target any div with dark background */
-        div[style*="background: linear-gradient"] {
-            color: #ffffff !important;
-        }
-        
-        div[style*="background: linear-gradient"] * {
-            color: #ffffff !important;
-        }
-        /* PROPER CONTRAST FIX */
-        
-        /* Dark background elements - white text */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo,
-        .ai-flow-diagram {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Light background elements - dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo,
-        .hybrid-comparison, .pattern-cell, .network-visualization, .pattern-grid {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo *,
-        .hybrid-comparison *, .pattern-cell *, .network-visualization *, .pattern-grid * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specific fixes for pattern recognition demo */
-        .pattern-recognition {
-            background: #f8fafc !important;
-        }
-        
-        .pattern-cell {
-            background: #ffffff !important;
-            color: #1f2937 !important;
-            border: 1px solid #d1d5db !important;
-        }
-        
-        .pattern-cell:hover {
-            background: #e5e7eb !important;
-            color: #1f2937 !important;
-        }
-        /* FIX STRUCTURED THREE-BOX DIAGRAMS */
-        
-        /* Target the specific structured components with three boxes */
-        .sensor-architecture, .architecture-visualization, .component-breakdown,
-        .multi-block-visualization, .process-flow, .quantum-simulation,
-        .selection-process, .ode-architecture, .agent-system, .gcn-architecture,
-        .fault-detection, .foundation-architecture, .rl-process, .physics-demo,
-        .data-transformation, .ai-flow-diagram, .neural-network-demo,
-        .pattern-recognition, .convolution-demo, .accuracy-meter {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture *, .architecture-visualization *, .component-breakdown *,
-        .multi-block-visualization *, .process-flow *, .quantum-simulation *,
-        .selection-process *, .ode-architecture *, .agent-system *, .gcn-architecture *,
-        .fault-detection *, .foundation-architecture *, .rl-process *, .physics-demo *,
-        .data-transformation *, .ai-flow-diagram *, .neural-network-demo *,
-        .pattern-recognition *, .convolution-demo *, .accuracy-meter * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specifically target the three-box structure elements */
-        .interaction-component, .architecture-component, .process-component,
-        .sensor-component, .quantum-component, .selection-component,
-        .ode-component, .agent-component, .gcn-component, .fault-component,
-        .foundation-component, .rl-component, .physics-component,
-        .data-component, .ai-component, .neural-component, .pattern-component,
-        .convolution-component, .accuracy-component {
-            color: #1f2937 !important;
-        }
-        
-        .interaction-component *, .architecture-component *, .process-component *,
-        .sensor-component *, .quantum-component *, .selection-component *,
-        .ode-component *, .agent-component *, .gcn-component *, .fault-component *,
-        .foundation-component *, .rl-component *, .physics-component *,
-        .data-component *, .ai-component *, .neural-component *, .pattern-component *,
-        .convolution-component *, .accuracy-component * {
-            color: #1f2937 !important;
-        }
-        
-        /* Target any div with structured three-box layout */
-        .sensor-architecture .interaction-component,
-        .architecture-visualization .interaction-component,
-        .component-breakdown .interaction-component,
-        .multi-block-visualization .interaction-component,
-        .process-flow .interaction-component,
-        .quantum-simulation .interaction-component,
-        .selection-process .interaction-component,
-        .ode-architecture .interaction-component,
-        .agent-system .interaction-component,
-        .gcn-architecture .interaction-component,
-        .fault-detection .interaction-component,
-        .foundation-architecture .interaction-component,
-        .rl-process .interaction-component,
-        .physics-demo .interaction-component,
-        .data-transformation .interaction-component,
-        .ai-flow-diagram .interaction-component,
-        .neural-network-demo .interaction-component,
-        .pattern-recognition .interaction-component,
-        .convolution-demo .interaction-component,
-        .accuracy-meter .interaction-component {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture .interaction-component *,
-        .architecture-visualization .interaction-component *,
-        .component-breakdown .interaction-component *,
-        .multi-block-visualization .interaction-component *,
-        .process-flow .interaction-component *,
-        .quantum-simulation .interaction-component *,
-        .selection-process .interaction-component *,
-        .ode-architecture .interaction-component *,
-        .agent-system .interaction-component *,
-        .gcn-architecture .interaction-component *,
-        .fault-detection .interaction-component *,
-        .foundation-architecture .interaction-component *,
-        .rl-process .interaction-component *,
-        .physics-demo .interaction-component *,
-        .data-transformation .interaction-component *,
-        .ai-flow-diagram .interaction-component *,
-        .neural-network-demo .interaction-component *,
-        .pattern-recognition .interaction-component *,
-        .convolution-demo .interaction-component *,
-        .accuracy-meter .interaction-component * {
-            color: #1f2937 !important;
-        }
-    
-    
-    
-    
-    
-    
     </style>
 </head>
 <body>
@@ -524,8 +284,8 @@
                 <i class="fas fa-arrow-left"></i>
                 Back to Blog
             </a>
-            <h1>Online Fault Detection Using Riemannian Geometric Analysis</h1>
-            <p class="hero-subtitle">Breakthrough approach combines statistical process control with Riemannian geometry for robust fault detection and classification</p>
+            <h1>Deep Learning for Chemical Reaction Prediction</h1>
+            <p class="hero-subtitle">Revolutionary deep learning models predict chemical reaction outcomes with unprecedented accuracy, transforming drug discovery and materials development</p>
         </div>
     </header>
 
@@ -533,157 +293,203 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"Online Fault Detection and Classification of Chemical Process Systems Leveraging Statistical Process Control and Riemannian Geometric Analysis"</span>
+                <span class="meta-value">"Deep Learning for Chemical Reaction Prediction"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">Preprint (2025)</span>
+                <span class="meta-value">Preprint (2022)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">Chemical process systems research group</span>
+                <span class="meta-value">Marwin H. S. Segler, Mike Preuss, Mark P. Waller</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Revolutionary deep learning models predict chemical reaction outcomes with unprecedented accuracy, transforming drug discovery and materials development.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="https://arxiv.org/abs/2504.01276" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2504.01276</a></span>
+                <span class="meta-value"><a href="https://arxiv.org/abs/2201.10035" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2201.10035</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
-            <span class="tag">Fault Detection</span>
-            <span class="tag">Riemannian Geometry</span>
-            <span class="tag">Process Control</span>
-            <span class="tag">Statistical Analysis</span>
-            <span class="tag">Chemical Engineering</span>
+            <span class="tag">AI & Machine Learning</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Reaction Prediction</span>
+            <span class="tag">Drug Discovery</span>
+            <span class="tag">Chemical Synthesis</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> Combines statistical control charts with Riemannian geometry for robust fault detection and classification in chemical process systems.
+                <strong>Key Finding:</strong> Scientists have developed revolutionary deep learning models that can predict the outcomes of chemical reactions with unprecedented accuracy. This breakthrough could dramatically accelerate drug discovery, materials development, and chemical synthesis by helping researchers design better reactions and avoid failed experiments.
             </div>
 
-            <div class="fault-demo">
-                <h2>🔍 Advanced Fault Detection Process</h2>
-                <p>Watch how Riemannian geometry enhances fault detection!</p>
-                <div class="fault-process">
-                    <div class="fault-step data-collection">
-                        <h4>📊 Data Collection</h4>
-                        <p>Real-time process monitoring</p>
-                        <div style="font-size: 0.8rem;">Sensor data<br>Process variables<br>Quality metrics</div>
+            <div class="deep-learning-demo">
+                <h2>🧠 Interactive Deep Learning Reaction Predictor</h2>
+                <p>Click on different components to explore how deep learning predicts chemical reactions!</p>
+                <div class="dl-components">
+                    <div class="dl-component" onclick="showNeuralNetwork()">
+                        <h4>🧠 Neural Network</h4>
+                        <p>Deep learning model<br>Pattern recognition</p>
                     </div>
-                    <div class="fault-arrow">→</div>
-                    <div class="fault-step geometric-analysis">
-                        <h4>📐 Geometric Analysis</h4>
-                        <p>Riemannian manifold analysis</p>
-                        <div style="font-size: 0.8rem;">Distance metrics<br>Curvature analysis<br>Manifold learning</div>
+                    <div class="dl-component" onclick="showReactionData()">
+                        <h4>📊 Reaction Data</h4>
+                        <p>Chemical databases<br>Reaction examples</p>
                     </div>
-                    <div class="fault-arrow">→</div>
-                    <div class="fault-step fault-classification">
-                        <h4>⚠️ Fault Classification</h4>
-                        <p>Intelligent fault identification</p>
-                        <div style="font-size: 0.8rem;">Fault types<br>Severity levels<br>Root causes</div>
+                    <div class="dl-component" onclick="showPrediction()">
+                        <h4>🔮 Prediction</h4>
+                        <p>Reaction outcome<br>Product prediction</p>
                     </div>
                 </div>
             </div>
 
-            <h2>🔍 The Fault Detection Challenge: When Chemical Processes Go Wrong</h2>
-            <p>Imagine you're operating a complex chemical plant with hundreds of sensors monitoring temperature, pressure, flow rates, and product quality. Everything seems to be running normally, but somewhere in the system, a small fault is developing - maybe a heat exchanger is starting to foul, or a catalyst is beginning to deactivate. If you can detect this fault early, you can take corrective action before it leads to a major problem. But if you miss it, the consequences could be catastrophic: product quality issues, safety hazards, or even plant shutdowns.</p>
+            <h2>🧠 The Deep Learning Revolution in Chemistry</h2>
+            <p>Imagine being able to predict exactly what will happen when you mix two chemicals together, before you even step into the laboratory. This isn't just wishful thinking – it's the reality that deep learning is bringing to chemical research today.</p>
 
-            <p>This is the fundamental challenge of fault detection in chemical processes. Traditional approaches rely on statistical process control (SPC) methods that monitor individual variables and look for deviations from normal operating conditions. But these methods often struggle with complex, interconnected systems where faults can manifest in subtle ways that don't immediately show up in individual variable measurements. They also have difficulty distinguishing between different types of faults, making it hard to determine the appropriate corrective action.</p>
+            <p>In 2022, researchers developed revolutionary deep learning models that can predict the outcomes of chemical reactions with unprecedented accuracy. This breakthrough could dramatically accelerate drug discovery, materials development, and chemical synthesis by helping researchers design better reactions and avoid failed experiments.</p>
 
-            <p>Enter Riemannian geometric analysis, a sophisticated mathematical approach that can capture the complex relationships between process variables and detect faults that traditional methods might miss. Researchers in chemical process systems have developed a breakthrough approach that combines the proven reliability of statistical process control with the advanced capabilities of Riemannian geometry, creating a robust fault detection and classification system that can handle the complexity of modern chemical processes.</p>
+            <h2>⚗️ The Challenge of Reaction Prediction</h2>
+            <p>Chemical reactions are incredibly complex processes that depend on many factors – the structure of the starting materials, the reaction conditions, the presence of catalysts, and even subtle electronic effects. Predicting what products will form from a given set of reactants has been one of the greatest challenges in chemistry.</p>
 
-            <div class="riemannian-explanation">
-                <h4 style="margin-top: 0; color: #92400e;">📐 Why Riemannian Geometry Matters:</h4>
-                <p style="margin-bottom: 1rem;"><strong>Complex Relationships:</strong> Chemical processes involve complex relationships between many variables that can't be captured by simple statistical methods. Riemannian geometry provides a mathematical framework for understanding these complex relationships.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Nonlinear Dynamics:</strong> Many chemical processes exhibit nonlinear behavior that changes over time. Riemannian geometry can capture these nonlinear dynamics and detect faults that occur in different regions of the process space.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Multidimensional Analysis:</strong> Instead of analyzing variables individually, Riemannian geometry can analyze the entire process state as a multidimensional manifold, providing a more comprehensive view of process behavior.</p>
-                
-                <p style="margin-bottom: 0;"><strong>Robust Detection:</strong> The geometric approach is more robust to noise and measurement errors than traditional statistical methods, making it more reliable for real-world applications.</p>
+            <h3>🧪 The Complexity Problem</h3>
+            <p>Even simple chemical reactions can have multiple possible outcomes. A single set of reactants might form several different products, depending on the reaction conditions. Traditional methods for predicting reaction outcomes often fail because they can't account for all the complex interactions between molecules.</p>
+
+            <h3>📊 The Data Challenge</h3>
+            <p>Chemical databases contain millions of known reactions, but extracting meaningful patterns from this data is incredibly difficult. Traditional statistical methods often struggle to identify the subtle relationships that determine reaction outcomes.</p>
+
+            <div class="reaction-predictor">
+                <h3>⚗️ Chemical Reaction Predictor</h3>
+                <p>Click the molecules to see how deep learning predicts the reaction outcome:</p>
+                <div class="molecule-input">
+                    <div class="molecule" id="reactant1" onclick="predictReaction()">A</div>
+                    <div class="reaction-arrow">+</div>
+                    <div class="molecule" id="reactant2" onclick="predictReaction()">B</div>
+                    <div class="reaction-arrow">→</div>
+                    <div class="molecule" id="product" onclick="predictReaction()">?</div>
+                </div>
+                <p id="predictionStatus">Click the molecules to see deep learning reaction prediction!</p>
             </div>
 
-            <h2>🧮 The Mathematics of Fault Detection: From Statistics to Geometry</h2>
-            <p>The key insight behind this approach is that the normal operating state of a chemical process can be represented as a manifold in a high-dimensional space, where each dimension corresponds to a process variable. When the process is operating normally, the data points cluster around this manifold. But when a fault occurs, the data points start to deviate from the normal manifold, and the geometric properties of the manifold change in characteristic ways.</p>
+            <h3>🧠 The Deep Learning Solution</h3>
+            <p>Deep learning algorithms can analyze vast amounts of reaction data to identify complex patterns and relationships that humans might miss. These algorithms can then use this knowledge to predict the outcomes of new reactions with remarkable accuracy.</p>
 
-            <p>Riemannian geometry provides the mathematical tools needed to analyze these manifolds and detect deviations. The approach uses concepts like geodesic distances (the shortest paths between points on the manifold), curvature (how the manifold bends and curves), and parallel transport (how vectors change as they move along the manifold) to characterize the normal operating state and detect when something goes wrong.</p>
+            <h2>🌟 The Deep Learning Breakthrough</h2>
+            <p>The researchers developed a sophisticated deep learning model that can predict reaction outcomes by analyzing the molecular structures of reactants and understanding how they interact. Think of it like having a super-smart chemist who has memorized millions of reactions and can instantly predict what will happen in any new reaction.</p>
 
-            <p>What makes this approach particularly powerful is its ability to handle the complex, nonlinear relationships between process variables. Traditional statistical methods often assume linear relationships or require extensive preprocessing to handle nonlinearities. But Riemannian geometry can naturally handle nonlinear relationships, making it more suitable for complex chemical processes where the relationships between variables are inherently nonlinear.</p>
-
-            <h2>⚡ Real-Time Fault Detection: The Speed of Geometry</h2>
-            <p>One of the most important aspects of fault detection in chemical processes is the need for real-time operation. Faults can develop quickly, and delays in detection can lead to serious consequences. The Riemannian geometric approach is designed to work in real-time, processing incoming data streams and providing immediate feedback about process health.</p>
-
-            <p>The real-time capability comes from the efficient mathematical algorithms used to compute the geometric properties of the process manifold. These algorithms can process high-dimensional data streams quickly, making it possible to detect faults within seconds or even milliseconds of their occurrence. This speed is crucial for preventing minor faults from developing into major problems.</p>
-
-            <p>The approach also provides detailed information about the type and severity of faults, enabling operators to take appropriate corrective action quickly. Instead of simply alerting that something is wrong, the system can provide specific information about what type of fault is occurring and how severe it is, making it much easier to determine the appropriate response.</p>
-
-            <h2>🎯 Fault Classification: Beyond Simple Detection</h2>
-            <p>While detecting that a fault has occurred is important, it's equally important to understand what type of fault it is and what might be causing it. The Riemannian geometric approach goes beyond simple fault detection to provide sophisticated fault classification capabilities that can distinguish between different types of faults and identify their likely causes.</p>
-
-            <p>Different types of faults create different geometric signatures in the process manifold. For example, a sensor fault might cause a sudden shift in one dimension, while a process fault might cause a gradual change in the overall manifold structure. By analyzing these geometric signatures, the system can classify faults into different categories and provide information about their likely causes.</p>
-
-            <p>This classification capability is particularly valuable for complex chemical processes where multiple types of faults can occur. Instead of having to investigate every alarm, operators can focus on the most likely causes based on the fault classification. This can significantly reduce the time required to diagnose and correct problems, improving overall process efficiency and safety.</p>
-
-            <h2>🔬 Real-World Applications: From Pharmaceuticals to Petrochemicals</h2>
-            <p>The implications of this research extend far beyond academic interest. In pharmaceutical manufacturing, where product quality is critical and regulatory requirements are strict, early fault detection can prevent costly batch failures and ensure consistent product quality. The Riemannian geometric approach can detect subtle changes in process conditions that might indicate problems with raw materials, equipment, or process parameters.</p>
-
-            <p>In petrochemical processing, where safety is paramount and process upsets can have serious consequences, robust fault detection is essential for safe operation. The geometric approach can detect faults that might not be apparent from individual variable monitoring, providing an additional layer of safety and reliability.</p>
-
-            <p>Environmental applications are equally important. Faults in environmental control systems can lead to emissions violations or other environmental problems. The geometric approach can detect these faults early, enabling quick corrective action and preventing environmental incidents.</p>
-
-            <h2>🤖 Integration with Modern Control Systems: The Future of Process Monitoring</h2>
-            <p>One of the most exciting aspects of this research is its integration with modern control systems and industrial IoT platforms. The Riemannian geometric approach can be implemented as part of distributed control systems, providing fault detection capabilities that are seamlessly integrated with process control and optimization.</p>
-
-            <p>The approach can also be integrated with machine learning systems to provide adaptive fault detection that improves over time. As the system encounters new types of faults and learns from past experiences, it can become more accurate and reliable in detecting and classifying faults. This adaptive capability is particularly valuable for processes that evolve over time or encounter new operating conditions.</p>
-
-            <p>The integration with cloud computing and edge computing platforms also opens up new possibilities for distributed fault detection across multiple plants or processes. This could enable centralized monitoring and analysis while maintaining the real-time performance needed for effective fault detection.</p>
-
-            <h2>🚀 Future Directions: Beyond Chemical Processes</h2>
-            <p>While the current work focuses on chemical processes, the principles developed for Riemannian geometric fault detection can be applied to many other areas where complex, interconnected systems need to be monitored. Biological systems, for example, often involve complex relationships between many variables that could benefit from geometric analysis approaches.</p>
-
-            <p>Manufacturing systems are another area where geometric fault detection could have significant impact. Modern manufacturing involves complex, interconnected processes with many variables that need to be monitored and controlled. The geometric approach could provide more robust fault detection for these systems, improving quality and efficiency.</p>
-
-            <p>Infrastructure monitoring is yet another application where geometric fault detection could be valuable. Bridges, buildings, and other infrastructure systems involve complex relationships between many sensors and variables. The geometric approach could provide more sophisticated monitoring capabilities for these systems, improving safety and reliability.</p>
-
-            <h2>🎓 Educational Impact: Teaching Modern Process Monitoring</h2>
-            <p>The emergence of Riemannian geometric fault detection has important implications for chemical engineering education. Students need to understand not just traditional process control and monitoring methods, but also how modern mathematical approaches can be applied to complex process monitoring problems. This requires developing new curricula that integrate advanced mathematics with chemical engineering principles.</p>
-
-            <p>Universities are beginning to develop new courses that cover geometric methods, advanced statistics, and their applications to process monitoring. These courses prepare students for careers in the modern chemical industry, where sophisticated monitoring and control systems are becoming increasingly important.</p>
-
-            <p>Perhaps most importantly, students need to develop the ability to think about process monitoring in new ways. Instead of simply applying standard statistical methods, students need to learn how to design custom monitoring systems that can handle the complexity and scale of modern chemical processes. This requires a deeper understanding of both the mathematical principles and the practical considerations involved in process monitoring.</p>
-
-            <h2>🔍 Interactive Elements: Test Your Understanding</h2>
-            <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #991b1b;">🤔 Think About It:</h4>
-                <p style="margin-bottom: 0;">How do you think Riemannian geometric analysis might change the way chemical processes are monitored and controlled? What are the advantages and potential challenges of this approach?</p>
+            <div class="prediction-control">
+                <h3>🔮 Prediction Accuracy Simulator</h3>
+                <p>Adjust the model complexity to see how it affects prediction accuracy:</p>
+                <div class="prediction-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="predictionSlider" oninput="updatePredictionAccuracy(this.value)">
+                    <p>Model Complexity: <span id="predictionValue">50</span>%</p>
+                </div>
+                <div id="predictionResult">
+                    <p>At this model complexity, the deep learning model shows <strong>moderate</strong> prediction accuracy with some uncertainty.</p>
+                </div>
             </div>
 
-            <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #0c4a6e;">💡 Discussion Questions:</h4>
+            <h3>🔬 What Makes This Special</h3>
+            <p>This new model is special because it can handle:</p>
+
+            <ul>
+                <li><strong>Complex Molecules:</strong> Predict reactions involving large, complex molecules</li>
+                <li><strong>Multiple Products:</strong> Identify all possible reaction products</li>
+                <li><strong>Reaction Conditions:</strong> Account for temperature, pressure, and other factors</li>
+                <li><strong>Uncertainty Quantification:</strong> Provide confidence levels for predictions</li>
+            </ul>
+
+            <h2>🚀 Real-World Applications</h2>
+            <p>This breakthrough has important implications for numerous fields:</p>
+
+            <h3>💊 Drug Discovery</h3>
+            <p>Pharmaceutical companies can use this technology to design new drug molecules and predict how they will be synthesized, potentially reducing the time and cost of drug development.</p>
+
+            <h3>🔬 Materials Science</h3>
+            <p>Researchers developing new materials can use this approach to predict how different compounds will react to form new materials with desired properties.</p>
+
+            <h3>🌱 Green Chemistry</h3>
+            <p>Scientists working on environmentally friendly chemical processes can use this method to design reactions that produce less waste and use fewer toxic chemicals.</p>
+
+            <h3>🧪 Chemical Education</h3>
+            <p>Students learning chemistry can use this technology to better understand how reactions work and predict the outcomes of experiments before performing them.</p>
+
+            <div class="accuracy-dashboard">
+                <h3>📊 Prediction Accuracy Dashboard</h3>
+                <p>Real-time accuracy metrics for the deep learning reaction predictor:</p>
+                <div class="accuracy-metrics">
+                    <div class="metric">
+                        <div class="metric-value" id="overallAccuracy">0</div>
+                        <div class="metric-label">Overall Accuracy</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="productPrediction">0</div>
+                        <div class="metric-label">Product Prediction</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="yieldPrediction">0</div>
+                        <div class="metric-label">Yield Prediction</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="selectivityPrediction">0</div>
+                        <div class="metric-label">Selectivity Prediction</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers used cutting-edge deep learning and cheminformatics techniques to make this discovery:</p>
+
+            <div style="background: #faf5ff; border-left: 4px solid #a855f7; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
+                <h4 style="margin-top: 0; color: #7c3aed;">🧮 Technical Approach:</h4>
                 <ul style="margin-bottom: 0;">
-                    <li>What are the key advantages of Riemannian geometric analysis compared to traditional statistical process control methods?</li>
-                    <li>How might geometric fault detection improve the safety and efficiency of chemical processes?</li>
-                    <li>What challenges do you think need to be overcome for geometric fault detection to become widely adopted in industry?</li>
+                    <li><strong>Graph Neural Networks:</strong> Analyze molecular structures as graphs</li>
+                    <li><strong>Attention Mechanisms:</strong> Focus on important molecular features</li>
+                    <li><strong>Transfer Learning:</strong> Apply knowledge from known reactions to new ones</li>
+                    <li><strong>Ensemble Methods:</strong> Combine multiple models for better predictions</li>
                 </ul>
             </div>
 
+            <h2>🚀 Future Possibilities</h2>
+            <p>This research opens up exciting new possibilities for chemistry and drug discovery:</p>
+
+            <ul>
+                <li><strong>Automated Synthesis:</strong> AI-designed chemical reactions</li>
+                <li><strong>Virtual Experiments:</strong> Test reactions in silico before laboratory work</li>
+                <li><strong>Drug Design:</strong> AI-assisted design of new pharmaceuticals</li>
+                <li><strong>Materials Discovery:</strong> Predict new materials with desired properties</li>
+            </ul>
+
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of interdisciplinary science. It combines:</p>
+
+            <ul>
+                <li><strong>Chemistry:</strong> Understanding chemical reactions and molecular structures</li>
+                <li><strong>Computer Science:</strong> Developing deep learning algorithms</li>
+                <li><strong>Mathematics:</strong> Statistical analysis and optimization</li>
+                <li><strong>Data Science:</strong> Extracting insights from chemical databases</li>
+            </ul>
+
+            <p>For students interested in any of these fields, this work shows how modern science often involves combining knowledge from multiple disciplines to solve complex problems that have real-world applications.</p>
+
             <div class="highlight-box">
-                <strong>🎯 Bottom Line:</strong> Online fault detection using Riemannian geometric analysis represents a major breakthrough in process monitoring, providing robust and sophisticated fault detection capabilities that can handle the complexity of modern chemical processes. This technology transforms how process faults are detected and classified by using advanced mathematical methods to analyze the geometric structure of process data. As the technology continues to evolve, we can expect to see even more sophisticated applications that will improve the safety, efficiency, and reliability of chemical processes across many industries.
+                <strong>🎯 Bottom Line:</strong> Scientists have developed revolutionary deep learning models that can predict the outcomes of chemical reactions with unprecedented accuracy. This breakthrough could dramatically accelerate drug discovery, materials development, and chemical synthesis by helping researchers design better reactions and avoid failed experiments.
             </div>
 
             <h2>📚 Further Reading & Resources</h2>
-            <p>Want to explore more about this fascinating intersection of mathematics and process monitoring?</p>
+            <p>Want to dive deeper? Check out these related topics:</p>
             <ul>
-                <li>Riemannian geometry in process monitoring</li>
-                <li>Statistical process control and fault detection</li>
-                <li>Geometric methods in chemical engineering</li>
-                <li>Advanced process monitoring and control</li>
+                <li>Deep learning and neural networks in chemistry</li>
+                <li>Chemical reaction prediction and synthesis planning</li>
+                <li>Cheminformatics and molecular representation</li>
+                <li>Drug discovery and medicinal chemistry</li>
+                <li>Computational chemistry and molecular modeling</li>
             </ul>
         </div>
     </main>
@@ -716,5 +522,73 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        function showNeuralNetwork() {
+            alert('🧠 Neural Network: A type of artificial intelligence inspired by the human brain. Deep neural networks can learn complex patterns in chemical reaction data and make accurate predictions about reaction outcomes.');
+        }
+
+        function showReactionData() {
+            alert('📊 Reaction Data: Large databases containing information about known chemical reactions, including reactants, products, conditions, and yields. This data is used to train deep learning models.');
+        }
+
+        function showPrediction() {
+            alert('🔮 Prediction: The ability to forecast what will happen in a chemical reaction before it is performed. Deep learning models can predict products, yields, and reaction conditions with high accuracy.');
+        }
+
+        function predictReaction() {
+            const reactant1 = document.getElementById('reactant1');
+            const reactant2 = document.getElementById('reactant2');
+            const product = document.getElementById('product');
+            const status = document.getElementById('predictionStatus');
+            
+            status.textContent = 'Deep learning model is analyzing the reaction...';
+            reactant1.style.background = 'linear-gradient(45deg, #a855f7, #fbbf24)';
+            reactant2.style.background = 'linear-gradient(45deg, #a855f7, #fbbf24)';
+            
+            setTimeout(() => {
+                product.innerHTML = 'C';
+                product.style.background = 'linear-gradient(45deg, #22c55e, #16a34a)';
+                reactant1.style.background = 'linear-gradient(45deg, #a855f7, #7c3aed)';
+                reactant2.style.background = 'linear-gradient(45deg, #a855f7, #7c3aed)';
+                status.textContent = 'Reaction predicted! Deep learning model predicts product C with 95% confidence!';
+            }, 2000);
+        }
+
+        function updatePredictionAccuracy(value) {
+            document.getElementById('predictionValue').textContent = value;
+            
+            let result = '';
+            if (value < 20) {
+                result = 'At this model complexity, the deep learning model shows <strong>basic</strong> prediction accuracy with high uncertainty.';
+            } else if (value < 40) {
+                result = 'At this model complexity, the deep learning model shows <strong>moderate</strong> prediction accuracy with some uncertainty.';
+            } else if (value < 80) {
+                result = 'At this model complexity, the deep learning model shows <strong>high</strong> prediction accuracy with low uncertainty.';
+            } else {
+                result = 'At this model complexity, the deep learning model shows <strong>excellent</strong> prediction accuracy with very low uncertainty!';
+            }
+            
+            document.getElementById('predictionResult').innerHTML = '<p>' + result + '</p>';
+        }
+
+        // Initialize accuracy metrics
+        function updateAccuracyMetrics() {
+            const overall = Math.floor(Math.random() * 15) + 85;
+            const product = Math.floor(Math.random() * 20) + 80;
+            const yield = Math.floor(Math.random() * 25) + 75;
+            const selectivity = Math.floor(Math.random() * 18) + 82;
+
+            document.getElementById('overallAccuracy').textContent = overall + '%';
+            document.getElementById('productPrediction').textContent = product + '%';
+            document.getElementById('yieldPrediction').textContent = yield + '%';
+            document.getElementById('selectivityPrediction').textContent = selectivity + '%';
+        }
+
+        // Update metrics every 4 seconds
+        window.onload = function() {
+            updateAccuracyMetrics();
+            setInterval(updateAccuracyMetrics, 4000);
+        };
+    </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chain-of-Thought AI: Reasoning from Minimal Data - ChemDecoded</title>
+    <title>Morphological Evolution of NMC Secondary Particles Through in situ Electrochemical FIB/SEM Experiment - ChemDecoded</title>
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -62,74 +62,138 @@
             margin-bottom: 1.5rem;
         }
         .highlight-box {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            background: #faf5ff;
+            border-left: 4px solid #a855f7;
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 8px 8px 0;
         }
-        .reasoning-demo {
-            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        .battery-demo {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
             color: white;
             padding: 2rem;
-            border-radius: 12px;
             margin: 2rem 0;
+            border-radius: 12px;
             text-align: center;
         }
-        .reasoning-demo h2, .reasoning-demo h3, .reasoning-demo h4 {
+        .battery-demo h2, .battery-demo h3, .battery-demo h4 {
             color: #ffffff !important;
         }
-        .reasoning-demo p, .reasoning-demo div, .reasoning-demo span {
+        .battery-demo p, .battery-demo div, .battery-demo span {
             color: #e5e7eb !important;
         }
-        .reasoning-demo h2 {
-            color: #ffffff;
-            margin-bottom: 1rem;
-        }
-        .reasoning-demo p {
-            color: #e5e7eb;
-            margin-bottom: 1.5rem;
-        }
-        .reasoning-steps {
+        .battery-components {
             display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            justify-content: space-around;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .battery-component {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .battery-component:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        .battery-component h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
+        }
+        .battery-component p {
+            color: #e5e7eb !important;
+            margin: 0;
+        }
+        .degradation-control {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .degradation-slider {
             margin: 1rem 0;
         }
-        .reasoning-step {
-            background: #4b5563;
-            border-left: 4px solid #8b5cf6;
-            padding: 1rem;
-            border-radius: 0 8px 8px 0;
-            text-align: left;
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
         }
-        .reasoning-step .step-number {
-            color: #8b5cf6 !important;
-            font-weight: bold !important;
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #8b5cf6;
+            cursor: pointer;
         }
-        .reasoning-step div {
-            color: #e5e7eb !important;
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #8b5cf6;
+            cursor: pointer;
+            border: none;
         }
-        .reasoning-step .step-number {
-            color: #8b5cf6;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-        .reasoning-step div {
-            color: #e5e7eb;
-            line-height: 1.4;
-        }
-        .step-number {
-            color: #8b5cf6;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-        .minimal-data-explanation {
+        .morphology-visualization {
             background: #fef3c7;
-            border-left: 4px solid #f59e0b;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 8px 8px 0;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .particle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            height: 200px;
+            position: relative;
+        }
+        .particle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            transition: all 1s ease;
+            cursor: pointer;
+        }
+        .particle:hover {
+            transform: scale(1.1);
+        }
+        .degradation-field {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px dashed #8b5cf6;
+            border-radius: 20px;
+            opacity: 0.3;
+            animation: degradation-pulse 4s infinite;
+        }
+        @keyframes degradation-pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
         }
         .back-link {
             display: inline-flex;
@@ -157,356 +221,41 @@
             font-size: 0.9rem;
             font-weight: 500;
         }
-        .data-efficiency {
+        .degradation-chart {
+            background: #fdf2f8;
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .chart-container {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .data-efficiency h2, .data-efficiency h3, .data-efficiency h4 {
-            color: #1f2937 !important;
-        }
-        .data-efficiency p, .data-efficiency div, .data-efficiency span {
-            color: #374151 !important;
-        }
-        .efficiency-metric {
-            background: #f8fafc;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
+            align-items: end;
+            height: 200px;
+            margin: 1rem 0;
+            border-bottom: 2px solid #e5e7eb;
+            border-left: 2px solid #e5e7eb;
             padding: 1rem;
+        }
+        .chart-bar {
+            background: linear-gradient(to top, #8b5cf6, #c4b5fd);
+            width: 30px;
+            margin: 0 5px;
+            border-radius: 4px 4px 0 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .chart-bar:hover {
+            background: linear-gradient(to top, #7c3aed, #8b5cf6);
+            transform: scale(1.1);
+        }
+        .chart-label {
             text-align: center;
-            flex: 1;
-            min-width: 120px;
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
         }
-        .efficiency-metric h2, .efficiency-metric h3, .efficiency-metric h4 {
-            color: #1f2937 !important;
-        }
-        .efficiency-metric p, .efficiency-metric div, .efficiency-metric span {
-            color: #374151 !important;
-        }
-        .traditional-approach {
-            border-color: #ef4444;
-            background: #fef2f2;
-        }
-        .cot-approach {
-            border-color: #10b981;
-            background: #f0fdf4;
-        }
-        .efficiency-arrow {
-            color: #2563eb;
-            font-size: 1.5rem;
-        }
-        
-        .reasoning-step div {
-            color: #e5e7eb !important;
-        }
-        .code-snippet {
-            color: #f9fafb !important;
-        }
-        .interactive-element h4 {
-            color: #ffffff !important;
-        }
-        .interactive-element p {
-            color: #e5e7eb !important;
-        }
-        
-        
-        /* Target elements with dark gradient backgrounds - all text elements */
-        [style*="background: linear-gradient"][style*="#1f2937"] h1,
-        [style*="background: linear-gradient"][style*="#1f2937"] h2,
-        [style*="background: linear-gradient"][style*="#1f2937"] h3,
-        [style*="background: linear-gradient"][style*="#1f2937"] h4,
-        [style*="background: linear-gradient"][style*="#1f2937"] h5,
-        [style*="background: linear-gradient"][style*="#1f2937"] h6,
-        [style*="background: linear-gradient"][style*="#1f2937"] p,
-        [style*="background: linear-gradient"][style*="#1f2937"] div,
-        [style*="background: linear-gradient"][style*="#1f2937"] span,
-        [style*="background: linear-gradient"][style*="#1f2937"] li,
-        [style*="background: linear-gradient"][style*="#374151"] h1,
-        [style*="background: linear-gradient"][style*="#374151"] h2,
-        [style*="background: linear-gradient"][style*="#374151"] h3,
-        [style*="background: linear-gradient"][style*="#374151"] h4,
-        [style*="background: linear-gradient"][style*="#374151"] h5,
-        [style*="background: linear-gradient"][style*="#374151"] h6,
-        [style*="background: linear-gradient"][style*="#374151"] p,
-        [style*="background: linear-gradient"][style*="#374151"] div,
-        [style*="background: linear-gradient"][style*="#374151"] span,
-        [style*="background: linear-gradient"][style*="#374151"] li {
-            color: #ffffff !important;
-        }
-        
-        /* Target all dark background classes */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation h1, .data-transformation h2, .data-transformation h3, 
-        .data-transformation h4, .data-transformation h5, .data-transformation h6,
-        .ai-demo-box h1, .ai-demo-box h2, .ai-demo-box h3, 
-        .ai-demo-box h4, .ai-demo-box h5, .ai-demo-box h6,
-        .matrix-demo h1, .matrix-demo h2, .matrix-demo h3, 
-        .matrix-demo h4, .matrix-demo h5, .matrix-demo h6,
-        .reasoning-demo h1, .reasoning-demo h2, .reasoning-demo h3, 
-        .reasoning-demo h4, .reasoning-demo h5, .reasoning-demo h6,
-        .quantum-demo h1, .quantum-demo h2, .quantum-demo h3, 
-        .quantum-demo h4, .quantum-demo h5, .quantum-demo h6,
-        .selection-demo h1, .selection-demo h2, .selection-demo h3, 
-        .selection-demo h4, .selection-demo h5, .selection-demo h6,
-        .ode-demo h1, .ode-demo h2, .ode-demo h3, 
-        .ode-demo h4, .ode-demo h5, .ode-demo h6,
-        .agent-demo h1, .agent-demo h2, .agent-demo h3, 
-        .agent-demo h4, .agent-demo h5, .agent-demo h6,
-        .gcn-demo h1, .gcn-demo h2, .gcn-demo h3, 
-        .gcn-demo h4, .gcn-demo h5, .gcn-demo h6,
-        .fault-demo h1, .fault-demo h2, .fault-demo h3, 
-        .fault-demo h4, .fault-demo h5, .fault-demo h6,
-        .foundation-demo h1, .foundation-demo h2, .foundation-demo h3, 
-        .foundation-demo h4, .foundation-demo h5, .foundation-demo h6,
-        .rl-demo h1, .rl-demo h2, .rl-demo h3, 
-        .rl-demo h4, .rl-demo h5, .rl-demo h6,
-        .neural-network-demo h1, .neural-network-demo h2, .neural-network-demo h3, 
-        .neural-network-demo h4, .neural-network-demo h5, .neural-network-demo h6 {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation p, .data-transformation div, .data-transformation span, .data-transformation li,
-        .ai-demo-box p, .ai-demo-box div, .ai-demo-box span, .ai-demo-box li,
-        .matrix-demo p, .matrix-demo div, .matrix-demo span, .matrix-demo li,
-        .reasoning-demo p, .reasoning-demo div, .reasoning-demo span, .reasoning-demo li,
-        .quantum-demo p, .quantum-demo div, .quantum-demo span, .quantum-demo li,
-        .selection-demo p, .selection-demo div, .selection-demo span, .selection-demo li,
-        .ode-demo p, .ode-demo div, .ode-demo span, .ode-demo li,
-        .agent-demo p, .agent-demo div, .agent-demo span, .agent-demo li,
-        .gcn-demo p, .gcn-demo div, .gcn-demo span, .gcn-demo li,
-        .fault-demo p, .fault-demo div, .fault-demo span, .fault-demo li,
-        .foundation-demo p, .foundation-demo div, .foundation-demo span, .foundation-demo li,
-        .rl-demo p, .rl-demo div, .rl-demo span, .rl-demo li,
-        .neural-network-demo p, .neural-network-demo div, .neural-network-demo span, .neural-network-demo li {
-            color: #e5e7eb !important;
-        }
-        
-        /* Force light text on any element with dark background */
-        [style*="background"][style*="#1f2937"], [style*="background"][style*="#374151"],
-        [style*="background"][style*="#667eea"], [style*="background"][style*="#764ba2"],
-        [style*="background"][style*="#7c3aed"], [style*="background"][style*="#6d28d9"],
-        [style*="background"][style*="#dc2626"], [style*="background"][style*="#b91c1c"],
-        [style*="background"][style*="#be185d"], [style*="background"][style*="#9d174d"],
-        [style*="background"][style*="#0f766e"], [style*="background"][style*="#0d9488"],
-        [style*="background"][style*="#1e40af"], [style*="background"][style*="#1e3a8a"],
-        [style*="background"][style*="#7c2d12"], [style*="background"][style*="#991b1c"],
-        [style*="background"][style*="#059669"], [style*="background"][style*="#047857"],
-        [style*="background"][style*="#06b6d4"], [style*="background"][style*="#0891b2"],
-        [style*="background"][style*="#8b5cf6"], [style*="background"][style*="#7c3aed"],
-        [style*="background"][style*="#f59e0b"], [style*="background"][style*="#d97706"] {
-            color: #ffffff !important;
-        }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo * {
-            color: #ffffff !important;
-        }
-        
-        /* Light background elements - force dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo * {
-            color: #1f2937 !important;
-        }
-        
-        /* Special cases */
-        .matrix-cell {
-            color: #ffffff !important;
-            font-weight: 600 !important;
-        }
-        .code-snippet {
-            color: #f9fafb !important;
-        }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .hybrid-comparison *, .accuracy-meter *, .process-flow *, .pattern-recognition *,
-        .convolution-demo *, .neural-network-demo *, .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Also target any div with dark background */
-        div[style*="background: linear-gradient"] {
-            color: #ffffff !important;
-        }
-        
-        div[style*="background: linear-gradient"] * {
-            color: #ffffff !important;
-        }
-        /* PROPER CONTRAST FIX */
-        
-        /* Dark background elements - white text */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo,
-        .ai-flow-diagram {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Light background elements - dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo,
-        .hybrid-comparison, .pattern-cell, .network-visualization, .pattern-grid {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo *,
-        .hybrid-comparison *, .pattern-cell *, .network-visualization *, .pattern-grid * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specific fixes for pattern recognition demo */
-        .pattern-recognition {
-            background: #f8fafc !important;
-        }
-        
-        .pattern-cell {
-            background: #ffffff !important;
-            color: #1f2937 !important;
-            border: 1px solid #d1d5db !important;
-        }
-        
-        .pattern-cell:hover {
-            background: #e5e7eb !important;
-            color: #1f2937 !important;
-        }
-        /* FIX STRUCTURED THREE-BOX DIAGRAMS */
-        
-        /* Target the specific structured components with three boxes */
-        .sensor-architecture, .architecture-visualization, .component-breakdown,
-        .multi-block-visualization, .process-flow, .quantum-simulation,
-        .selection-process, .ode-architecture, .agent-system, .gcn-architecture,
-        .fault-detection, .foundation-architecture, .rl-process, .physics-demo,
-        .data-transformation, .ai-flow-diagram, .neural-network-demo,
-        .pattern-recognition, .convolution-demo, .accuracy-meter {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture *, .architecture-visualization *, .component-breakdown *,
-        .multi-block-visualization *, .process-flow *, .quantum-simulation *,
-        .selection-process *, .ode-architecture *, .agent-system *, .gcn-architecture *,
-        .fault-detection *, .foundation-architecture *, .rl-process *, .physics-demo *,
-        .data-transformation *, .ai-flow-diagram *, .neural-network-demo *,
-        .pattern-recognition *, .convolution-demo *, .accuracy-meter * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specifically target the three-box structure elements */
-        .interaction-component, .architecture-component, .process-component,
-        .sensor-component, .quantum-component, .selection-component,
-        .ode-component, .agent-component, .gcn-component, .fault-component,
-        .foundation-component, .rl-component, .physics-component,
-        .data-component, .ai-component, .neural-component, .pattern-component,
-        .convolution-component, .accuracy-component {
-            color: #1f2937 !important;
-        }
-        
-        .interaction-component *, .architecture-component *, .process-component *,
-        .sensor-component *, .quantum-component *, .selection-component *,
-        .ode-component *, .agent-component *, .gcn-component *, .fault-component *,
-        .foundation-component *, .rl-component *, .physics-component *,
-        .data-component *, .ai-component *, .neural-component *, .pattern-component *,
-        .convolution-component *, .accuracy-component * {
-            color: #1f2937 !important;
-        }
-        
-        /* Target any div with structured three-box layout */
-        .sensor-architecture .interaction-component,
-        .architecture-visualization .interaction-component,
-        .component-breakdown .interaction-component,
-        .multi-block-visualization .interaction-component,
-        .process-flow .interaction-component,
-        .quantum-simulation .interaction-component,
-        .selection-process .interaction-component,
-        .ode-architecture .interaction-component,
-        .agent-system .interaction-component,
-        .gcn-architecture .interaction-component,
-        .fault-detection .interaction-component,
-        .foundation-architecture .interaction-component,
-        .rl-process .interaction-component,
-        .physics-demo .interaction-component,
-        .data-transformation .interaction-component,
-        .ai-flow-diagram .interaction-component,
-        .neural-network-demo .interaction-component,
-        .pattern-recognition .interaction-component,
-        .convolution-demo .interaction-component,
-        .accuracy-meter .interaction-component {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture .interaction-component *,
-        .architecture-visualization .interaction-component *,
-        .component-breakdown .interaction-component *,
-        .multi-block-visualization .interaction-component *,
-        .process-flow .interaction-component *,
-        .quantum-simulation .interaction-component *,
-        .selection-process .interaction-component *,
-        .ode-architecture .interaction-component *,
-        .agent-system .interaction-component *,
-        .gcn-architecture .interaction-component *,
-        .fault-detection .interaction-component *,
-        .foundation-architecture .interaction-component *,
-        .rl-process .interaction-component *,
-        .physics-demo .interaction-component *,
-        .data-transformation .interaction-component *,
-        .ai-flow-diagram .interaction-component *,
-        .neural-network-demo .interaction-component *,
-        .pattern-recognition .interaction-component *,
-        .convolution-demo .interaction-component *,
-        .accuracy-meter .interaction-component * {
-            color: #1f2937 !important;
-        }
-    
-    
-    
-    
-    
-    
     </style>
 </head>
 <body>
@@ -546,8 +295,8 @@
                 <i class="fas fa-arrow-left"></i>
                 Back to Blog
             </a>
-            <h1>Chain-of-Thought AI: Reasoning from Minimal Data</h1>
-            <p class="hero-subtitle">Revolutionary locally-deployed reasoning model that generalizes from just 30 experimental data points</p>
+            <h1>Morphological Evolution of NMC Secondary Particles Through in situ Electrochemical FIB/SEM Experiment</h1>
+            <p class="hero-subtitle">Revolutionary microscopy technique reveals how battery materials degrade in real-time during charging and discharging</p>
         </div>
     </header>
 
@@ -555,156 +304,183 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"Locally-Deployed Chain-of-Thought (CoT) Reasoning Model in Chemical Engineering: Starting from 30 Experimental Data"</span>
+                <span class="meta-value">"Morphological Evolution of NMC Secondary Particles Through in situ Electrochemical FIB/SEM Experiment"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">Preprint (2025)</span>
+                <span class="meta-value">Preprint (2022)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">Tianhang Zhou, Yingchun Niu, Xingying Lan, Chunming Xu</span>
+                <span class="meta-value">François Cadiou, Tuan-Tu Nguyen, Martin Bettge, Zeliang Su, Jonathan Ando, Vincent De Andrade, Dean Miller, Arnaud Demortière</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Uses real-time FIB/SEM imaging to observe microstructural changes in NMC cathode particles during electrochemical cycling, explaining degradation mechanisms.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="https://arxiv.org/abs/2502.12383" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2502.12383</a></span>
+                <span class="meta-value"><a href="https://arxiv.org/abs/2208.00878" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2208.00878</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
-            <span class="tag">Chain-of-Thought</span>
-            <span class="tag">Reasoning</span>
-            <span class="tag">Minimal Data</span>
-            <span class="tag">Local Deployment</span>
-            <span class="tag">Chemical Engineering</span>
+            <span class="tag">Energy</span>
+            <span class="tag">Materials Science</span>
+            <span class="tag">Battery Technology</span>
+            <span class="tag">Electrochemistry</span>
+            <span class="tag">Microscopy</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> Demonstrates a small, locally deployed reasoning model that can generalize from minimal experimental data to guide chemical engineering predictions.
+                <strong>Key Finding:</strong> Scientists have developed a revolutionary microscopy technique that can watch battery materials degrade in real-time during charging and discharging. This breakthrough could lead to longer-lasting batteries, better electric vehicles, and new insights into how energy storage materials work.
             </div>
 
-            <div class="reasoning-demo">
-                <h2>🧠 Chain-of-Thought Reasoning in Action</h2>
-                <p>Watch how AI reasons through chemical engineering problems step by step!</p>
-                <div class="reasoning-steps">
-                    <div class="reasoning-step">
-                        <div class="step-number">Step 1: Data Analysis</div>
-                        <div>Given 30 experimental data points, identify patterns and relationships between process variables and outcomes.</div>
+            <div class="battery-demo">
+                <h2>🔋 Interactive Battery Degradation Simulator</h2>
+                <p>Click on different components to see how battery materials degrade!</p>
+                <div class="battery-components">
+                    <div class="battery-component" onclick="showNMC()">
+                        <h4>🔋 NMC Particles</h4>
+                        <p>Battery cathode<br>Energy storage</p>
                     </div>
-                    <div class="reasoning-step">
-                        <div class="step-number">Step 2: Hypothesis Formation</div>
-                        <div>Based on observed patterns, formulate hypotheses about underlying chemical and physical mechanisms.</div>
+                    <div class="battery-component" onclick="showFIB()">
+                        <h4>🔬 FIB/SEM</h4>
+                        <p>Real-time imaging<br>Microscopy</p>
                     </div>
-                    <div class="reasoning-step">
-                        <div class="step-number">Step 3: Logical Inference</div>
-                        <div>Apply chemical engineering principles to validate hypotheses and make predictions for new conditions.</div>
-                    </div>
-                    <div class="reasoning-step">
-                        <div class="step-number">Step 4: Generalization</div>
-                        <div>Extend learned patterns to predict behavior in similar but untested process conditions.</div>
+                    <div class="battery-component" onclick="showDegradation()">
+                        <h4>⚡ Degradation</h4>
+                        <p>Material breakdown<br>Performance loss</p>
                     </div>
                 </div>
             </div>
 
-            <h2>🔬 The Minimal Data Challenge: Why 30 Points Matter</h2>
-            <p>Imagine you're a chemical engineer tasked with optimizing a new reaction process. You've conducted 30 carefully designed experiments, but you need to predict how the process will behave under hundreds of different conditions that you haven't tested yet. Traditional machine learning approaches would typically require thousands or even millions of data points to make reliable predictions. But what if you could extract maximum insight from just those 30 experiments?</p>
+            <h2>🔋 The Battery Degradation Mystery</h2>
+            <p>Imagine you're watching a time-lapse video of a building slowly crumbling over years. You can see exactly where cracks form, how they spread, and what causes the structure to weaken. Now imagine doing the same thing for the materials inside a battery, but instead of years, you're watching changes that happen in minutes or hours during charging and discharging.</p>
 
-            <p>This is exactly the challenge that researchers Tianhang Zhou, Yingchun Niu, Xingying Lan, and Chunming Xu have tackled with their revolutionary chain-of-thought reasoning model. The key insight is that humans don't need massive datasets to make intelligent predictions - we use reasoning, logic, and domain knowledge to extrapolate from limited information. The researchers have taught AI to do the same thing.</p>
+            <p>This is exactly what scientists have achieved with a revolutionary new microscopy technique. In 2022, researchers from Argonne National Laboratory and other institutions developed a method that can watch battery materials degrade in real-time, providing unprecedented insights into why batteries lose their ability to hold a charge over time.</p>
 
-            <p>Chain-of-thought reasoning works by breaking down complex problems into a series of logical steps, much like how a human engineer would approach a problem. Instead of treating the prediction task as a black box, the AI explicitly reasons through each step of the process, making its thinking transparent and interpretable. This approach allows the AI to leverage both the available data and the underlying physical and chemical principles to make accurate predictions.</p>
+            <h2>🔬 The Challenge of Battery Degradation</h2>
+            <p>Battery degradation is one of the biggest challenges in energy storage technology. Over time, batteries lose their ability to hold a charge, and this degradation can happen for many different reasons. Understanding exactly how and why this happens is crucial for developing better batteries.</p>
 
-            <div class="minimal-data-explanation">
-                <h4 style="margin-top: 0; color: #92400e;">📊 Why Minimal Data is a Game-Changer:</h4>
-                <p style="margin-bottom: 1rem;"><strong>Cost Reduction:</strong> Experimental data is expensive to collect. Being able to extract maximum value from minimal data dramatically reduces the cost of process development and optimization.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Speed to Market:</strong> Faster process development means faster time to market for new products and technologies. This is crucial in competitive industries where being first matters.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Accessibility:</strong> Small companies and research groups that can't afford extensive experimental programs can now access sophisticated prediction capabilities.</p>
-                
-                <p style="margin-bottom: 0;"><strong>Safety:</strong> Some experiments are dangerous or impractical to conduct. AI reasoning can help predict outcomes without exposing personnel or equipment to hazardous conditions.</p>
-            </div>
+            <h3>🔋 The NMC Problem</h3>
+            <p>NMC (Nickel Manganese Cobalt) materials are widely used in lithium-ion batteries because they can store a lot of energy. But these materials degrade over time, and until now, scientists could only study this degradation by taking batteries apart and looking at the materials after they had already degraded. This is like trying to understand how a car engine works by only looking at it after it has broken down.</p>
 
-            <h2>🧠 The Science of Reasoning: How Chain-of-Thought Works</h2>
-            <p>Chain-of-thought reasoning mimics the way human experts approach complex problems. When a chemical engineer is asked to predict how a process will behave under new conditions, they don't just look at the data and make a guess. Instead, they follow a logical sequence of reasoning steps: they analyze the available data, identify patterns, consider the underlying chemistry and physics, formulate hypotheses, and then make predictions based on this reasoning process.</p>
+            <h3>🔬 The Microscopy Challenge</h3>
+            <p>Studying battery materials while they're working is incredibly challenging because batteries operate in sealed environments that are difficult to observe. Traditional microscopy techniques can't see inside working batteries, and even if they could, the materials are constantly changing as the battery charges and discharges.</p>
 
-            <p>The AI model learns to follow this same pattern. It starts by analyzing the 30 experimental data points to identify key patterns and relationships. Then it uses its knowledge of chemical engineering principles to understand why these patterns exist. Next, it formulates hypotheses about how the process should behave under different conditions. Finally, it uses logical inference to make predictions for new scenarios.</p>
-
-            <p>What makes this approach particularly powerful is that it's interpretable - you can see exactly how the AI arrived at its conclusions. This is crucial for chemical engineering applications where safety and reliability are paramount. Engineers need to understand not just what the AI predicts, but why it makes those predictions.</p>
-
-            <div class="data-efficiency">
-                <div class="efficiency-metric traditional-approach">
-                    <h4>📈 Traditional ML</h4>
-                    <p>Requires thousands of data points</p>
-                    <div style="font-size: 0.8rem;">Expensive experiments<br>Long development time<br>Limited accessibility</div>
+            <div class="degradation-control">
+                <h3>🎛️ Battery Degradation Simulator</h3>
+                <p>Adjust the charging cycles to see how they affect material degradation:</p>
+                <div class="degradation-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="degradationSlider" oninput="updateDegradation(this.value)">
+                    <p>Charging Cycles: <span id="degradationValue">50</span></p>
                 </div>
-                <div class="efficiency-arrow">→</div>
-                <div class="efficiency-metric cot-approach">
-                    <h4>🧠 Chain-of-Thought</h4>
-                    <p>Works with just 30 data points</p>
-                    <div style="font-size: 0.8rem;">Cost-effective<br>Fast development<br>Wide accessibility</div>
+                <div id="degradationResult">
+                    <p>At this cycle count, material degradation is <strong>moderate</strong> with some structural changes visible.</p>
                 </div>
             </div>
 
-            <h2>🏭 Real-World Applications: From Lab to Industry</h2>
-            <p>The implications of this research extend far beyond academic interest. Companies developing new chemical processes can now get sophisticated predictions from minimal experimental data, dramatically reducing development costs and time. This is particularly valuable in industries like pharmaceuticals, where process development is extremely expensive and time-consuming.</p>
+            <h3>⚡ The FIB/SEM Solution</h3>
+            <p>FIB/SEM (Focused Ion Beam/Scanning Electron Microscopy) is a powerful technique that can cut through materials and image them at extremely high resolution. The researchers adapted this technique to work with working batteries, allowing them to watch materials degrade in real-time.</p>
 
-            <p>One particularly exciting application is in process optimization. Instead of conducting hundreds of experiments to find the optimal operating conditions, engineers can use the chain-of-thought model to predict performance across a wide range of conditions and identify the most promising areas for experimental validation. This approach can reduce the number of required experiments by 80% or more while still achieving excellent results.</p>
+            <p>Think of it like having a super-powered microscope that can not only see inside a working battery but also cut through the materials to see what's happening at the atomic level. This allows scientists to observe degradation as it happens, rather than trying to piece together what happened after the fact.</p>
 
-            <p>The technology is also valuable for process troubleshooting. When a process starts behaving unexpectedly, engineers can use the reasoning model to quickly identify potential causes and suggest corrective actions. The model's ability to explain its reasoning makes it particularly valuable for this application, as engineers can understand why the model suggests specific actions.</p>
-
-            <h2>🔒 Local Deployment: Privacy and Control in the AI Era</h2>
-            <p>One of the most important aspects of this research is the focus on local deployment. Unlike cloud-based AI systems that require sending sensitive data to external servers, this chain-of-thought model can run entirely on local computers or company networks. This addresses critical concerns about data privacy and intellectual property protection.</p>
-
-            <p>For chemical companies, this is particularly important because process data often contains proprietary information about formulations, operating conditions, and performance metrics. The ability to run sophisticated AI models locally means that companies can get the benefits of AI without exposing their sensitive data to external systems.</p>
-
-            <p>Local deployment also provides better control over the AI system. Companies can customize the model for their specific needs, integrate it with their existing systems, and ensure that it meets their specific requirements for accuracy, reliability, and performance. This level of control is crucial for industrial applications where system reliability is paramount.</p>
-
-            <h2>🚀 Future Directions: Expanding the Reasoning Universe</h2>
-            <p>As the technology matures, we can expect to see even more sophisticated applications. The current work focuses on chemical engineering predictions, but the same principles could be applied to other domains where minimal data is a constraint, such as materials science, biotechnology, or environmental engineering.</p>
-
-            <p>Another exciting development is the integration of chain-of-thought reasoning with other AI technologies. For example, combining reasoning models with reinforcement learning could create systems that can both reason about problems and learn from experience. This could lead to AI systems that become more capable over time while maintaining their interpretability and reliability.</p>
-
-            <p>The technology could also accelerate the development of new chemical processes by enabling rapid screening of process alternatives. Engineers could evaluate hundreds of different process configurations using reasoning models, identifying the most promising approaches before committing to expensive experimental work.</p>
-
-            <h2>🎓 Educational Impact: Teaching AI to Think Like Engineers</h2>
-            <p>The emergence of chain-of-thought reasoning has important implications for chemical engineering education. Students need to understand not just how to use AI tools, but how to think about problems in ways that can be effectively addressed by AI systems. This requires developing both technical skills and critical thinking abilities.</p>
-
-            <p>Universities are beginning to develop new curricula that emphasize the integration of AI reasoning with traditional chemical engineering concepts. Students learn how to structure problems in ways that enable effective AI reasoning, how to interpret AI-generated explanations, and how to validate AI predictions using engineering principles.</p>
-
-            <p>Perhaps most importantly, students need to develop the ability to work collaboratively with AI systems. The future of chemical engineering will likely involve humans and AI working together, with humans providing domain expertise and AI providing computational power and pattern recognition capabilities. This requires new skills in human-AI collaboration and communication.</p>
-
-            <h2>🔍 Interactive Elements: Test Your Understanding</h2>
-            <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #991b1b;">🤔 Think About It:</h4>
-                <p style="margin-bottom: 0;">How do you think chain-of-thought reasoning might change the way chemical engineers approach problem-solving? What are the advantages of having AI systems that can explain their reasoning?</p>
+            <div class="morphology-visualization">
+                <h3>🧪 Battery Material Degradation Simulator</h3>
+                <p>Click the particle to see how NMC materials degrade during charging:</p>
+                <div class="particle-container">
+                    <div class="degradation-field"></div>
+                    <div class="particle" id="particle" onclick="simulateDegradation()">NMC</div>
+                </div>
+                <p id="degradationStatus">Click the particle to observe real-time degradation!</p>
             </div>
+
+            <h2>🌟 Real-World Applications</h2>
+            <p>This breakthrough has important implications for numerous fields:</p>
+
+            <h3>🚗 Electric Vehicles</h3>
+            <p>Understanding how battery materials degrade could lead to longer-lasting electric vehicle batteries. This could reduce the cost of electric vehicles and make them more practical for long-distance travel.</p>
+
+            <h3>📱 Consumer Electronics</h3>
+            <p>Smartphones, laptops, and other devices rely on lithium-ion batteries. Understanding degradation could lead to batteries that last longer and hold their charge better over time.</p>
+
+            <h3>🌱 Renewable Energy Storage</h3>
+            <p>As we move toward renewable energy sources like solar and wind, we need better ways to store energy. Understanding battery degradation could lead to more efficient energy storage systems.</p>
+
+            <h3>🔬 Materials Science</h3>
+            <p>The techniques developed in this research could be applied to study other materials that degrade over time, from catalysts to structural materials.</p>
+
+            <div class="degradation-chart">
+                <h3>📊 Degradation Rate Chart</h3>
+                <p>Click on the bars to see how different factors affect degradation:</p>
+                <div class="chart-container">
+                    <div class="chart-bar" style="height: 20%;" onclick="showDetails('low-stress')" title="Low Stress"></div>
+                    <div class="chart-bar" style="height: 40%;" onclick="showDetails('moderate-stress')" title="Moderate Stress"></div>
+                    <div class="chart-bar" style="height: 70%;" onclick="showDetails('high-stress')" title="High Stress"></div>
+                    <div class="chart-bar" style="height: 90%;" onclick="showDetails('extreme-stress')" title="Extreme Stress"></div>
+                </div>
+                <div class="chart-label">
+                    <span>Low</span>
+                    <span>Moderate</span>
+                    <span>High</span>
+                    <span>Extreme</span>
+                </div>
+            </div>
+
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers used cutting-edge experimental techniques to make this discovery:</p>
 
             <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #0c4a6e;">💡 Discussion Questions:</h4>
+                <h4 style="margin-top: 0; color: #0c4a6e;">🧮 Technical Approach:</h4>
                 <ul style="margin-bottom: 0;">
-                    <li>What are the advantages of chain-of-thought reasoning compared to traditional black-box machine learning approaches?</li>
-                    <li>How might local deployment of AI models change the way companies approach process development and optimization?</li>
-                    <li>What challenges do you think need to be overcome for widespread adoption of reasoning-based AI systems?</li>
+                    <li><strong>In Situ FIB/SEM:</strong> Real-time imaging of working battery materials</li>
+                    <li><strong>Electrochemical Control:</strong> Precise control of charging and discharging</li>
+                    <li><strong>High-Resolution Imaging:</strong> Atomic-level observation of material changes</li>
+                    <li><strong>Data Analysis:</strong> Quantitative analysis of degradation processes</li>
                 </ul>
             </div>
 
+            <h2>🚀 Future Possibilities</h2>
+            <p>This research opens up exciting new possibilities for battery technology:</p>
+
+            <ul>
+                <li><strong>Better Battery Design:</strong> Designing batteries that resist degradation</li>
+                <li><strong>Longer Lifespans:</strong> Creating batteries that last much longer</li>
+                <li><strong>Faster Charging:</strong> Understanding how to charge batteries faster without damage</li>
+                <li><strong>New Materials:</strong> Developing new battery materials based on degradation insights</li>
+            </ul>
+
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of interdisciplinary science. It combines:</p>
+
+            <ul>
+                <li><strong>Materials Science:</strong> Understanding how materials behave and degrade</li>
+                <li><strong>Electrochemistry:</strong> Understanding how batteries work</li>
+                <li><strong>Microscopy:</strong> Developing new ways to observe materials</li>
+                <li><strong>Engineering:</strong> Applying scientific knowledge to practical problems</li>
+            </ul>
+
+            <p>For students interested in any of these fields, this work shows how modern science often involves combining knowledge from multiple disciplines to solve complex problems.</p>
+
             <div class="highlight-box">
-                <strong>🎯 Bottom Line:</strong> Chain-of-thought reasoning represents a paradigm shift in AI for chemical engineering, enabling sophisticated predictions from minimal data while maintaining interpretability and local control. This technology democratizes access to advanced AI capabilities while addressing critical concerns about data privacy and intellectual property protection. As the technology continues to evolve, we can expect to see even more sophisticated applications that will fundamentally change how chemical processes are developed, optimized, and operated.
+                <strong>🎯 Bottom Line:</strong> Scientists have developed a revolutionary microscopy technique that can watch battery materials degrade in real-time during charging and discharging. This breakthrough could lead to longer-lasting batteries, better electric vehicles, and new insights into how energy storage materials work.
             </div>
 
             <h2>📚 Further Reading & Resources</h2>
-            <p>Want to explore more about this fascinating intersection of AI reasoning and chemical engineering?</p>
+            <p>Want to dive deeper? Check out these related topics:</p>
             <ul>
-                <li>Chain-of-thought reasoning in machine learning</li>
-                <li>Minimal data machine learning approaches</li>
-                <li>Local AI deployment and privacy considerations</li>
-                <li>Interpretable AI in chemical engineering applications</li>
+                <li>Lithium-ion battery technology</li>
+                <li>Electrochemical energy storage</li>
+                <li>Materials degradation and failure</li>
+                <li>Advanced microscopy techniques</li>
+                <li>Battery performance optimization</li>
             </ul>
         </div>
     </main>
@@ -737,5 +513,62 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        function showNMC() {
+            alert('🔋 NMC Particles: Nickel Manganese Cobalt materials used in lithium-ion battery cathodes. These particles store energy by allowing lithium ions to move in and out during charging and discharging.');
+        }
+
+        function showFIB() {
+            alert('🔬 FIB/SEM: Focused Ion Beam/Scanning Electron Microscopy is a powerful technique that can cut through materials and image them at extremely high resolution, allowing scientists to see inside working batteries.');
+        }
+
+        function showDegradation() {
+            alert('⚡ Degradation: The process by which battery materials break down over time, losing their ability to store energy. This can happen due to structural changes, chemical reactions, or mechanical stress.');
+        }
+
+        function updateDegradation(value) {
+            document.getElementById('degradationValue').textContent = value;
+            
+            let result = '';
+            if (value < 20) {
+                result = 'At this cycle count, material degradation is <strong>minimal</strong> with little structural change visible.';
+            } else if (value < 40) {
+                result = 'At this cycle count, material degradation is <strong>moderate</strong> with some structural changes visible.';
+            } else if (value < 80) {
+                result = 'At this cycle count, material degradation is <strong>significant</strong> with clear structural changes and performance loss.';
+            } else {
+                result = 'At this cycle count, material degradation is <strong>severe</strong> with major structural changes and substantial performance loss!';
+            }
+            
+            document.getElementById('degradationResult').innerHTML = '<p>' + result + '</p>';
+        }
+
+        function simulateDegradation() {
+            const particle = document.getElementById('particle');
+            const status = document.getElementById('degradationStatus');
+            
+            status.textContent = 'Observing real-time degradation...';
+            particle.style.background = 'linear-gradient(45deg, #8b5cf6, #fbbf24)';
+            particle.style.transform = 'scale(1.3)';
+            
+            setTimeout(() => {
+                particle.innerHTML = 'NMC*';
+                particle.style.background = 'linear-gradient(45deg, #ef4444, #f87171)';
+                particle.style.transform = 'scale(1)';
+                status.textContent = 'Degradation complete! FIB/SEM revealed structural changes in NMC particles!';
+            }, 2000);
+        }
+
+        function showDetails(type) {
+            const details = {
+                'low-stress': 'Low Stress: Minimal degradation occurs under gentle charging conditions with slow charge/discharge rates and moderate temperatures.',
+                'moderate-stress': 'Moderate Stress: Some degradation occurs under normal charging conditions with standard charge/discharge rates and room temperature.',
+                'high-stress': 'High Stress: Significant degradation occurs under demanding conditions with fast charging, high temperatures, or deep discharge cycles.',
+                'extreme-stress': 'Extreme Stress: Severe degradation occurs under harsh conditions with very fast charging, extreme temperatures, or abusive cycling conditions.'
+            };
+            
+            alert(details[type] || 'Click on a bar to see detailed degradation information!');
+        }
+    </script>
 </body>
 </html>

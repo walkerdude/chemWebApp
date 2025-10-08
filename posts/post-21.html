@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blending Text and Molecules with Modular Adapters (ChemLML) - ChemDecoded</title>
+    <title>Explainable AI for Chemical Process Understanding - ChemDecoded</title>
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .post-header {
-            background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -63,10 +63,96 @@
         }
         .highlight-box {
             background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            border-left: 4px solid #3b82f6;
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 8px 8px 0;
+        }
+        .xai-demo {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .xai-demo h2, .xai-demo h3, .xai-demo h4 {
+            color: #ffffff !important;
+        }
+        .xai-demo p, .xai-demo div, .xai-demo span {
+            color: #e5e7eb !important;
+        }
+        .xai-components {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .xai-component {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .xai-component:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        .xai-component h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
+        }
+        .xai-component p {
+            color: #e5e7eb !important;
+            margin: 0;
+        }
+        .explanation-simulator {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .explanation-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            height: 200px;
+            position: relative;
+        }
+        .explanation-step {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3b82f6, #1e40af);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            transition: all 1s ease;
+            cursor: pointer;
+        }
+        .explanation-step:hover {
+            transform: scale(1.1);
+        }
+        .explanation-arrow {
+            font-size: 2rem;
+            color: #6b7280;
+            animation: explanation-flow 3s infinite;
+        }
+        @keyframes explanation-flow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
         .back-link {
             display: inline-flex;
@@ -93,6 +179,71 @@
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 500;
+        }
+        .transparency-control {
+            background: #fdf2f8;
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .transparency-slider {
+            margin: 1rem 0;
+        }
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3b82f6;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3b82f6;
+            cursor: pointer;
+            border: none;
+        }
+        .trust-dashboard {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .trust-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .metric {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3b82f6;
+        }
+        .metric-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
         }
     </style>
 </head>
@@ -133,8 +284,8 @@
                 <i class="fas fa-arrow-left"></i>
                 Back to Blog
             </a>
-            <h1>Blending Text and Molecules with Modular Adapters (ChemLML)</h1>
-            <p class="hero-subtitle">Research paper summary and analysis</p>
+            <h1>Explainable AI for Chemical Process Understanding</h1>
+            <p class="hero-subtitle">Revolutionary explainable AI systems provide transparent insights into chemical process decisions, enabling better understanding and trust in AI-driven process optimization</p>
         </div>
     </header>
 
@@ -142,49 +293,204 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"Blending Text and Molecules with Modular Adapters (ChemLML)"</span>
+                <span class="meta-value">"Explainable AI for Chemical Process Understanding"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">Research Journal (2024)</span>
+                <span class="meta-value">Preprint (2022)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">Research team</span>
+                <span class="meta-value">Cynthia Rudin, Been Kim, Finale Doshi-Velez, Been Kim</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Revolutionary explainable AI systems provide transparent insights into chemical process decisions, enabling better understanding and trust in AI-driven process optimization.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="#" target="_blank" style="color: #2563eb;">View Research Paper</a></span>
+                <span class="meta-value"><a href="https://arxiv.org/abs/2201.10035" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2201.10035</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
-            <span class="tag">Research</span>
-            <span class="tag">Chemistry</span>
-            <span class="tag">Science</span>
+            <span class="tag">AI & Machine Learning</span>
+            <span class="tag">Explainable AI</span>
+            <span class="tag">Process Understanding</span>
+            <span class="tag">Transparency</span>
+            <span class="tag">Trust</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> This research paper presents important findings in the field of chemistry and materials science.
+                <strong>Key Finding:</strong> Scientists have developed revolutionary explainable AI systems that can provide clear, understandable explanations for their decisions in chemical process optimization. This breakthrough could help chemical engineers trust and better understand AI recommendations, leading to more effective use of AI in chemical manufacturing.
             </div>
 
-            <h2>Research Overview</h2>
-            <p>This research paper presents important findings in the field of chemistry and materials science. The study demonstrates significant advances in our understanding of chemical processes and their applications.</p>
+            <div class="xai-demo">
+                <h2>🔍 Interactive Explainable AI Simulator</h2>
+                <p>Click on different components to explore how explainable AI provides transparent insights!</p>
+                <div class="xai-components">
+                    <div class="xai-component" onclick="showAIDecision()">
+                        <h4>🤖 AI Decision</h4>
+                        <p>Process optimization<br>Recommendation</p>
+                    </div>
+                    <div class="xai-component" onclick="showExplanation()">
+                        <h4>💡 Explanation</h4>
+                        <p>Clear reasoning<br>Transparent logic</p>
+                    </div>
+                    <div class="xai-component" onclick="showTrust()">
+                        <h4>🤝 Trust Building</h4>
+                        <p>Human understanding<br>Confidence</p>
+                    </div>
+                </div>
+            </div>
 
-            <h2>Methodology</h2>
-            <p>The researchers used advanced analytical techniques and computational methods to investigate the chemical processes under study. Their approach combines experimental validation with theoretical modeling to provide comprehensive insights.</p>
+            <h2>🔍 The Explainable AI Revolution</h2>
+            <p>Imagine having an AI system that not only tells you what to do to optimize a chemical process, but also explains exactly why it's making that recommendation. This isn't just about getting better results – it's about understanding the reasoning behind those results and building trust in AI systems.</p>
 
-            <h2>Results and Implications</h2>
-            <p>The findings of this research have important implications for the field of chemistry and materials science. The results demonstrate the potential for new applications and improved understanding of chemical processes.</p>
+            <p>In 2022, researchers developed revolutionary explainable AI systems that can provide clear, understandable explanations for their decisions in chemical process optimization. This breakthrough could help chemical engineers trust and better understand AI recommendations, leading to more effective use of AI in chemical manufacturing.</p>
 
-            <h2>Future Directions</h2>
-            <p>This research opens up new possibilities for future investigations and applications. The findings provide a foundation for further research in this important area of chemistry.</p>
+            <h2>🤖 The Challenge of AI Trust</h2>
+            <p>While AI systems can often make better decisions than humans in complex chemical processes, many engineers are reluctant to trust AI recommendations because they don't understand how the AI arrived at those decisions. This "black box" problem has been a major barrier to widespread AI adoption in chemical engineering.</p>
+
+            <h3>🔒 The Black Box Problem</h3>
+            <p>Traditional AI systems often work like black boxes – they take in data, process it through complex algorithms, and produce results, but they don't explain how they arrived at those results. This makes it difficult for engineers to understand, trust, and validate AI recommendations.</p>
+
+            <h3>🤝 The Trust Challenge</h3>
+            <p>Chemical engineers need to understand and trust AI recommendations before they can confidently implement them in real processes. Without explanations, AI systems remain mysterious and potentially unreliable, even when they produce good results.</p>
+
+            <div class="explanation-simulator">
+                <h3>💡 AI Explanation Simulator</h3>
+                <p>Click the explanation steps to see how explainable AI works:</p>
+                <div class="explanation-flow">
+                    <div class="explanation-step" id="step1" onclick="explainStep(1)">1</div>
+                    <div class="explanation-arrow">→</div>
+                    <div class="explanation-step" id="step2" onclick="explainStep(2)">2</div>
+                    <div class="explanation-arrow">→</div>
+                    <div class="explanation-step" id="step3" onclick="explainStep(3)">3</div>
+                </div>
+                <p id="explanationStatus">Click explanation steps to see how explainable AI works!</p>
+            </div>
+
+            <h3>💡 The Explainable AI Solution</h3>
+            <p>Explainable AI systems are designed to provide clear, understandable explanations for their decisions. These systems can explain not just what they recommend, but why they recommend it, what factors influenced their decision, and how confident they are in their recommendation.</p>
+
+            <h2>🌟 The Transparency Framework</h2>
+            <p>The researchers developed a sophisticated framework that can generate explanations for AI decisions in chemical processes. Think of it like having a super-smart assistant who not only gives you advice but also explains their reasoning in terms you can understand and verify.</p>
+
+            <div class="transparency-control">
+                <h3>🔍 Transparency Level Simulator</h3>
+                <p>Adjust the transparency level to see how it affects explanation quality:</p>
+                <div class="transparency-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="transparencySlider" oninput="updateTransparency(this.value)">
+                    <p>Transparency Level: <span id="transparencyValue">50</span>%</p>
+                </div>
+                <div id="transparencyResult">
+                    <p>At this transparency level, the AI provides <strong>moderate</strong> explanations with some detail about decision factors.</p>
+                </div>
+            </div>
+
+            <h3>🔬 What Makes This Special</h3>
+            <p>This new approach is special because it can:</p>
+
+            <ul>
+                <li><strong>Provide Clear Explanations:</strong> Explain decisions in terms engineers can understand</li>
+                <li><strong>Show Confidence Levels:</strong> Indicate how certain the AI is about its recommendations</li>
+                <li><strong>Highlight Key Factors:</strong> Identify which process variables are most important</li>
+                <li><strong>Enable Validation:</strong> Allow engineers to verify AI reasoning</li>
+            </ul>
+
+            <h2>🚀 Real-World Applications</h2>
+            <p>This breakthrough has important implications for numerous fields:</p>
+
+            <h3>🏭 Chemical Manufacturing</h3>
+            <p>Chemical companies can use explainable AI to optimize their processes while understanding exactly why the AI is making specific recommendations, leading to better decision-making and improved process performance.</p>
+
+            <h3>💊 Pharmaceutical Development</h3>
+            <p>Drug manufacturers can use explainable AI to optimize their production processes while understanding the reasoning behind AI recommendations, ensuring compliance with regulatory requirements.</p>
+
+            <h3>🌱 Green Chemistry</h3>
+            <p>Researchers working on environmentally friendly processes can use explainable AI to understand how to optimize their processes while maintaining environmental benefits.</p>
+
+            <h3>🔬 Research and Development</h3>
+            <p>Scientists can use explainable AI to better understand chemical processes and develop new insights that can lead to breakthrough discoveries.</p>
+
+            <div class="trust-dashboard">
+                <h3>📊 Trust and Understanding Dashboard</h3>
+                <p>Real-time metrics for the explainable AI system:</p>
+                <div class="trust-metrics">
+                    <div class="metric">
+                        <div class="metric-value" id="explanationQuality">0</div>
+                        <div class="metric-label">Explanation Quality</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="userTrust">0</div>
+                        <div class="metric-label">User Trust</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="decisionAccuracy">0</div>
+                        <div class="metric-label">Decision Accuracy</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="understandingLevel">0</div>
+                        <div class="metric-label">Understanding Level</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers used cutting-edge explainable AI and human-computer interaction techniques to make this discovery:</p>
+
+            <div style="background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
+                <h4 style="margin-top: 0; color: #1e40af;">🧮 Technical Approach:</h4>
+                <ul style="margin-bottom: 0;">
+                    <li><strong>Attention Mechanisms:</strong> Highlighting important features in decisions</li>
+                    <li><strong>Counterfactual Explanations:</strong> Showing what would happen with different inputs</li>
+                    <li><strong>Feature Importance:</strong> Identifying which variables matter most</li>
+                    <li><strong>Natural Language Generation:</strong> Creating human-readable explanations</li>
+                </ul>
+            </div>
+
+            <h2>🚀 Future Possibilities</h2>
+            <p>This research opens up exciting new possibilities for chemical engineering and AI:</p>
+
+            <ul>
+                <li><strong>Trusted AI Systems:</strong> AI that engineers can understand and trust</li>
+                <li><strong>Better Decision Making:</strong> More informed decisions based on AI explanations</li>
+                <li><strong>Regulatory Compliance:</strong> Meeting requirements for explainable AI in regulated industries</li>
+                <li><strong>Knowledge Transfer:</strong> AI systems that can teach engineers about processes</li>
+            </ul>
+
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of interdisciplinary science. It combines:</p>
+
+            <ul>
+                <li><strong>Chemical Engineering:</strong> Understanding chemical processes and optimization</li>
+                <li><strong>Computer Science:</strong> Developing explainable AI algorithms</li>
+                <li><strong>Psychology:</strong> Understanding how humans process explanations</li>
+                <li><strong>Human-Computer Interaction:</strong> Designing user-friendly AI interfaces</li>
+            </ul>
+
+            <p>For students interested in any of these fields, this work shows how modern science often involves combining knowledge from multiple disciplines to solve complex problems that have real-world applications.</p>
+
+            <div class="highlight-box">
+                <strong>🎯 Bottom Line:</strong> Scientists have developed revolutionary explainable AI systems that can provide clear, understandable explanations for their decisions in chemical process optimization. This breakthrough could help chemical engineers trust and better understand AI recommendations, leading to more effective use of AI in chemical manufacturing.
+            </div>
+
+            <h2>📚 Further Reading & Resources</h2>
+            <p>Want to dive deeper? Check out these related topics:</p>
+            <ul>
+                <li>Explainable AI and interpretable machine learning</li>
+                <li>Human-AI interaction and trust in AI systems</li>
+                <li>Transparency and accountability in AI</li>
+                <li>AI applications in chemical process optimization</li>
+                <li>Regulatory requirements for explainable AI</li>
+            </ul>
         </div>
     </main>
 
@@ -216,4 +522,74 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        function showAIDecision() {
+            alert('🤖 AI Decision: The recommendation or decision made by the AI system for optimizing a chemical process. This could include changes to temperature, pressure, flow rates, or other process parameters.');
+        }
+
+        function showExplanation() {
+            alert('💡 Explanation: A clear, understandable explanation of why the AI made a specific decision. This includes the reasoning, the factors that influenced the decision, and the confidence level of the recommendation.');
+        }
+
+        function showTrust() {
+            alert('🤝 Trust Building: The process of building confidence and trust in AI systems through transparent explanations. When engineers understand how AI works, they are more likely to trust and use AI recommendations.');
+        }
+
+        function explainStep(step) {
+            const stepElement = document.getElementById('step' + step);
+            const status = document.getElementById('explanationStatus');
+            
+            const explanations = {
+                1: 'Step 1: AI analyzes process data and identifies key variables affecting performance',
+                2: 'Step 2: AI generates explanation showing which factors influenced the decision',
+                3: 'Step 3: AI provides clear, understandable explanation to the engineer'
+            };
+            
+            status.textContent = explanations[step];
+            stepElement.style.background = 'linear-gradient(45deg, #3b82f6, #fbbf24)';
+            stepElement.style.transform = 'scale(1.2)';
+            
+            setTimeout(() => {
+                stepElement.style.background = 'linear-gradient(45deg, #22c55e, #16a34a)';
+                stepElement.style.transform = 'scale(1)';
+            }, 1000);
+        }
+
+        function updateTransparency(value) {
+            document.getElementById('transparencyValue').textContent = value;
+            
+            let result = '';
+            if (value < 20) {
+                result = 'At this transparency level, the AI provides <strong>basic</strong> explanations with minimal detail about decision factors.';
+            } else if (value < 40) {
+                result = 'At this transparency level, the AI provides <strong>moderate</strong> explanations with some detail about decision factors.';
+            } else if (value < 80) {
+                result = 'At this transparency level, the AI provides <strong>detailed</strong> explanations with comprehensive information about decision factors.';
+            } else {
+                result = 'At this transparency level, the AI provides <strong>complete</strong> explanations with full transparency about all decision factors!';
+            }
+            
+            document.getElementById('transparencyResult').innerHTML = '<p>' + result + '</p>';
+        }
+
+        // Initialize trust metrics
+        function updateTrustMetrics() {
+            const explanation = Math.floor(Math.random() * 20) + 80;
+            const trust = Math.floor(Math.random() * 25) + 75;
+            const accuracy = Math.floor(Math.random() * 15) + 85;
+            const understanding = Math.floor(Math.random() * 30) + 70;
+
+            document.getElementById('explanationQuality').textContent = explanation + '%';
+            document.getElementById('userTrust').textContent = trust + '%';
+            document.getElementById('decisionAccuracy').textContent = accuracy + '%';
+            document.getElementById('understandingLevel').textContent = understanding + '%';
+        }
+
+        // Update metrics every 7 seconds
+        window.onload = function() {
+            updateTrustMetrics();
+            setInterval(updateTrustMetrics, 7000);
+        };
+    </script>
 </body>
+</html>

@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Machine Learning Predicts Thermodynamic Activity Coefficients - ChemDecoded</title>
+    <title>Predicting the FCI Energy of Large Systems to Chemical Accuracy - ChemDecoded</title>
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .post-header {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -62,78 +62,138 @@
             margin-bottom: 1.5rem;
         }
         .highlight-box {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            background: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 8px 8px 0;
         }
-        .matrix-demo {
-            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        .fci-demo {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
             color: white;
             padding: 2rem;
-            border-radius: 12px;
             margin: 2rem 0;
+            border-radius: 12px;
             text-align: center;
         }
-        .matrix-demo h2, .matrix-demo h3, .matrix-demo h4 {
+        .fci-demo h2, .fci-demo h3, .fci-demo h4 {
             color: #ffffff !important;
         }
-        .matrix-demo p, .matrix-demo div, .matrix-demo span {
+        .fci-demo p, .fci-demo div, .fci-demo span {
             color: #e5e7eb !important;
         }
-        .matrix-demo h2 {
-            color: #ffffff;
-            margin-bottom: 1rem;
+        .fci-components {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
         }
-        .matrix-demo p {
-            color: #e5e7eb;
-            margin-bottom: 1.5rem;
-        }
-        .matrix-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            max-width: 300px;
-            margin: 1rem auto;
-        }
-        .matrix-cell {
-            background: #4b5563;
-            border: 1px solid #6b7280;
-            padding: 8px;
-            text-align: center;
-            font-size: 0.8rem;
-            border-radius: 4px;
-        }
-        .matrix-cell {
-            color: #ffffff !important;
-            font-weight: 600 !important;
-        }
-        .matrix-cell {
-            color: #ffffff;
-            font-weight: 500;
-        }
-        .matrix-cell {
-            color: #ffffff !important;
-            font-weight: 600 !important;
-        }
-        .matrix-cell.known {
-            background: #10b981;
-        }
-        .matrix-cell.predicted {
-            background: #f59e0b;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        .thermodynamic-explanation {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
+        .fci-component {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
             padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 8px 8px 0;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .fci-component:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        .fci-component h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
+        }
+        .fci-component p {
+            color: #e5e7eb !important;
+            margin: 0;
+        }
+        .accuracy-control {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .accuracy-slider {
+            margin: 1rem 0;
+        }
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #06b6d4;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #06b6d4;
+            cursor: pointer;
+            border: none;
+        }
+        .energy-visualization {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .molecule-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            height: 200px;
+            position: relative;
+        }
+        .molecule {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            transition: all 1s ease;
+            cursor: pointer;
+        }
+        .molecule:hover {
+            transform: scale(1.1);
+        }
+        .fci-field {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px dashed #06b6d4;
+            border-radius: 20px;
+            opacity: 0.3;
+            animation: fci-pulse 3s infinite;
+        }
+        @keyframes fci-pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
         }
         .back-link {
             display: inline-flex;
@@ -145,7 +205,7 @@
             font-weight: 500;
         }
         .back-link:hover {
-            color: #e9d5ff;
+            color: #a7f3d0;
         }
         .tags {
             display: flex;
@@ -161,360 +221,41 @@
             font-size: 0.9rem;
             font-weight: 500;
         }
-        .prediction-flow {
+        .accuracy-chart {
+            background: #fdf2f8;
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .chart-container {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .prediction-flow h2, .prediction-flow h3, .prediction-flow h4 {
-            color: #1f2937 !important;
-        }
-        .prediction-flow p, .prediction-flow div, .prediction-flow span {
-            color: #374151 !important;
-        }
-        .flow-step {
-            background: #f8fafc;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
+            align-items: end;
+            height: 200px;
+            margin: 1rem 0;
+            border-bottom: 2px solid #e5e7eb;
+            border-left: 2px solid #e5e7eb;
             padding: 1rem;
+        }
+        .chart-bar {
+            background: linear-gradient(to top, #06b6d4, #67e8f9);
+            width: 30px;
+            margin: 0 5px;
+            border-radius: 4px 4px 0 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .chart-bar:hover {
+            background: linear-gradient(to top, #0891b2, #06b6d4);
+            transform: scale(1.1);
+        }
+        .chart-label {
             text-align: center;
-            flex: 1;
-            min-width: 120px;
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
         }
-        .flow-step h2, .flow-step h3, .flow-step h4 {
-            color: #1f2937 !important;
-        }
-        .flow-step p, .flow-step div, .flow-step span {
-            color: #374151 !important;
-        }
-        .data-step {
-            border-color: #3b82f6;
-            background: #eff6ff;
-        }
-        .ml-step {
-            border-color: #10b981;
-            background: #f0fdf4;
-        }
-        .prediction-step {
-            border-color: #f59e0b;
-            background: #fef3c7;
-        }
-        .flow-arrow {
-            color: #2563eb;
-            font-size: 1.5rem;
-        }
-        
-        .reasoning-step div {
-            color: #e5e7eb !important;
-        }
-        .code-snippet {
-            color: #f9fafb !important;
-        }
-        .interactive-element h4 {
-            color: #ffffff !important;
-        }
-        .interactive-element p {
-            color: #e5e7eb !important;
-        }
-        
-        
-        /* Target elements with dark gradient backgrounds - all text elements */
-        [style*="background: linear-gradient"][style*="#1f2937"] h1,
-        [style*="background: linear-gradient"][style*="#1f2937"] h2,
-        [style*="background: linear-gradient"][style*="#1f2937"] h3,
-        [style*="background: linear-gradient"][style*="#1f2937"] h4,
-        [style*="background: linear-gradient"][style*="#1f2937"] h5,
-        [style*="background: linear-gradient"][style*="#1f2937"] h6,
-        [style*="background: linear-gradient"][style*="#1f2937"] p,
-        [style*="background: linear-gradient"][style*="#1f2937"] div,
-        [style*="background: linear-gradient"][style*="#1f2937"] span,
-        [style*="background: linear-gradient"][style*="#1f2937"] li,
-        [style*="background: linear-gradient"][style*="#374151"] h1,
-        [style*="background: linear-gradient"][style*="#374151"] h2,
-        [style*="background: linear-gradient"][style*="#374151"] h3,
-        [style*="background: linear-gradient"][style*="#374151"] h4,
-        [style*="background: linear-gradient"][style*="#374151"] h5,
-        [style*="background: linear-gradient"][style*="#374151"] h6,
-        [style*="background: linear-gradient"][style*="#374151"] p,
-        [style*="background: linear-gradient"][style*="#374151"] div,
-        [style*="background: linear-gradient"][style*="#374151"] span,
-        [style*="background: linear-gradient"][style*="#374151"] li {
-            color: #ffffff !important;
-        }
-        
-        /* Target all dark background classes */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation h1, .data-transformation h2, .data-transformation h3, 
-        .data-transformation h4, .data-transformation h5, .data-transformation h6,
-        .ai-demo-box h1, .ai-demo-box h2, .ai-demo-box h3, 
-        .ai-demo-box h4, .ai-demo-box h5, .ai-demo-box h6,
-        .matrix-demo h1, .matrix-demo h2, .matrix-demo h3, 
-        .matrix-demo h4, .matrix-demo h5, .matrix-demo h6,
-        .reasoning-demo h1, .reasoning-demo h2, .reasoning-demo h3, 
-        .reasoning-demo h4, .reasoning-demo h5, .reasoning-demo h6,
-        .quantum-demo h1, .quantum-demo h2, .quantum-demo h3, 
-        .quantum-demo h4, .quantum-demo h5, .quantum-demo h6,
-        .selection-demo h1, .selection-demo h2, .selection-demo h3, 
-        .selection-demo h4, .selection-demo h5, .selection-demo h6,
-        .ode-demo h1, .ode-demo h2, .ode-demo h3, 
-        .ode-demo h4, .ode-demo h5, .ode-demo h6,
-        .agent-demo h1, .agent-demo h2, .agent-demo h3, 
-        .agent-demo h4, .agent-demo h5, .agent-demo h6,
-        .gcn-demo h1, .gcn-demo h2, .gcn-demo h3, 
-        .gcn-demo h4, .gcn-demo h5, .gcn-demo h6,
-        .fault-demo h1, .fault-demo h2, .fault-demo h3, 
-        .fault-demo h4, .fault-demo h5, .fault-demo h6,
-        .foundation-demo h1, .foundation-demo h2, .foundation-demo h3, 
-        .foundation-demo h4, .foundation-demo h5, .foundation-demo h6,
-        .rl-demo h1, .rl-demo h2, .rl-demo h3, 
-        .rl-demo h4, .rl-demo h5, .rl-demo h6,
-        .neural-network-demo h1, .neural-network-demo h2, .neural-network-demo h3, 
-        .neural-network-demo h4, .neural-network-demo h5, .neural-network-demo h6 {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation p, .data-transformation div, .data-transformation span, .data-transformation li,
-        .ai-demo-box p, .ai-demo-box div, .ai-demo-box span, .ai-demo-box li,
-        .matrix-demo p, .matrix-demo div, .matrix-demo span, .matrix-demo li,
-        .reasoning-demo p, .reasoning-demo div, .reasoning-demo span, .reasoning-demo li,
-        .quantum-demo p, .quantum-demo div, .quantum-demo span, .quantum-demo li,
-        .selection-demo p, .selection-demo div, .selection-demo span, .selection-demo li,
-        .ode-demo p, .ode-demo div, .ode-demo span, .ode-demo li,
-        .agent-demo p, .agent-demo div, .agent-demo span, .agent-demo li,
-        .gcn-demo p, .gcn-demo div, .gcn-demo span, .gcn-demo li,
-        .fault-demo p, .fault-demo div, .fault-demo span, .fault-demo li,
-        .foundation-demo p, .foundation-demo div, .foundation-demo span, .foundation-demo li,
-        .rl-demo p, .rl-demo div, .rl-demo span, .rl-demo li,
-        .neural-network-demo p, .neural-network-demo div, .neural-network-demo span, .neural-network-demo li {
-            color: #e5e7eb !important;
-        }
-        
-        /* Force light text on any element with dark background */
-        [style*="background"][style*="#1f2937"], [style*="background"][style*="#374151"],
-        [style*="background"][style*="#667eea"], [style*="background"][style*="#764ba2"],
-        [style*="background"][style*="#7c3aed"], [style*="background"][style*="#6d28d9"],
-        [style*="background"][style*="#dc2626"], [style*="background"][style*="#b91c1c"],
-        [style*="background"][style*="#be185d"], [style*="background"][style*="#9d174d"],
-        [style*="background"][style*="#0f766e"], [style*="background"][style*="#0d9488"],
-        [style*="background"][style*="#1e40af"], [style*="background"][style*="#1e3a8a"],
-        [style*="background"][style*="#7c2d12"], [style*="background"][style*="#991b1c"],
-        [style*="background"][style*="#059669"], [style*="background"][style*="#047857"],
-        [style*="background"][style*="#06b6d4"], [style*="background"][style*="#0891b2"],
-        [style*="background"][style*="#8b5cf6"], [style*="background"][style*="#7c3aed"],
-        [style*="background"][style*="#f59e0b"], [style*="background"][style*="#d97706"] {
-            color: #ffffff !important;
-        }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo * {
-            color: #ffffff !important;
-        }
-        
-        /* Light background elements - force dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo * {
-            color: #1f2937 !important;
-        }
-        
-        /* Special cases */
-        .matrix-cell {
-            color: #ffffff !important;
-            font-weight: 600 !important;
-        }
-        .code-snippet {
-            color: #f9fafb !important;
-        }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .hybrid-comparison *, .accuracy-meter *, .process-flow *, .pattern-recognition *,
-        .convolution-demo *, .neural-network-demo *, .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Also target any div with dark background */
-        div[style*="background: linear-gradient"] {
-            color: #ffffff !important;
-        }
-        
-        div[style*="background: linear-gradient"] * {
-            color: #ffffff !important;
-        }
-        /* PROPER CONTRAST FIX */
-        
-        /* Dark background elements - white text */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo,
-        .ai-flow-diagram {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Light background elements - dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo,
-        .hybrid-comparison, .pattern-cell, .network-visualization, .pattern-grid {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo *,
-        .hybrid-comparison *, .pattern-cell *, .network-visualization *, .pattern-grid * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specific fixes for pattern recognition demo */
-        .pattern-recognition {
-            background: #f8fafc !important;
-        }
-        
-        .pattern-cell {
-            background: #ffffff !important;
-            color: #1f2937 !important;
-            border: 1px solid #d1d5db !important;
-        }
-        
-        .pattern-cell:hover {
-            background: #e5e7eb !important;
-            color: #1f2937 !important;
-        }
-        /* FIX STRUCTURED THREE-BOX DIAGRAMS */
-        
-        /* Target the specific structured components with three boxes */
-        .sensor-architecture, .architecture-visualization, .component-breakdown,
-        .multi-block-visualization, .process-flow, .quantum-simulation,
-        .selection-process, .ode-architecture, .agent-system, .gcn-architecture,
-        .fault-detection, .foundation-architecture, .rl-process, .physics-demo,
-        .data-transformation, .ai-flow-diagram, .neural-network-demo,
-        .pattern-recognition, .convolution-demo, .accuracy-meter {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture *, .architecture-visualization *, .component-breakdown *,
-        .multi-block-visualization *, .process-flow *, .quantum-simulation *,
-        .selection-process *, .ode-architecture *, .agent-system *, .gcn-architecture *,
-        .fault-detection *, .foundation-architecture *, .rl-process *, .physics-demo *,
-        .data-transformation *, .ai-flow-diagram *, .neural-network-demo *,
-        .pattern-recognition *, .convolution-demo *, .accuracy-meter * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specifically target the three-box structure elements */
-        .interaction-component, .architecture-component, .process-component,
-        .sensor-component, .quantum-component, .selection-component,
-        .ode-component, .agent-component, .gcn-component, .fault-component,
-        .foundation-component, .rl-component, .physics-component,
-        .data-component, .ai-component, .neural-component, .pattern-component,
-        .convolution-component, .accuracy-component {
-            color: #1f2937 !important;
-        }
-        
-        .interaction-component *, .architecture-component *, .process-component *,
-        .sensor-component *, .quantum-component *, .selection-component *,
-        .ode-component *, .agent-component *, .gcn-component *, .fault-component *,
-        .foundation-component *, .rl-component *, .physics-component *,
-        .data-component *, .ai-component *, .neural-component *, .pattern-component *,
-        .convolution-component *, .accuracy-component * {
-            color: #1f2937 !important;
-        }
-        
-        /* Target any div with structured three-box layout */
-        .sensor-architecture .interaction-component,
-        .architecture-visualization .interaction-component,
-        .component-breakdown .interaction-component,
-        .multi-block-visualization .interaction-component,
-        .process-flow .interaction-component,
-        .quantum-simulation .interaction-component,
-        .selection-process .interaction-component,
-        .ode-architecture .interaction-component,
-        .agent-system .interaction-component,
-        .gcn-architecture .interaction-component,
-        .fault-detection .interaction-component,
-        .foundation-architecture .interaction-component,
-        .rl-process .interaction-component,
-        .physics-demo .interaction-component,
-        .data-transformation .interaction-component,
-        .ai-flow-diagram .interaction-component,
-        .neural-network-demo .interaction-component,
-        .pattern-recognition .interaction-component,
-        .convolution-demo .interaction-component,
-        .accuracy-meter .interaction-component {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture .interaction-component *,
-        .architecture-visualization .interaction-component *,
-        .component-breakdown .interaction-component *,
-        .multi-block-visualization .interaction-component *,
-        .process-flow .interaction-component *,
-        .quantum-simulation .interaction-component *,
-        .selection-process .interaction-component *,
-        .ode-architecture .interaction-component *,
-        .agent-system .interaction-component *,
-        .gcn-architecture .interaction-component *,
-        .fault-detection .interaction-component *,
-        .foundation-architecture .interaction-component *,
-        .rl-process .interaction-component *,
-        .physics-demo .interaction-component *,
-        .data-transformation .interaction-component *,
-        .ai-flow-diagram .interaction-component *,
-        .neural-network-demo .interaction-component *,
-        .pattern-recognition .interaction-component *,
-        .convolution-demo .interaction-component *,
-        .accuracy-meter .interaction-component * {
-            color: #1f2937 !important;
-        }
-    
-    
-    
-    
-    
-    
     </style>
 </head>
 <body>
@@ -554,8 +295,8 @@
                 <i class="fas fa-arrow-left"></i>
                 Back to Blog
             </a>
-            <h1>Machine Learning Predicts Thermodynamic Activity Coefficients</h1>
-            <p class="hero-subtitle">Revolutionary matrix-completion method transforms process design for mixtures with sparse data</p>
+            <h1>Predicting the FCI Energy of Large Systems to Chemical Accuracy</h1>
+            <p class="hero-subtitle">Revolutionary quantum chemistry method achieves near-perfect accuracy for complex molecules using advanced mathematical techniques</p>
         </div>
     </header>
 
@@ -563,163 +304,185 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"Machine Learning in Thermodynamics: Prediction of Activity Coefficients by Matrix Completion"</span>
+                <span class="meta-value">"Predicting the FCI Energy of Large Systems to Chemical Accuracy from Restricted Active Space DMRG Calculations"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">AIChE Journal (2020)</span>
+                <span class="meta-value">Preprint (2022)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">Fabian Jirasek, Rodrigo A. S. Alves, Julie Damay, Robert A. Vandermeulen, Robert Bamler, Michael Bortz, Stephan Mandt, Marius Kloft, Hans Hasse</span>
+                <span class="meta-value">Gero Friesecke, Gergely Barcza, Örs Legeza</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Uses restricted active space DMRG extrapolation to achieve near full-configuration-interaction accuracy for strongly correlated electronic systems.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="https://arxiv.org/abs/2001.10675" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2001.10675</a></span>
+                <span class="meta-value"><a href="https://arxiv.org/abs/2209.14190" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2209.14190</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
-            <span class="tag">Thermodynamics</span>
-            <span class="tag">Matrix Completion</span>
-            <span class="tag">Process Design</span>
-            <span class="tag">Machine Learning</span>
-            <span class="tag">Activity Coefficients</span>
+            <span class="tag">Computational Chemistry</span>
+            <span class="tag">Quantum Chemistry</span>
+            <span class="tag">DMRG</span>
+            <span class="tag">FCI</span>
+            <span class="tag">Electronic Structure</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> Introduces a matrix-completion machine learning method to predict thermodynamic activity coefficients, improving process design for mixtures with sparse data.
+                <strong>Key Finding:</strong> Scientists have developed a revolutionary quantum chemistry method that can predict the electronic energy of complex molecules with near-perfect accuracy. This breakthrough could lead to better understanding of chemical reactions, more accurate drug design, and new insights into the quantum nature of matter.
             </div>
 
-            <div class="matrix-demo">
-                <h2>🧮 Matrix Completion in Action</h2>
-                <p>Watch how machine learning fills in missing thermodynamic data!</p>
-                <div class="matrix-grid">
-                    <div class="matrix-cell known">1.2</div>
-                    <div class="matrix-cell known">0.8</div>
-                    <div class="matrix-cell predicted">?</div>
-                    <div class="matrix-cell known">1.5</div>
-                    <div class="matrix-cell known">0.9</div>
-                    <div class="matrix-cell known">1.1</div>
-                    <div class="matrix-cell predicted">?</div>
-                    <div class="matrix-cell known">0.7</div>
-                    <div class="matrix-cell predicted">?</div>
-                    <div class="matrix-cell known">1.3</div>
-                    <div class="matrix-cell known">0.6</div>
-                    <div class="matrix-cell predicted">?</div>
-                    <div class="matrix-cell known">1.0</div>
-                    <div class="matrix-cell predicted">?</div>
-                    <div class="matrix-cell known">1.4</div>
-                    <div class="matrix-cell known">0.5</div>
-                </div>
-                <p style="font-size: 0.9rem; margin-top: 1rem;">
-                    <span style="color: #10b981;">●</span> Known values 
-                    <span style="color: #f59e0b; margin-left: 1rem;">●</span> Predicted values
-                </p>
-            </div>
-
-            <h2>⚗️ The Thermodynamic Data Crisis: Why We Need AI</h2>
-            <p>Imagine you're designing a chemical process to separate a complex mixture of organic compounds. You need to know how these compounds behave when mixed together - their activity coefficients, which tell you how much they deviate from ideal behavior. This information is crucial for designing efficient separation processes, predicting phase behavior, and optimizing reaction conditions. But here's the problem: for most real-world mixtures, this data simply doesn't exist.</p>
-
-            <p>Traditional approaches to obtaining thermodynamic data involve expensive and time-consuming experiments. For a simple binary mixture, you might need dozens of experiments to characterize the system properly. For a ternary mixture, the number of experiments grows exponentially. For complex industrial mixtures with five, ten, or more components, the experimental effort becomes practically impossible. It's like trying to map every possible route between cities when you only have information about a few major highways.</p>
-
-            <p>This is where machine learning comes in. Researchers Fabian Jirasek, Rodrigo A. S. Alves, Julie Damay, and their colleagues have developed a revolutionary approach that uses matrix completion - a machine learning technique originally developed for recommendation systems like Netflix - to predict missing thermodynamic data. The idea is elegant in its simplicity: if you have some experimental data about how different compounds behave in mixtures, you can use machine learning to predict how they'll behave in combinations you haven't tested yet.</p>
-
-            <div class="thermodynamic-explanation">
-                <h4 style="margin-top: 0; color: #92400e;">🌡️ What Are Activity Coefficients?</h4>
-                <p style="margin-bottom: 1rem;"><strong>Ideal vs. Real Behavior:</strong> In an ideal mixture, compounds behave exactly as predicted by simple mixing rules. In reality, molecular interactions cause deviations from this ideal behavior, and activity coefficients quantify these deviations.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Process Design Impact:</strong> Activity coefficients directly affect separation efficiency, energy requirements, and product purity. Getting them wrong can lead to poorly designed processes that waste energy and produce impure products.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Data Sparsity Problem:</strong> While we have extensive data for simple binary mixtures, data for complex multi-component mixtures is extremely sparse. This creates a major bottleneck in process design and optimization.</p>
-                
-                <p style="margin-bottom: 0;"><strong>Experimental Limitations:</strong> Measuring activity coefficients experimentally is expensive, time-consuming, and often impractical for complex industrial mixtures. This creates a critical need for predictive methods.</p>
-            </div>
-
-            <h2>🧠 The Matrix Completion Revolution: From Netflix to Chemical Engineering</h2>
-            <p>The breakthrough insight is that thermodynamic data can be organized into matrices, where rows represent different compounds and columns represent different mixture conditions. Most of the entries in these matrices are missing - we simply don't have experimental data for most compound combinations. But machine learning algorithms can learn patterns from the data we do have and use these patterns to fill in the missing entries.</p>
-
-            <p>This approach works because thermodynamic behavior follows underlying physical principles that create structure in the data. Compounds with similar molecular properties tend to have similar activity coefficients in similar mixtures. The machine learning algorithm learns these relationships and can extrapolate to predict behavior for new combinations.</p>
-
-            <p>What makes this particularly powerful is that the algorithm doesn't need to understand the underlying chemistry to make accurate predictions. It simply learns from patterns in the data, much like how Netflix's recommendation system learns from viewing patterns to suggest movies you might like, even though it doesn't understand the content of the movies themselves.</p>
-
-            <div class="prediction-flow">
-                <div class="flow-step data-step">
-                    <h4>📊 Sparse Data</h4>
-                    <p>Limited experimental measurements for simple mixtures</p>
-                </div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step ml-step">
-                    <h4>🤖 ML Learning</h4>
-                    <p>Algorithm identifies patterns and relationships</p>
-                </div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step prediction-step">
-                    <h4>🔮 Predictions</h4>
-                    <p>Accurate estimates for complex mixtures</p>
+            <div class="fci-demo">
+                <h2>⚛️ Interactive Quantum Chemistry Simulator</h2>
+                <p>Click on different components to see how quantum chemistry calculations work!</p>
+                <div class="fci-components">
+                    <div class="fci-component" onclick="showFCI()">
+                        <h4>🎯 FCI</h4>
+                        <p>Full Configuration<br>Interaction</p>
+                    </div>
+                    <div class="fci-component" onclick="showDMRG()">
+                        <h4>🔗 DMRG</h4>
+                        <p>Density Matrix<br>Renormalization</p>
+                    </div>
+                    <div class="fci-component" onclick="showExtrapolation()">
+                        <h4>📈 Extrapolation</h4>
+                        <p>Mathematical<br>Prediction</p>
+                    </div>
                 </div>
             </div>
 
-            <h2>🎯 Real-World Applications: Transforming Process Design</h2>
-            <p>The implications of this research extend far beyond academic interest. Companies designing chemical processes can now access thermodynamic data that would have been impossible to obtain experimentally. This enables the design of more efficient processes, better separation systems, and more accurate predictions of process behavior.</p>
+            <h2>⚛️ The Quantum Chemistry Revolution</h2>
+            <p>Imagine you're trying to predict the exact energy of a complex molecule like a protein or a drug. This isn't just about knowing how much energy the molecule has—it's about understanding how electrons are arranged, how bonds form and break, and how the molecule will behave in chemical reactions. This is the incredible challenge of quantum chemistry, and it's one of the most important problems in modern science.</p>
 
-            <p>One particularly exciting application is in the pharmaceutical industry, where complex multi-component mixtures are common and experimental characterization is extremely expensive. The ability to predict activity coefficients for these systems could dramatically reduce the time and cost required to develop new pharmaceutical processes.</p>
+            <p>In 2022, researchers from the Technical University of Munich and the Hungarian Academy of Sciences made a breakthrough that could revolutionize our ability to predict molecular properties. They developed a new method that can achieve near-perfect accuracy in predicting the electronic energy of complex molecules, something that was previously impossible.</p>
 
-            <p>The technology also enables the exploration of process alternatives that would have been too expensive to investigate experimentally. Engineers can now evaluate hundreds of different process configurations using predicted thermodynamic data, identifying the most promising approaches before committing to expensive experimental validation.</p>
+            <h2>🔬 The Challenge of Quantum Chemistry</h2>
+            <p>Quantum chemistry is incredibly challenging because it involves solving the Schrödinger equation for systems with many electrons. This equation describes how electrons behave in atoms and molecules, but it's so complex that it can't be solved exactly for anything larger than a hydrogen atom.</p>
 
-            <h2>🔬 The Science Behind the Magic: How Matrix Completion Works</h2>
-            <p>Matrix completion algorithms work by assuming that the data matrix has a low-rank structure - meaning that the behavior of all compounds can be described by a relatively small number of underlying factors. This is a reasonable assumption for thermodynamic data because molecular behavior is governed by a limited set of physical properties like size, polarity, and hydrogen bonding capacity.</p>
+            <h3>🎯 The FCI Problem</h3>
+            <p>Full Configuration Interaction (FCI) is the gold standard for quantum chemistry calculations. It considers all possible ways that electrons can be arranged in a molecule, providing the most accurate possible prediction of molecular properties. But here's the problem: FCI calculations become exponentially more expensive as molecules get larger.</p>
 
-            <p>The algorithm learns these underlying factors from the available data and then uses them to predict missing values. The key insight is that even if you only have data for a small fraction of all possible compound combinations, you can still learn enough about the underlying structure to make accurate predictions for the missing combinations.</p>
+            <p>For a molecule with just 10 electrons, FCI requires considering millions of different electron arrangements. For a molecule with 20 electrons, it requires considering billions. For larger molecules, FCI becomes completely impossible, even with the world's most powerful supercomputers.</p>
 
-            <p>This approach is particularly powerful because it can handle different types of missing data patterns. You might have extensive data for some compounds but very little for others, or you might have data for simple mixtures but none for complex ones. The algorithm can learn from whatever data is available and make predictions for whatever combinations are missing.</p>
+            <h3>🔗 The DMRG Solution</h3>
+            <p>Density Matrix Renormalization Group (DMRG) is a powerful mathematical technique that can approximate FCI calculations for larger molecules. Instead of considering all possible electron arrangements, DMRG focuses on the most important ones, dramatically reducing the computational cost while maintaining high accuracy.</p>
 
-            <h2>🚀 Future Directions: Expanding the Thermodynamic Universe</h2>
-            <p>As the technology matures, we can expect to see even more sophisticated applications. The current work focuses on activity coefficients, but the same principles could be applied to other thermodynamic properties like vapor-liquid equilibrium data, solubility data, or reaction equilibrium constants. This could create a comprehensive database of predicted thermodynamic properties for virtually any chemical system.</p>
-
-            <p>Another exciting development is the integration of this technology with process simulation software. Instead of requiring users to provide all the thermodynamic data manually, simulation software could automatically predict missing data using machine learning algorithms. This would make process simulation more accessible and enable the exploration of systems that would have been too complex to simulate previously.</p>
-
-            <p>The technology could also accelerate the development of new chemical processes by enabling rapid screening of process alternatives. Engineers could evaluate hundreds of different process configurations in a matter of hours, identifying the most promising approaches before committing to expensive experimental work.</p>
-
-            <h2>🎓 Educational Impact: Preparing Engineers for the AI Era</h2>
-            <p>The emergence of AI-driven thermodynamic prediction has important implications for chemical engineering education. Students need to understand not just traditional thermodynamic principles, but also how to work with AI systems and interpret their predictions. This requires a new set of skills that combines traditional engineering knowledge with modern computational methods.</p>
-
-            <p>Universities are beginning to develop new curricula that emphasize the integration of AI and machine learning with traditional chemical engineering concepts. Students learn how to set up machine learning systems for thermodynamic prediction, how to validate AI-generated data, and how to integrate AI predictions with traditional process design methods.</p>
-
-            <p>Perhaps most importantly, students need to develop the critical thinking skills necessary to evaluate AI-generated predictions. While AI can provide estimates for missing data, human engineers still need to assess whether these predictions are reasonable and appropriate for their specific applications. This requires a deep understanding of both the underlying thermodynamics and the limitations of the AI methods.</p>
-
-            <h2>🔍 Interactive Elements: Test Your Understanding</h2>
-            <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #991b1b;">🤔 Think About It:</h4>
-                <p style="margin-bottom: 0;">How do you think AI-predicted thermodynamic data might change the way chemical processes are designed? What are the advantages and potential limitations of this approach?</p>
+            <div class="accuracy-control">
+                <h3>🎛️ Calculation Accuracy Simulator</h3>
+                <p>Adjust the calculation method to see how it affects accuracy:</p>
+                <div class="accuracy-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="accuracySlider" oninput="updateAccuracy(this.value)">
+                    <p>Calculation Method: <span id="accuracyValue">DMRG</span></p>
+                </div>
+                <div id="accuracyResult">
+                    <p>At this level, the calculation accuracy is <strong>high</strong> with good approximation of FCI results.</p>
+                </div>
             </div>
+
+            <h3>📈 The Extrapolation Breakthrough</h3>
+            <p>The key innovation in this research is the use of mathematical extrapolation. Instead of trying to perform a full FCI calculation (which is impossible for large molecules), the researchers use DMRG to perform calculations at different levels of approximation, then use mathematical techniques to extrapolate to the full FCI result.</p>
+
+            <p>Think of it like trying to predict the exact height of a mountain by measuring it from different distances. You can't measure it directly from the top, but by measuring it from several different points and using mathematics to extrapolate, you can predict the exact height with remarkable accuracy.</p>
+
+            <div class="energy-visualization">
+                <h3>🧪 Quantum Energy Calculation Simulator</h3>
+                <p>Click the molecule to see how quantum energy calculations work:</p>
+                <div class="molecule-container">
+                    <div class="fci-field"></div>
+                    <div class="molecule" id="molecule" onclick="simulateQuantumCalculation()">C₆H₆</div>
+                </div>
+                <p id="calculationStatus">Click the molecule to observe quantum energy calculation!</p>
+            </div>
+
+            <h2>🌟 Real-World Applications</h2>
+            <p>This breakthrough has profound implications for numerous fields:</p>
+
+            <h3>💊 Drug Discovery</h3>
+            <p>Understanding the exact electronic structure of drug molecules is crucial for predicting how they will interact with biological targets. This new method could lead to more accurate drug design and faster development of new medications.</p>
+
+            <h3>🔬 Chemical Reaction Prediction</h3>
+            <p>Many chemical reactions involve complex electronic rearrangements that are difficult to predict. This new method could help scientists understand and predict these reactions more accurately, leading to better catalysts and more efficient chemical processes.</p>
+
+            <h3>🌱 Materials Science</h3>
+            <p>The properties of materials depend on their electronic structure. This new method could help scientists design new materials with specific properties, from superconductors to solar cells.</p>
+
+            <h3>🌍 Environmental Chemistry</h3>
+            <p>Understanding how pollutants interact with the environment requires accurate quantum chemistry calculations. This new method could help scientists better understand and predict environmental processes.</p>
+
+            <div class="accuracy-chart">
+                <h3>📊 Calculation Accuracy Chart</h3>
+                <p>Click on the bars to see how different methods compare:</p>
+                <div class="chart-container">
+                    <div class="chart-bar" style="height: 20%;" onclick="showDetails('hartree-fock')" title="Hartree-Fock"></div>
+                    <div class="chart-bar" style="height: 40%;" onclick="showDetails('dft')" title="DFT"></div>
+                    <div class="chart-bar" style="height: 70%;" onclick="showDetails('dmrg')" title="DMRG"></div>
+                    <div class="chart-bar" style="height: 90%;" onclick="showDetails('fci-extrapolated')" title="FCI Extrapolated"></div>
+                </div>
+                <div class="chart-label">
+                    <span>HF</span>
+                    <span>DFT</span>
+                    <span>DMRG</span>
+                    <span>FCI</span>
+                </div>
+            </div>
+
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers used advanced mathematical techniques to achieve this breakthrough:</p>
 
             <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #0c4a6e;">💡 Discussion Questions:</h4>
+                <h4 style="margin-top: 0; color: #0c4a6e;">🧮 Technical Approach:</h4>
                 <ul style="margin-bottom: 0;">
-                    <li>What are the advantages of using machine learning to predict thermodynamic data compared to traditional experimental methods?</li>
-                    <li>How might AI-predicted data change the economics of chemical process development?</li>
-                    <li>What challenges do you think need to be overcome for widespread adoption of AI-driven thermodynamic prediction?</li>
+                    <li><strong>DMRG Calculations:</strong> Performs calculations at different levels of approximation</li>
+                    <li><strong>Mathematical Extrapolation:</strong> Uses advanced techniques to predict FCI results</li>
+                    <li><strong>Error Analysis:</strong> Quantifies the accuracy of the predictions</li>
+                    <li><strong>Validation:</strong> Tests the method on known systems to ensure accuracy</li>
                 </ul>
             </div>
 
+            <h2>🚀 Future Possibilities</h2>
+            <p>This research opens up exciting new possibilities for quantum chemistry:</p>
+
+            <ul>
+                <li><strong>Large Molecule Studies:</strong> Studying molecules that were previously impossible to analyze</li>
+                <li><strong>High-Accuracy Predictions:</strong> Achieving near-perfect accuracy for complex systems</li>
+                <li><strong>Faster Drug Development:</strong> Accelerating the discovery of new medications</li>
+                <li><strong>Better Materials Design:</strong> Creating materials with precisely controlled properties</li>
+            </ul>
+
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of mathematical thinking in science. It shows how:</p>
+
+            <ul>
+                <li><strong>Mathematics:</strong> Can solve problems that seem impossible</li>
+                <li><strong>Computational Methods:</strong> Can extend our ability to understand complex systems</li>
+                <li><strong>Interdisciplinary Research:</strong> Combines physics, chemistry, and mathematics</li>
+                <li><strong>Innovation:</strong> Can overcome fundamental limitations through creative thinking</li>
+            </ul>
+
+            <p>For students interested in any of these fields, this work illustrates how modern science often involves developing creative solutions to seemingly impossible problems.</p>
+
             <div class="highlight-box">
-                <strong>🎯 Bottom Line:</strong> Machine learning matrix completion is revolutionizing thermodynamic data prediction by enabling accurate estimates of activity coefficients for complex mixtures with sparse experimental data. This technology transforms process design by providing access to thermodynamic information that would be impossible to obtain experimentally, enabling more efficient processes and faster development cycles. As the technology continues to evolve, we can expect to see even more sophisticated applications that will fundamentally change how chemical processes are designed and optimized.
+                <strong>🎯 Bottom Line:</strong> Scientists have developed a revolutionary quantum chemistry method that can predict the electronic energy of complex molecules with near-perfect accuracy using advanced mathematical extrapolation techniques. This breakthrough could lead to better drug design, more accurate chemical reaction prediction, and new insights into the quantum nature of matter.
             </div>
 
             <h2>📚 Further Reading & Resources</h2>
-            <p>Want to explore more about this fascinating intersection of AI and thermodynamics?</p>
+            <p>Want to dive deeper? Check out these related topics:</p>
             <ul>
-                <li>Matrix completion algorithms in chemical engineering</li>
-                <li>Thermodynamic property prediction methods</li>
-                <li>Machine learning applications in process design</li>
-                <li>Activity coefficient models and applications</li>
+                <li>Quantum chemistry and electronic structure theory</li>
+                <li>Density Matrix Renormalization Group (DMRG)</li>
+                <li>Full Configuration Interaction (FCI)</li>
+                <li>Mathematical extrapolation techniques</li>
+                <li>Computational chemistry methods</li>
             </ul>
         </div>
     </main>
@@ -752,5 +515,67 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        function showFCI() {
+            alert('🎯 FCI: Full Configuration Interaction is the gold standard for quantum chemistry calculations, considering all possible ways that electrons can be arranged in a molecule.');
+        }
+
+        function showDMRG() {
+            alert('🔗 DMRG: Density Matrix Renormalization Group is a powerful mathematical technique that can approximate FCI calculations for larger molecules by focusing on the most important electron arrangements.');
+        }
+
+        function showExtrapolation() {
+            alert('📈 Extrapolation: Advanced mathematical techniques that use calculations at different levels of approximation to predict the full FCI result with remarkable accuracy.');
+        }
+
+        function updateAccuracy(value) {
+            let method = '';
+            let result = '';
+            
+            if (value < 25) {
+                method = 'Hartree-Fock';
+                result = 'At this level, the calculation accuracy is <strong>low</strong> with basic approximation of electronic structure.';
+            } else if (value < 50) {
+                method = 'DFT';
+                result = 'At this level, the calculation accuracy is <strong>moderate</strong> with good approximation of electronic structure.';
+            } else if (value < 75) {
+                method = 'DMRG';
+                result = 'At this level, the calculation accuracy is <strong>high</strong> with good approximation of FCI results.';
+            } else {
+                method = 'FCI Extrapolated';
+                result = 'At this level, the calculation accuracy is <strong>near-perfect</strong> with excellent approximation of FCI results!';
+            }
+            
+            document.getElementById('accuracyValue').textContent = method;
+            document.getElementById('accuracyResult').innerHTML = '<p>' + result + '</p>';
+        }
+
+        function simulateQuantumCalculation() {
+            const molecule = document.getElementById('molecule');
+            const status = document.getElementById('calculationStatus');
+            
+            status.textContent = 'Performing quantum energy calculation...';
+            molecule.style.background = 'linear-gradient(45deg, #06b6d4, #fbbf24)';
+            molecule.style.transform = 'scale(1.3)';
+            
+            setTimeout(() => {
+                molecule.innerHTML = 'E = -230.7 eV';
+                molecule.style.background = 'linear-gradient(45deg, #10b981, #3b82f6)';
+                molecule.style.transform = 'scale(1)';
+                status.textContent = 'Quantum calculation complete! FCI energy predicted with chemical accuracy!';
+            }, 2000);
+        }
+
+        function showDetails(type) {
+            const details = {
+                'hartree-fock': 'Hartree-Fock: Basic quantum chemistry method that provides a good starting point but has limited accuracy for complex systems.',
+                'dft': 'DFT: Density Functional Theory provides good accuracy for many systems but can struggle with strongly correlated electrons.',
+                'dmrg': 'DMRG: Density Matrix Renormalization Group provides high accuracy for large systems by focusing on the most important electron arrangements.',
+                'fci-extrapolated': 'FCI Extrapolated: The ultimate accuracy approach that uses mathematical extrapolation to predict full FCI results with near-perfect accuracy.'
+            };
+            
+            alert(details[type] || 'Click on a bar to see detailed accuracy information!');
+        }
+    </script>
 </body>
 </html>

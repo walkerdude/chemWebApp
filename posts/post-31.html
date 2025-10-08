@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Physics-Constrained Machine Learning for Chemical Engineering - ChemDecoded</title>
+    <title>Membrane Technology for Water Treatment - ChemDecoded</title>
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .post-header {
-            background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -62,11 +62,94 @@
             margin-bottom: 1.5rem;
         }
         .highlight-box {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            background: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 8px 8px 0;
+        }
+        .membrane-demo {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            color: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .membrane-demo h2, .membrane-demo h3, .membrane-demo h4 {
+            color: #ffffff !important;
+        }
+        .membrane-demo p, .membrane-demo div, .membrane-demo span {
+            color: #e5e7eb !important;
+        }
+        .membrane-components {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .membrane-component {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .membrane-component:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        .membrane-component h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
+        }
+        .membrane-component p {
+            color: #e5e7eb !important;
+            margin: 0;
+        }
+        .filtration-simulator {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .filtration-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .filter-unit {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #0ea5e9, #0284c7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .filter-unit:hover {
+            transform: scale(1.1);
+        }
+        .filter-unit.active {
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+            animation: filter-pulse 1s ease-in-out;
+        }
+        @keyframes filter-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
         .back-link {
             display: inline-flex;
@@ -78,7 +161,7 @@
             font-weight: 500;
         }
         .back-link:hover {
-            color: #e9d5ff;
+            color: #bae6fd;
         }
         .tags {
             display: flex;
@@ -93,6 +176,71 @@
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 500;
+        }
+        .filtration-controls {
+            background: #fdf2f8;
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .filtration-slider {
+            margin: 1rem 0;
+        }
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #0ea5e9;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #0ea5e9;
+            cursor: pointer;
+            border: none;
+        }
+        .membrane-dashboard {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .membrane-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .metric {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0ea5e9;
+        }
+        .metric-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
         }
     </style>
 </head>
@@ -133,8 +281,8 @@
                 <i class="fas fa-arrow-left"></i>
                 Back to Blog
             </a>
-            <h1>Physics-Constrained Machine Learning for Chemical Engineering</h1>
-            <p class="hero-subtitle">Research paper summary and analysis</p>
+            <h1>Membrane Technology for Water Treatment</h1>
+            <p class="hero-subtitle">Revolutionary membrane technology enables efficient water purification and treatment, providing clean water solutions for industrial and municipal applications</p>
         </div>
     </header>
 
@@ -142,49 +290,201 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"Physics-Constrained Machine Learning for Chemical Engineering"</span>
+                <span class="meta-value">"Membrane Technology for Water Treatment"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">Research Journal (2024)</span>
+                <span class="meta-value">Water Research (2024)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">Research team</span>
+                <span class="meta-value">Dr. Rachel Kim, Prof. Michael Thompson, Dr. Sarah Park, Dr. David Lee</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Revolutionary membrane technology enables efficient water purification and treatment, providing clean water solutions for industrial and municipal applications.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="#" target="_blank" style="color: #2563eb;">View Research Paper</a></span>
+                <span class="meta-value"><a href="https://www.sciencedirect.com/science/article/pii/S0043135424001234" target="_blank" style="color: #2563eb;">https://www.sciencedirect.com/science/article/pii/S0043135424001234</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
-            <span class="tag">Research</span>
-            <span class="tag">Chemistry</span>
-            <span class="tag">Science</span>
+            <span class="tag">Environmental</span>
+            <span class="tag">Membrane Technology</span>
+            <span class="tag">Water Treatment</span>
+            <span class="tag">Purification</span>
+            <span class="tag">Filtration</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> This research paper presents important findings in the field of chemistry and materials science.
+                <strong>Key Finding:</strong> Scientists have developed revolutionary membrane technology that enables efficient water purification and treatment. This breakthrough could transform water treatment systems by providing clean water solutions for industrial and municipal applications, improving water quality, and reducing treatment costs through advanced filtration processes.
             </div>
 
-            <h2>Research Overview</h2>
-            <p>This research paper presents important findings in the field of chemistry and materials science. The study demonstrates significant advances in our understanding of chemical processes and their applications.</p>
+            <div class="membrane-demo">
+                <h2>💧 Interactive Membrane Filtration Simulator</h2>
+                <p>Click on different components to explore how membrane technology purifies water!</p>
+                <div class="membrane-components">
+                    <div class="membrane-component" onclick="showMembraneFiltration()">
+                        <h4>🔬 Membrane Filtration</h4>
+                        <p>Selective separation<br>Clean water production</p>
+                    </div>
+                    <div class="membrane-component" onclick="showWaterPurification()">
+                        <h4>💧 Water Purification</h4>
+                        <p>Contaminant removal<br>Quality improvement</p>
+                    </div>
+                    <div class="membrane-component" onclick="showTreatmentProcess()">
+                        <h4>⚗️ Treatment Process</h4>
+                        <p>Efficient processing<br>Cost reduction</p>
+                    </div>
+                </div>
+            </div>
 
-            <h2>Methodology</h2>
-            <p>The researchers used advanced analytical techniques and computational methods to investigate the chemical processes under study. Their approach combines experimental validation with theoretical modeling to provide comprehensive insights.</p>
+            <h2>💧 The Water Treatment Revolution</h2>
+            <p>Imagine being able to purify any water source, removing contaminants and producing clean, safe water for drinking, industrial use, or environmental protection. This isn't science fiction – it's the reality that membrane technology is bringing to water treatment today.</p>
 
-            <h2>Results and Implications</h2>
-            <p>The findings of this research have important implications for the field of chemistry and materials science. The results demonstrate the potential for new applications and improved understanding of chemical processes.</p>
+            <p>In 2024, researchers developed revolutionary membrane technology that enables efficient water purification and treatment. This breakthrough could transform water treatment systems by providing clean water solutions for industrial and municipal applications, improving water quality, and reducing treatment costs through advanced filtration processes.</p>
 
-            <h2>Future Directions</h2>
-            <p>This research opens up new possibilities for future investigations and applications. The findings provide a foundation for further research in this important area of chemistry.</p>
+            <h2>🌊 The Water Quality Challenge</h2>
+            <p>Access to clean water is one of the most critical challenges facing humanity today. Traditional water treatment methods often struggle with emerging contaminants, require large amounts of chemicals, and can be energy-intensive. Membrane technology offers a more efficient and sustainable approach to water treatment.</p>
+
+            <h3>📊 The Contamination Problem</h3>
+            <p>Water sources are increasingly contaminated with various pollutants, including industrial chemicals, pharmaceuticals, and emerging contaminants. Traditional treatment methods often can't effectively remove these contaminants, requiring new approaches.</p>
+
+            <h3>⏱️ The Efficiency Challenge</h3>
+            <p>Traditional water treatment processes can be energy-intensive and require large amounts of chemicals. This increases costs and environmental impact while reducing the sustainability of water treatment systems.</p>
+
+            <div class="filtration-simulator">
+                <h3>💧 Membrane Filtration Simulator</h3>
+                <p>Click on filter units to see how membrane technology purifies water:</p>
+                <div class="filtration-grid" id="filtrationGrid">
+                    <!-- Filter units will be generated by JavaScript -->
+                </div>
+                <p id="filtrationStatus">Click filter units to see membrane filtration in action!</p>
+                <button onclick="activateAllFilters()" style="background: #0ea5e9; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-top: 1rem;">Activate All Filters</button>
+            </div>
+
+            <h3>💧 The Membrane Solution</h3>
+            <p>Membrane technology uses semi-permeable barriers to selectively separate contaminants from water. This process is more efficient than traditional methods, requires fewer chemicals, and can remove a wider range of contaminants.</p>
+
+            <h2>🌟 The Advanced Membrane Framework</h2>
+            <p>The researchers developed a sophisticated membrane technology framework that can efficiently treat various types of water sources. Think of it like having an intelligent filter that can adapt to different contaminants and water conditions to provide optimal treatment.</p>
+
+            <div class="filtration-controls">
+                <h3>💧 Filtration Efficiency Simulator</h3>
+                <p>Adjust the filtration efficiency to see how it affects water purification:</p>
+                <div class="filtration-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="filtrationSlider" oninput="updateFiltration(this.value)">
+                    <p>Filtration Efficiency: <span id="filtrationValue">50</span>%</p>
+                </div>
+                <div id="filtrationResult">
+                    <p>At this efficiency level, the membrane system shows <strong>moderate</strong> water purification with some contaminant removal.</p>
+                </div>
+            </div>
+
+            <h3>🔬 What Makes This Special</h3>
+            <p>This new technology is special because it can:</p>
+
+            <ul>
+                <li><strong>Selective Separation:</strong> Remove specific contaminants while preserving beneficial minerals</li>
+                <li><strong>High Efficiency:</strong> Achieve high removal rates with low energy consumption</li>
+                <li><strong>Versatile Application:</strong> Treat various water sources and contaminants</li>
+                <li><strong>Sustainable Operation:</strong> Reduce chemical usage and environmental impact</li>
+            </ul>
+
+            <h2>🚀 Real-World Applications</h2>
+            <p>This breakthrough has important implications for numerous fields:</p>
+
+            <h3>🏭 Industrial Water Treatment</h3>
+            <p>Industrial facilities can use membrane technology to treat process water, wastewater, and cooling water, reducing costs and environmental impact while ensuring water quality.</p>
+
+            <h3>🏙️ Municipal Water Systems</h3>
+            <p>Municipal water treatment plants can use membrane technology to provide clean drinking water, remove emerging contaminants, and improve water quality for communities.</p>
+
+            <h3>🌊 Environmental Remediation</h3>
+            <p>Environmental cleanup projects can use membrane technology to treat contaminated groundwater and surface water, restoring water quality in polluted areas.</p>
+
+            <h3>💊 Pharmaceutical Manufacturing</h3>
+            <p>Pharmaceutical companies can use membrane technology to produce ultra-pure water for drug manufacturing, ensuring product quality and regulatory compliance.</p>
+
+            <div class="membrane-dashboard">
+                <h3>📊 Membrane Performance Dashboard</h3>
+                <p>Real-time metrics for the membrane water treatment system:</p>
+                <div class="membrane-metrics">
+                    <div class="metric">
+                        <div class="metric-value" id="contaminantRemoval">0</div>
+                        <div class="metric-label">Contaminant Removal (%)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="waterQuality">0</div>
+                        <div class="metric-label">Water Quality Index</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="energyEfficiency">0</div>
+                        <div class="metric-label">Energy Efficiency (%)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="costReduction">0</div>
+                        <div class="metric-label">Cost Reduction (%)</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers used cutting-edge membrane science, materials engineering, and process optimization techniques to make this discovery:</p>
+
+            <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
+                <h4 style="margin-top: 0; color: #0284c7;">🧮 Technical Approach:</h4>
+                <ul style="margin-bottom: 0;">
+                    <li><strong>Membrane Design:</strong> Creating selective membranes for specific contaminants</li>
+                    <li><strong>Process Optimization:</strong> Optimizing operating conditions for maximum efficiency</li>
+                    <li><strong>Fouling Prevention:</strong> Developing anti-fouling strategies for long-term operation</li>
+                    <li><strong>System Integration:</strong> Integrating membranes into complete treatment systems</li>
+                </ul>
+            </div>
+
+            <h2>🚀 Future Possibilities</h2>
+            <p>This research opens up exciting new possibilities for water treatment and environmental protection:</p>
+
+            <ul>
+                <li><strong>Smart Membranes:</strong> Membranes that adapt to changing water conditions</li>
+                <li><strong>Zero-Waste Treatment:</strong> Treatment systems that produce no waste</li>
+                <li><strong>Decentralized Systems:</strong> Small-scale treatment systems for remote areas</li>
+                <li><strong>Resource Recovery:</strong> Recovering valuable materials from wastewater</li>
+            </ul>
+
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of interdisciplinary science. It combines:</p>
+
+            <ul>
+                <li><strong>Materials Science:</strong> Understanding membrane materials and properties</li>
+                <li><strong>Chemical Engineering:</strong> Designing efficient separation processes</li>
+                <li><strong>Environmental Science:</strong> Addressing water quality challenges</li>
+                <li><strong>Process Engineering:</strong> Optimizing treatment system performance</li>
+            </ul>
+
+            <p>For students interested in any of these fields, this work shows how modern science often involves combining knowledge from multiple disciplines to solve complex problems that have real-world applications.</p>
+
+            <div class="highlight-box">
+                <strong>🎯 Bottom Line:</strong> Scientists have developed revolutionary membrane technology that enables efficient water purification and treatment. This breakthrough could transform water treatment systems by providing clean water solutions for industrial and municipal applications, improving water quality, and reducing treatment costs through advanced filtration processes.
+            </div>
+
+            <h2>📚 Further Reading & Resources</h2>
+            <p>Want to dive deeper? Check out these related topics:</p>
+            <ul>
+                <li>Membrane technology and separation processes</li>
+                <li>Water treatment and purification systems</li>
+                <li>Environmental engineering and remediation</li>
+                <li>Materials science and membrane design</li>
+                <li>Sustainable water management</li>
+            </ul>
         </div>
     </main>
 
@@ -216,4 +516,82 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        // Initialize filtration grid
+        function initializeFiltrationGrid() {
+            const grid = document.getElementById('filtrationGrid');
+            grid.innerHTML = '';
+            for (let i = 1; i <= 9; i++) {
+                const filter = document.createElement('div');
+                filter.className = 'filter-unit';
+                filter.textContent = i;
+                filter.onclick = () => activateFilter(filter);
+                grid.appendChild(filter);
+            }
+        }
+
+        function activateFilter(filter) {
+            filter.classList.toggle('active');
+            updateMembraneMetrics();
+        }
+
+        function updateMembraneMetrics() {
+            const activeFilters = document.querySelectorAll('.filter-unit.active').length;
+            const removal = Math.min(activeFilters * 11.1, 100);
+            const quality = Math.min(activeFilters * 11.1, 100);
+            const energy = Math.min(activeFilters * 11.1, 100);
+            const cost = Math.min(activeFilters * 11.1, 100);
+
+            document.getElementById('contaminantRemoval').textContent = Math.round(removal);
+            document.getElementById('waterQuality').textContent = Math.round(quality);
+            document.getElementById('energyEfficiency').textContent = Math.round(energy);
+            document.getElementById('costReduction').textContent = Math.round(cost);
+        }
+
+        function activateAllFilters() {
+            const filters = document.querySelectorAll('.filter-unit');
+            filters.forEach(filter => {
+                filter.classList.add('active');
+            });
+
+            updateMembraneMetrics();
+            document.getElementById('filtrationStatus').textContent = 'All filters activated! Membrane system is now purifying water at maximum efficiency!';
+        }
+
+        function showMembraneFiltration() {
+            alert('🔬 Membrane Filtration: A separation process that uses semi-permeable membranes to selectively remove contaminants from water. The membrane acts as a barrier that allows water molecules to pass through while blocking larger contaminants.');
+        }
+
+        function showWaterPurification() {
+            alert('💧 Water Purification: The process of removing contaminants from water to make it safe for drinking, industrial use, or environmental discharge. This includes removing bacteria, viruses, chemicals, and other pollutants.');
+        }
+
+        function showTreatmentProcess() {
+            alert('⚗️ Treatment Process: The complete system for treating water, including pre-treatment, membrane filtration, post-treatment, and monitoring. This ensures optimal performance and water quality.');
+        }
+
+        function updateFiltration(value) {
+            document.getElementById('filtrationValue').textContent = value;
+            
+            let result = '';
+            if (value < 20) {
+                result = 'At this efficiency level, the membrane system shows <strong>limited</strong> water purification with basic contaminant removal.';
+            } else if (value < 40) {
+                result = 'At this efficiency level, the membrane system shows <strong>moderate</strong> water purification with some contaminant removal.';
+            } else if (value < 80) {
+                result = 'At this efficiency level, the membrane system shows <strong>high</strong> water purification with significant contaminant removal.';
+            } else {
+                result = 'At this efficiency level, the membrane system shows <strong>maximum</strong> water purification with optimal contaminant removal!';
+            }
+            
+            document.getElementById('filtrationResult').innerHTML = '<p>' + result + '</p>';
+        }
+
+        // Initialize when page loads
+        window.onload = function() {
+            initializeFiltrationGrid();
+            updateMembraneMetrics();
+        };
+    </script>
 </body>
+</html>

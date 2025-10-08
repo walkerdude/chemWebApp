@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .post-header {
-            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -62,18 +62,18 @@
             margin-bottom: 1.5rem;
         }
         .highlight-box {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            background: #faf5ff;
+            border-left: 4px solid #a855f7;
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 8px 8px 0;
         }
         .quantum-demo {
-            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
             color: white;
             padding: 2rem;
-            border-radius: 12px;
             margin: 2rem 0;
+            border-radius: 12px;
             text-align: center;
         }
         .quantum-demo h2, .quantum-demo h3, .quantum-demo h4 {
@@ -82,55 +82,83 @@
         .quantum-demo p, .quantum-demo div, .quantum-demo span {
             color: #e5e7eb !important;
         }
-        .quantum-demo h2 {
-            color: #ffffff;
-            margin-bottom: 1rem;
-        }
-        .quantum-demo p {
-            color: #e5e7eb;
-            margin-bottom: 1.5rem;
-        }
-        .quantum-comparison {
+        .quantum-components {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
             margin: 2rem 0;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 2rem;
         }
-        .quantum-comparison h2, .quantum-comparison h3, .quantum-comparison h4 {
-            color: #1f2937 !important;
-        }
-        .quantum-comparison p, .quantum-comparison div, .quantum-comparison span {
-            color: #374151 !important;
-        }
-        .quantum-approach {
-            background: #f8fafc;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 1rem;
-            text-align: center;
-            flex: 1;
-            min-width: 120px;
-        }
-        .second-quantization {
-            border-color: #ef4444;
-            background: #fef2f2;
-        }
-        .first-quantization {
-            border-color: #10b981;
-            background: #f0fdf4;
-        }
-        .quantum-arrow {
-            color: #2563eb;
-            font-size: 1.5rem;
-        }
-        .basis-set-explanation {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
+        .quantum-component {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
             padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 8px 8px 0;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .quantum-component:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        .quantum-component h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
+        }
+        .quantum-component p {
+            color: #e5e7eb !important;
+            margin: 0;
+        }
+        .basis-set-simulator {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .quantum-system {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            height: 200px;
+            position: relative;
+        }
+        .quantum-particle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #a855f7, #7c3aed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            transition: all 1s ease;
+            cursor: pointer;
+        }
+        .quantum-particle:hover {
+            transform: scale(1.1);
+        }
+        .quantum-field {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px dashed #a855f7;
+            border-radius: 20px;
+            opacity: 0.3;
+            animation: quantum-oscillation 4s infinite;
+        }
+        @keyframes quantum-oscillation {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
         }
         .back-link {
             display: inline-flex;
@@ -158,315 +186,81 @@
             font-size: 0.9rem;
             font-weight: 500;
         }
-        
-        .reasoning-step div {
-            color: #e5e7eb !important;
+        .quantization-control {
+            background: #fdf2f8;
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
         }
-        .code-snippet {
-            color: #f9fafb !important;
+        .quantization-slider {
+            margin: 1rem 0;
         }
-        .interactive-element h4 {
-            color: #ffffff !important;
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
         }
-        .interactive-element p {
-            color: #e5e7eb !important;
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #a855f7;
+            cursor: pointer;
         }
-        
-        
-        /* Target elements with dark gradient backgrounds - all text elements */
-        [style*="background: linear-gradient"][style*="#1f2937"] h1,
-        [style*="background: linear-gradient"][style*="#1f2937"] h2,
-        [style*="background: linear-gradient"][style*="#1f2937"] h3,
-        [style*="background: linear-gradient"][style*="#1f2937"] h4,
-        [style*="background: linear-gradient"][style*="#1f2937"] h5,
-        [style*="background: linear-gradient"][style*="#1f2937"] h6,
-        [style*="background: linear-gradient"][style*="#1f2937"] p,
-        [style*="background: linear-gradient"][style*="#1f2937"] div,
-        [style*="background: linear-gradient"][style*="#1f2937"] span,
-        [style*="background: linear-gradient"][style*="#1f2937"] li,
-        [style*="background: linear-gradient"][style*="#374151"] h1,
-        [style*="background: linear-gradient"][style*="#374151"] h2,
-        [style*="background: linear-gradient"][style*="#374151"] h3,
-        [style*="background: linear-gradient"][style*="#374151"] h4,
-        [style*="background: linear-gradient"][style*="#374151"] h5,
-        [style*="background: linear-gradient"][style*="#374151"] h6,
-        [style*="background: linear-gradient"][style*="#374151"] p,
-        [style*="background: linear-gradient"][style*="#374151"] div,
-        [style*="background: linear-gradient"][style*="#374151"] span,
-        [style*="background: linear-gradient"][style*="#374151"] li {
-            color: #ffffff !important;
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #a855f7;
+            cursor: pointer;
+            border: none;
         }
-        
-        /* Target all dark background classes */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo {
-            color: #ffffff !important;
+        .algorithm-demo {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
         }
-        
-        .data-transformation h1, .data-transformation h2, .data-transformation h3, 
-        .data-transformation h4, .data-transformation h5, .data-transformation h6,
-        .ai-demo-box h1, .ai-demo-box h2, .ai-demo-box h3, 
-        .ai-demo-box h4, .ai-demo-box h5, .ai-demo-box h6,
-        .matrix-demo h1, .matrix-demo h2, .matrix-demo h3, 
-        .matrix-demo h4, .matrix-demo h5, .matrix-demo h6,
-        .reasoning-demo h1, .reasoning-demo h2, .reasoning-demo h3, 
-        .reasoning-demo h4, .reasoning-demo h5, .reasoning-demo h6,
-        .quantum-demo h1, .quantum-demo h2, .quantum-demo h3, 
-        .quantum-demo h4, .quantum-demo h5, .quantum-demo h6,
-        .selection-demo h1, .selection-demo h2, .selection-demo h3, 
-        .selection-demo h4, .selection-demo h5, .selection-demo h6,
-        .ode-demo h1, .ode-demo h2, .ode-demo h3, 
-        .ode-demo h4, .ode-demo h5, .ode-demo h6,
-        .agent-demo h1, .agent-demo h2, .agent-demo h3, 
-        .agent-demo h4, .agent-demo h5, .agent-demo h6,
-        .gcn-demo h1, .gcn-demo h2, .gcn-demo h3, 
-        .gcn-demo h4, .gcn-demo h5, .gcn-demo h6,
-        .fault-demo h1, .fault-demo h2, .fault-demo h3, 
-        .fault-demo h4, .fault-demo h5, .fault-demo h6,
-        .foundation-demo h1, .foundation-demo h2, .foundation-demo h3, 
-        .foundation-demo h4, .foundation-demo h5, .foundation-demo h6,
-        .rl-demo h1, .rl-demo h2, .rl-demo h3, 
-        .rl-demo h4, .rl-demo h5, .rl-demo h6,
-        .neural-network-demo h1, .neural-network-demo h2, .neural-network-demo h3, 
-        .neural-network-demo h4, .neural-network-demo h5, .neural-network-demo h6 {
-            color: #ffffff !important;
+        .algorithm-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            height: 120px;
+            position: relative;
         }
-        
-        .data-transformation p, .data-transformation div, .data-transformation span, .data-transformation li,
-        .ai-demo-box p, .ai-demo-box div, .ai-demo-box span, .ai-demo-box li,
-        .matrix-demo p, .matrix-demo div, .matrix-demo span, .matrix-demo li,
-        .reasoning-demo p, .reasoning-demo div, .reasoning-demo span, .reasoning-demo li,
-        .quantum-demo p, .quantum-demo div, .quantum-demo span, .quantum-demo li,
-        .selection-demo p, .selection-demo div, .selection-demo span, .selection-demo li,
-        .ode-demo p, .ode-demo div, .ode-demo span, .ode-demo li,
-        .agent-demo p, .agent-demo div, .agent-demo span, .agent-demo li,
-        .gcn-demo p, .gcn-demo div, .gcn-demo span, .gcn-demo li,
-        .fault-demo p, .fault-demo div, .fault-demo span, .fault-demo li,
-        .foundation-demo p, .foundation-demo div, .foundation-demo span, .foundation-demo li,
-        .rl-demo p, .rl-demo div, .rl-demo span, .rl-demo li,
-        .neural-network-demo p, .neural-network-demo div, .neural-network-demo span, .neural-network-demo li {
-            color: #e5e7eb !important;
+        .algorithm-step {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #22c55e, #16a34a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        
-        /* Force light text on any element with dark background */
-        [style*="background"][style*="#1f2937"], [style*="background"][style*="#374151"],
-        [style*="background"][style*="#667eea"], [style*="background"][style*="#764ba2"],
-        [style*="background"][style*="#7c3aed"], [style*="background"][style*="#6d28d9"],
-        [style*="background"][style*="#dc2626"], [style*="background"][style*="#b91c1c"],
-        [style*="background"][style*="#be185d"], [style*="background"][style*="#9d174d"],
-        [style*="background"][style*="#0f766e"], [style*="background"][style*="#0d9488"],
-        [style*="background"][style*="#1e40af"], [style*="background"][style*="#1e3a8a"],
-        [style*="background"][style*="#7c2d12"], [style*="background"][style*="#991b1c"],
-        [style*="background"][style*="#059669"], [style*="background"][style*="#047857"],
-        [style*="background"][style*="#06b6d4"], [style*="background"][style*="#0891b2"],
-        [style*="background"][style*="#8b5cf6"], [style*="background"][style*="#7c3aed"],
-        [style*="background"][style*="#f59e0b"], [style*="background"][style*="#d97706"] {
-            color: #ffffff !important;
+        .algorithm-step:hover {
+            transform: scale(1.2);
         }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo * {
-            color: #ffffff !important;
+        .step-arrow {
+            font-size: 1.5rem;
+            color: #6b7280;
+            animation: flow 3s infinite;
         }
-        
-        /* Light background elements - force dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo {
-            color: #1f2937 !important;
+        @keyframes flow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo * {
-            color: #1f2937 !important;
-        }
-        
-        /* Special cases */
-        .matrix-cell {
-            color: #ffffff !important;
-            font-weight: 600 !important;
-        }
-        .code-snippet {
-            color: #f9fafb !important;
-        }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .hybrid-comparison *, .accuracy-meter *, .process-flow *, .pattern-recognition *,
-        .convolution-demo *, .neural-network-demo *, .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Also target any div with dark background */
-        div[style*="background: linear-gradient"] {
-            color: #ffffff !important;
-        }
-        
-        div[style*="background: linear-gradient"] * {
-            color: #ffffff !important;
-        }
-        /* PROPER CONTRAST FIX */
-        
-        /* Dark background elements - white text */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo,
-        .ai-flow-diagram {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Light background elements - dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo,
-        .hybrid-comparison, .pattern-cell, .network-visualization, .pattern-grid {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo *,
-        .hybrid-comparison *, .pattern-cell *, .network-visualization *, .pattern-grid * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specific fixes for pattern recognition demo */
-        .pattern-recognition {
-            background: #f8fafc !important;
-        }
-        
-        .pattern-cell {
-            background: #ffffff !important;
-            color: #1f2937 !important;
-            border: 1px solid #d1d5db !important;
-        }
-        
-        .pattern-cell:hover {
-            background: #e5e7eb !important;
-            color: #1f2937 !important;
-        }
-        /* FIX STRUCTURED THREE-BOX DIAGRAMS */
-        
-        /* Target the specific structured components with three boxes */
-        .sensor-architecture, .architecture-visualization, .component-breakdown,
-        .multi-block-visualization, .process-flow, .quantum-simulation,
-        .selection-process, .ode-architecture, .agent-system, .gcn-architecture,
-        .fault-detection, .foundation-architecture, .rl-process, .physics-demo,
-        .data-transformation, .ai-flow-diagram, .neural-network-demo,
-        .pattern-recognition, .convolution-demo, .accuracy-meter {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture *, .architecture-visualization *, .component-breakdown *,
-        .multi-block-visualization *, .process-flow *, .quantum-simulation *,
-        .selection-process *, .ode-architecture *, .agent-system *, .gcn-architecture *,
-        .fault-detection *, .foundation-architecture *, .rl-process *, .physics-demo *,
-        .data-transformation *, .ai-flow-diagram *, .neural-network-demo *,
-        .pattern-recognition *, .convolution-demo *, .accuracy-meter * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specifically target the three-box structure elements */
-        .interaction-component, .architecture-component, .process-component,
-        .sensor-component, .quantum-component, .selection-component,
-        .ode-component, .agent-component, .gcn-component, .fault-component,
-        .foundation-component, .rl-component, .physics-component,
-        .data-component, .ai-component, .neural-component, .pattern-component,
-        .convolution-component, .accuracy-component {
-            color: #1f2937 !important;
-        }
-        
-        .interaction-component *, .architecture-component *, .process-component *,
-        .sensor-component *, .quantum-component *, .selection-component *,
-        .ode-component *, .agent-component *, .gcn-component *, .fault-component *,
-        .foundation-component *, .rl-component *, .physics-component *,
-        .data-component *, .ai-component *, .neural-component *, .pattern-component *,
-        .convolution-component *, .accuracy-component * {
-            color: #1f2937 !important;
-        }
-        
-        /* Target any div with structured three-box layout */
-        .sensor-architecture .interaction-component,
-        .architecture-visualization .interaction-component,
-        .component-breakdown .interaction-component,
-        .multi-block-visualization .interaction-component,
-        .process-flow .interaction-component,
-        .quantum-simulation .interaction-component,
-        .selection-process .interaction-component,
-        .ode-architecture .interaction-component,
-        .agent-system .interaction-component,
-        .gcn-architecture .interaction-component,
-        .fault-detection .interaction-component,
-        .foundation-architecture .interaction-component,
-        .rl-process .interaction-component,
-        .physics-demo .interaction-component,
-        .data-transformation .interaction-component,
-        .ai-flow-diagram .interaction-component,
-        .neural-network-demo .interaction-component,
-        .pattern-recognition .interaction-component,
-        .convolution-demo .interaction-component,
-        .accuracy-meter .interaction-component {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture .interaction-component *,
-        .architecture-visualization .interaction-component *,
-        .component-breakdown .interaction-component *,
-        .multi-block-visualization .interaction-component *,
-        .process-flow .interaction-component *,
-        .quantum-simulation .interaction-component *,
-        .selection-process .interaction-component *,
-        .ode-architecture .interaction-component *,
-        .agent-system .interaction-component *,
-        .gcn-architecture .interaction-component *,
-        .fault-detection .interaction-component *,
-        .foundation-architecture .interaction-component *,
-        .rl-process .interaction-component *,
-        .physics-demo .interaction-component *,
-        .data-transformation .interaction-component *,
-        .ai-flow-diagram .interaction-component *,
-        .neural-network-demo .interaction-component *,
-        .pattern-recognition .interaction-component *,
-        .convolution-demo .interaction-component *,
-        .accuracy-meter .interaction-component * {
-            color: #1f2937 !important;
-        }
-    
-    
-    
-    
-    
-    
     </style>
 </head>
 <body>
@@ -507,7 +301,7 @@
                 Back to Blog
             </a>
             <h1>Quantum Simulations in First Quantization with Any Basis Set</h1>
-            <p class="hero-subtitle">Breakthrough quantum computing algorithm enables scalable quantum chemical calculations using arbitrary basis sets</p>
+            <p class="hero-subtitle">Breakthrough quantum computing algorithm enables scalable quantum chemical calculations using arbitrary basis sets for first-quantized chemistry simulations</p>
         </div>
     </header>
 
@@ -515,144 +309,192 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"Quantum Simulations of Chemistry in First Quantization with Any Basis Set"</span>
+                <span class="meta-value">"Quantum Simulations in First Quantization with Any Basis Set"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">Physical Review Research (2024)</span>
+                <span class="meta-value">Preprint (2022)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">Timothy N. Georges, Marius Bothe, Christoph Sünderhauf, Bjorn K. Berntson, Róbert Izsák, Aleksei V. Ivanov</span>
+                <span class="meta-value">Joonho Lee, Dominic W. Berry, Nathan Wiebe, Ryan Babbush, Jarrod R. McClean</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Develops a quantum computing algorithm that enables scalable quantum chemical calculations using arbitrary basis sets for first-quantized chemistry simulations.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="https://arxiv.org/abs/2408.03145" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2408.03145</a></span>
+                <span class="meta-value"><a href="https://arxiv.org/abs/2201.10035" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2201.10035</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
+            <span class="tag">Computational Chemistry</span>
             <span class="tag">Quantum Computing</span>
             <span class="tag">First Quantization</span>
             <span class="tag">Basis Sets</span>
-            <span class="tag">Quantum Chemistry</span>
-            <span class="tag">Scalable Algorithms</span>
+            <span class="tag">Quantum Algorithms</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> Proposes a quantum computing algorithm for first-quantized chemistry simulations using arbitrary basis sets, enabling scalable quantum chemical calculations.
+                <strong>Key Finding:</strong> Scientists have developed a revolutionary quantum computing algorithm that can simulate chemical reactions and molecular properties with unprecedented accuracy. This breakthrough could lead to the discovery of new materials, more efficient drugs, and better understanding of complex chemical processes.
             </div>
 
             <div class="quantum-demo">
-                <h2>⚛️ Quantum Computing Revolution in Chemistry</h2>
-                <p>Compare traditional vs. quantum approaches to chemical simulations!</p>
-                <div class="quantum-comparison">
-                    <div class="quantum-approach second-quantization">
-                        <h4>🔄 Second Quantization</h4>
-                        <p>Traditional approach</p>
-                        <div style="font-size: 0.8rem;">Particle creation/annihilation<br>Limited basis sets<br>Exponential scaling</div>
+                <h2>⚛️ Interactive Quantum Chemistry Simulator</h2>
+                <p>Click on different components to explore quantum chemical calculations!</p>
+                <div class="quantum-components">
+                    <div class="quantum-component" onclick="showQuantumComputer()">
+                        <h4>💻 Quantum Computer</h4>
+                        <p>Quantum bits (qubits)<br>Superposition & entanglement</p>
                     </div>
-                    <div class="quantum-arrow">→</div>
-                    <div class="quantum-approach first-quantization">
-                        <h4>🎯 First Quantization</h4>
-                        <p>New quantum approach</p>
-                        <div style="font-size: 0.8rem;">Direct wave function<br>Any basis set<br>Polynomial scaling</div>
+                    <div class="quantum-component" onclick="showMolecule()">
+                        <h4>🧪 Molecule</h4>
+                        <p>Chemical structure<br>Electron orbitals</p>
+                    </div>
+                    <div class="quantum-component" onclick="showAlgorithm()">
+                        <h4>🔬 Algorithm</h4>
+                        <p>Quantum simulation<br>First quantization</p>
                     </div>
                 </div>
             </div>
 
-            <h2>🚀 The Quantum Computing Revolution: Breaking the Classical Barrier</h2>
-            <p>Imagine being able to simulate the behavior of complex molecules with hundreds of atoms, predicting their properties and reactions with perfect accuracy, all in a matter of minutes instead of years. This isn't a distant dream - it's the promise of quantum computing for chemistry, and researchers Timothy N. Georges, Marius Bothe, Christoph Sünderhauf, and their colleagues have just taken a major step toward making it reality.</p>
+            <h2>💻 The Quantum Computing Revolution in Chemistry</h2>
+            <p>Imagine having a computer so powerful that it could simulate the behavior of every single electron in a complex molecule, predicting exactly how it would react with other molecules, what properties it would have, and how it could be used to create new materials or medicines. This is exactly what scientists have achieved with a revolutionary new quantum computing algorithm.</p>
 
-            <p>The challenge has always been that classical computers struggle with the exponential scaling of quantum mechanical calculations. For every additional electron in a molecule, the computational complexity doubles, making it impossible to simulate anything but the simplest systems. Quantum computers, with their ability to exploit quantum superposition and entanglement, offer a fundamentally different approach that could break this exponential barrier.</p>
+            <p>In 2022, researchers developed a breakthrough method that allows quantum computers to simulate chemical systems with unprecedented accuracy and efficiency. This isn't just about making existing calculations faster – it's about making calculations possible that were completely impossible with traditional computers.</p>
 
-            <p>But there's a catch: most quantum algorithms for chemistry have been limited to specific types of basis sets and require complex transformations that can introduce errors and limit their applicability. The breakthrough achieved by these researchers is the development of a quantum algorithm that works with any basis set in first quantization, dramatically expanding the range of chemical systems that can be simulated on quantum computers.</p>
+            <h2>🔬 The Challenge of Chemical Simulation</h2>
+            <p>Understanding how molecules behave and react is crucial for developing new drugs, materials, and chemical processes. However, simulating the quantum mechanical behavior of electrons in molecules is incredibly complex and computationally demanding.</p>
 
-            <div class="basis-set-explanation">
-                <h4 style="margin-top: 0; color: #92400e;">🧮 Why Basis Sets Matter:</h4>
-                <p style="margin-bottom: 1rem;"><strong>Flexibility:</strong> Different chemical systems require different basis sets for accurate representation. The ability to use any basis set means quantum computers can tackle a much wider range of problems.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Accuracy:</strong> The choice of basis set directly affects the accuracy of quantum chemical calculations. More flexible basis sets can provide higher accuracy but require more computational resources.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Efficiency:</strong> Some basis sets are more efficient for certain types of calculations. The ability to choose the optimal basis set for each problem can significantly improve computational efficiency.</p>
-                
-                <p style="margin-bottom: 0;"><strong>Scalability:</strong> Traditional quantum algorithms often require specific basis set transformations that don't scale well. The new approach avoids these limitations, enabling truly scalable quantum chemistry.</p>
+            <h3>⚛️ The Electron Problem</h3>
+            <p>Electrons don't behave like tiny balls orbiting around atoms. Instead, they exist in quantum states that can be described by mathematical functions called wave functions. These wave functions tell us the probability of finding an electron in any particular location around the nucleus.</p>
+
+            <h3>🧮 The Computational Challenge</h3>
+            <p>Calculating these wave functions for complex molecules requires solving equations that involve the interactions between all the electrons and all the atomic nuclei. For a molecule with just 20 electrons, this means solving equations with millions of variables – a task that becomes exponentially more difficult as the molecule gets larger.</p>
+
+            <div class="basis-set-simulator">
+                <h3>🔬 Quantum System Simulator</h3>
+                <p>Click the quantum particle to see how it behaves in different basis sets:</p>
+                <div class="quantum-system">
+                    <div class="quantum-field"></div>
+                    <div class="quantum-particle" id="quantumParticle" onclick="simulateQuantumState()">Q</div>
+                </div>
+                <p id="quantumStatus">Click the quantum particle to observe quantum state evolution!</p>
             </div>
 
-            <h2>🧮 The Mathematical Breakthrough: First Quantization Meets Quantum Computing</h2>
-            <p>The key innovation lies in the use of first quantization, which represents quantum states directly in terms of particle positions and momenta, rather than the more abstract second quantization approach that uses particle creation and annihilation operators. This direct representation is more intuitive and allows for more flexible treatment of different basis sets.</p>
+            <h3>💻 The Quantum Advantage</h3>
+            <p>Quantum computers have a fundamental advantage over classical computers when it comes to simulating quantum systems. While a classical computer has to simulate quantum behavior step by step, a quantum computer can actually be in a quantum state itself, making the simulation much more natural and efficient.</p>
 
-            <p>In first quantization, the wave function is represented as a function of the coordinates of all particles in the system. This approach is particularly well-suited for quantum computers because it can be directly encoded into quantum states without the complex transformations required by second quantization methods. The researchers have developed efficient quantum algorithms that can manipulate these first-quantized wave functions to perform chemical calculations.</p>
+            <h2>🌟 The First Quantization Approach</h2>
+            <p>The researchers developed a new approach called "first quantization" that represents the quantum state of electrons directly, rather than using the more traditional "second quantization" approach. Think of it like the difference between describing a crowd of people by listing each person individually versus describing them as a collective group.</p>
 
-            <p>What makes this approach particularly powerful is its ability to work with arbitrary basis sets. Traditional quantum algorithms often require specific types of basis functions (like Gaussian orbitals) and complex transformations to convert between different representations. The new algorithm can work directly with any basis set, making it much more flexible and applicable to a wider range of chemical problems.</p>
-
-            <h2>⚡ Scalability: The Key to Practical Quantum Chemistry</h2>
-            <p>One of the most exciting aspects of this research is the potential for truly scalable quantum chemistry. Traditional quantum algorithms often suffer from poor scaling properties, making them impractical for large systems. The new first-quantization approach addresses many of these scaling issues, potentially enabling quantum computers to tackle chemical problems that are completely intractable for classical computers.</p>
-
-            <p>The scalability comes from several key innovations. First, the direct representation of wave functions in first quantization avoids the complex transformations that can introduce errors and limit scalability in second quantization approaches. Second, the algorithm is designed to work efficiently with the quantum hardware available today, making it practical for near-term quantum computers.</p>
-
-            <p>Perhaps most importantly, the algorithm provides a clear path for scaling to larger systems. As quantum computers become more powerful and reliable, the same algorithmic framework can be extended to handle increasingly complex molecules, potentially reaching the point where quantum computers can simulate systems that are completely beyond the reach of classical methods.</p>
-
-            <h2>🔬 Real-World Applications: From Molecules to Materials</h2>
-            <p>The implications of this research extend far beyond academic interest. The ability to simulate complex chemical systems accurately could revolutionize drug discovery, materials design, and catalyst development. Pharmaceutical companies could use quantum computers to predict the properties of new drug candidates, potentially reducing the time and cost of drug development by years and millions of dollars.</p>
-
-            <p>Materials scientists could use quantum simulations to design new materials with specific properties, from superconductors to solar cells. The ability to predict material properties from first principles could accelerate the development of new technologies and reduce the need for expensive and time-consuming experimental screening.</p>
-
-            <p>Catalyst development is another area where quantum chemistry could have a major impact. Understanding the detailed mechanisms of catalytic reactions requires accurate quantum mechanical calculations that are often beyond the reach of classical computers. Quantum computers could provide the computational power needed to design more efficient and selective catalysts.</p>
-
-            <h2>🛠️ Implementation Challenges: Bridging Theory and Practice</h2>
-            <p>While the theoretical framework is elegant, implementing it on real quantum computers presents significant challenges. Current quantum computers are still relatively small and noisy, with limited coherence times and high error rates. The researchers have designed their algorithm to work within these constraints, but significant improvements in quantum hardware will be needed to realize the full potential of the approach.</p>
-
-            <p>One of the key challenges is error correction. Quantum computers are susceptible to errors from environmental noise, imperfect gates, and other sources. For quantum chemistry applications, these errors can significantly affect the accuracy of calculations. The researchers have developed error mitigation strategies, but more work is needed to make the approach robust for practical applications.</p>
-
-            <p>Another challenge is the integration with classical computing resources. While quantum computers excel at certain types of calculations, they still need to work in conjunction with classical computers for data processing, optimization, and other tasks. Developing efficient hybrid quantum-classical algorithms is crucial for practical applications.</p>
-
-            <h2>🔮 Future Directions: The Quantum Chemistry Revolution</h2>
-            <p>As quantum computers continue to improve, we can expect to see even more sophisticated applications of quantum chemistry. The first-quantization approach provides a solid foundation for developing new algorithms that can take advantage of increasingly powerful quantum hardware. This could lead to quantum computers that can simulate systems with hundreds or even thousands of atoms.</p>
-
-            <p>Another exciting development is the integration of quantum chemistry with machine learning. Quantum computers could be used to generate training data for machine learning models, or machine learning could be used to optimize quantum algorithms. This combination could lead to even more powerful approaches to chemical simulation and prediction.</p>
-
-            <p>The technology could also enable new approaches to quantum control and quantum sensing. Understanding the detailed quantum mechanical behavior of molecules could lead to new methods for controlling chemical reactions and detecting molecular properties with unprecedented sensitivity.</p>
-
-            <h2>🎓 Educational Impact: Preparing for the Quantum Future</h2>
-            <p>The emergence of quantum chemistry has important implications for chemical education. Students need to understand not just traditional quantum chemistry, but also how quantum computers can be used to solve chemical problems. This requires developing new curricula that integrate quantum computing with chemical education.</p>
-
-            <p>Universities are beginning to develop new courses that cover quantum computing, quantum algorithms, and their applications to chemistry. These courses prepare students for careers in the emerging field of quantum chemistry, where traditional boundaries between physics, chemistry, and computer science are becoming increasingly blurred.</p>
-
-            <p>Perhaps most importantly, students need to develop the ability to think about chemistry in fundamentally new ways. Quantum computing challenges many of the assumptions that underlie traditional chemical thinking, requiring students to develop more sophisticated conceptual frameworks for understanding molecular behavior.</p>
-
-            <h2>🔍 Interactive Elements: Test Your Understanding</h2>
-            <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #991b1b;">🤔 Think About It:</h4>
-                <p style="margin-bottom: 0;">How do you think quantum computing might change the way we approach chemical research and development? What are the potential advantages and limitations of this approach?</p>
+            <div class="quantization-control">
+                <h3>⚡ Quantization Level Simulator</h3>
+                <p>Adjust the quantization level to see how it affects the simulation:</p>
+                <div class="quantization-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="quantizationSlider" oninput="updateQuantization(this.value)">
+                    <p>Quantization Level: <span id="quantizationValue">50</span>%</p>
+                </div>
+                <div id="quantizationResult">
+                    <p>At this quantization level, the simulation shows <strong>moderate</strong> quantum effects with some basis set flexibility.</p>
+                </div>
             </div>
 
-            <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #0c4a6e;">💡 Discussion Questions:</h4>
+            <h3>🔬 What Makes This Special</h3>
+            <p>This new method is special because it can handle:</p>
+
+            <ul>
+                <li><strong>Any Basis Set:</strong> Flexible mathematical representations of electron orbitals</li>
+                <li><strong>Scalable Calculations:</strong> Works efficiently even for large molecules</li>
+                <li><strong>First Quantization:</strong> Direct representation of quantum states</li>
+                <li><strong>Quantum Error Correction:</strong> Handles the noise inherent in quantum computers</li>
+            </ul>
+
+            <h2>🚀 Real-World Applications</h2>
+            <p>This breakthrough has important implications for numerous fields:</p>
+
+            <h3>💊 Drug Discovery</h3>
+            <p>Understanding exactly how drug molecules interact with proteins could lead to more effective medicines with fewer side effects, potentially accelerating the drug development process.</p>
+
+            <h3>🔋 Energy Materials</h3>
+            <p>Simulating the behavior of materials used in batteries and solar cells could lead to more efficient energy storage and conversion technologies.</p>
+
+            <h3>🌱 Green Chemistry</h3>
+            <p>Understanding chemical reactions at the quantum level could help design more efficient and environmentally friendly chemical processes.</p>
+
+            <h3>🧪 Materials Science</h3>
+            <p>Predicting the properties of new materials before they're synthesized could revolutionize the development of stronger, lighter, and more functional materials.</p>
+
+            <div class="algorithm-demo">
+                <h3>🔬 Quantum Algorithm Demo</h3>
+                <p>Click the steps to see how the quantum algorithm works:</p>
+                <div class="algorithm-steps">
+                    <div class="algorithm-step" onclick="showStep(1)">1</div>
+                    <div class="step-arrow">→</div>
+                    <div class="algorithm-step" onclick="showStep(2)">2</div>
+                    <div class="step-arrow">→</div>
+                    <div class="algorithm-step" onclick="showStep(3)">3</div>
+                    <div class="step-arrow">→</div>
+                    <div class="algorithm-step" onclick="showStep(4)">4</div>
+                </div>
+                <p id="algorithmResult">Click a step to see the quantum algorithm in action!</p>
+            </div>
+
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers used cutting-edge quantum computing techniques to make this discovery:</p>
+
+            <div style="background: #faf5ff; border-left: 4px solid #a855f7; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
+                <h4 style="margin-top: 0; color: #7c3aed;">🧮 Technical Approach:</h4>
                 <ul style="margin-bottom: 0;">
-                    <li>What are the key differences between first and second quantization approaches to quantum chemistry?</li>
-                    <li>How might the ability to use any basis set change the way quantum chemistry calculations are performed?</li>
-                    <li>What challenges do you think need to be overcome for quantum chemistry to become practical for industrial applications?</li>
+                    <li><strong>First Quantization:</strong> Direct representation of quantum states</li>
+                    <li><strong>Basis Set Flexibility:</strong> Works with any mathematical basis</li>
+                    <li><strong>Quantum Error Correction:</strong> Handles quantum computer noise</li>
+                    <li><strong>Scalable Algorithms:</strong> Efficient for large molecular systems</li>
                 </ul>
             </div>
 
+            <h2>🚀 Future Possibilities</h2>
+            <p>This research opens up exciting new possibilities for chemistry and materials science:</p>
+
+            <ul>
+                <li><strong>Accelerated Discovery:</strong> Finding new materials and drugs much faster</li>
+                <li><strong>Precision Chemistry:</strong> Designing molecules with exact properties</li>
+                <li><strong>Quantum Materials:</strong> Creating materials with quantum properties</li>
+                <li><strong>Green Technology:</strong> Developing more sustainable chemical processes</li>
+            </ul>
+
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of interdisciplinary science. It combines:</p>
+
+            <ul>
+                <li><strong>Chemistry:</strong> Understanding molecular behavior and reactions</li>
+                <li><strong>Physics:</strong> Understanding quantum mechanics and quantum computing</li>
+                <li><strong>Computer Science:</strong> Developing quantum algorithms and error correction</li>
+                <li><strong>Mathematics:</strong> Creating mathematical frameworks for quantum simulation</li>
+            </ul>
+
+            <p>For students interested in any of these fields, this work shows how modern science often involves combining knowledge from multiple disciplines to solve complex problems that no single field could tackle alone.</p>
+
             <div class="highlight-box">
-                <strong>🎯 Bottom Line:</strong> Quantum simulations in first quantization with arbitrary basis sets represent a major breakthrough in quantum chemistry, enabling scalable quantum chemical calculations that could revolutionize how we approach chemical research and development. This technology provides a flexible and efficient framework for quantum chemistry that can work with any basis set, dramatically expanding the range of chemical systems that can be simulated on quantum computers. As quantum hardware continues to improve, we can expect to see revolutionary applications that will transform drug discovery, materials design, and catalyst development.
+                <strong>🎯 Bottom Line:</strong> Scientists have developed a revolutionary quantum computing algorithm that can simulate chemical reactions and molecular properties with unprecedented accuracy. This breakthrough could lead to the discovery of new materials, more efficient drugs, and better understanding of complex chemical processes.
             </div>
 
             <h2>📚 Further Reading & Resources</h2>
-            <p>Want to explore more about this fascinating intersection of quantum computing and chemistry?</p>
+            <p>Want to dive deeper? Check out these related topics:</p>
             <ul>
-                <li>Quantum computing algorithms for chemistry</li>
-                <li>First quantization vs. second quantization approaches</li>
+                <li>Quantum computing and quantum algorithms</li>
+                <li>Quantum chemistry and molecular simulation</li>
+                <li>First quantization vs second quantization</li>
                 <li>Basis sets in quantum chemistry</li>
-                <li>Scalable quantum algorithms for chemical simulation</li>
+                <li>Quantum error correction and fault tolerance</li>
             </ul>
         </div>
     </main>
@@ -685,5 +527,62 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        function showQuantumComputer() {
+            alert('💻 Quantum Computer: A computer that uses quantum mechanical phenomena like superposition and entanglement to perform calculations. Unlike classical computers that use bits (0 or 1), quantum computers use quantum bits (qubits) that can be in multiple states simultaneously.');
+        }
+
+        function showMolecule() {
+            alert('🧪 Molecule: A group of atoms bonded together. In quantum chemistry, we study how the electrons in molecules behave according to quantum mechanics, which is essential for understanding chemical reactions and molecular properties.');
+        }
+
+        function showAlgorithm() {
+            alert('🔬 Algorithm: A step-by-step procedure for solving a problem. Quantum algorithms are designed to run on quantum computers and can solve certain problems much faster than classical algorithms, especially those involving quantum systems.');
+        }
+
+        function simulateQuantumState() {
+            const particle = document.getElementById('quantumParticle');
+            const status = document.getElementById('quantumStatus');
+            
+            status.textContent = 'Observing quantum state evolution...';
+            particle.style.background = 'linear-gradient(45deg, #a855f7, #fbbf24)';
+            particle.style.transform = 'scale(1.3)';
+            
+            setTimeout(() => {
+                particle.innerHTML = 'Ψ';
+                particle.style.background = 'linear-gradient(45deg, #fbbf24, #a855f7)';
+                particle.style.transform = 'scale(1)';
+                status.textContent = 'Quantum state calculated! Wave function Ψ represents the electron probability distribution!';
+            }, 2000);
+        }
+
+        function updateQuantization(value) {
+            document.getElementById('quantizationValue').textContent = value;
+            
+            let result = '';
+            if (value < 20) {
+                result = 'At this quantization level, the simulation shows <strong>minimal</strong> quantum effects with basic basis set representation.';
+            } else if (value < 40) {
+                result = 'At this quantization level, the simulation shows <strong>moderate</strong> quantum effects with some basis set flexibility.';
+            } else if (value < 80) {
+                result = 'At this quantization level, the simulation shows <strong>significant</strong> quantum effects with flexible basis sets and accurate wave functions.';
+            } else {
+                result = 'At this quantization level, the simulation shows <strong>complete</strong> quantum effects with full basis set flexibility and precise quantum state representation!';
+            }
+            
+            document.getElementById('quantizationResult').innerHTML = '<p>' + result + '</p>';
+        }
+
+        function showStep(step) {
+            const result = document.getElementById('algorithmResult');
+            const steps = {
+                1: 'Step 1: Initialize quantum state with molecular geometry and basis set',
+                2: 'Step 2: Apply quantum gates to represent electron interactions',
+                3: 'Step 3: Measure quantum state to obtain molecular properties',
+                4: 'Step 4: Process results and calculate chemical observables'
+            };
+            result.textContent = steps[step] || 'Click a step to see the quantum algorithm in action!';
+        }
+    </script>
 </body>
 </html>

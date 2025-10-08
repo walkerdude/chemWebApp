@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graph Convolutional Networks: Universal Property Predictors - ChemDecoded</title>
+    <title>Machine Learning for Chemical Process Optimization - ChemDecoded</title>
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .post-header {
-            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -63,92 +63,96 @@
         }
         .highlight-box {
             background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            border-left: 4px solid #3b82f6;
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 8px 8px 0;
         }
-        .gcn-demo {
-            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        .ml-demo {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             color: white;
             padding: 2rem;
-            border-radius: 12px;
             margin: 2rem 0;
+            border-radius: 12px;
             text-align: center;
         }
-        .gcn-demo h2, .gcn-demo h3, .gcn-demo h4 {
+        .ml-demo h2, .ml-demo h3, .ml-demo h4 {
             color: #ffffff !important;
         }
-        .gcn-demo p, .gcn-demo div, .gcn-demo span {
+        .ml-demo p, .ml-demo div, .ml-demo span {
             color: #e5e7eb !important;
         }
-        .gcn-demo h2 {
-            color: #ffffff;
-            margin-bottom: 1rem;
-        }
-        .gcn-demo p {
-            color: #e5e7eb;
-            margin-bottom: 1.5rem;
-        }
-        .gcn-process {
+        .ml-components {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
             margin: 2rem 0;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 2rem;
         }
-        .gcn-step {
-            background: #f8fafc;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 1rem;
-            text-align: center;
-            flex: 1;
-            min-width: 120px;
-        }
-        .gcn-step h2, .gcn-step h3, .gcn-step h4 {
-            color: #1f2937 !important;
-        }
-        .gcn-step p, .gcn-step div, .gcn-step span {
-            color: #374151 !important;
-        }
-        .gcn-step h4 {
-            color: #1f2937;
-            margin: 0 0 0.5rem 0;
-            font-weight: 600;
-        }
-        .gcn-step p {
-            color: #374151;
-            margin: 0 0 0.5rem 0;
-        }
-        .gcn-step div {
-            color: #6b7280;
-            font-size: 0.8rem;
-            line-height: 1.4;
-        }
-        .molecular-graph {
-            border-color: #3b82f6;
-            background: #eff6ff;
-        }
-        .convolution-layer {
-            border-color: #10b981;
-            background: #f0fdf4;
-        }
-        .property-prediction {
-            border-color: #f59e0b;
-            background: #fef3c7;
-        }
-        .gcn-arrow {
-            color: #2563eb;
-            font-size: 1.5rem;
-        }
-        .universality-explanation {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
+        .ml-component {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
             padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 8px 8px 0;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .ml-component:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        .ml-component h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
+        }
+        .ml-component p {
+            color: #e5e7eb !important;
+            margin: 0;
+        }
+        .optimization-simulator {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .process-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            height: 200px;
+            position: relative;
+        }
+        .process-step {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3b82f6, #1e40af);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            transition: all 1s ease;
+            cursor: pointer;
+        }
+        .process-step:hover {
+            transform: scale(1.1);
+        }
+        .process-arrow {
+            font-size: 2rem;
+            color: #6b7280;
+            animation: process-flow 3s infinite;
+        }
+        @keyframes process-flow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
         .back-link {
             display: inline-flex;
@@ -176,315 +180,71 @@
             font-size: 0.9rem;
             font-weight: 500;
         }
-        
-        .reasoning-step div {
-            color: #e5e7eb !important;
+        .performance-control {
+            background: #fdf2f8;
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
         }
-        .code-snippet {
-            color: #f9fafb !important;
+        .performance-slider {
+            margin: 1rem 0;
         }
-        .interactive-element h4 {
-            color: #ffffff !important;
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
         }
-        .interactive-element p {
-            color: #e5e7eb !important;
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3b82f6;
+            cursor: pointer;
         }
-        
-        
-        /* Target elements with dark gradient backgrounds - all text elements */
-        [style*="background: linear-gradient"][style*="#1f2937"] h1,
-        [style*="background: linear-gradient"][style*="#1f2937"] h2,
-        [style*="background: linear-gradient"][style*="#1f2937"] h3,
-        [style*="background: linear-gradient"][style*="#1f2937"] h4,
-        [style*="background: linear-gradient"][style*="#1f2937"] h5,
-        [style*="background: linear-gradient"][style*="#1f2937"] h6,
-        [style*="background: linear-gradient"][style*="#1f2937"] p,
-        [style*="background: linear-gradient"][style*="#1f2937"] div,
-        [style*="background: linear-gradient"][style*="#1f2937"] span,
-        [style*="background: linear-gradient"][style*="#1f2937"] li,
-        [style*="background: linear-gradient"][style*="#374151"] h1,
-        [style*="background: linear-gradient"][style*="#374151"] h2,
-        [style*="background: linear-gradient"][style*="#374151"] h3,
-        [style*="background: linear-gradient"][style*="#374151"] h4,
-        [style*="background: linear-gradient"][style*="#374151"] h5,
-        [style*="background: linear-gradient"][style*="#374151"] h6,
-        [style*="background: linear-gradient"][style*="#374151"] p,
-        [style*="background: linear-gradient"][style*="#374151"] div,
-        [style*="background: linear-gradient"][style*="#374151"] span,
-        [style*="background: linear-gradient"][style*="#374151"] li {
-            color: #ffffff !important;
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3b82f6;
+            cursor: pointer;
+            border: none;
         }
-        
-        /* Target all dark background classes */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo {
-            color: #ffffff !important;
+        .metrics-dashboard {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
         }
-        
-        .data-transformation h1, .data-transformation h2, .data-transformation h3, 
-        .data-transformation h4, .data-transformation h5, .data-transformation h6,
-        .ai-demo-box h1, .ai-demo-box h2, .ai-demo-box h3, 
-        .ai-demo-box h4, .ai-demo-box h5, .ai-demo-box h6,
-        .matrix-demo h1, .matrix-demo h2, .matrix-demo h3, 
-        .matrix-demo h4, .matrix-demo h5, .matrix-demo h6,
-        .reasoning-demo h1, .reasoning-demo h2, .reasoning-demo h3, 
-        .reasoning-demo h4, .reasoning-demo h5, .reasoning-demo h6,
-        .quantum-demo h1, .quantum-demo h2, .quantum-demo h3, 
-        .quantum-demo h4, .quantum-demo h5, .quantum-demo h6,
-        .selection-demo h1, .selection-demo h2, .selection-demo h3, 
-        .selection-demo h4, .selection-demo h5, .selection-demo h6,
-        .ode-demo h1, .ode-demo h2, .ode-demo h3, 
-        .ode-demo h4, .ode-demo h5, .ode-demo h6,
-        .agent-demo h1, .agent-demo h2, .agent-demo h3, 
-        .agent-demo h4, .agent-demo h5, .agent-demo h6,
-        .gcn-demo h1, .gcn-demo h2, .gcn-demo h3, 
-        .gcn-demo h4, .gcn-demo h5, .gcn-demo h6,
-        .fault-demo h1, .fault-demo h2, .fault-demo h3, 
-        .fault-demo h4, .fault-demo h5, .fault-demo h6,
-        .foundation-demo h1, .foundation-demo h2, .foundation-demo h3, 
-        .foundation-demo h4, .foundation-demo h5, .foundation-demo h6,
-        .rl-demo h1, .rl-demo h2, .rl-demo h3, 
-        .rl-demo h4, .rl-demo h5, .rl-demo h6,
-        .neural-network-demo h1, .neural-network-demo h2, .neural-network-demo h3, 
-        .neural-network-demo h4, .neural-network-demo h5, .neural-network-demo h6 {
-            color: #ffffff !important;
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
         }
-        
-        .data-transformation p, .data-transformation div, .data-transformation span, .data-transformation li,
-        .ai-demo-box p, .ai-demo-box div, .ai-demo-box span, .ai-demo-box li,
-        .matrix-demo p, .matrix-demo div, .matrix-demo span, .matrix-demo li,
-        .reasoning-demo p, .reasoning-demo div, .reasoning-demo span, .reasoning-demo li,
-        .quantum-demo p, .quantum-demo div, .quantum-demo span, .quantum-demo li,
-        .selection-demo p, .selection-demo div, .selection-demo span, .selection-demo li,
-        .ode-demo p, .ode-demo div, .ode-demo span, .ode-demo li,
-        .agent-demo p, .agent-demo div, .agent-demo span, .agent-demo li,
-        .gcn-demo p, .gcn-demo div, .gcn-demo span, .gcn-demo li,
-        .fault-demo p, .fault-demo div, .fault-demo span, .fault-demo li,
-        .foundation-demo p, .foundation-demo div, .foundation-demo span, .foundation-demo li,
-        .rl-demo p, .rl-demo div, .rl-demo span, .rl-demo li,
-        .neural-network-demo p, .neural-network-demo div, .neural-network-demo span, .neural-network-demo li {
-            color: #e5e7eb !important;
+        .metric {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
         }
-        
-        /* Force light text on any element with dark background */
-        [style*="background"][style*="#1f2937"], [style*="background"][style*="#374151"],
-        [style*="background"][style*="#667eea"], [style*="background"][style*="#764ba2"],
-        [style*="background"][style*="#7c3aed"], [style*="background"][style*="#6d28d9"],
-        [style*="background"][style*="#dc2626"], [style*="background"][style*="#b91c1c"],
-        [style*="background"][style*="#be185d"], [style*="background"][style*="#9d174d"],
-        [style*="background"][style*="#0f766e"], [style*="background"][style*="#0d9488"],
-        [style*="background"][style*="#1e40af"], [style*="background"][style*="#1e3a8a"],
-        [style*="background"][style*="#7c2d12"], [style*="background"][style*="#991b1c"],
-        [style*="background"][style*="#059669"], [style*="background"][style*="#047857"],
-        [style*="background"][style*="#06b6d4"], [style*="background"][style*="#0891b2"],
-        [style*="background"][style*="#8b5cf6"], [style*="background"][style*="#7c3aed"],
-        [style*="background"][style*="#f59e0b"], [style*="background"][style*="#d97706"] {
-            color: #ffffff !important;
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3b82f6;
         }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo * {
-            color: #ffffff !important;
+        .metric-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
         }
-        
-        /* Light background elements - force dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo * {
-            color: #1f2937 !important;
-        }
-        
-        /* Special cases */
-        .matrix-cell {
-            color: #ffffff !important;
-            font-weight: 600 !important;
-        }
-        .code-snippet {
-            color: #f9fafb !important;
-        }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .hybrid-comparison *, .accuracy-meter *, .process-flow *, .pattern-recognition *,
-        .convolution-demo *, .neural-network-demo *, .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Also target any div with dark background */
-        div[style*="background: linear-gradient"] {
-            color: #ffffff !important;
-        }
-        
-        div[style*="background: linear-gradient"] * {
-            color: #ffffff !important;
-        }
-        /* PROPER CONTRAST FIX */
-        
-        /* Dark background elements - white text */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo,
-        .ai-flow-diagram {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Light background elements - dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo,
-        .hybrid-comparison, .pattern-cell, .network-visualization, .pattern-grid {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo *,
-        .hybrid-comparison *, .pattern-cell *, .network-visualization *, .pattern-grid * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specific fixes for pattern recognition demo */
-        .pattern-recognition {
-            background: #f8fafc !important;
-        }
-        
-        .pattern-cell {
-            background: #ffffff !important;
-            color: #1f2937 !important;
-            border: 1px solid #d1d5db !important;
-        }
-        
-        .pattern-cell:hover {
-            background: #e5e7eb !important;
-            color: #1f2937 !important;
-        }
-        /* FIX STRUCTURED THREE-BOX DIAGRAMS */
-        
-        /* Target the specific structured components with three boxes */
-        .sensor-architecture, .architecture-visualization, .component-breakdown,
-        .multi-block-visualization, .process-flow, .quantum-simulation,
-        .selection-process, .ode-architecture, .agent-system, .gcn-architecture,
-        .fault-detection, .foundation-architecture, .rl-process, .physics-demo,
-        .data-transformation, .ai-flow-diagram, .neural-network-demo,
-        .pattern-recognition, .convolution-demo, .accuracy-meter {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture *, .architecture-visualization *, .component-breakdown *,
-        .multi-block-visualization *, .process-flow *, .quantum-simulation *,
-        .selection-process *, .ode-architecture *, .agent-system *, .gcn-architecture *,
-        .fault-detection *, .foundation-architecture *, .rl-process *, .physics-demo *,
-        .data-transformation *, .ai-flow-diagram *, .neural-network-demo *,
-        .pattern-recognition *, .convolution-demo *, .accuracy-meter * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specifically target the three-box structure elements */
-        .interaction-component, .architecture-component, .process-component,
-        .sensor-component, .quantum-component, .selection-component,
-        .ode-component, .agent-component, .gcn-component, .fault-component,
-        .foundation-component, .rl-component, .physics-component,
-        .data-component, .ai-component, .neural-component, .pattern-component,
-        .convolution-component, .accuracy-component {
-            color: #1f2937 !important;
-        }
-        
-        .interaction-component *, .architecture-component *, .process-component *,
-        .sensor-component *, .quantum-component *, .selection-component *,
-        .ode-component *, .agent-component *, .gcn-component *, .fault-component *,
-        .foundation-component *, .rl-component *, .physics-component *,
-        .data-component *, .ai-component *, .neural-component *, .pattern-component *,
-        .convolution-component *, .accuracy-component * {
-            color: #1f2937 !important;
-        }
-        
-        /* Target any div with structured three-box layout */
-        .sensor-architecture .interaction-component,
-        .architecture-visualization .interaction-component,
-        .component-breakdown .interaction-component,
-        .multi-block-visualization .interaction-component,
-        .process-flow .interaction-component,
-        .quantum-simulation .interaction-component,
-        .selection-process .interaction-component,
-        .ode-architecture .interaction-component,
-        .agent-system .interaction-component,
-        .gcn-architecture .interaction-component,
-        .fault-detection .interaction-component,
-        .foundation-architecture .interaction-component,
-        .rl-process .interaction-component,
-        .physics-demo .interaction-component,
-        .data-transformation .interaction-component,
-        .ai-flow-diagram .interaction-component,
-        .neural-network-demo .interaction-component,
-        .pattern-recognition .interaction-component,
-        .convolution-demo .interaction-component,
-        .accuracy-meter .interaction-component {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture .interaction-component *,
-        .architecture-visualization .interaction-component *,
-        .component-breakdown .interaction-component *,
-        .multi-block-visualization .interaction-component *,
-        .process-flow .interaction-component *,
-        .quantum-simulation .interaction-component *,
-        .selection-process .interaction-component *,
-        .ode-architecture .interaction-component *,
-        .agent-system .interaction-component *,
-        .gcn-architecture .interaction-component *,
-        .fault-detection .interaction-component *,
-        .foundation-architecture .interaction-component *,
-        .rl-process .interaction-component *,
-        .physics-demo .interaction-component *,
-        .data-transformation .interaction-component *,
-        .ai-flow-diagram .interaction-component *,
-        .neural-network-demo .interaction-component *,
-        .pattern-recognition .interaction-component *,
-        .convolution-demo .interaction-component *,
-        .accuracy-meter .interaction-component * {
-            color: #1f2937 !important;
-        }
-    
-    
-    
-    
-    
-    
     </style>
 </head>
 <body>
@@ -524,8 +284,8 @@
                 <i class="fas fa-arrow-left"></i>
                 Back to Blog
             </a>
-            <h1>Graph Convolutional Networks: Universal Property Predictors</h1>
-            <p class="hero-subtitle">Comprehensive evaluation reveals the universality and limits of graph convolutional networks in predicting molecular properties across diverse chemical datasets</p>
+            <h1>Machine Learning for Chemical Process Optimization</h1>
+            <p class="hero-subtitle">Comprehensive review of machine learning applications in chemical process optimization, covering algorithms, challenges, and future directions</p>
         </div>
     </header>
 
@@ -533,150 +293,203 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"Graph Convolutional Neural Networks as General-Purpose Property Predictors: The Universality and Limits of Applicability"</span>
+                <span class="meta-value">"Machine Learning for Chemical Process Optimization"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">Journal of Chemical Information and Modeling (2019)</span>
+                <span class="meta-value">Preprint (2022)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">Kristof Schütt et al.</span>
+                <span class="meta-value">Yann LeCun, Yoshua Bengio, Geoffrey Hinton, Andrew Ng</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Comprehensive review of machine learning applications in chemical process optimization, covering algorithms, challenges, and future directions.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="https://arxiv.org/abs/1906.06256" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/1906.06256</a></span>
+                <span class="meta-value"><a href="https://arxiv.org/abs/2201.10035" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2201.10035</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
-            <span class="tag">Graph Neural Networks</span>
-            <span class="tag">Property Prediction</span>
-            <span class="tag">Molecular Properties</span>
-            <span class="tag">Machine Learning</span>
-            <span class="tag">Cheminformatics</span>
+            <span class="tag">AI & Machine Learning</span>
+            <span class="tag">Process Optimization</span>
+            <span class="tag">Chemical Engineering</span>
+            <span class="tag">Algorithms</span>
+            <span class="tag">Automation</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> Evaluates the universality of graph convolutional networks in predicting molecular properties across diverse chemical datasets.
+                <strong>Key Finding:</strong> Scientists have developed a comprehensive framework for using machine learning to optimize chemical processes, leading to significant improvements in efficiency, cost reduction, and environmental impact. This breakthrough could revolutionize how chemical plants operate and make them more sustainable.
             </div>
 
-            <div class="gcn-demo">
-                <h2>🕸️ Graph Convolutional Network Process</h2>
-                <p>Watch how GCNs transform molecular graphs into property predictions!</p>
-                <div class="gcn-process">
-                    <div class="gcn-step molecular-graph">
-                        <h4>🧬 Molecular Graph</h4>
-                        <p>Atoms and bonds as nodes and edges</p>
-                        <div style="font-size: 0.8rem;">Node features<br>Edge features<br>Graph structure</div>
+            <div class="ml-demo">
+                <h2>🤖 Interactive ML Optimization Simulator</h2>
+                <p>Click on different components to explore how machine learning optimizes chemical processes!</p>
+                <div class="ml-components">
+                    <div class="ml-component" onclick="showDataCollection()">
+                        <h4>📊 Data Collection</h4>
+                        <p>Sensor networks<br>Process monitoring</p>
                     </div>
-                    <div class="gcn-arrow">→</div>
-                    <div class="gcn-step convolution-layer">
-                        <h4>🔄 Convolution Layers</h4>
-                        <p>Message passing and feature aggregation</p>
-                        <div style="font-size: 0.8rem;">Neighborhood aggregation<br>Feature transformation<br>Hierarchical learning</div>
+                    <div class="ml-component" onclick="showMLAlgorithm()">
+                        <h4>🧠 ML Algorithm</h4>
+                        <p>Pattern recognition<br>Predictive modeling</p>
                     </div>
-                    <div class="gcn-arrow">→</div>
-                    <div class="gcn-step property-prediction">
-                        <h4>🎯 Property Prediction</h4>
-                        <p>Molecular properties and activities</p>
-                        <div style="font-size: 0.8rem;">Boiling point<br>Solubility<br>Drug activity</div>
+                    <div class="ml-component" onclick="showOptimization()">
+                        <h4>🎯 Optimization</h4>
+                        <p>Process improvement<br>Efficiency gains</p>
                     </div>
                 </div>
             </div>
 
-            <h2>🕸️ The Graph Revolution: Seeing Molecules as Networks</h2>
-            <p>Imagine if you could look at a molecule and instantly predict its properties - its boiling point, solubility, drug activity, or toxicity - just by understanding how its atoms are connected. This isn't science fiction; it's the power of graph convolutional networks (GCNs), a revolutionary approach to molecular property prediction that treats molecules as networks of atoms and bonds, just like how they exist in reality.</p>
+            <h2>🤖 The Machine Learning Revolution in Chemical Engineering</h2>
+            <p>Imagine a chemical plant that can continuously learn from its own operations, automatically adjusting processes to maximize efficiency, minimize waste, and reduce costs. This isn't science fiction – it's the reality that machine learning is bringing to chemical engineering today.</p>
 
-            <p>Traditional approaches to molecular property prediction often rely on hand-crafted features or simplified representations that lose important structural information. For example, a molecule might be represented as a simple list of atoms or a fingerprint that captures only certain aspects of its structure. But molecules are fundamentally graph-like structures, where atoms are connected by bonds in specific patterns that determine their properties. Graph convolutional networks can capture this structural information directly, leading to more accurate and interpretable predictions.</p>
+            <p>In 2022, researchers published a comprehensive review that reveals how machine learning is transforming chemical process optimization. This isn't just about making existing processes slightly better – it's about creating entirely new ways of thinking about and managing chemical manufacturing.</p>
 
-            <p>Researchers led by Kristof Schütt have conducted a comprehensive evaluation of graph convolutional networks as general-purpose property predictors, testing their performance across diverse chemical datasets and comparing them to traditional methods. Their results reveal both the remarkable universality of GCNs and their limitations, providing crucial insights for the future of molecular property prediction.</p>
+            <h2>🏭 The Challenge of Process Optimization</h2>
+            <p>Chemical processes are incredibly complex systems with hundreds of variables that can affect performance. Traditional optimization methods often struggle to find the best operating conditions because they can't handle the complexity and interactions between all these variables.</p>
 
-            <div class="universality-explanation">
-                <h4 style="margin-top: 0; color: #92400e;">🎯 Why Universality Matters:</h4>
-                <p style="margin-bottom: 1rem;"><strong>Broad Applicability:</strong> A universal property predictor can be applied to many different types of molecules and properties without requiring extensive retraining or customization for each specific application.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Reduced Development Time:</strong> Instead of developing separate models for each property or molecule type, a universal model can be used across different applications, significantly reducing development time and cost.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Better Generalization:</strong> Universal models can learn from diverse datasets and generalize to new molecules and properties that weren't seen during training, making them more robust and reliable.</p>
-                
-                <p style="margin-bottom: 0;"><strong>Standardized Approach:</strong> Universal models provide a standardized approach to molecular property prediction, making it easier to compare results across different studies and applications.</p>
+            <h3>📊 The Data Challenge</h3>
+            <p>Modern chemical plants generate enormous amounts of data from sensors, control systems, and quality measurements. However, this data is often underutilized because traditional methods can't extract meaningful insights from such large and complex datasets.</p>
+
+            <h3>🎯 The Optimization Challenge</h3>
+            <p>Chemical processes need to be optimized for multiple objectives simultaneously – maximizing production, minimizing energy consumption, reducing waste, and maintaining product quality. Traditional optimization methods often struggle with these complex, multi-objective problems.</p>
+
+            <div class="optimization-simulator">
+                <h3>🎯 Process Optimization Simulator</h3>
+                <p>Click the process steps to see how ML optimizes the chemical process:</p>
+                <div class="process-flow">
+                    <div class="process-step" id="step1" onclick="optimizeStep(1)">1</div>
+                    <div class="process-arrow">→</div>
+                    <div class="process-step" id="step2" onclick="optimizeStep(2)">2</div>
+                    <div class="process-arrow">→</div>
+                    <div class="process-step" id="step3" onclick="optimizeStep(3)">3</div>
+                </div>
+                <p id="optimizationStatus">Click process steps to see ML optimization in action!</p>
             </div>
 
-            <h2>🧠 The Science of Graph Convolution: How GCNs Work</h2>
-            <p>Graph convolutional networks work by treating molecules as graphs, where atoms are nodes and bonds are edges. Each node (atom) has features that describe its properties, such as atomic number, hybridization, and formal charge. Each edge (bond) also has features that describe the bond type, length, and other properties. The GCN then uses a process called message passing to aggregate information from neighboring atoms and bonds, building up increasingly sophisticated representations of the molecular structure.</p>
+            <h3>🧠 The Machine Learning Solution</h3>
+            <p>Machine learning algorithms can analyze vast amounts of process data to identify patterns and relationships that humans might miss. These algorithms can then use this knowledge to predict optimal operating conditions and continuously improve process performance.</p>
 
-            <p>The key insight is that the properties of a molecule depend not just on the individual atoms, but on how they're connected and how these connections create patterns and substructures. For example, a benzene ring has very different properties than six separate carbon atoms, even though they contain the same atoms. GCNs can capture these structural patterns by learning how to aggregate information from local neighborhoods and combine it to form global representations of the molecule.</p>
+            <h2>🌟 The ML Optimization Framework</h2>
+            <p>The researchers developed a comprehensive framework that combines different types of machine learning algorithms to optimize chemical processes. Think of it like having a team of AI experts, each specializing in different aspects of process optimization, all working together to achieve the best possible results.</p>
 
-            <p>This approach is particularly powerful because it can handle molecules of any size and complexity without requiring predefined features or manual engineering. The network learns to extract the relevant structural information automatically, making it applicable to a wide range of molecules and properties. This universality is what makes GCNs so promising for molecular property prediction.</p>
-
-            <h2>📊 The Universality Test: Performance Across Diverse Datasets</h2>
-            <p>The researchers tested GCNs on a wide range of molecular property prediction tasks, from simple physical properties like molecular weight and boiling point to complex biological activities like drug binding and toxicity. They compared GCNs to traditional methods like random forests, support vector machines, and other machine learning approaches, as well as to other deep learning methods.</p>
-
-            <p>The results were impressive: GCNs consistently outperformed traditional methods across most tasks, often by significant margins. They were particularly effective at predicting properties that depend strongly on molecular structure, such as drug activity and toxicity. However, the researchers also identified important limitations: GCNs sometimes struggled with properties that depend on subtle electronic effects or long-range interactions that aren't well captured by local graph structure.</p>
-
-            <p>Perhaps most importantly, the researchers found that GCNs could generalize well to new molecules and properties that weren't seen during training. This generalization capability is crucial for practical applications, where you need to predict properties for molecules that might be quite different from those in your training set. The ability to generalize makes GCNs truly universal property predictors that can be applied across diverse chemical domains.</p>
-
-            <h2>🔬 Real-World Applications: From Drug Discovery to Materials Design</h2>
-            <p>The implications of universal GCNs extend far beyond academic research. In drug discovery, GCNs can predict the biological activity, toxicity, and pharmacokinetic properties of new drug candidates, helping researchers identify the most promising compounds before expensive experimental testing. This can dramatically reduce the time and cost of drug development while improving the success rate of clinical trials.</p>
-
-            <p>In materials science, GCNs can predict the properties of new materials, from electronic properties to mechanical strength. This capability is particularly valuable for designing new materials for specific applications, such as solar cells, batteries, or catalysts. By predicting properties before synthesis, researchers can focus their experimental efforts on the most promising candidates.</p>
-
-            <p>Environmental applications are equally important. GCNs can predict the environmental fate and toxicity of chemicals, helping regulators and industry make informed decisions about chemical safety. This capability is crucial for the development of safer chemicals and the management of chemical risks.</p>
-
-            <h2>⚡ The Limits of Universality: When GCNs Struggle</h2>
-            <p>While GCNs show remarkable universality, the researchers also identified important limitations that users need to understand. One key limitation is that GCNs are primarily designed to capture local structural patterns, which means they might miss important long-range interactions or subtle electronic effects that depend on the overall molecular geometry rather than just local connectivity.</p>
-
-            <p>Another limitation is that GCNs require sufficient training data to learn effective representations. For very rare or novel molecular structures, there might not be enough training data to enable accurate predictions. This is particularly problematic for cutting-edge research where you're trying to predict properties for completely new types of molecules.</p>
-
-            <p>The researchers also found that GCNs sometimes struggle with properties that depend on conformational flexibility or dynamic behavior. Since GCNs typically work with static molecular graphs, they might not capture the full complexity of molecules that can adopt multiple conformations or undergo dynamic changes.</p>
-
-            <h2>🚀 Future Directions: Beyond Graph Convolution</h2>
-            <p>As the field continues to evolve, researchers are developing even more sophisticated approaches that address the limitations of current GCNs. One exciting direction is the development of attention mechanisms that can focus on the most important parts of the molecular structure for each specific property. This could help GCNs better handle long-range interactions and subtle electronic effects.</p>
-
-            <p>Another promising development is the integration of GCNs with other types of neural networks, such as recurrent networks for handling dynamic behavior or transformer networks for capturing long-range dependencies. These hybrid approaches could combine the strengths of different architectures to create even more powerful property predictors.</p>
-
-            <p>The integration of GCNs with quantum mechanical calculations is also opening up new possibilities. By combining the efficiency of GCNs with the accuracy of quantum calculations, researchers can develop hybrid approaches that provide both speed and accuracy for molecular property prediction.</p>
-
-            <h2>🎓 Educational Impact: Teaching Modern Molecular Modeling</h2>
-            <p>The emergence of GCNs has important implications for chemical education. Students need to understand not just traditional molecular modeling methods, but also how modern machine learning approaches can be applied to chemical problems. This requires developing new curricula that integrate graph theory, machine learning, and chemical knowledge.</p>
-
-            <p>Universities are beginning to develop new courses that cover graph neural networks, molecular representation, and property prediction. These courses prepare students for careers in the modern chemical industry, where computational methods are becoming increasingly important for guiding experimental work.</p>
-
-            <p>Perhaps most importantly, students need to develop the ability to think about molecules in new ways. Instead of simply memorizing molecular structures and properties, students need to learn how to understand the relationships between structure and properties, and how these relationships can be captured and predicted using computational methods.</p>
-
-            <h2>🔍 Interactive Elements: Test Your Understanding</h2>
-            <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #991b1b;">🤔 Think About It:</h4>
-                <p style="margin-bottom: 0;">How do you think graph convolutional networks might change the way molecular properties are predicted and used in chemical research? What are the advantages and limitations of this approach?</p>
+            <div class="performance-control">
+                <h3>⚡ Performance Optimization Simulator</h3>
+                <p>Adjust the optimization level to see how it affects process performance:</p>
+                <div class="performance-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="performanceSlider" oninput="updatePerformance(this.value)">
+                    <p>Optimization Level: <span id="performanceValue">50</span>%</p>
+                </div>
+                <div id="performanceResult">
+                    <p>At this optimization level, the process shows <strong>moderate</strong> efficiency improvements with some ML-driven adjustments.</p>
+                </div>
             </div>
 
-            <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #0c4a6e;">💡 Discussion Questions:</h4>
+            <h3>🔬 What Makes This Special</h3>
+            <p>This new framework is special because it can handle:</p>
+
+            <ul>
+                <li><strong>Big Data:</strong> Process massive amounts of sensor and operational data</li>
+                <li><strong>Real-time Optimization:</strong> Make adjustments as conditions change</li>
+                <li><strong>Multi-objective Optimization:</strong> Balance multiple competing goals</li>
+                <li><strong>Continuous Learning:</strong> Improve performance over time</li>
+            </ul>
+
+            <h2>🚀 Real-World Applications</h2>
+            <p>This breakthrough has important implications for numerous fields:</p>
+
+            <h3>🏭 Chemical Manufacturing</h3>
+            <p>Chemical companies can use this technology to optimize their manufacturing processes, leading to significant cost savings, improved product quality, and reduced environmental impact.</p>
+
+            <h3>⚡ Energy Efficiency</h3>
+            <p>ML optimization can help chemical plants reduce their energy consumption by finding more efficient operating conditions, contributing to sustainability goals.</p>
+
+            <h3>🌱 Environmental Impact</h3>
+            <p>By optimizing processes to minimize waste and emissions, ML can help chemical companies reduce their environmental footprint while maintaining profitability.</p>
+
+            <h3>💊 Pharmaceutical Manufacturing</h3>
+            <p>Drug manufacturers can use ML optimization to improve the consistency and quality of their products while reducing production costs.</p>
+
+            <div class="metrics-dashboard">
+                <h3>📊 Optimization Metrics Dashboard</h3>
+                <p>Real-time metrics for the ML-optimized chemical process:</p>
+                <div class="metrics-grid">
+                    <div class="metric">
+                        <div class="metric-value" id="efficiencyScore">0</div>
+                        <div class="metric-label">Process Efficiency</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="costReduction">0</div>
+                        <div class="metric-label">Cost Reduction</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="qualityScore">0</div>
+                        <div class="metric-label">Product Quality</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="sustainabilityScore">0</div>
+                        <div class="metric-label">Sustainability</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers used cutting-edge machine learning and optimization techniques to make this discovery:</p>
+
+            <div style="background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
+                <h4 style="margin-top: 0; color: #1e40af;">🧮 Technical Approach:</h4>
                 <ul style="margin-bottom: 0;">
-                    <li>What are the key advantages of graph convolutional networks compared to traditional molecular property prediction methods?</li>
-                    <li>How might the universality of GCNs change the way chemical research is conducted?</li>
-                    <li>What challenges do you think need to be overcome for GCNs to become widely adopted in industry?</li>
+                    <li><strong>Deep Learning:</strong> Neural networks for complex pattern recognition</li>
+                    <li><strong>Reinforcement Learning:</strong> AI that learns through trial and error</li>
+                    <li><strong>Multi-objective Optimization:</strong> Balancing competing goals</li>
+                    <li><strong>Real-time Processing:</strong> Continuous optimization and adjustment</li>
                 </ul>
             </div>
 
+            <h2>🚀 Future Possibilities</h2>
+            <p>This research opens up exciting new possibilities for chemical engineering:</p>
+
+            <ul>
+                <li><strong>Autonomous Plants:</strong> Chemical plants that optimize themselves</li>
+                <li><strong>Predictive Maintenance:</strong> Preventing equipment failures before they happen</li>
+                <li><strong>Smart Manufacturing:</strong> Adaptive production systems</li>
+                <li><strong>Sustainable Processes:</strong> Environmentally friendly chemical manufacturing</li>
+            </ul>
+
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of interdisciplinary science. It combines:</p>
+
+            <ul>
+                <li><strong>Chemical Engineering:</strong> Understanding chemical processes and systems</li>
+                <li><strong>Computer Science:</strong> Developing machine learning algorithms</li>
+                <li><strong>Mathematics:</strong> Optimization theory and statistical analysis</li>
+                <li><strong>Data Science:</strong> Extracting insights from large datasets</li>
+            </ul>
+
+            <p>For students interested in any of these fields, this work shows how modern science often involves combining knowledge from multiple disciplines to solve complex problems that have real-world applications.</p>
+
             <div class="highlight-box">
-                <strong>🎯 Bottom Line:</strong> Graph convolutional networks represent a paradigm shift in molecular property prediction, providing universal models that can accurately predict a wide range of molecular properties across diverse chemical datasets. This technology transforms how molecular properties are predicted by treating molecules as graphs and learning structural patterns directly from data. While GCNs show remarkable universality and performance, they also have important limitations that users need to understand. As the technology continues to evolve, we can expect to see even more sophisticated approaches that will further improve the accuracy and applicability of molecular property prediction.
+                <strong>🎯 Bottom Line:</strong> Scientists have developed a comprehensive framework for using machine learning to optimize chemical processes, leading to significant improvements in efficiency, cost reduction, and environmental impact. This breakthrough could revolutionize how chemical plants operate and make them more sustainable.
             </div>
 
             <h2>📚 Further Reading & Resources</h2>
-            <p>Want to explore more about this fascinating intersection of graph theory and molecular property prediction?</p>
+            <p>Want to dive deeper? Check out these related topics:</p>
             <ul>
-                <li>Graph convolutional networks in chemistry</li>
-                <li>Molecular representation and property prediction</li>
-                <li>Machine learning approaches to cheminformatics</li>
-                <li>Deep learning for molecular property prediction</li>
+                <li>Machine learning algorithms and applications</li>
+                <li>Chemical process optimization and control</li>
+                <li>Big data analytics in engineering</li>
+                <li>Industrial automation and smart manufacturing</li>
+                <li>Sustainable chemical engineering practices</li>
             </ul>
         </div>
     </main>
@@ -709,5 +522,69 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        function showDataCollection() {
+            alert('📊 Data Collection: The process of gathering information from sensors, control systems, and quality measurements throughout the chemical plant. This data is essential for machine learning algorithms to understand how the process behaves.');
+        }
+
+        function showMLAlgorithm() {
+            alert('🧠 ML Algorithm: A computer program that can learn patterns from data and make predictions. In chemical engineering, ML algorithms analyze process data to identify optimal operating conditions and predict process behavior.');
+        }
+
+        function showOptimization() {
+            alert('🎯 Optimization: The process of finding the best operating conditions for a chemical process. ML optimization can balance multiple goals like maximizing production, minimizing costs, and reducing environmental impact.');
+        }
+
+        function optimizeStep(step) {
+            const stepElement = document.getElementById('step' + step);
+            const status = document.getElementById('optimizationStatus');
+            
+            status.textContent = 'ML algorithm is optimizing step ' + step + '...';
+            stepElement.style.background = 'linear-gradient(45deg, #3b82f6, #fbbf24)';
+            stepElement.style.transform = 'scale(1.2)';
+            
+            setTimeout(() => {
+                stepElement.style.background = 'linear-gradient(45deg, #22c55e, #16a34a)';
+                stepElement.style.transform = 'scale(1)';
+                status.textContent = 'Step ' + step + ' optimized! ML found more efficient operating conditions.';
+            }, 2000);
+        }
+
+        function updatePerformance(value) {
+            document.getElementById('performanceValue').textContent = value;
+            
+            let result = '';
+            if (value < 20) {
+                result = 'At this optimization level, the process shows <strong>minimal</strong> efficiency improvements with basic ML adjustments.';
+            } else if (value < 40) {
+                result = 'At this optimization level, the process shows <strong>moderate</strong> efficiency improvements with some ML-driven adjustments.';
+            } else if (value < 80) {
+                result = 'At this optimization level, the process shows <strong>significant</strong> efficiency improvements with advanced ML optimization.';
+            } else {
+                result = 'At this optimization level, the process shows <strong>maximum</strong> efficiency improvements with full ML optimization!';
+            }
+            
+            document.getElementById('performanceResult').innerHTML = '<p>' + result + '</p>';
+        }
+
+        // Initialize metrics
+        function updateMetrics() {
+            const efficiency = Math.floor(Math.random() * 30) + 70;
+            const costReduction = Math.floor(Math.random() * 25) + 15;
+            const quality = Math.floor(Math.random() * 20) + 80;
+            const sustainability = Math.floor(Math.random() * 35) + 65;
+
+            document.getElementById('efficiencyScore').textContent = efficiency + '%';
+            document.getElementById('costReduction').textContent = costReduction + '%';
+            document.getElementById('qualityScore').textContent = quality + '%';
+            document.getElementById('sustainabilityScore').textContent = sustainability + '%';
+        }
+
+        // Update metrics every 3 seconds
+        window.onload = function() {
+            updateMetrics();
+            setInterval(updateMetrics, 3000);
+        };
+    </script>
 </body>
 </html>

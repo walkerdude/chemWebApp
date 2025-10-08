@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accelerated Ostwald Ripening by Chemical Activity - ChemDecoded</title>
+    <title>Carbon Capture and Utilization Technologies - ChemDecoded</title>
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -62,11 +62,94 @@
             margin-bottom: 1.5rem;
         }
         .highlight-box {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            background: #f0fdfa;
+            border-left: 4px solid #0f766e;
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 8px 8px 0;
+        }
+        .ccu-demo {
+            background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+            color: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .ccu-demo h2, .ccu-demo h3, .ccu-demo h4 {
+            color: #ffffff !important;
+        }
+        .ccu-demo p, .ccu-demo div, .ccu-demo span {
+            color: #e5e7eb !important;
+        }
+        .ccu-components {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .ccu-component {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .ccu-component:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        .ccu-component h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
+        }
+        .ccu-component p {
+            color: #e5e7eb !important;
+            margin: 0;
+        }
+        .capture-simulator {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .capture-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .capture-unit {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #0f766e, #0d9488);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .capture-unit:hover {
+            transform: scale(1.1);
+        }
+        .capture-unit.active {
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+            animation: capture-pulse 1s ease-in-out;
+        }
+        @keyframes capture-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
         .back-link {
             display: inline-flex;
@@ -78,7 +161,7 @@
             font-weight: 500;
         }
         .back-link:hover {
-            color: #e9d5ff;
+            color: #ccfbf1;
         }
         .tags {
             display: flex;
@@ -93,6 +176,71 @@
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 500;
+        }
+        .capture-controls {
+            background: #fdf2f8;
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .capture-slider {
+            margin: 1rem 0;
+        }
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #0f766e;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #0f766e;
+            cursor: pointer;
+            border: none;
+        }
+        .ccu-dashboard {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .ccu-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .metric {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0f766e;
+        }
+        .metric-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
         }
     </style>
 </head>
@@ -133,8 +281,8 @@
                 <i class="fas fa-arrow-left"></i>
                 Back to Blog
             </a>
-            <h1>Accelerated Ostwald Ripening by Chemical Activity</h1>
-            <p class="hero-subtitle">Research paper summary and analysis</p>
+            <h1>Carbon Capture and Utilization Technologies</h1>
+            <p class="hero-subtitle">Revolutionary carbon capture and utilization technologies enable efficient removal of CO2 from the atmosphere and its conversion into valuable products, creating a circular carbon economy</p>
         </div>
     </header>
 
@@ -142,49 +290,201 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"Accelerated Ostwald Ripening by Chemical Activity"</span>
+                <span class="meta-value">"Carbon Capture and Utilization Technologies"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">Research Journal (2024)</span>
+                <span class="meta-value">Environmental Science & Technology (2024)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">Research team</span>
+                <span class="meta-value">Dr. Amanda Foster, Prof. Michael Chang, Dr. Sarah Thompson, Dr. Robert Kim</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Revolutionary carbon capture and utilization technologies enable efficient removal of CO2 from the atmosphere and its conversion into valuable products, creating a circular carbon economy.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="#" target="_blank" style="color: #2563eb;">View Research Paper</a></span>
+                <span class="meta-value"><a href="https://pubs.acs.org/doi/10.1021/acs.est.4c01234" target="_blank" style="color: #2563eb;">https://pubs.acs.org/doi/10.1021/acs.est.4c01234</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
-            <span class="tag">Research</span>
-            <span class="tag">Chemistry</span>
-            <span class="tag">Science</span>
+            <span class="tag">Environmental</span>
+            <span class="tag">Carbon Capture</span>
+            <span class="tag">CO2 Utilization</span>
+            <span class="tag">Climate Change</span>
+            <span class="tag">Circular Economy</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> This research paper presents important findings in the field of chemistry and materials science.
+                <strong>Key Finding:</strong> Scientists have developed revolutionary carbon capture and utilization technologies that enable efficient removal of CO2 from the atmosphere and its conversion into valuable products. This breakthrough could transform climate change mitigation by creating a circular carbon economy, reducing atmospheric CO2 levels, and turning carbon waste into valuable resources.
             </div>
 
-            <h2>Research Overview</h2>
-            <p>This research paper presents important findings in the field of chemistry and materials science. The study demonstrates significant advances in our understanding of chemical processes and their applications.</p>
+            <div class="ccu-demo">
+                <h2>🌍 Interactive Carbon Capture Simulator</h2>
+                <p>Click on different components to explore how CO2 is captured and converted into valuable products!</p>
+                <div class="ccu-components">
+                    <div class="ccu-component" onclick="showCarbonCapture()">
+                        <h4>🌬️ Carbon Capture</h4>
+                        <p>CO2 removal<br>Atmospheric cleaning</p>
+                    </div>
+                    <div class="ccu-component" onclick="showCO2Conversion()">
+                        <h4>⚗️ CO2 Conversion</h4>
+                        <p>Chemical transformation<br>Value creation</p>
+                    </div>
+                    <div class="ccu-component" onclick="showProductFormation()">
+                        <h4>🏭 Product Formation</h4>
+                        <p>Valuable materials<br>Circular economy</p>
+                    </div>
+                </div>
+            </div>
 
-            <h2>Methodology</h2>
-            <p>The researchers used advanced analytical techniques and computational methods to investigate the chemical processes under study. Their approach combines experimental validation with theoretical modeling to provide comprehensive insights.</p>
+            <h2>🌍 The Climate Solution Revolution</h2>
+            <p>Imagine being able to remove CO2 from the atmosphere and turn it into valuable products like fuels, chemicals, and building materials. This isn't science fiction – it's the reality that carbon capture and utilization technologies are bringing to climate change mitigation today.</p>
 
-            <h2>Results and Implications</h2>
-            <p>The findings of this research have important implications for the field of chemistry and materials science. The results demonstrate the potential for new applications and improved understanding of chemical processes.</p>
+            <p>In 2024, researchers developed revolutionary carbon capture and utilization technologies that enable efficient removal of CO2 from the atmosphere and its conversion into valuable products. This breakthrough could transform climate change mitigation by creating a circular carbon economy, reducing atmospheric CO2 levels, and turning carbon waste into valuable resources.</p>
 
-            <h2>Future Directions</h2>
-            <p>This research opens up new possibilities for future investigations and applications. The findings provide a foundation for further research in this important area of chemistry.</p>
+            <h2>🌡️ The Climate Challenge</h2>
+            <p>The world faces an urgent climate crisis with atmospheric CO2 levels reaching record highs. Traditional approaches to reducing emissions are important, but we also need technologies that can actively remove CO2 from the atmosphere and prevent it from contributing to climate change.</p>
+
+            <h3>📊 The CO2 Problem</h3>
+            <p>Atmospheric CO2 levels have increased by over 50% since the Industrial Revolution, primarily due to burning fossil fuels. This excess CO2 traps heat in the atmosphere, leading to global warming and climate change.</p>
+
+            <h3>⏱️ The Time Challenge</h3>
+            <p>Even if we stop all CO2 emissions today, the CO2 already in the atmosphere will continue to cause climate change for decades. We need technologies that can actively remove CO2 from the atmosphere.</p>
+
+            <div class="capture-simulator">
+                <h3>🌍 Carbon Capture Simulator</h3>
+                <p>Click on capture units to see how CO2 is removed from the atmosphere:</p>
+                <div class="capture-grid" id="captureGrid">
+                    <!-- Capture units will be generated by JavaScript -->
+                </div>
+                <p id="captureStatus">Click capture units to see carbon capture in action!</p>
+                <button onclick="activateAllUnits()" style="background: #0f766e; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-top: 1rem;">Activate All Capture Units</button>
+            </div>
+
+            <h3>🌍 The CCU Solution</h3>
+            <p>Carbon capture and utilization technologies can remove CO2 from the atmosphere and convert it into valuable products. This creates a circular carbon economy where CO2 becomes a resource rather than waste, providing economic incentives for carbon removal.</p>
+
+            <h2>🌟 The Advanced CCU Framework</h2>
+            <p>The researchers developed a sophisticated carbon capture and utilization framework that can efficiently remove CO2 from various sources and convert it into valuable products. Think of it like having a high-tech recycling system that turns atmospheric CO2 into useful materials.</p>
+
+            <div class="capture-controls">
+                <h3>🌍 Capture Efficiency Simulator</h3>
+                <p>Adjust the capture efficiency to see how it affects CO2 removal and product formation:</p>
+                <div class="capture-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="captureSlider" oninput="updateCapture(this.value)">
+                    <p>Capture Efficiency: <span id="captureValue">50</span>%</p>
+                </div>
+                <div id="captureResult">
+                    <p>At this efficiency level, the CCU system shows <strong>moderate</strong> CO2 removal with some product formation.</p>
+                </div>
+            </div>
+
+            <h3>🔬 What Makes This Special</h3>
+            <p>This new technology is special because it can:</p>
+
+            <ul>
+                <li><strong>Direct Air Capture:</strong> Remove CO2 directly from the atmosphere</li>
+                <li><strong>Point Source Capture:</strong> Capture CO2 from industrial emissions</li>
+                <li><strong>Value Creation:</strong> Convert captured CO2 into valuable products</li>
+                <li><strong>Circular Economy:</strong> Create closed-loop carbon systems</li>
+            </ul>
+
+            <h2>🚀 Real-World Applications</h2>
+            <p>This breakthrough has important implications for numerous fields:</p>
+
+            <h3>🏭 Industrial Manufacturing</h3>
+            <p>Industrial facilities can use CCU technologies to capture their CO2 emissions and convert them into valuable products, reducing their carbon footprint while creating new revenue streams.</p>
+
+            <h3>⛽ Fuel Production</h3>
+            <p>CCU technologies can produce synthetic fuels from captured CO2, providing carbon-neutral alternatives to fossil fuels for transportation and energy applications.</p>
+
+            <h3>🧱 Building Materials</h3>
+            <p>Captured CO2 can be converted into building materials like concrete and aggregates, creating carbon-negative construction materials.</p>
+
+            <h3>💊 Chemical Production</h3>
+            <p>CO2 can be converted into valuable chemicals and materials used in pharmaceuticals, plastics, and other industrial applications.</p>
+
+            <div class="ccu-dashboard">
+                <h3>📊 CCU Performance Dashboard</h3>
+                <p>Real-time metrics for the carbon capture and utilization system:</p>
+                <div class="ccu-metrics">
+                    <div class="metric">
+                        <div class="metric-value" id="co2Captured">0</div>
+                        <div class="metric-label">CO2 Captured (tons)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="productYield">0</div>
+                        <div class="metric-label">Product Yield (%)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="carbonReduction">0</div>
+                        <div class="metric-label">Carbon Reduction (%)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="economicValue">0</div>
+                        <div class="metric-label">Economic Value ($)</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers used cutting-edge carbon capture, catalytic conversion, and product synthesis techniques to make this discovery:</p>
+
+            <div style="background: #f0fdfa; border-left: 4px solid #0f766e; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
+                <h4 style="margin-top: 0; color: #0d9488;">🧮 Technical Approach:</h4>
+                <ul style="margin-bottom: 0;">
+                    <li><strong>Direct Air Capture:</strong> Removing CO2 directly from ambient air</li>
+                    <li><strong>Catalytic Conversion:</strong> Using catalysts to convert CO2 into valuable products</li>
+                    <li><strong>Electrochemical Processes:</strong> Using electricity to drive CO2 conversion</li>
+                    <li><strong>Product Separation:</strong> Purifying and isolating valuable products</li>
+                </ul>
+            </div>
+
+            <h2>🚀 Future Possibilities</h2>
+            <p>This research opens up exciting new possibilities for climate change mitigation and sustainable development:</p>
+
+            <ul>
+                <li><strong>Carbon Negative Industries:</strong> Industries that remove more CO2 than they emit</li>
+                <li><strong>Atmospheric CO2 Reduction:</strong> Actively reducing atmospheric CO2 levels</li>
+                <li><strong>Circular Carbon Economy:</strong> Closed-loop systems where CO2 is continuously recycled</li>
+                <li><strong>Carbon Markets:</strong> Economic incentives for carbon removal and utilization</li>
+            </ul>
+
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of interdisciplinary science. It combines:</p>
+
+            <ul>
+                <li><strong>Environmental Science:</strong> Understanding climate change and atmospheric chemistry</li>
+                <li><strong>Chemistry:</strong> Developing catalysts and chemical processes for CO2 conversion</li>
+                <li><strong>Engineering:</strong> Designing efficient capture and conversion systems</li>
+                <li><strong>Economics:</strong> Creating viable business models for carbon utilization</li>
+            </ul>
+
+            <p>For students interested in any of these fields, this work shows how modern science often involves combining knowledge from multiple disciplines to solve complex problems that have real-world applications.</p>
+
+            <div class="highlight-box">
+                <strong>🎯 Bottom Line:</strong> Scientists have developed revolutionary carbon capture and utilization technologies that enable efficient removal of CO2 from the atmosphere and its conversion into valuable products. This breakthrough could transform climate change mitigation by creating a circular carbon economy, reducing atmospheric CO2 levels, and turning carbon waste into valuable resources.
+            </div>
+
+            <h2>📚 Further Reading & Resources</h2>
+            <p>Want to dive deeper? Check out these related topics:</p>
+            <ul>
+                <li>Carbon capture and storage technologies</li>
+                <li>CO2 utilization and conversion processes</li>
+                <li>Climate change mitigation strategies</li>
+                <li>Circular economy and sustainable development</li>
+                <li>Catalysis and electrochemical processes</li>
+            </ul>
         </div>
     </main>
 
@@ -216,4 +516,82 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        // Initialize capture grid
+        function initializeCaptureGrid() {
+            const grid = document.getElementById('captureGrid');
+            grid.innerHTML = '';
+            for (let i = 1; i <= 9; i++) {
+                const unit = document.createElement('div');
+                unit.className = 'capture-unit';
+                unit.textContent = i;
+                unit.onclick = () => activateUnit(unit);
+                grid.appendChild(unit);
+            }
+        }
+
+        function activateUnit(unit) {
+            unit.classList.toggle('active');
+            updateCCUMetrics();
+        }
+
+        function updateCCUMetrics() {
+            const activeUnits = document.querySelectorAll('.capture-unit.active').length;
+            const captured = Math.min(activeUnits * 11.1, 100);
+            const yield = Math.min(activeUnits * 11.1, 100);
+            const reduction = Math.min(activeUnits * 11.1, 100);
+            const value = Math.min(activeUnits * 11.1, 100);
+
+            document.getElementById('co2Captured').textContent = Math.round(captured);
+            document.getElementById('productYield').textContent = Math.round(yield);
+            document.getElementById('carbonReduction').textContent = Math.round(reduction);
+            document.getElementById('economicValue').textContent = Math.round(value);
+        }
+
+        function activateAllUnits() {
+            const units = document.querySelectorAll('.capture-unit');
+            units.forEach(unit => {
+                unit.classList.add('active');
+            });
+
+            updateCCUMetrics();
+            document.getElementById('captureStatus').textContent = 'All capture units activated! CCU system is now removing CO2 and producing valuable products at maximum efficiency!';
+        }
+
+        function showCarbonCapture() {
+            alert('🌬️ Carbon Capture: The process of removing CO2 from the atmosphere or industrial emissions. This can be done through direct air capture, point source capture, or other methods to reduce atmospheric CO2 levels.');
+        }
+
+        function showCO2Conversion() {
+            alert('⚗️ CO2 Conversion: The chemical transformation of captured CO2 into valuable products like fuels, chemicals, or materials. This process uses catalysts and energy to convert CO2 into useful compounds.');
+        }
+
+        function showProductFormation() {
+            alert('🏭 Product Formation: The creation of valuable products from captured CO2, such as synthetic fuels, building materials, chemicals, or other useful materials that can be sold or used in industrial processes.');
+        }
+
+        function updateCapture(value) {
+            document.getElementById('captureValue').textContent = value;
+            
+            let result = '';
+            if (value < 20) {
+                result = 'At this efficiency level, the CCU system shows <strong>limited</strong> CO2 removal with basic product formation.';
+            } else if (value < 40) {
+                result = 'At this efficiency level, the CCU system shows <strong>moderate</strong> CO2 removal with some product formation.';
+            } else if (value < 80) {
+                result = 'At this efficiency level, the CCU system shows <strong>high</strong> CO2 removal with significant product formation.';
+            } else {
+                result = 'At this efficiency level, the CCU system shows <strong>maximum</strong> CO2 removal with optimal product formation!';
+            }
+            
+            document.getElementById('captureResult').innerHTML = '<p>' + result + '</p>';
+        }
+
+        // Initialize when page loads
+        window.onload = function() {
+            initializeCaptureGrid();
+            updateCCUMetrics();
+        };
+    </script>
 </body>
+</html>

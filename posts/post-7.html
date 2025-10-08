@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOLA Framework: Revolutionizing Industrial Process Monitoring - ChemDecoded</title>
+    <title>FRECKLL: Full and Reduced Exoplanet Chemical Kinetics distiLLed - ChemDecoded</title>
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .post-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #7c2d12 0%, #991b1c 100%);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -62,77 +62,138 @@
             margin-bottom: 1.5rem;
         }
         .highlight-box {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 0 8px 8px 0;
-        }
-        .mola-demo {
-            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-            text-align: center;
-        }
-        .multi-block-visualization {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        .data-block {
-            background: #f8fafc;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 1rem;
-            text-align: center;
-        }
-        .temperature-block {
-            border-color: #ef4444;
-            background: #fef2f2;
-        }
-        .pressure-block {
-            border-color: #3b82f6;
-            background: #eff6ff;
-        }
-        .flow-block {
-            border-color: #10b981;
-            background: #f0fdf4;
-        }
-        .integration-arrow {
-            color: #2563eb;
-            font-size: 1.5rem;
-            text-align: center;
-            margin: 1rem 0;
-        }
-        .fault-detection-flow {
-            background: #f0f9ff;
-            border: 2px solid #0ea5e9;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        .flow-step {
-            background: white;
-            border-radius: 8px;
-            padding: 1rem;
-            margin: 0.5rem 0;
-            border-left: 4px solid #0ea5e9;
-        }
-        .flow-step h2, .flow-step h3, .flow-step h4 {
-            color: #1f2937 !important;
-        }
-        .flow-step p, .flow-step div, .flow-step span {
-            color: #374151 !important;
-        }
-        .performance-comparison {
             background: #fef3c7;
             border-left: 4px solid #f59e0b;
             padding: 1.5rem;
-            margin: 1.5rem 0;
+            margin: 2rem 0;
             border-radius: 0 8px 8px 0;
+        }
+        .exoplanet-demo {
+            background: linear-gradient(135deg, #7c2d12 0%, #991b1c 100%);
+            color: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .exoplanet-demo h2, .exoplanet-demo h3, .exoplanet-demo h4 {
+            color: #ffffff !important;
+        }
+        .exoplanet-demo p, .exoplanet-demo div, .exoplanet-demo span {
+            color: #e5e7eb !important;
+        }
+        .exoplanet-components {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .exoplanet-component {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .exoplanet-component:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        .exoplanet-component h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
+        }
+        .exoplanet-component p {
+            color: #e5e7eb !important;
+            margin: 0;
+        }
+        .atmosphere-control {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .atmosphere-slider {
+            margin: 1rem 0;
+        }
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #7c2d12;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #7c2d12;
+            cursor: pointer;
+            border: none;
+        }
+        .kinetics-visualization {
+            background: #ecfdf5;
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .molecule-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            height: 200px;
+            position: relative;
+        }
+        .molecule {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            transition: all 1s ease;
+            cursor: pointer;
+        }
+        .molecule:hover {
+            transform: scale(1.1);
+        }
+        .atmosphere-field {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px dashed #7c2d12;
+            border-radius: 20px;
+            opacity: 0.3;
+            animation: atmosphere-pulse 3s infinite;
+        }
+        @keyframes atmosphere-pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
         }
         .back-link {
             display: inline-flex;
@@ -144,7 +205,7 @@
             font-weight: 500;
         }
         .back-link:hover {
-            color: #e9d5ff;
+            color: #fed7aa;
         }
         .tags {
             display: flex;
@@ -160,315 +221,41 @@
             font-size: 0.9rem;
             font-weight: 500;
         }
-        
-        .reasoning-step div {
-            color: #e5e7eb !important;
+        .efficiency-chart {
+            background: #fdf2f8;
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
         }
-        .code-snippet {
-            color: #f9fafb !important;
+        .chart-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            height: 200px;
+            margin: 1rem 0;
+            border-bottom: 2px solid #e5e7eb;
+            border-left: 2px solid #e5e7eb;
+            padding: 1rem;
         }
-        .interactive-element h4 {
-            color: #ffffff !important;
+        .chart-bar {
+            background: linear-gradient(to top, #7c2d12, #f97316);
+            width: 30px;
+            margin: 0 5px;
+            border-radius: 4px 4px 0 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        .interactive-element p {
-            color: #e5e7eb !important;
+        .chart-bar:hover {
+            background: linear-gradient(to top, #991b1c, #7c2d12);
+            transform: scale(1.1);
         }
-        
-        
-        /* Target elements with dark gradient backgrounds - all text elements */
-        [style*="background: linear-gradient"][style*="#1f2937"] h1,
-        [style*="background: linear-gradient"][style*="#1f2937"] h2,
-        [style*="background: linear-gradient"][style*="#1f2937"] h3,
-        [style*="background: linear-gradient"][style*="#1f2937"] h4,
-        [style*="background: linear-gradient"][style*="#1f2937"] h5,
-        [style*="background: linear-gradient"][style*="#1f2937"] h6,
-        [style*="background: linear-gradient"][style*="#1f2937"] p,
-        [style*="background: linear-gradient"][style*="#1f2937"] div,
-        [style*="background: linear-gradient"][style*="#1f2937"] span,
-        [style*="background: linear-gradient"][style*="#1f2937"] li,
-        [style*="background: linear-gradient"][style*="#374151"] h1,
-        [style*="background: linear-gradient"][style*="#374151"] h2,
-        [style*="background: linear-gradient"][style*="#374151"] h3,
-        [style*="background: linear-gradient"][style*="#374151"] h4,
-        [style*="background: linear-gradient"][style*="#374151"] h5,
-        [style*="background: linear-gradient"][style*="#374151"] h6,
-        [style*="background: linear-gradient"][style*="#374151"] p,
-        [style*="background: linear-gradient"][style*="#374151"] div,
-        [style*="background: linear-gradient"][style*="#374151"] span,
-        [style*="background: linear-gradient"][style*="#374151"] li {
-            color: #ffffff !important;
+        .chart-label {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
         }
-        
-        /* Target all dark background classes */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation h1, .data-transformation h2, .data-transformation h3, 
-        .data-transformation h4, .data-transformation h5, .data-transformation h6,
-        .ai-demo-box h1, .ai-demo-box h2, .ai-demo-box h3, 
-        .ai-demo-box h4, .ai-demo-box h5, .ai-demo-box h6,
-        .matrix-demo h1, .matrix-demo h2, .matrix-demo h3, 
-        .matrix-demo h4, .matrix-demo h5, .matrix-demo h6,
-        .reasoning-demo h1, .reasoning-demo h2, .reasoning-demo h3, 
-        .reasoning-demo h4, .reasoning-demo h5, .reasoning-demo h6,
-        .quantum-demo h1, .quantum-demo h2, .quantum-demo h3, 
-        .quantum-demo h4, .quantum-demo h5, .quantum-demo h6,
-        .selection-demo h1, .selection-demo h2, .selection-demo h3, 
-        .selection-demo h4, .selection-demo h5, .selection-demo h6,
-        .ode-demo h1, .ode-demo h2, .ode-demo h3, 
-        .ode-demo h4, .ode-demo h5, .ode-demo h6,
-        .agent-demo h1, .agent-demo h2, .agent-demo h3, 
-        .agent-demo h4, .agent-demo h5, .agent-demo h6,
-        .gcn-demo h1, .gcn-demo h2, .gcn-demo h3, 
-        .gcn-demo h4, .gcn-demo h5, .gcn-demo h6,
-        .fault-demo h1, .fault-demo h2, .fault-demo h3, 
-        .fault-demo h4, .fault-demo h5, .fault-demo h6,
-        .foundation-demo h1, .foundation-demo h2, .foundation-demo h3, 
-        .foundation-demo h4, .foundation-demo h5, .foundation-demo h6,
-        .rl-demo h1, .rl-demo h2, .rl-demo h3, 
-        .rl-demo h4, .rl-demo h5, .rl-demo h6,
-        .neural-network-demo h1, .neural-network-demo h2, .neural-network-demo h3, 
-        .neural-network-demo h4, .neural-network-demo h5, .neural-network-demo h6 {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation p, .data-transformation div, .data-transformation span, .data-transformation li,
-        .ai-demo-box p, .ai-demo-box div, .ai-demo-box span, .ai-demo-box li,
-        .matrix-demo p, .matrix-demo div, .matrix-demo span, .matrix-demo li,
-        .reasoning-demo p, .reasoning-demo div, .reasoning-demo span, .reasoning-demo li,
-        .quantum-demo p, .quantum-demo div, .quantum-demo span, .quantum-demo li,
-        .selection-demo p, .selection-demo div, .selection-demo span, .selection-demo li,
-        .ode-demo p, .ode-demo div, .ode-demo span, .ode-demo li,
-        .agent-demo p, .agent-demo div, .agent-demo span, .agent-demo li,
-        .gcn-demo p, .gcn-demo div, .gcn-demo span, .gcn-demo li,
-        .fault-demo p, .fault-demo div, .fault-demo span, .fault-demo li,
-        .foundation-demo p, .foundation-demo div, .foundation-demo span, .foundation-demo li,
-        .rl-demo p, .rl-demo div, .rl-demo span, .rl-demo li,
-        .neural-network-demo p, .neural-network-demo div, .neural-network-demo span, .neural-network-demo li {
-            color: #e5e7eb !important;
-        }
-        
-        /* Force light text on any element with dark background */
-        [style*="background"][style*="#1f2937"], [style*="background"][style*="#374151"],
-        [style*="background"][style*="#667eea"], [style*="background"][style*="#764ba2"],
-        [style*="background"][style*="#7c3aed"], [style*="background"][style*="#6d28d9"],
-        [style*="background"][style*="#dc2626"], [style*="background"][style*="#b91c1c"],
-        [style*="background"][style*="#be185d"], [style*="background"][style*="#9d174d"],
-        [style*="background"][style*="#0f766e"], [style*="background"][style*="#0d9488"],
-        [style*="background"][style*="#1e40af"], [style*="background"][style*="#1e3a8a"],
-        [style*="background"][style*="#7c2d12"], [style*="background"][style*="#991b1c"],
-        [style*="background"][style*="#059669"], [style*="background"][style*="#047857"],
-        [style*="background"][style*="#06b6d4"], [style*="background"][style*="#0891b2"],
-        [style*="background"][style*="#8b5cf6"], [style*="background"][style*="#7c3aed"],
-        [style*="background"][style*="#f59e0b"], [style*="background"][style*="#d97706"] {
-            color: #ffffff !important;
-        }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo * {
-            color: #ffffff !important;
-        }
-        
-        /* Light background elements - force dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo * {
-            color: #1f2937 !important;
-        }
-        
-        /* Special cases */
-        .matrix-cell {
-            color: #ffffff !important;
-            font-weight: 600 !important;
-        }
-        .code-snippet {
-            color: #f9fafb !important;
-        }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .hybrid-comparison *, .accuracy-meter *, .process-flow *, .pattern-recognition *,
-        .convolution-demo *, .neural-network-demo *, .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Also target any div with dark background */
-        div[style*="background: linear-gradient"] {
-            color: #ffffff !important;
-        }
-        
-        div[style*="background: linear-gradient"] * {
-            color: #ffffff !important;
-        }
-        /* PROPER CONTRAST FIX */
-        
-        /* Dark background elements - white text */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo,
-        .ai-flow-diagram {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Light background elements - dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo,
-        .hybrid-comparison, .pattern-cell, .network-visualization, .pattern-grid {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo *,
-        .hybrid-comparison *, .pattern-cell *, .network-visualization *, .pattern-grid * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specific fixes for pattern recognition demo */
-        .pattern-recognition {
-            background: #f8fafc !important;
-        }
-        
-        .pattern-cell {
-            background: #ffffff !important;
-            color: #1f2937 !important;
-            border: 1px solid #d1d5db !important;
-        }
-        
-        .pattern-cell:hover {
-            background: #e5e7eb !important;
-            color: #1f2937 !important;
-        }
-        /* FIX STRUCTURED THREE-BOX DIAGRAMS */
-        
-        /* Target the specific structured components with three boxes */
-        .sensor-architecture, .architecture-visualization, .component-breakdown,
-        .multi-block-visualization, .process-flow, .quantum-simulation,
-        .selection-process, .ode-architecture, .agent-system, .gcn-architecture,
-        .fault-detection, .foundation-architecture, .rl-process, .physics-demo,
-        .data-transformation, .ai-flow-diagram, .neural-network-demo,
-        .pattern-recognition, .convolution-demo, .accuracy-meter {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture *, .architecture-visualization *, .component-breakdown *,
-        .multi-block-visualization *, .process-flow *, .quantum-simulation *,
-        .selection-process *, .ode-architecture *, .agent-system *, .gcn-architecture *,
-        .fault-detection *, .foundation-architecture *, .rl-process *, .physics-demo *,
-        .data-transformation *, .ai-flow-diagram *, .neural-network-demo *,
-        .pattern-recognition *, .convolution-demo *, .accuracy-meter * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specifically target the three-box structure elements */
-        .interaction-component, .architecture-component, .process-component,
-        .sensor-component, .quantum-component, .selection-component,
-        .ode-component, .agent-component, .gcn-component, .fault-component,
-        .foundation-component, .rl-component, .physics-component,
-        .data-component, .ai-component, .neural-component, .pattern-component,
-        .convolution-component, .accuracy-component {
-            color: #1f2937 !important;
-        }
-        
-        .interaction-component *, .architecture-component *, .process-component *,
-        .sensor-component *, .quantum-component *, .selection-component *,
-        .ode-component *, .agent-component *, .gcn-component *, .fault-component *,
-        .foundation-component *, .rl-component *, .physics-component *,
-        .data-component *, .ai-component *, .neural-component *, .pattern-component *,
-        .convolution-component *, .accuracy-component * {
-            color: #1f2937 !important;
-        }
-        
-        /* Target any div with structured three-box layout */
-        .sensor-architecture .interaction-component,
-        .architecture-visualization .interaction-component,
-        .component-breakdown .interaction-component,
-        .multi-block-visualization .interaction-component,
-        .process-flow .interaction-component,
-        .quantum-simulation .interaction-component,
-        .selection-process .interaction-component,
-        .ode-architecture .interaction-component,
-        .agent-system .interaction-component,
-        .gcn-architecture .interaction-component,
-        .fault-detection .interaction-component,
-        .foundation-architecture .interaction-component,
-        .rl-process .interaction-component,
-        .physics-demo .interaction-component,
-        .data-transformation .interaction-component,
-        .ai-flow-diagram .interaction-component,
-        .neural-network-demo .interaction-component,
-        .pattern-recognition .interaction-component,
-        .convolution-demo .interaction-component,
-        .accuracy-meter .interaction-component {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture .interaction-component *,
-        .architecture-visualization .interaction-component *,
-        .component-breakdown .interaction-component *,
-        .multi-block-visualization .interaction-component *,
-        .process-flow .interaction-component *,
-        .quantum-simulation .interaction-component *,
-        .selection-process .interaction-component *,
-        .ode-architecture .interaction-component *,
-        .agent-system .interaction-component *,
-        .gcn-architecture .interaction-component *,
-        .fault-detection .interaction-component *,
-        .foundation-architecture .interaction-component *,
-        .rl-process .interaction-component *,
-        .physics-demo .interaction-component *,
-        .data-transformation .interaction-component *,
-        .ai-flow-diagram .interaction-component *,
-        .neural-network-demo .interaction-component *,
-        .pattern-recognition .interaction-component *,
-        .convolution-demo .interaction-component *,
-        .accuracy-meter .interaction-component * {
-            color: #1f2937 !important;
-        }
-    
-    
-    
-    
-    
-    
     </style>
 </head>
 <body>
@@ -508,8 +295,8 @@
                 <i class="fas fa-arrow-left"></i>
                 Back to Blog
             </a>
-            <h1>MOLA Framework: Revolutionizing Industrial Process Monitoring</h1>
-            <p class="hero-subtitle">A breakthrough multi-block learning framework for enhanced fault detection and diagnostics</p>
+            <h1>FRECKLL: Full and Reduced Exoplanet Chemical Kinetics distiLLed</h1>
+            <p class="hero-subtitle">Revolutionary software that simulates alien atmospheres to help us find habitable worlds beyond our solar system</p>
         </div>
     </header>
 
@@ -517,164 +304,190 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"MOLA: Enhancing Industrial Process Monitoring Using Multi-Block Framework"</span>
+                <span class="meta-value">"FRECKLL: Full and Reduced Exoplanet Chemical Kinetics distiLLed"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">Preprint (2024)</span>
+                <span class="meta-value">Preprint (2022)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">F. Gao et al.</span>
+                <span class="meta-value">Ahmed Faris Al-Refaie, Olivia Venot, Quentin Changeat, Billy Edwards</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Presents a chemical kinetics code for exoplanetary atmospheres with simplified reaction networks optimized for computational speed and accuracy.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="https://arxiv.org/html/2410.07508v1" target="_blank" style="color: #2563eb;">https://arxiv.org/html/2410.07508v1</a></span>
+                <span class="meta-value"><a href="https://arxiv.org/abs/2209.11203" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2209.11203</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
-            <span class="tag">Process Monitoring</span>
-            <span class="tag">Fault Detection</span>
-            <span class="tag">Multi-Block Learning</span>
-            <span class="tag">Industrial AI</span>
-            <span class="tag">Process Engineering</span>
+            <span class="tag">Environmental</span>
+            <span class="tag">Astrochemistry</span>
+            <span class="tag">Exoplanets</span>
+            <span class="tag">Atmospheric Chemistry</span>
+            <span class="tag">Computational Chemistry</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> Proposes a multi-block learning framework for industrial process monitoring that improves fault detection and diagnostics.
+                <strong>Key Finding:</strong> Scientists have developed FRECKLL, a revolutionary software tool that can simulate the complex chemical reactions happening in alien atmospheres. This breakthrough could help us identify habitable planets and understand the chemistry of worlds beyond our solar system.
             </div>
 
-            <div class="mola-demo">
-                <h2>🔧 MOLA Multi-Block Framework</h2>
-                <p>See how MOLA integrates multiple data sources for superior process monitoring!</p>
-                <div class="multi-block-visualization">
-                    <div class="data-block temperature-block">
-                        <h4>🌡️ Temperature Data</h4>
-                        <p>Reactor temperatures</p>
-                        <div style="font-size: 0.8rem;">Sensor readings<br>Heat profiles<br>Thermal patterns</div>
+            <div class="exoplanet-demo">
+                <h2>🪐 Interactive Exoplanet Atmosphere Simulator</h2>
+                <p>Click on different components to see how alien atmospheres work!</p>
+                <div class="exoplanet-components">
+                    <div class="exoplanet-component" onclick="showAtmosphere()">
+                        <h4>🌍 Alien Atmosphere</h4>
+                        <p>Complex chemistry<br>Unknown reactions</p>
                     </div>
-                    <div class="data-block pressure-block">
-                        <h4>📊 Pressure Data</h4>
-                        <p>System pressures</p>
-                        <div style="font-size: 0.8rem;">Pressure sensors<br>Flow dynamics<br>System stability</div>
+                    <div class="exoplanet-component" onclick="showKinetics()">
+                        <h4>⚡ Chemical Kinetics</h4>
+                        <p>Reaction rates<br>Molecular interactions</p>
                     </div>
-                    <div class="data-block flow-block">
-                        <h4>💧 Flow Data</h4>
-                        <p>Material flows</p>
-                        <div style="font-size: 0.8rem;">Flow rates<br>Composition<br>Mass balance</div>
+                    <div class="exoplanet-component" onclick="showFRECKLL()">
+                        <h4>🧮 FRECKLL Software</h4>
+                        <p>Fast simulation<br>Accurate predictions</p>
                     </div>
                 </div>
-                <div class="integration-arrow">↓</div>
-                <div style="background: #f0fdf4; border: 2px solid #10b981; border-radius: 8px; padding: 1rem; margin: 1rem 0;">
-                    <h4>🎯 MOLA Integration</h4>
-                    <p>Multi-block learning combines all data sources for comprehensive fault detection</p>
+            </div>
+
+            <h2>🪐 The Search for Alien Life: Chemistry in the Cosmos</h2>
+            <p>Imagine you're an alien scientist looking at Earth from a distant planet. You point your telescope at our blue marble and see something amazing: an atmosphere filled with oxygen, water vapor, and other chemicals that suggest life might exist here. Now imagine doing the same thing in reverse—using chemistry to understand what's happening in the atmospheres of planets orbiting other stars.</p>
+
+            <p>This is exactly what scientists are doing with the help of FRECKLL, a revolutionary software tool developed in 2022. FRECKLL (which stands for "Full and Reduced Exoplanet Chemical Kinetics distiLLed") can simulate the complex chemical reactions happening in alien atmospheres, helping us understand what these distant worlds are really like.</p>
+
+            <h2>🔬 The Challenge of Alien Chemistry</h2>
+            <p>Studying the chemistry of exoplanets (planets outside our solar system) is incredibly challenging. These planets are so far away that we can't send probes to study them directly. Instead, we have to rely on what we can learn from the light that passes through their atmospheres.</p>
+
+            <h3>🌌 The Distance Problem</h3>
+            <p>The nearest exoplanet is over 4 light-years away. That means it would take over 4 years for a signal to travel from Earth to that planet, and another 4 years for a response to come back. Clearly, we can't study these planets the same way we study Mars or Venus.</p>
+
+            <h3>🔍 The Light Analysis Challenge</h3>
+            <p>When light from a star passes through an exoplanet's atmosphere, some wavelengths are absorbed by the chemicals in that atmosphere. By analyzing which wavelengths are missing, scientists can determine what chemicals are present. But this is like trying to understand a complex recipe by only looking at the ingredients list—you need to know how those ingredients interact with each other.</p>
+
+            <div class="atmosphere-control">
+                <h3>🌡️ Atmospheric Composition Simulator</h3>
+                <p>Adjust the atmospheric composition to see how it affects chemical reactions:</p>
+                <div class="atmosphere-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="atmosphereSlider" oninput="updateAtmosphere(this.value)">
+                    <p>Atmospheric Complexity: <span id="atmosphereValue">50%</span></p>
+                </div>
+                <div id="kineticsResult">
+                    <p>At this complexity level, chemical kinetics are <strong>moderate</strong> with balanced reaction networks.</p>
                 </div>
             </div>
 
-            <h2>🏭 The Challenge: Monitoring Complex Industrial Processes</h2>
-            <p>Imagine trying to monitor a modern chemical plant with thousands of sensors, multiple interconnected processes, and countless variables that can affect performance. Traditional monitoring approaches treat each sensor or process unit independently, missing the complex interactions that often signal the beginning of problems. It's like trying to understand a symphony by listening to individual instruments - you might hear that one violin is out of tune, but you'll miss the beautiful harmony that emerges when all instruments work together.</p>
+            <h3>⚡ The Chemical Kinetics Problem</h3>
+            <p>Understanding exoplanet atmospheres requires knowing not just what chemicals are present, but how fast they react with each other. This is called "chemical kinetics"—the study of reaction rates. The problem is that exoplanet atmospheres can have completely different conditions than Earth's atmosphere, with different temperatures, pressures, and chemical compositions.</p>
 
-            <p>This is exactly the challenge that researchers F. Gao and colleagues set out to solve with their MOLA (Multi-Block Learning) framework. Industrial processes are inherently multi-dimensional, with different types of data coming from different sources - temperature sensors, pressure gauges, flow meters, composition analyzers, and more. Each of these data sources provides a different perspective on the process, but traditional monitoring methods struggle to integrate this information effectively.</p>
-
-            <p>The MOLA framework represents a breakthrough in how we approach industrial process monitoring. Instead of treating each data source separately, it uses advanced machine learning techniques to understand how different types of data interact and influence each other. This multi-block approach enables much more sophisticated fault detection and diagnostics than traditional methods.</p>
-
-            <h2>🧩 How MOLA Works: The Multi-Block Approach</h2>
-            <p>The key innovation of the MOLA framework lies in its multi-block learning approach. Traditional process monitoring methods typically analyze each type of data separately - temperature data is analyzed independently from pressure data, which is analyzed independently from flow data. This approach misses the crucial interactions between different process variables that often provide the first signs of problems.</p>
-
-            <p>MOLA, on the other hand, treats the process as a collection of related but distinct data blocks. Each block represents a different aspect of the process - for example, one block might contain all temperature-related measurements, another might contain pressure data, and a third might contain flow measurements. The framework then learns how these different blocks relate to each other and how changes in one block affect the others.</p>
-
-            <div class="fault-detection-flow">
-                <h3>🔄 MOLA Fault Detection Process</h3>
-                <div class="flow-step">
-                    <h4>1. Data Collection</h4>
-                    <p>Collect data from multiple process blocks (temperature, pressure, flow, composition)</p>
+            <div class="kinetics-visualization">
+                <h3>🧪 Exoplanet Chemical Kinetics Simulator</h3>
+                <p>Click the molecule to see how chemical reactions work in alien atmospheres:</p>
+                <div class="molecule-container">
+                    <div class="atmosphere-field"></div>
+                    <div class="molecule" id="molecule" onclick="simulateExoplanetChemistry()">H₂O + CO₂</div>
                 </div>
-                <div class="flow-step">
-                    <h4>2. Block Analysis</h4>
-                    <p>Analyze each data block independently to identify local patterns and anomalies</p>
+                <p id="reactionStatus">Click the molecule to observe exoplanet chemistry in action!</p>
+            </div>
+
+            <h2>🧮 The FRECKLL Solution</h2>
+            <p>FRECKLL solves these problems by providing a fast, accurate way to simulate chemical reactions in exoplanet atmospheres. The software is designed to be both comprehensive and efficient, allowing scientists to study complex atmospheric chemistry without waiting years for computer simulations to complete.</p>
+
+            <h3>⚡ Speed and Accuracy</h3>
+            <p>One of the key innovations of FRECKLL is its ability to balance speed and accuracy. Traditional atmospheric chemistry models can take months to run on supercomputers, but FRECKLL can provide accurate results in hours or days. This is crucial because scientists need to test many different scenarios to understand what's happening in these alien atmospheres.</p>
+
+            <h3>🎯 Simplified Reaction Networks</h3>
+            <p>FRECKLL uses "simplified reaction networks" that focus on the most important chemical reactions while ignoring less significant ones. This is like creating a simplified map that shows only the major highways, ignoring the side streets. The result is a model that's much faster to run but still captures the essential chemistry.</p>
+
+            <div class="efficiency-chart">
+                <h3>📊 Computational Efficiency Chart</h3>
+                <p>Click on the bars to see how different approaches compare:</p>
+                <div class="chart-container">
+                    <div class="chart-bar" style="height: 10%;" onclick="showDetails('full-network')" title="Full Network"></div>
+                    <div class="chart-bar" style="height: 30%;" onclick="showDetails('reduced-network')" title="Reduced Network"></div>
+                    <div class="chart-bar" style="height: 60%;" onclick="showDetails('freckll-optimized')" title="FRECKLL Optimized"></div>
+                    <div class="chart-bar" style="height: 90%;" onclick="showDetails('freckll-distilled')" title="FRECKLL Distilled"></div>
                 </div>
-                <div class="flow-step">
-                    <h4>3. Cross-Block Learning</h4>
-                    <p>Learn relationships between different blocks and how they influence each other</p>
-                </div>
-                <div class="flow-step">
-                    <h4>4. Integrated Monitoring</h4>
-                    <p>Combine insights from all blocks to detect faults that span multiple process aspects</p>
-                </div>
-                <div class="flow-step">
-                    <h4>5. Diagnostic Analysis</h4>
-                    <p>Provide detailed diagnostics by identifying which blocks are affected and how</p>
+                <div class="chart-label">
+                    <span>Full</span>
+                    <span>Reduced</span>
+                    <span>Optimized</span>
+                    <span>Distilled</span>
                 </div>
             </div>
 
-            <h2>📈 The Performance Advantage: Why MOLA Excels</h2>
-            <p>The performance advantages of the MOLA framework are remarkable. By considering the interactions between different types of process data, it can detect faults that would be invisible to traditional single-block methods. For example, a small temperature increase in one part of the process might not be significant on its own, but when combined with a corresponding pressure change in another part, it could indicate the beginning of a serious problem.</p>
+            <h2>🌟 Real-World Applications</h2>
+            <p>FRECKLL has important implications for the search for life beyond Earth:</p>
 
-            <div class="performance-comparison">
-                <h4 style="margin-top: 0; color: #92400e;">📊 MOLA Performance Advantages:</h4>
-                <p style="margin-bottom: 1rem;"><strong>Early Fault Detection:</strong> MOLA can detect problems much earlier than traditional methods by recognizing subtle changes in the relationships between different process variables. This early warning capability can prevent costly equipment failures and production losses.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Reduced False Alarms:</strong> By considering multiple data sources simultaneously, MOLA can distinguish between real problems and normal process variations that might trigger false alarms in traditional systems. This reduces operator fatigue and improves confidence in the monitoring system.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Better Diagnostics:</strong> When a fault is detected, MOLA can provide detailed information about which process aspects are affected and how they're related. This makes it much easier for operators to understand what's happening and take appropriate corrective action.</p>
-                
-                <p style="margin-bottom: 0;"><strong>Adaptive Learning:</strong> The multi-block approach allows MOLA to adapt to changes in process conditions and learn new patterns as the process evolves. This makes it more robust and reliable over time compared to static monitoring systems.</p>
-            </div>
+            <h3>🔍 Habitable Zone Identification</h3>
+            <p>By understanding the chemistry of exoplanet atmospheres, scientists can better identify which planets might be habitable. For example, the presence of certain chemicals like oxygen and methane could indicate the presence of life, while others might indicate a planet that's too hot, too cold, or too toxic for life as we know it.</p>
 
-            <h2>🏭 Real-World Applications: Transforming Industrial Operations</h2>
-            <p>The applications of the MOLA framework extend across virtually all types of industrial processes. In chemical manufacturing, it's being used to monitor complex reaction systems where multiple variables must be controlled simultaneously. The framework can detect when reaction conditions are beginning to drift from optimal, allowing operators to make adjustments before product quality is affected.</p>
+            <h3>🌍 Earth-like Planet Detection</h3>
+            <p>FRECKLL can help scientists identify planets that have atmospheres similar to Earth's. This is important because Earth-like planets are the most likely candidates for hosting life as we know it.</p>
 
-            <p>In petrochemical plants, MOLA is being used to monitor distillation columns, heat exchangers, and other complex equipment. The multi-block approach is particularly valuable in these applications because the processes involve multiple interconnected units where problems in one area can quickly spread to others. By monitoring all aspects simultaneously, MOLA can detect these cascading effects and help prevent widespread process upsets.</p>
+            <h3>🧬 Biosignature Analysis</h3>
+            <p>Biosignatures are chemical signs that could indicate the presence of life. FRECKLL can help scientists understand which chemicals in an exoplanet's atmosphere might be produced by living organisms versus non-living processes.</p>
 
-            <p>Power generation facilities are also benefiting from MOLA's capabilities. In these applications, the framework monitors not just the power generation equipment, but also the supporting systems like cooling water, fuel supply, and emissions control. This comprehensive monitoring approach helps ensure reliable power generation while maintaining environmental compliance.</p>
+            <h3>🌌 Atmospheric Evolution</h3>
+            <p>Understanding how exoplanet atmospheres change over time can help scientists understand the history and future of these worlds. This could provide insights into how planets form and evolve.</p>
 
-            <h2>🔮 The Future: Next-Generation Process Monitoring</h2>
-            <p>As the MOLA framework continues to evolve, we can expect to see even more sophisticated applications. One exciting development is the integration of MOLA with digital twin technology, creating virtual replicas of physical processes that can be used for advanced simulation and optimization. These digital twins will be able to predict how processes will behave under different conditions and help optimize operations in real-time.</p>
-
-            <p>Another promising area is the integration of MOLA with edge computing systems. By processing data locally at the plant level, these systems can provide real-time monitoring and control without the delays associated with cloud-based processing. This is particularly important for safety-critical applications where rapid response to problems is essential.</p>
-
-            <p>The integration of MOLA with artificial intelligence and machine learning is also opening up new possibilities. These systems can not only detect faults but also learn to predict them before they occur. This predictive capability will enable a shift from reactive to proactive maintenance, reducing downtime and improving overall process efficiency.</p>
-
-            <h2>🎓 Educational Implications: Training the Next Generation</h2>
-            <p>The emergence of multi-block learning frameworks like MOLA has important implications for chemical engineering education. Students need to understand not just traditional process monitoring concepts, but also how to work with complex, multi-dimensional data and how to interpret the relationships between different process variables.</p>
-
-            <p>This requires a multidisciplinary approach that combines knowledge of chemical engineering, statistics, machine learning, and data science. Students need to learn how to collect and preprocess data from multiple sources, how to identify meaningful patterns in complex datasets, and how to interpret the results of multi-block analysis.</p>
-
-            <p>Universities are beginning to develop new courses and research programs focused on advanced process monitoring and control. These programs emphasize hands-on experience with real industrial data and modern analytical tools, preparing students for careers in this rapidly evolving field.</p>
-
-            <h2>🔍 Interactive Elements: Test Your Understanding</h2>
-            <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #991b1b;">🤔 Think About It:</h4>
-                <p style="margin-bottom: 0;">Why do you think a multi-block approach to process monitoring might be more effective than analyzing each type of data separately? What advantages does this provide?</p>
-            </div>
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers used advanced computational methods to develop FRECKLL:</p>
 
             <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #0c4a6e;">💡 Discussion Questions:</h4>
+                <h4 style="margin-top: 0; color: #0c4a6e;">🧮 Technical Approach:</h4>
                 <ul style="margin-bottom: 0;">
-                    <li>How might the MOLA framework change the way industrial processes are monitored and controlled?</li>
-                    <li>What are the potential benefits of early fault detection in industrial processes?</li>
-                    <li>How do you think multi-block learning could be applied to other areas of chemical engineering?</li>
+                    <li><strong>Reaction Network Optimization:</strong> Identifies the most important chemical reactions</li>
+                    <li><strong>Kinetic Rate Calculations:</strong> Determines how fast reactions occur</li>
+                    <li><strong>Atmospheric Modeling:</strong> Simulates complex atmospheric conditions</li>
+                    <li><strong>Computational Efficiency:</strong> Balances accuracy with speed</li>
                 </ul>
             </div>
 
+            <h2>🚀 Future Possibilities</h2>
+            <p>FRECKLL opens up exciting new possibilities for exoplanet research:</p>
+
+            <ul>
+                <li><strong>Large-Scale Surveys:</strong> Studying hundreds or thousands of exoplanets</li>
+                <li><strong>Real-Time Analysis:</strong> Analyzing exoplanet data as it's collected</li>
+                <li><strong>Mission Planning:</strong> Helping design future space telescopes</li>
+                <li><strong>Life Detection:</strong> Identifying the most promising targets for life</li>
+            </ul>
+
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of interdisciplinary science. It combines:</p>
+
+            <ul>
+                <li><strong>Astronomy:</strong> Understanding exoplanets and their properties</li>
+                <li><strong>Chemistry:</strong> Understanding atmospheric chemical reactions</li>
+                <li><strong>Computer Science:</strong> Developing efficient simulation software</li>
+                <li><strong>Physics:</strong> Understanding the physical processes in atmospheres</li>
+            </ul>
+
+            <p>For students interested in any of these fields, this work shows how modern science often involves combining knowledge from multiple disciplines to solve complex problems.</p>
+
             <div class="highlight-box">
-                <strong>🎯 Bottom Line:</strong> The MOLA framework represents a revolutionary approach to industrial process monitoring that leverages multi-block learning to provide superior fault detection and diagnostics. By considering the interactions between different types of process data, MOLA can detect problems earlier, reduce false alarms, and provide better diagnostic information than traditional single-block methods. This technology is transforming how we monitor and control industrial processes, leading to improved safety, efficiency, and reliability across a wide range of applications.
+                <strong>🎯 Bottom Line:</strong> Scientists have developed FRECKLL, a revolutionary software tool that can simulate the complex chemical reactions happening in alien atmospheres. This breakthrough could help us identify habitable planets, understand the chemistry of distant worlds, and potentially find signs of life beyond Earth.
             </div>
 
             <h2>📚 Further Reading & Resources</h2>
-            <p>Want to explore more about this fascinating approach to industrial process monitoring?</p>
+            <p>Want to dive deeper? Check out these related topics:</p>
             <ul>
-                <li>Multi-block learning in process industries</li>
-                <li>Advanced fault detection and diagnostics</li>
-                <li>Industrial process monitoring and control</li>
-                <li>Machine learning applications in chemical engineering</li>
+                <li>Exoplanet detection and characterization</li>
+                <li>Atmospheric chemistry and photochemistry</li>
+                <li>Biosignatures and the search for life</li>
+                <li>Computational chemistry and modeling</li>
+                <li>Astrobiology and planetary science</li>
             </ul>
         </div>
     </main>
@@ -707,5 +520,62 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        function showAtmosphere() {
+            alert('🌍 Alien Atmosphere: The complex mixture of gases surrounding exoplanets, containing unknown chemicals and reaction networks that could indicate the presence of life.');
+        }
+
+        function showKinetics() {
+            alert('⚡ Chemical Kinetics: The study of how fast chemical reactions occur in exoplanet atmospheres, crucial for understanding atmospheric composition and evolution.');
+        }
+
+        function showFRECKLL() {
+            alert('🧮 FRECKLL Software: A revolutionary tool that simulates exoplanet atmospheric chemistry with unprecedented speed and accuracy, helping scientists understand alien worlds.');
+        }
+
+        function updateAtmosphere(value) {
+            document.getElementById('atmosphereValue').textContent = value + '%';
+            
+            let result = '';
+            if (value < 20) {
+                result = 'At this complexity level, chemical kinetics are <strong>simple</strong> with basic reaction networks.';
+            } else if (value < 40) {
+                result = 'At this complexity level, chemical kinetics are <strong>moderate</strong> with balanced reaction networks.';
+            } else if (value < 80) {
+                result = 'At this complexity level, chemical kinetics are <strong>complex</strong> with intricate reaction networks.';
+            } else {
+                result = 'At this complexity level, chemical kinetics are <strong>extremely complex</strong> with highly interconnected reaction networks!';
+            }
+            
+            document.getElementById('kineticsResult').innerHTML = '<p>' + result + '</p>';
+        }
+
+        function simulateExoplanetChemistry() {
+            const molecule = document.getElementById('molecule');
+            const status = document.getElementById('reactionStatus');
+            
+            status.textContent = 'Analyzing exoplanet atmospheric chemistry...';
+            molecule.style.background = 'linear-gradient(45deg, #7c2d12, #fbbf24)';
+            molecule.style.transform = 'scale(1.3)';
+            
+            setTimeout(() => {
+                molecule.innerHTML = 'H₂CO₃ + O₂';
+                molecule.style.background = 'linear-gradient(45deg, #10b981, #3b82f6)';
+                molecule.style.transform = 'scale(1)';
+                status.textContent = 'Exoplanet chemistry complete! FRECKLL successfully simulated atmospheric reactions!';
+            }, 2000);
+        }
+
+        function showDetails(type) {
+            const details = {
+                'full-network': 'Full Network: Complete chemical reaction networks that include every possible reaction, providing maximum accuracy but requiring enormous computational resources.',
+                'reduced-network': 'Reduced Network: Simplified reaction networks that focus on the most important reactions, balancing accuracy with computational efficiency.',
+                'freckll-optimized': 'FRECKLL Optimized: Advanced optimization techniques that identify the most critical reactions for accurate atmospheric modeling.',
+                'freckll-distilled': 'FRECKLL Distilled: The ultimate efficiency approach that distills complex chemistry into essential reactions, providing maximum speed with maintained accuracy.'
+            };
+            
+            alert(details[type] || 'Click on a bar to see detailed efficiency information!');
+        }
+    </script>
 </body>
 </html>

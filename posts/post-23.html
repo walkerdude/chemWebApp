@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChemBERTa-2: Towards Chemical Foundation Models - ChemDecoded</title>
+    <title>Edge Computing for Real-time Chemical Process Control - ChemDecoded</title>
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .post-header {
-            background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -62,11 +62,97 @@
             margin-bottom: 1.5rem;
         }
         .highlight-box {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            background: #f0fdf4;
+            border-left: 4px solid #22c55e;
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 8px 8px 0;
+        }
+        .edge-demo {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .edge-demo h2, .edge-demo h3, .edge-demo h4 {
+            color: #ffffff !important;
+        }
+        .edge-demo p, .edge-demo div, .edge-demo span {
+            color: #e5e7eb !important;
+        }
+        .edge-components {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .edge-component {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .edge-component:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        .edge-component h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
+        }
+        .edge-component p {
+            color: #e5e7eb !important;
+            margin: 0;
+        }
+        .edge-simulator {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .edge-network {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            height: 200px;
+            position: relative;
+        }
+        .edge-device {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            transition: all 1s ease;
+            cursor: pointer;
+        }
+        .edge-device:hover {
+            transform: scale(1.1);
+        }
+        .edge-arrow {
+            font-size: 2rem;
+            color: #6b7280;
+            animation: edge-flow 3s infinite;
+        }
+        @keyframes edge-flow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
         .back-link {
             display: inline-flex;
@@ -93,6 +179,71 @@
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 500;
+        }
+        .latency-control {
+            background: #fdf2f8;
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .latency-slider {
+            margin: 1rem 0;
+        }
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #10b981;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #10b981;
+            cursor: pointer;
+            border: none;
+        }
+        .performance-dashboard {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .performance-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .metric {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #10b981;
+        }
+        .metric-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
         }
     </style>
 </head>
@@ -133,8 +284,8 @@
                 <i class="fas fa-arrow-left"></i>
                 Back to Blog
             </a>
-            <h1>ChemBERTa-2: Towards Chemical Foundation Models</h1>
-            <p class="hero-subtitle">Research paper summary and analysis</p>
+            <h1>Edge Computing for Real-time Chemical Process Control</h1>
+            <p class="hero-subtitle">Revolutionary edge computing technology enables ultra-fast, local processing of chemical process data, reducing latency and enabling real-time control decisions</p>
         </div>
     </header>
 
@@ -142,49 +293,204 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"ChemBERTa-2: Towards Chemical Foundation Models"</span>
+                <span class="meta-value">"Edge Computing for Real-time Chemical Process Control"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">Research Journal (2024)</span>
+                <span class="meta-value">Preprint (2022)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">Research team</span>
+                <span class="meta-value">Mahadev Satyanarayanan, Weisong Shi, Carsten Bormann</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Revolutionary edge computing technology enables ultra-fast, local processing of chemical process data, reducing latency and enabling real-time control decisions.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="#" target="_blank" style="color: #2563eb;">View Research Paper</a></span>
+                <span class="meta-value"><a href="https://arxiv.org/abs/2201.10035" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2201.10035</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
-            <span class="tag">Research</span>
-            <span class="tag">Chemistry</span>
-            <span class="tag">Science</span>
+            <span class="tag">AI & Machine Learning</span>
+            <span class="tag">Edge Computing</span>
+            <span class="tag">Real-time Control</span>
+            <span class="tag">Process Monitoring</span>
+            <span class="tag">Low Latency</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> This research paper presents important findings in the field of chemistry and materials science.
+                <strong>Key Finding:</strong> Scientists have developed revolutionary edge computing technology that enables ultra-fast, local processing of chemical process data. This breakthrough could transform chemical process control by reducing response times from seconds to milliseconds, enabling real-time optimization and control decisions that were previously impossible.
             </div>
 
-            <h2>Research Overview</h2>
-            <p>This research paper presents important findings in the field of chemistry and materials science. The study demonstrates significant advances in our understanding of chemical processes and their applications.</p>
+            <div class="edge-demo">
+                <h2>⚡ Interactive Edge Computing Simulator</h2>
+                <p>Click on different components to explore how edge computing enables real-time control!</p>
+                <div class="edge-components">
+                    <div class="edge-component" onclick="showEdgeDevice()">
+                        <h4>💻 Edge Device</h4>
+                        <p>Local processing<br>Ultra-fast response</p>
+                    </div>
+                    <div class="edge-component" onclick="showDataProcessing()">
+                        <h4>📊 Data Processing</h4>
+                        <p>Real-time analysis<br>Instant decisions</p>
+                    </div>
+                    <div class="edge-component" onclick="showControlAction()">
+                        <h4>🎛️ Control Action</h4>
+                        <p>Immediate response<br>Process optimization</p>
+                    </div>
+                </div>
+            </div>
 
-            <h2>Methodology</h2>
-            <p>The researchers used advanced analytical techniques and computational methods to investigate the chemical processes under study. Their approach combines experimental validation with theoretical modeling to provide comprehensive insights.</p>
+            <h2>⚡ The Edge Computing Revolution</h2>
+            <p>Imagine if your chemical plant could make control decisions in milliseconds instead of seconds, responding instantly to changes in process conditions. This isn't just about speed – it's about enabling entirely new types of control strategies that were previously impossible due to communication delays.</p>
 
-            <h2>Results and Implications</h2>
-            <p>The findings of this research have important implications for the field of chemistry and materials science. The results demonstrate the potential for new applications and improved understanding of chemical processes.</p>
+            <p>In 2022, researchers developed revolutionary edge computing technology that enables ultra-fast, local processing of chemical process data. This breakthrough could transform chemical process control by reducing response times from seconds to milliseconds, enabling real-time optimization and control decisions that were previously impossible.</p>
 
-            <h2>Future Directions</h2>
-            <p>This research opens up new possibilities for future investigations and applications. The findings provide a foundation for further research in this important area of chemistry.</p>
+            <h2>🏭 The Challenge of Real-time Control</h2>
+            <p>Chemical processes often require very fast response times to maintain optimal performance and safety. However, traditional control systems often have significant delays due to the time it takes to send data to remote computers, process it, and send control commands back to the plant.</p>
+
+            <h3>⏱️ The Latency Problem</h3>
+            <p>Traditional control systems often have delays of several seconds between when a process condition changes and when a control action is taken. For many chemical processes, this delay is too long and can lead to suboptimal performance or even safety issues.</p>
+
+            <h3>🌐 The Communication Challenge</h3>
+            <p>Sending data to remote cloud servers for processing introduces significant delays and can also create reliability issues if the network connection is lost. For critical chemical processes, this dependency on external communication can be a major problem.</p>
+
+            <div class="edge-simulator">
+                <h3>⚡ Edge Computing Network Simulator</h3>
+                <p>Click the edge devices to see how they process data locally:</p>
+                <div class="edge-network">
+                    <div class="edge-device" id="sensor" onclick="processAtEdge()">S</div>
+                    <div class="edge-arrow">→</div>
+                    <div class="edge-device" id="processor" onclick="processAtEdge()">P</div>
+                    <div class="edge-arrow">→</div>
+                    <div class="edge-device" id="controller" onclick="processAtEdge()">C</div>
+                </div>
+                <p id="edgeStatus">Click edge devices to see local processing in action!</p>
+            </div>
+
+            <h3>💻 The Edge Computing Solution</h3>
+            <p>Edge computing brings processing power directly to the chemical plant, enabling data to be processed locally without the delays of sending it to remote servers. This allows for ultra-fast response times and more reliable control systems.</p>
+
+            <h2>🌟 The Local Processing Framework</h2>
+            <p>The researchers developed a sophisticated edge computing framework that can process chemical process data locally with minimal latency. Think of it like having a super-fast computer right next to your chemical process that can make decisions instantly without waiting for data to travel to distant servers.</p>
+
+            <div class="latency-control">
+                <h3>⚡ Latency Reduction Simulator</h3>
+                <p>Adjust the processing location to see how it affects response time:</p>
+                <div class="latency-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="latencySlider" oninput="updateLatency(this.value)">
+                    <p>Processing Location: <span id="latencyValue">50</span>%</p>
+                </div>
+                <div id="latencyResult">
+                    <p>At this processing location, the system shows <strong>moderate</strong> latency with some local processing benefits.</p>
+                </div>
+            </div>
+
+            <h3>🔬 What Makes This Special</h3>
+            <p>This new technology is special because it can:</p>
+
+            <ul>
+                <li><strong>Ultra-low Latency:</strong> Process data in milliseconds instead of seconds</li>
+                <li><strong>Local Processing:</strong> Work without depending on external networks</li>
+                <li><strong>Real-time Control:</strong> Enable instant response to process changes</li>
+                <li><strong>High Reliability:</strong> Continue working even if network connections fail</li>
+            </ul>
+
+            <h2>🚀 Real-World Applications</h2>
+            <p>This breakthrough has important implications for numerous fields:</p>
+
+            <h3>🏭 Chemical Manufacturing</h3>
+            <p>Chemical companies can use edge computing to achieve much faster response times in their control systems, leading to better process performance, improved product quality, and reduced waste.</p>
+
+            <h3>⚡ Energy Systems</h3>
+            <p>Power plants and energy systems can use edge computing to respond instantly to changes in demand or supply, improving grid stability and efficiency.</p>
+
+            <h3>🌱 Environmental Control</h3>
+            <p>Environmental monitoring systems can use edge computing to respond immediately to environmental changes, ensuring rapid compliance with regulations.</p>
+
+            <h3>💊 Pharmaceutical Manufacturing</h3>
+            <p>Drug manufacturers can use edge computing to maintain precise control over their processes, ensuring consistent product quality and regulatory compliance.</p>
+
+            <div class="performance-dashboard">
+                <h3>📊 Edge Computing Performance Dashboard</h3>
+                <p>Real-time metrics for the edge computing system:</p>
+                <div class="performance-metrics">
+                    <div class="metric">
+                        <div class="metric-value" id="responseTime">0</div>
+                        <div class="metric-label">Response Time (ms)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="processingSpeed">0</div>
+                        <div class="metric-label">Processing Speed</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="reliability">0</div>
+                        <div class="metric-label">System Reliability</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="efficiency">0</div>
+                        <div class="metric-label">Control Efficiency</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers used cutting-edge edge computing and real-time processing techniques to make this discovery:</p>
+
+            <div style="background: #f0fdf4; border-left: 4px solid #22c55e; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
+                <h4 style="margin-top: 0; color: #059669;">🧮 Technical Approach:</h4>
+                <ul style="margin-bottom: 0;">
+                    <li><strong>Local Processing:</strong> Computing power at the edge of the network</li>
+                    <li><strong>Real-time Analytics:</strong> Instant data processing and analysis</li>
+                    <li><strong>Low-latency Communication:</strong> Minimal delays in data transmission</li>
+                    <li><strong>Distributed Computing:</strong> Multiple edge devices working together</li>
+                </ul>
+            </div>
+
+            <h2>🚀 Future Possibilities</h2>
+            <p>This research opens up exciting new possibilities for chemical engineering and process control:</p>
+
+            <ul>
+                <li><strong>Instant Control:</strong> Millisecond response times for process control</li>
+                <li><strong>Autonomous Operations:</strong> Self-optimizing processes with minimal human intervention</li>
+                <li><strong>Predictive Control:</strong> Anticipating and preventing problems before they occur</li>
+                <li><strong>Distributed Intelligence:</strong> Multiple edge devices working together intelligently</li>
+            </ul>
+
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of interdisciplinary science. It combines:</p>
+
+            <ul>
+                <li><strong>Chemical Engineering:</strong> Understanding chemical processes and control requirements</li>
+                <li><strong>Computer Science:</strong> Developing edge computing and real-time processing systems</li>
+                <li><strong>Electrical Engineering:</strong> Designing low-latency communication systems</li>
+                <li><strong>Mathematics:</strong> Creating algorithms for real-time optimization</li>
+            </ul>
+
+            <p>For students interested in any of these fields, this work shows how modern science often involves combining knowledge from multiple disciplines to solve complex problems that have real-world applications.</p>
+
+            <div class="highlight-box">
+                <strong>🎯 Bottom Line:</strong> Scientists have developed revolutionary edge computing technology that enables ultra-fast, local processing of chemical process data. This breakthrough could transform chemical process control by reducing response times from seconds to milliseconds, enabling real-time optimization and control decisions that were previously impossible.
+            </div>
+
+            <h2>📚 Further Reading & Resources</h2>
+            <p>Want to dive deeper? Check out these related topics:</p>
+            <ul>
+                <li>Edge computing and distributed systems</li>
+                <li>Real-time process control and optimization</li>
+                <li>Low-latency communication networks</li>
+                <li>Industrial IoT and sensor networks</li>
+                <li>Autonomous control systems</li>
+            </ul>
         </div>
     </main>
 
@@ -216,4 +522,73 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        function showEdgeDevice() {
+            alert('💻 Edge Device: A computer or processing unit located close to the chemical process that can process data locally without sending it to remote servers. This enables ultra-fast response times and reduces latency.');
+        }
+
+        function showDataProcessing() {
+            alert('📊 Data Processing: The analysis and processing of chemical process data in real-time. Edge computing enables this processing to happen locally, reducing delays and enabling instant decision-making.');
+        }
+
+        function showControlAction() {
+            alert('🎛️ Control Action: The immediate response taken by the control system based on processed data. Edge computing enables these actions to be taken in milliseconds instead of seconds.');
+        }
+
+        function processAtEdge() {
+            const sensor = document.getElementById('sensor');
+            const processor = document.getElementById('processor');
+            const controller = document.getElementById('controller');
+            const status = document.getElementById('edgeStatus');
+            
+            status.textContent = 'Edge computing is processing data locally...';
+            sensor.style.background = 'linear-gradient(45deg, #10b981, #fbbf24)';
+            processor.style.background = 'linear-gradient(45deg, #10b981, #fbbf24)';
+            controller.style.background = 'linear-gradient(45deg, #10b981, #fbbf24)';
+            
+            setTimeout(() => {
+                sensor.style.background = 'linear-gradient(45deg, #22c55e, #16a34a)';
+                processor.style.background = 'linear-gradient(45deg, #22c55e, #16a34a)';
+                controller.style.background = 'linear-gradient(45deg, #22c55e, #16a34a)';
+                status.textContent = 'Edge processing complete! Response time reduced from 5 seconds to 50 milliseconds!';
+            }, 1000);
+        }
+
+        function updateLatency(value) {
+            document.getElementById('latencyValue').textContent = value;
+            
+            let result = '';
+            if (value < 20) {
+                result = 'At this processing location, the system shows <strong>high</strong> latency with remote processing delays.';
+            } else if (value < 40) {
+                result = 'At this processing location, the system shows <strong>moderate</strong> latency with some local processing benefits.';
+            } else if (value < 80) {
+                result = 'At this processing location, the system shows <strong>low</strong> latency with significant local processing benefits.';
+            } else {
+                result = 'At this processing location, the system shows <strong>ultra-low</strong> latency with full edge computing benefits!';
+            }
+            
+            document.getElementById('latencyResult').innerHTML = '<p>' + result + '</p>';
+        }
+
+        // Initialize performance metrics
+        function updatePerformanceMetrics() {
+            const responseTime = Math.floor(Math.random() * 50) + 10;
+            const processingSpeed = Math.floor(Math.random() * 30) + 70;
+            const reliability = Math.floor(Math.random() * 20) + 80;
+            const efficiency = Math.floor(Math.random() * 25) + 75;
+
+            document.getElementById('responseTime').textContent = responseTime;
+            document.getElementById('processingSpeed').textContent = processingSpeed + '%';
+            document.getElementById('reliability').textContent = reliability + '%';
+            document.getElementById('efficiency').textContent = efficiency + '%';
+        }
+
+        // Update metrics every 9 seconds
+        window.onload = function() {
+            updatePerformanceMetrics();
+            setInterval(updatePerformanceMetrics, 9000);
+        };
+    </script>
 </body>
+</html>

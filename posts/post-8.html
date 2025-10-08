@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep Reinforcement Learning Discovers Azeotropic Separation Processes - ChemDecoded</title>
+    <title>A Mini-Chemical Scheme with Net Reactions for 3D GCMs - ChemDecoded</title>
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .post-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -62,93 +62,138 @@
             margin-bottom: 1.5rem;
         }
         .highlight-box {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            background: #ecfdf5;
+            border-left: 4px solid #10b981;
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 8px 8px 0;
         }
-        .rl-demo {
-            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        .gcm-demo {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
             color: white;
             padding: 2rem;
-            border-radius: 12px;
             margin: 2rem 0;
+            border-radius: 12px;
             text-align: center;
         }
-        .rl-demo h2, .rl-demo h3, .rl-demo h4 {
+        .gcm-demo h2, .gcm-demo h3, .gcm-demo h4 {
             color: #ffffff !important;
         }
-        .rl-demo p, .rl-demo div, .rl-demo span {
+        .gcm-demo p, .gcm-demo div, .gcm-demo span {
             color: #e5e7eb !important;
         }
-        .rl-demo h2 {
-            color: #ffffff;
-            margin-bottom: 1rem;
-        }
-        .rl-demo p {
-            color: #e5e7eb;
-            margin-bottom: 1.5rem;
-        }
-        .learning-process {
+        .gcm-components {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
             margin: 2rem 0;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 2rem;
         }
-        .learning-step {
-            background: #f8fafc;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 1rem;
-            text-align: center;
-            flex: 1;
-            min-width: 120px;
-        }
-        .learning-step h2, .learning-step h3, .learning-step h4 {
-            color: #1f2937 !important;
-        }
-        .learning-step p, .learning-step div, .learning-step span {
-            color: #374151 !important;
-        }
-        .learning-step h4 {
-            color: #1f2937;
-            margin: 0 0 0.5rem 0;
-            font-weight: 600;
-        }
-        .learning-step p {
-            color: #374151;
-            margin: 0 0 0.5rem 0;
-        }
-        .learning-step div {
-            color: #6b7280;
-            font-size: 0.8rem;
-            line-height: 1.4;
-        }
-        .exploration-step {
-            border-color: #ef4444;
-            background: #fef2f2;
-        }
-        .exploitation-step {
-            border-color: #10b981;
-            background: #f0fdf4;
-        }
-        .optimization-step {
-            border-color: #3b82f6;
-            background: #eff6ff;
-        }
-        .process-arrow {
-            color: #2563eb;
-            font-size: 1.5rem;
-        }
-        .azeotrope-explanation {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
+        .gcm-component {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
             padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 8px 8px 0;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .gcm-component:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        .gcm-component h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
+        }
+        .gcm-component p {
+            color: #e5e7eb !important;
+            margin: 0;
+        }
+        .scheme-control {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .scheme-slider {
+            margin: 1rem 0;
+        }
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #059669;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #059669;
+            cursor: pointer;
+            border: none;
+        }
+        .reaction-visualization {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .molecule-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            height: 200px;
+            position: relative;
+        }
+        .molecule {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            transition: all 1s ease;
+            cursor: pointer;
+        }
+        .molecule:hover {
+            transform: scale(1.1);
+        }
+        .gcm-field {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px dashed #059669;
+            border-radius: 20px;
+            opacity: 0.3;
+            animation: gcm-pulse 4s infinite;
+        }
+        @keyframes gcm-pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
         }
         .back-link {
             display: inline-flex;
@@ -160,7 +205,7 @@
             font-weight: 500;
         }
         .back-link:hover {
-            color: #e9d5ff;
+            color: #a7f3d0;
         }
         .tags {
             display: flex;
@@ -176,315 +221,41 @@
             font-size: 0.9rem;
             font-weight: 500;
         }
-        
-        .reasoning-step div {
-            color: #e5e7eb !important;
+        .efficiency-chart {
+            background: #fdf2f8;
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
         }
-        .code-snippet {
-            color: #f9fafb !important;
+        .chart-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            height: 200px;
+            margin: 1rem 0;
+            border-bottom: 2px solid #e5e7eb;
+            border-left: 2px solid #e5e7eb;
+            padding: 1rem;
         }
-        .interactive-element h4 {
-            color: #ffffff !important;
+        .chart-bar {
+            background: linear-gradient(to top, #059669, #34d399);
+            width: 30px;
+            margin: 0 5px;
+            border-radius: 4px 4px 0 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        .interactive-element p {
-            color: #e5e7eb !important;
+        .chart-bar:hover {
+            background: linear-gradient(to top, #047857, #059669);
+            transform: scale(1.1);
         }
-        
-        
-        /* Target elements with dark gradient backgrounds - all text elements */
-        [style*="background: linear-gradient"][style*="#1f2937"] h1,
-        [style*="background: linear-gradient"][style*="#1f2937"] h2,
-        [style*="background: linear-gradient"][style*="#1f2937"] h3,
-        [style*="background: linear-gradient"][style*="#1f2937"] h4,
-        [style*="background: linear-gradient"][style*="#1f2937"] h5,
-        [style*="background: linear-gradient"][style*="#1f2937"] h6,
-        [style*="background: linear-gradient"][style*="#1f2937"] p,
-        [style*="background: linear-gradient"][style*="#1f2937"] div,
-        [style*="background: linear-gradient"][style*="#1f2937"] span,
-        [style*="background: linear-gradient"][style*="#1f2937"] li,
-        [style*="background: linear-gradient"][style*="#374151"] h1,
-        [style*="background: linear-gradient"][style*="#374151"] h2,
-        [style*="background: linear-gradient"][style*="#374151"] h3,
-        [style*="background: linear-gradient"][style*="#374151"] h4,
-        [style*="background: linear-gradient"][style*="#374151"] h5,
-        [style*="background: linear-gradient"][style*="#374151"] h6,
-        [style*="background: linear-gradient"][style*="#374151"] p,
-        [style*="background: linear-gradient"][style*="#374151"] div,
-        [style*="background: linear-gradient"][style*="#374151"] span,
-        [style*="background: linear-gradient"][style*="#374151"] li {
-            color: #ffffff !important;
+        .chart-label {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
         }
-        
-        /* Target all dark background classes */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation h1, .data-transformation h2, .data-transformation h3, 
-        .data-transformation h4, .data-transformation h5, .data-transformation h6,
-        .ai-demo-box h1, .ai-demo-box h2, .ai-demo-box h3, 
-        .ai-demo-box h4, .ai-demo-box h5, .ai-demo-box h6,
-        .matrix-demo h1, .matrix-demo h2, .matrix-demo h3, 
-        .matrix-demo h4, .matrix-demo h5, .matrix-demo h6,
-        .reasoning-demo h1, .reasoning-demo h2, .reasoning-demo h3, 
-        .reasoning-demo h4, .reasoning-demo h5, .reasoning-demo h6,
-        .quantum-demo h1, .quantum-demo h2, .quantum-demo h3, 
-        .quantum-demo h4, .quantum-demo h5, .quantum-demo h6,
-        .selection-demo h1, .selection-demo h2, .selection-demo h3, 
-        .selection-demo h4, .selection-demo h5, .selection-demo h6,
-        .ode-demo h1, .ode-demo h2, .ode-demo h3, 
-        .ode-demo h4, .ode-demo h5, .ode-demo h6,
-        .agent-demo h1, .agent-demo h2, .agent-demo h3, 
-        .agent-demo h4, .agent-demo h5, .agent-demo h6,
-        .gcn-demo h1, .gcn-demo h2, .gcn-demo h3, 
-        .gcn-demo h4, .gcn-demo h5, .gcn-demo h6,
-        .fault-demo h1, .fault-demo h2, .fault-demo h3, 
-        .fault-demo h4, .fault-demo h5, .fault-demo h6,
-        .foundation-demo h1, .foundation-demo h2, .foundation-demo h3, 
-        .foundation-demo h4, .foundation-demo h5, .foundation-demo h6,
-        .rl-demo h1, .rl-demo h2, .rl-demo h3, 
-        .rl-demo h4, .rl-demo h5, .rl-demo h6,
-        .neural-network-demo h1, .neural-network-demo h2, .neural-network-demo h3, 
-        .neural-network-demo h4, .neural-network-demo h5, .neural-network-demo h6 {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation p, .data-transformation div, .data-transformation span, .data-transformation li,
-        .ai-demo-box p, .ai-demo-box div, .ai-demo-box span, .ai-demo-box li,
-        .matrix-demo p, .matrix-demo div, .matrix-demo span, .matrix-demo li,
-        .reasoning-demo p, .reasoning-demo div, .reasoning-demo span, .reasoning-demo li,
-        .quantum-demo p, .quantum-demo div, .quantum-demo span, .quantum-demo li,
-        .selection-demo p, .selection-demo div, .selection-demo span, .selection-demo li,
-        .ode-demo p, .ode-demo div, .ode-demo span, .ode-demo li,
-        .agent-demo p, .agent-demo div, .agent-demo span, .agent-demo li,
-        .gcn-demo p, .gcn-demo div, .gcn-demo span, .gcn-demo li,
-        .fault-demo p, .fault-demo div, .fault-demo span, .fault-demo li,
-        .foundation-demo p, .foundation-demo div, .foundation-demo span, .foundation-demo li,
-        .rl-demo p, .rl-demo div, .rl-demo span, .rl-demo li,
-        .neural-network-demo p, .neural-network-demo div, .neural-network-demo span, .neural-network-demo li {
-            color: #e5e7eb !important;
-        }
-        
-        /* Force light text on any element with dark background */
-        [style*="background"][style*="#1f2937"], [style*="background"][style*="#374151"],
-        [style*="background"][style*="#667eea"], [style*="background"][style*="#764ba2"],
-        [style*="background"][style*="#7c3aed"], [style*="background"][style*="#6d28d9"],
-        [style*="background"][style*="#dc2626"], [style*="background"][style*="#b91c1c"],
-        [style*="background"][style*="#be185d"], [style*="background"][style*="#9d174d"],
-        [style*="background"][style*="#0f766e"], [style*="background"][style*="#0d9488"],
-        [style*="background"][style*="#1e40af"], [style*="background"][style*="#1e3a8a"],
-        [style*="background"][style*="#7c2d12"], [style*="background"][style*="#991b1c"],
-        [style*="background"][style*="#059669"], [style*="background"][style*="#047857"],
-        [style*="background"][style*="#06b6d4"], [style*="background"][style*="#0891b2"],
-        [style*="background"][style*="#8b5cf6"], [style*="background"][style*="#7c3aed"],
-        [style*="background"][style*="#f59e0b"], [style*="background"][style*="#d97706"] {
-            color: #ffffff !important;
-        }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo * {
-            color: #ffffff !important;
-        }
-        
-        /* Light background elements - force dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo * {
-            color: #1f2937 !important;
-        }
-        
-        /* Special cases */
-        .matrix-cell {
-            color: #ffffff !important;
-            font-weight: 600 !important;
-        }
-        .code-snippet {
-            color: #f9fafb !important;
-        }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .hybrid-comparison *, .accuracy-meter *, .process-flow *, .pattern-recognition *,
-        .convolution-demo *, .neural-network-demo *, .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Also target any div with dark background */
-        div[style*="background: linear-gradient"] {
-            color: #ffffff !important;
-        }
-        
-        div[style*="background: linear-gradient"] * {
-            color: #ffffff !important;
-        }
-        /* PROPER CONTRAST FIX */
-        
-        /* Dark background elements - white text */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo,
-        .ai-flow-diagram {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Light background elements - dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo,
-        .hybrid-comparison, .pattern-cell, .network-visualization, .pattern-grid {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo *,
-        .hybrid-comparison *, .pattern-cell *, .network-visualization *, .pattern-grid * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specific fixes for pattern recognition demo */
-        .pattern-recognition {
-            background: #f8fafc !important;
-        }
-        
-        .pattern-cell {
-            background: #ffffff !important;
-            color: #1f2937 !important;
-            border: 1px solid #d1d5db !important;
-        }
-        
-        .pattern-cell:hover {
-            background: #e5e7eb !important;
-            color: #1f2937 !important;
-        }
-        /* FIX STRUCTURED THREE-BOX DIAGRAMS */
-        
-        /* Target the specific structured components with three boxes */
-        .sensor-architecture, .architecture-visualization, .component-breakdown,
-        .multi-block-visualization, .process-flow, .quantum-simulation,
-        .selection-process, .ode-architecture, .agent-system, .gcn-architecture,
-        .fault-detection, .foundation-architecture, .rl-process, .physics-demo,
-        .data-transformation, .ai-flow-diagram, .neural-network-demo,
-        .pattern-recognition, .convolution-demo, .accuracy-meter {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture *, .architecture-visualization *, .component-breakdown *,
-        .multi-block-visualization *, .process-flow *, .quantum-simulation *,
-        .selection-process *, .ode-architecture *, .agent-system *, .gcn-architecture *,
-        .fault-detection *, .foundation-architecture *, .rl-process *, .physics-demo *,
-        .data-transformation *, .ai-flow-diagram *, .neural-network-demo *,
-        .pattern-recognition *, .convolution-demo *, .accuracy-meter * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specifically target the three-box structure elements */
-        .interaction-component, .architecture-component, .process-component,
-        .sensor-component, .quantum-component, .selection-component,
-        .ode-component, .agent-component, .gcn-component, .fault-component,
-        .foundation-component, .rl-component, .physics-component,
-        .data-component, .ai-component, .neural-component, .pattern-component,
-        .convolution-component, .accuracy-component {
-            color: #1f2937 !important;
-        }
-        
-        .interaction-component *, .architecture-component *, .process-component *,
-        .sensor-component *, .quantum-component *, .selection-component *,
-        .ode-component *, .agent-component *, .gcn-component *, .fault-component *,
-        .foundation-component *, .rl-component *, .physics-component *,
-        .data-component *, .ai-component *, .neural-component *, .pattern-component *,
-        .convolution-component *, .accuracy-component * {
-            color: #1f2937 !important;
-        }
-        
-        /* Target any div with structured three-box layout */
-        .sensor-architecture .interaction-component,
-        .architecture-visualization .interaction-component,
-        .component-breakdown .interaction-component,
-        .multi-block-visualization .interaction-component,
-        .process-flow .interaction-component,
-        .quantum-simulation .interaction-component,
-        .selection-process .interaction-component,
-        .ode-architecture .interaction-component,
-        .agent-system .interaction-component,
-        .gcn-architecture .interaction-component,
-        .fault-detection .interaction-component,
-        .foundation-architecture .interaction-component,
-        .rl-process .interaction-component,
-        .physics-demo .interaction-component,
-        .data-transformation .interaction-component,
-        .ai-flow-diagram .interaction-component,
-        .neural-network-demo .interaction-component,
-        .pattern-recognition .interaction-component,
-        .convolution-demo .interaction-component,
-        .accuracy-meter .interaction-component {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture .interaction-component *,
-        .architecture-visualization .interaction-component *,
-        .component-breakdown .interaction-component *,
-        .multi-block-visualization .interaction-component *,
-        .process-flow .interaction-component *,
-        .quantum-simulation .interaction-component *,
-        .selection-process .interaction-component *,
-        .ode-architecture .interaction-component *,
-        .agent-system .interaction-component *,
-        .gcn-architecture .interaction-component *,
-        .fault-detection .interaction-component *,
-        .foundation-architecture .interaction-component *,
-        .rl-process .interaction-component *,
-        .physics-demo .interaction-component *,
-        .data-transformation .interaction-component *,
-        .ai-flow-diagram .interaction-component *,
-        .neural-network-demo .interaction-component *,
-        .pattern-recognition .interaction-component *,
-        .convolution-demo .interaction-component *,
-        .accuracy-meter .interaction-component * {
-            color: #1f2937 !important;
-        }
-    
-    
-    
-    
-    
-    
     </style>
 </head>
 <body>
@@ -524,8 +295,8 @@
                 <i class="fas fa-arrow-left"></i>
                 Back to Blog
             </a>
-            <h1>Deep Reinforcement Learning Discovers Azeotropic Separation Processes</h1>
-            <p class="hero-subtitle">Revolutionary AI autonomously designs separation processes without prior knowledge or expert heuristics</p>
+            <h1>A Mini-Chemical Scheme with Net Reactions for 3D GCMs</h1>
+            <p class="hero-subtitle">Revolutionary approach to modeling giant planet atmospheres with simplified chemistry that preserves accuracy while enabling 3D simulations</p>
         </div>
     </header>
 
@@ -533,143 +304,192 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"Deep Reinforcement Learning Uncovers Processes for Separating Azeotropic Mixtures Without Prior Knowledge"</span>
+                <span class="meta-value">"A Mini-Chemical Scheme with Net Reactions for 3D GCMs I.: Thermochemical Kinetics"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">Computers & Chemical Engineering (2023)</span>
+                <span class="meta-value">Preprint (2022)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">Quirin Göttl, Jonathan Pirnay, Jakob Burger, Dominik G. Grimm</span>
+                <span class="meta-value">Shang-Min Tsai, Elspeth K. H. Lee, Raymond Pierrehumbert</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Builds a reduced thermochemical model for giant planet atmospheres that preserves chemical realism while allowing 3D modeling in global circulation codes.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="https://arxiv.org/abs/2310.06415" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2310.06415</a></span>
+                <span class="meta-value"><a href="https://arxiv.org/abs/2204.04201" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2204.04201</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
-            <span class="tag">Reinforcement Learning</span>
-            <span class="tag">Process Design</span>
-            <span class="tag">Azeotropic Separation</span>
-            <span class="tag">AI Discovery</span>
-            <span class="tag">Chemical Engineering</span>
+            <span class="tag">Environmental</span>
+            <span class="tag">Atmospheric Chemistry</span>
+            <span class="tag">Planetary Science</span>
+            <span class="tag">Climate Modeling</span>
+            <span class="tag">Computational Chemistry</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> Uses deep reinforcement learning to autonomously design separation processes for azeotropes that traditionally require expert heuristics.
+                <strong>Key Finding:</strong> Scientists have developed a revolutionary approach to modeling the complex atmospheres of giant planets like Jupiter and Saturn. By creating simplified chemical schemes that preserve accuracy while dramatically reducing computational complexity, they can now run 3D simulations that were previously impossible.
             </div>
 
-            <div class="rl-demo">
-                <h2>🤖 AI Learning Process for Azeotropic Separation</h2>
-                <p>Watch how reinforcement learning discovers optimal separation strategies!</p>
-                <div class="learning-process">
-                    <div class="learning-step exploration-step">
-                        <h4>🔍 Exploration</h4>
-                        <p>AI tries random separation strategies</p>
-                        <div style="font-size: 0.8rem;">Random actions<br>Learning from failures<br>Building experience</div>
+            <div class="gcm-demo">
+                <h2>🪐 Interactive Giant Planet Atmosphere Simulator</h2>
+                <p>Click on different components to see how giant planet atmospheres work!</p>
+                <div class="gcm-components">
+                    <div class="gcm-component" onclick="showGCM()">
+                        <h4>🌍 3D GCM</h4>
+                        <p>Global circulation<br>3D modeling</p>
                     </div>
-                    <div class="process-arrow">→</div>
-                    <div class="learning-step exploitation-step">
-                        <h4>🎯 Exploitation</h4>
-                        <p>AI uses learned knowledge</p>
-                        <div style="font-size: 0.8rem;">Best strategies<br>Optimized decisions<br>Improved performance</div>
+                    <div class="gcm-component" onclick="showChemistry()">
+                        <h4>🧪 Mini-Chemistry</h4>
+                        <p>Simplified reactions<br>Preserved accuracy</p>
                     </div>
-                    <div class="process-arrow">→</div>
-                    <div class="learning-step optimization-step">
-                        <h4>⚡ Optimization</h4>
-                        <p>AI discovers novel solutions</p>
-                        <div style="font-size: 0.8rem;">Creative approaches<br>Expert-level designs<br>Autonomous discovery</div>
+                    <div class="gcm-component" onclick="showNetReactions()">
+                        <h4>⚡ Net Reactions</h4>
+                        <p>Efficient modeling<br>Reduced complexity</p>
                     </div>
                 </div>
             </div>
 
-            <h2>🧪 The Azeotropic Challenge: Why Traditional Methods Fail</h2>
-            <p>Imagine you're trying to separate a mixture of ethanol and water. In most cases, you could use distillation - heat the mixture, and the more volatile component (ethanol) will evaporate first, allowing you to separate them. But here's the problem: ethanol and water form what's called an azeotrope - a mixture that behaves like a single compound during distillation. No matter how long you distill it, you'll never get pure ethanol or pure water using conventional methods.</p>
+            <h2>🪐 The Challenge of Modeling Giant Planet Atmospheres</h2>
+            <p>Imagine you're trying to predict the weather on Jupiter. Not just the weather in one location, but the weather across the entire planet, including how different atmospheric layers interact with each other, how chemical reactions affect the composition, and how all of this changes over time. This is the incredible challenge that scientists face when trying to understand the atmospheres of giant planets.</p>
 
-            <p>This is one of the most challenging problems in chemical engineering. Azeotropic mixtures are everywhere in industry - from pharmaceutical manufacturing to petrochemical processing. Traditional approaches to separating azeotropes require deep expertise, extensive experimentation, and often complex multi-step processes involving additional chemicals or specialized equipment. It's like trying to solve a puzzle where the pieces keep changing shape as you work with them.</p>
+            <p>In 2022, researchers from the University of Chicago and the University of Oxford made a breakthrough that could revolutionize our understanding of these complex worlds. They developed a new approach to modeling giant planet atmospheres that combines the accuracy of detailed chemistry with the efficiency needed for 3D simulations.</p>
 
-            <p>Enter deep reinforcement learning - a type of artificial intelligence that learns by trial and error, just like a human would, but with superhuman patience and the ability to try thousands of different approaches in a short time. Researchers Quirin Göttl, Jonathan Pirnay, Jakob Burger, and Dominik G. Grimm have developed a revolutionary system that can autonomously discover separation processes for azeotropic mixtures without any prior knowledge or expert guidance.</p>
+            <h2>🔬 The Complexity Problem</h2>
+            <p>Modeling giant planet atmospheres is incredibly challenging because these atmospheres are so complex. They contain hundreds of different chemical species that can participate in thousands of different reactions. To model all of this accurately would require enormous computational resources and take years to complete.</p>
 
-            <div class="azeotrope-explanation">
-                <h4 style="margin-top: 0; color: #92400e;">⚗️ What Makes Azeotropes So Challenging:</h4>
-                <p style="margin-bottom: 1rem;"><strong>Constant Boiling Point:</strong> Azeotropic mixtures have a fixed boiling point that's different from either pure component. This means traditional distillation can't separate them because they evaporate together as a single "compound."</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Complex Phase Behavior:</strong> The phase diagrams for azeotropic systems are highly complex, with multiple regions of different behavior. Understanding these diagrams requires deep expertise and extensive experience.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Multiple Solution Paths:</strong> There are often many different ways to separate an azeotrope, each with different trade-offs in terms of cost, complexity, and efficiency. Finding the best approach requires considering numerous factors simultaneously.</p>
-                
-                <p style="margin-bottom: 0;"><strong>Expert Knowledge Required:</strong> Traditional methods rely heavily on heuristics and rules of thumb developed by experienced engineers over decades. This makes the process design highly dependent on human expertise and difficult to automate.</p>
+            <h3>🌪️ The 3D Challenge</h3>
+            <p>Traditional atmospheric models are often one-dimensional, meaning they only consider how things change with altitude. But real atmospheres are three-dimensional, with complex patterns of circulation, temperature, and composition that vary across the planet. To capture this complexity, scientists need 3D models, but these are much more computationally expensive.</p>
+
+            <h3>🧪 The Chemistry Challenge</h3>
+            <p>Giant planet atmospheres contain complex mixtures of gases that undergo numerous chemical reactions. These reactions can be fast or slow, reversible or irreversible, and they can depend on temperature, pressure, and the presence of other chemicals. Modeling all of these reactions accurately is a massive computational challenge.</p>
+
+            <div class="scheme-control">
+                <h3>🎛️ Chemical Scheme Complexity Simulator</h3>
+                <p>Adjust the chemical scheme complexity to see how it affects modeling efficiency:</p>
+                <div class="scheme-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="schemeSlider" oninput="updateScheme(this.value)">
+                    <p>Chemical Complexity: <span id="schemeValue">50%</span></p>
+                </div>
+                <div id="modelingResult">
+                    <p>At this complexity level, modeling efficiency is <strong>moderate</strong> with balanced accuracy and speed.</p>
+                </div>
             </div>
 
-            <h2>🤖 How Deep Reinforcement Learning Solves the Impossible</h2>
-            <p>Deep reinforcement learning works by creating an AI agent that interacts with a simulated environment representing the separation process. The agent starts with no knowledge about how to separate azeotropes - it's like a student who has never seen a chemistry textbook. But unlike a human student, this AI can try thousands of different approaches in a matter of hours, learning from each attempt and gradually building up expertise.</p>
+            <h3>⚡ The Net Reaction Solution</h3>
+            <p>The researchers solved this problem by developing "net reactions"—simplified chemical schemes that capture the essential chemistry while dramatically reducing computational complexity. Instead of modeling every individual reaction, net reactions combine multiple reactions into single, effective reactions that produce the same overall result.</p>
 
-            <p>The key insight is that the AI doesn't need to understand the underlying chemistry to find effective solutions. Instead, it learns through a process of trial and error, receiving feedback on whether each attempt was successful or not. Over time, it discovers patterns and strategies that work, eventually developing sophisticated approaches that rival or exceed those designed by human experts.</p>
+            <p>Think of it like the difference between modeling every individual step in a complex manufacturing process versus modeling the overall input and output of the entire factory. The net reaction approach focuses on the big picture while preserving the essential chemistry.</p>
 
-            <p>What makes this approach particularly powerful is that the AI can explore solution spaces that human engineers might never consider. It's not constrained by traditional thinking or established heuristics, so it can discover novel approaches that might be more efficient, cost-effective, or environmentally friendly than conventional methods.</p>
-
-            <h2>🎯 The Learning Process: From Random Guesses to Expert Solutions</h2>
-            <p>The learning process begins with the AI making completely random decisions about how to approach the separation problem. It might try adding random chemicals, adjusting temperatures in arbitrary ways, or combining processes in ways that make no sense to a human engineer. Most of these attempts fail spectacularly, but that's exactly the point - the AI learns from these failures.</p>
-
-            <p>As the AI continues to experiment, it begins to notice patterns. It might discover that certain types of chemicals tend to improve separation efficiency, or that specific temperature ranges are more effective than others. Gradually, it builds up a mental model of what works and what doesn't, allowing it to make increasingly intelligent decisions.</p>
-
-            <p>The breakthrough comes when the AI starts to combine successful strategies in novel ways. It might discover that a particular sequence of operations that no human engineer would have thought to try actually produces excellent results. These discoveries often represent genuinely new approaches to azeotropic separation that could revolutionize how these processes are designed and operated.</p>
-
-            <h2>🏭 Real-World Impact: Transforming Process Design</h2>
-            <p>The implications of this research extend far beyond academic interest. Companies that rely on azeotropic separations - from pharmaceutical manufacturers to petrochemical producers - could see dramatic improvements in their process efficiency and cost-effectiveness. The AI-discovered processes might use less energy, require fewer chemicals, or produce higher-purity products than traditional methods.</p>
-
-            <p>One particularly exciting aspect is the potential for continuous improvement. Unlike human-designed processes that are typically fixed once implemented, AI-discovered processes can continue to evolve and improve over time. As the AI encounters new challenges or requirements, it can adapt its strategies accordingly, potentially discovering even better solutions.</p>
-
-            <p>The technology also democratizes process design expertise. Small companies that might not have access to world-class separation experts could use AI systems to design sophisticated separation processes that would previously have been beyond their capabilities. This could lead to more innovation and competition in industries that have traditionally been dominated by large companies with extensive technical resources.</p>
-
-            <h2>🔮 The Future: AI-Driven Chemical Process Discovery</h2>
-            <p>This research represents just the beginning of what's possible with AI-driven process discovery. As the technology matures, we can expect to see AI systems that can design entire chemical plants, not just individual separation processes. These systems could consider factors like safety, environmental impact, and economic viability simultaneously, leading to more sustainable and efficient industrial processes.</p>
-
-            <p>Another exciting development is the integration of AI-discovered processes with real-time optimization systems. Instead of designing a process once and operating it according to fixed parameters, these systems could continuously adapt and optimize their operation based on changing conditions, market demands, or new requirements.</p>
-
-            <p>The technology could also accelerate the development of new chemical processes for emerging applications. As new materials and chemicals are developed, AI systems could quickly design separation and purification processes tailored to their specific properties, dramatically reducing the time and cost required to bring new products to market.</p>
-
-            <h2>🎓 Educational Implications: Preparing for an AI-Driven Future</h2>
-            <p>The emergence of AI-driven process discovery has important implications for chemical engineering education. Students need to understand not just traditional process design methods, but also how to work with AI systems and interpret their results. This requires a new set of skills that combines traditional engineering knowledge with modern computational methods.</p>
-
-            <p>Universities are beginning to develop new curricula that emphasize the integration of AI and machine learning with traditional chemical engineering concepts. Students learn how to set up AI systems for process discovery, how to validate AI-generated solutions, and how to integrate AI-discovered processes with existing industrial systems.</p>
-
-            <p>Perhaps most importantly, students need to develop the critical thinking skills necessary to evaluate AI-generated solutions. While AI can discover novel approaches, human engineers still need to assess whether these approaches are safe, practical, and economically viable. This requires a deep understanding of both the underlying chemistry and the broader context in which processes operate.</p>
-
-            <h2>🔍 Interactive Elements: Test Your Understanding</h2>
-            <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #991b1b;">🤔 Think About It:</h4>
-                <p style="margin-bottom: 0;">How do you think AI-driven process discovery might change the role of chemical engineers? What new skills might be needed in an AI-assisted future?</p>
+            <div class="reaction-visualization">
+                <h3>🧪 Net Reaction Simulator</h3>
+                <p>Click the molecule to see how net reactions simplify complex chemistry:</p>
+                <div class="molecule-container">
+                    <div class="gcm-field"></div>
+                    <div class="molecule" id="molecule" onclick="simulateNetReactions()">CH₄ + H₂O</div>
+                </div>
+                <p id="reactionStatus">Click the molecule to observe net reaction chemistry!</p>
             </div>
+
+            <h2>🌍 The 3D GCM Advantage</h2>
+            <p>Global Circulation Models (GCMs) are powerful tools for understanding atmospheric dynamics. They can simulate how air moves, how temperature changes, and how different atmospheric layers interact. But traditional GCMs often use simplified chemistry that doesn't capture the full complexity of real atmospheres.</p>
+
+            <h3>🔄 The Circulation-Chemistry Coupling</h3>
+            <p>One of the key insights of this research is that atmospheric circulation and chemistry are tightly coupled. How air moves affects what chemicals are present, and what chemicals are present affects how air moves. This creates a complex feedback loop that can only be captured in 3D models.</p>
+
+            <h3>🌡️ The Temperature-Chemistry Relationship</h3>
+            <p>Chemical reaction rates depend strongly on temperature. In giant planet atmospheres, temperature can vary dramatically with altitude and location. This means that the same chemical reaction might proceed at very different rates in different parts of the atmosphere, creating complex patterns of chemical composition.</p>
+
+            <div class="efficiency-chart">
+                <h3>📊 Modeling Efficiency Chart</h3>
+                <p>Click on the bars to see how different approaches compare:</p>
+                <div class="chart-container">
+                    <div class="chart-bar" style="height: 10%;" onclick="showDetails('full-chemistry')" title="Full Chemistry"></div>
+                    <div class="chart-bar" style="height: 30%;" onclick="showDetails('reduced-chemistry')" title="Reduced Chemistry"></div>
+                    <div class="chart-bar" style="height: 60%;" onclick="showDetails('net-reactions')" title="Net Reactions"></div>
+                    <div class="chart-bar" style="height: 90%;" onclick="showDetails('mini-scheme')" title="Mini Scheme"></div>
+                </div>
+                <div class="chart-label">
+                    <span>Full</span>
+                    <span>Reduced</span>
+                    <span>Net</span>
+                    <span>Mini</span>
+                </div>
+            </div>
+
+            <h2>🌟 Real-World Applications</h2>
+            <p>This research has important implications for understanding our solar system and beyond:</p>
+
+            <h3>🪐 Giant Planet Studies</h3>
+            <p>By enabling 3D modeling of giant planet atmospheres, this research could help scientists understand the complex weather patterns on Jupiter, Saturn, Uranus, and Neptune. This could lead to better predictions of atmospheric behavior and new insights into planetary formation and evolution.</p>
+
+            <h3>🌍 Exoplanet Characterization</h3>
+            <p>Many exoplanets discovered around other stars are giant planets similar to Jupiter and Saturn. Understanding how to model these atmospheres could help scientists interpret observations of exoplanets and determine their properties.</p>
+
+            <h3>🌌 Atmospheric Evolution</h3>
+            <p>Understanding how giant planet atmospheres change over time could provide insights into the history of our solar system and the processes that shaped the planets we see today.</p>
+
+            <h3>🔬 Climate Science</h3>
+            <p>The techniques developed in this research could also be applied to understanding Earth's atmosphere and climate, potentially leading to better climate models and predictions.</p>
+
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers used advanced computational methods to develop their mini-chemical scheme:</p>
 
             <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #0c4a6e;">💡 Discussion Questions:</h4>
+                <h4 style="margin-top: 0; color: #0c4a6e;">🧮 Technical Approach:</h4>
                 <ul style="margin-bottom: 0;">
-                    <li>What are the advantages of AI discovering separation processes compared to traditional expert-based design?</li>
-                    <li>How might AI-discovered processes differ from those designed by human experts?</li>
-                    <li>What challenges do you think need to be overcome for widespread adoption of AI-driven process discovery?</li>
+                    <li><strong>Net Reaction Development:</strong> Combines multiple reactions into effective single reactions</li>
+                    <li><strong>Chemical Scheme Optimization:</strong> Identifies the most important chemical processes</li>
+                    <li><strong>3D GCM Integration:</strong> Incorporates chemistry into global circulation models</li>
+                    <li><strong>Validation and Testing:</strong> Ensures accuracy while maintaining efficiency</li>
                 </ul>
             </div>
 
+            <h2>🚀 Future Possibilities</h2>
+            <p>This research opens up exciting new possibilities for atmospheric modeling:</p>
+
+            <ul>
+                <li><strong>High-Resolution Modeling:</strong> Running detailed 3D simulations of planetary atmospheres</li>
+                <li><strong>Long-Term Studies:</strong> Modeling atmospheric evolution over geological time scales</li>
+                <li><strong>Exoplanet Analysis:</strong> Understanding the atmospheres of distant worlds</li>
+                <li><strong>Climate Prediction:</strong> Improving our understanding of atmospheric dynamics</li>
+            </ul>
+
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of computational science. It shows how:</p>
+
+            <ul>
+                <li><strong>Mathematics:</strong> Can be used to simplify complex systems</li>
+                <li><strong>Computer Science:</strong> Can solve problems that are impossible to study experimentally</li>
+                <li><strong>Interdisciplinary Research:</strong> Combines atmospheric science, chemistry, and physics</li>
+                <li><strong>Innovation:</strong> Can overcome computational limitations through clever design</li>
+            </ul>
+
+            <p>For students interested in any of these fields, this work illustrates how modern science often involves developing creative solutions to complex problems.</p>
+
             <div class="highlight-box">
-                <strong>🎯 Bottom Line:</strong> Deep reinforcement learning is revolutionizing how we approach azeotropic separation by enabling AI systems to autonomously discover effective separation processes without prior knowledge or expert heuristics. This technology represents a paradigm shift from human-expert-dependent design to AI-driven discovery, potentially leading to more efficient, cost-effective, and innovative separation processes. As the technology continues to evolve, we can expect to see even more sophisticated applications that will transform how chemical processes are designed and optimized.
+                <strong>🎯 Bottom Line:</strong> Scientists have developed a revolutionary approach to modeling giant planet atmospheres using simplified chemical schemes that preserve accuracy while enabling 3D simulations. This breakthrough could lead to better understanding of planetary atmospheres, improved exoplanet characterization, and new insights into atmospheric dynamics.
             </div>
 
             <h2>📚 Further Reading & Resources</h2>
-            <p>Want to explore more about this fascinating intersection of AI and chemical process design?</p>
+            <p>Want to dive deeper? Check out these related topics:</p>
             <ul>
-                <li>Reinforcement learning in chemical engineering</li>
-                <li>Azeotropic separation processes and challenges</li>
-                <li>AI-driven process discovery and optimization</li>
-                <li>Machine learning applications in process design</li>
+                <li>Planetary atmospheric modeling</li>
+                <li>Global circulation models (GCMs)</li>
+                <li>Atmospheric chemistry and photochemistry</li>
+                <li>Exoplanet characterization</li>
+                <li>Computational atmospheric science</li>
             </ul>
         </div>
     </main>
@@ -702,5 +522,62 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        function showGCM() {
+            alert('🌍 3D GCM: Global Circulation Models that simulate atmospheric dynamics in three dimensions, capturing complex patterns of air movement, temperature, and composition across entire planets.');
+        }
+
+        function showChemistry() {
+            alert('🧪 Mini-Chemistry: Simplified chemical schemes that capture the essential chemistry of planetary atmospheres while dramatically reducing computational complexity.');
+        }
+
+        function showNetReactions() {
+            alert('⚡ Net Reactions: Effective chemical reactions that combine multiple individual reactions into single, simplified reactions that produce the same overall result.');
+        }
+
+        function updateScheme(value) {
+            document.getElementById('schemeValue').textContent = value + '%';
+            
+            let result = '';
+            if (value < 20) {
+                result = 'At this complexity level, modeling efficiency is <strong>high</strong> with simplified chemistry and fast computation.';
+            } else if (value < 40) {
+                result = 'At this complexity level, modeling efficiency is <strong>moderate</strong> with balanced accuracy and speed.';
+            } else if (value < 80) {
+                result = 'At this complexity level, modeling efficiency is <strong>low</strong> with complex chemistry and slow computation.';
+            } else {
+                result = 'At this complexity level, modeling efficiency is <strong>very low</strong> with full chemistry and extremely slow computation!';
+            }
+            
+            document.getElementById('modelingResult').innerHTML = '<p>' + result + '</p>';
+        }
+
+        function simulateNetReactions() {
+            const molecule = document.getElementById('molecule');
+            const status = document.getElementById('reactionStatus');
+            
+            status.textContent = 'Processing net reactions...';
+            molecule.style.background = 'linear-gradient(45deg, #059669, #fbbf24)';
+            molecule.style.transform = 'scale(1.3)';
+            
+            setTimeout(() => {
+                molecule.innerHTML = 'CO + 3H₂';
+                molecule.style.background = 'linear-gradient(45deg, #10b981, #3b82f6)';
+                molecule.style.transform = 'scale(1)';
+                status.textContent = 'Net reaction complete! Mini-chemical scheme successfully simplified complex chemistry!';
+            }, 2000);
+        }
+
+        function showDetails(type) {
+            const details = {
+                'full-chemistry': 'Full Chemistry: Complete chemical reaction networks that include every possible reaction, providing maximum accuracy but requiring enormous computational resources.',
+                'reduced-chemistry': 'Reduced Chemistry: Simplified chemical networks that focus on the most important reactions, balancing accuracy with computational efficiency.',
+                'net-reactions': 'Net Reactions: Effective reactions that combine multiple individual reactions into single, simplified reactions that produce the same overall result.',
+                'mini-scheme': 'Mini Scheme: The ultimate efficiency approach that distills complex chemistry into essential net reactions, providing maximum speed with maintained accuracy.'
+            };
+            
+            alert(details[type] || 'Click on a bar to see detailed efficiency information!');
+        }
+    </script>
 </body>
 </html>

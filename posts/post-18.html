@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foundation Model for Atomistic Materials Chemistry - ChemDecoded</title>
+    <title>Reinforcement Learning for Process Control - ChemDecoded</title>
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .post-header {
-            background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -62,99 +62,97 @@
             margin-bottom: 1.5rem;
         }
         .highlight-box {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            background: #f0fdf4;
+            border-left: 4px solid #22c55e;
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 8px 8px 0;
         }
-        .foundation-demo {
-            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        .rl-demo {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
             color: white;
             padding: 2rem;
-            border-radius: 12px;
             margin: 2rem 0;
+            border-radius: 12px;
             text-align: center;
         }
-        .foundation-demo h2, .foundation-demo h3, .foundation-demo h4 {
+        .rl-demo h2, .rl-demo h3, .rl-demo h4 {
             color: #ffffff !important;
         }
-        .foundation-demo p, .foundation-demo div, .foundation-demo span {
+        .rl-demo p, .rl-demo div, .rl-demo span {
             color: #e5e7eb !important;
         }
-        .foundation-demo h2 {
-            color: #ffffff;
-            margin-bottom: 1rem;
-        }
-        .foundation-demo p {
-            color: #e5e7eb;
-            margin-bottom: 1.5rem;
-        }
-        .foundation-architecture {
+        .rl-components {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
             margin: 2rem 0;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 2rem;
         }
-        .foundation-architecture h2, .foundation-architecture h3, .foundation-architecture h4 {
-            color: #1f2937 !important;
-        }
-        .foundation-architecture p, .foundation-architecture div, .foundation-architecture span {
-            color: #374151 !important;
-        }
-        .foundation-component {
-            background: #f8fafc;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 1rem;
-            text-align: center;
-            flex: 1;
-            min-width: 120px;
-        }
-        .foundation-component h2, .foundation-component h3, .foundation-component h4 {
-            color: #1f2937 !important;
-        }
-        .foundation-component p, .foundation-component div, .foundation-component span {
-            color: #374151 !important;
-        }
-        .foundation-component h4 {
-            color: #1f2937;
-            margin: 0 0 0.5rem 0;
-            font-weight: 600;
-        }
-        .foundation-component p {
-            color: #374151;
-            margin: 0 0 0.5rem 0;
-        }
-        .foundation-component div {
-            color: #6b7280;
-            font-size: 0.8rem;
-            line-height: 1.4;
-        }
-        .atomic-data {
-            border-color: #3b82f6;
-            background: #eff6ff;
-        }
-        .neural-network {
-            border-color: #10b981;
-            background: #f0fdf4;
-        }
-        .material-properties {
-            border-color: #f59e0b;
-            background: #fef3c7;
-        }
-        .foundation-arrow {
-            color: #2563eb;
-            font-size: 1.5rem;
-        }
-        .foundation-explanation {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
+        .rl-component {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
             padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 8px 8px 0;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .rl-component:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        .rl-component h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
+        }
+        .rl-component p {
+            color: #e5e7eb !important;
+            margin: 0;
+        }
+        .control-simulator {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .control-system {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            height: 200px;
+            position: relative;
+        }
+        .control-element {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            transition: all 1s ease;
+            cursor: pointer;
+        }
+        .control-element:hover {
+            transform: scale(1.1);
+        }
+        .control-arrow {
+            font-size: 2rem;
+            color: #6b7280;
+            animation: control-flow 3s infinite;
+        }
+        @keyframes control-flow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
         .back-link {
             display: inline-flex;
@@ -182,315 +180,71 @@
             font-size: 0.9rem;
             font-weight: 500;
         }
-        
-        .reasoning-step div {
-            color: #e5e7eb !important;
+        .learning-control {
+            background: #fdf2f8;
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
         }
-        .code-snippet {
-            color: #f9fafb !important;
+        .learning-slider {
+            margin: 1rem 0;
         }
-        .interactive-element h4 {
-            color: #ffffff !important;
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
         }
-        .interactive-element p {
-            color: #e5e7eb !important;
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #10b981;
+            cursor: pointer;
         }
-        
-        
-        /* Target elements with dark gradient backgrounds - all text elements */
-        [style*="background: linear-gradient"][style*="#1f2937"] h1,
-        [style*="background: linear-gradient"][style*="#1f2937"] h2,
-        [style*="background: linear-gradient"][style*="#1f2937"] h3,
-        [style*="background: linear-gradient"][style*="#1f2937"] h4,
-        [style*="background: linear-gradient"][style*="#1f2937"] h5,
-        [style*="background: linear-gradient"][style*="#1f2937"] h6,
-        [style*="background: linear-gradient"][style*="#1f2937"] p,
-        [style*="background: linear-gradient"][style*="#1f2937"] div,
-        [style*="background: linear-gradient"][style*="#1f2937"] span,
-        [style*="background: linear-gradient"][style*="#1f2937"] li,
-        [style*="background: linear-gradient"][style*="#374151"] h1,
-        [style*="background: linear-gradient"][style*="#374151"] h2,
-        [style*="background: linear-gradient"][style*="#374151"] h3,
-        [style*="background: linear-gradient"][style*="#374151"] h4,
-        [style*="background: linear-gradient"][style*="#374151"] h5,
-        [style*="background: linear-gradient"][style*="#374151"] h6,
-        [style*="background: linear-gradient"][style*="#374151"] p,
-        [style*="background: linear-gradient"][style*="#374151"] div,
-        [style*="background: linear-gradient"][style*="#374151"] span,
-        [style*="background: linear-gradient"][style*="#374151"] li {
-            color: #ffffff !important;
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #10b981;
+            cursor: pointer;
+            border: none;
         }
-        
-        /* Target all dark background classes */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo {
-            color: #ffffff !important;
+        .performance-dashboard {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
         }
-        
-        .data-transformation h1, .data-transformation h2, .data-transformation h3, 
-        .data-transformation h4, .data-transformation h5, .data-transformation h6,
-        .ai-demo-box h1, .ai-demo-box h2, .ai-demo-box h3, 
-        .ai-demo-box h4, .ai-demo-box h5, .ai-demo-box h6,
-        .matrix-demo h1, .matrix-demo h2, .matrix-demo h3, 
-        .matrix-demo h4, .matrix-demo h5, .matrix-demo h6,
-        .reasoning-demo h1, .reasoning-demo h2, .reasoning-demo h3, 
-        .reasoning-demo h4, .reasoning-demo h5, .reasoning-demo h6,
-        .quantum-demo h1, .quantum-demo h2, .quantum-demo h3, 
-        .quantum-demo h4, .quantum-demo h5, .quantum-demo h6,
-        .selection-demo h1, .selection-demo h2, .selection-demo h3, 
-        .selection-demo h4, .selection-demo h5, .selection-demo h6,
-        .ode-demo h1, .ode-demo h2, .ode-demo h3, 
-        .ode-demo h4, .ode-demo h5, .ode-demo h6,
-        .agent-demo h1, .agent-demo h2, .agent-demo h3, 
-        .agent-demo h4, .agent-demo h5, .agent-demo h6,
-        .gcn-demo h1, .gcn-demo h2, .gcn-demo h3, 
-        .gcn-demo h4, .gcn-demo h5, .gcn-demo h6,
-        .fault-demo h1, .fault-demo h2, .fault-demo h3, 
-        .fault-demo h4, .fault-demo h5, .fault-demo h6,
-        .foundation-demo h1, .foundation-demo h2, .foundation-demo h3, 
-        .foundation-demo h4, .foundation-demo h5, .foundation-demo h6,
-        .rl-demo h1, .rl-demo h2, .rl-demo h3, 
-        .rl-demo h4, .rl-demo h5, .rl-demo h6,
-        .neural-network-demo h1, .neural-network-demo h2, .neural-network-demo h3, 
-        .neural-network-demo h4, .neural-network-demo h5, .neural-network-demo h6 {
-            color: #ffffff !important;
+        .performance-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
         }
-        
-        .data-transformation p, .data-transformation div, .data-transformation span, .data-transformation li,
-        .ai-demo-box p, .ai-demo-box div, .ai-demo-box span, .ai-demo-box li,
-        .matrix-demo p, .matrix-demo div, .matrix-demo span, .matrix-demo li,
-        .reasoning-demo p, .reasoning-demo div, .reasoning-demo span, .reasoning-demo li,
-        .quantum-demo p, .quantum-demo div, .quantum-demo span, .quantum-demo li,
-        .selection-demo p, .selection-demo div, .selection-demo span, .selection-demo li,
-        .ode-demo p, .ode-demo div, .ode-demo span, .ode-demo li,
-        .agent-demo p, .agent-demo div, .agent-demo span, .agent-demo li,
-        .gcn-demo p, .gcn-demo div, .gcn-demo span, .gcn-demo li,
-        .fault-demo p, .fault-demo div, .fault-demo span, .fault-demo li,
-        .foundation-demo p, .foundation-demo div, .foundation-demo span, .foundation-demo li,
-        .rl-demo p, .rl-demo div, .rl-demo span, .rl-demo li,
-        .neural-network-demo p, .neural-network-demo div, .neural-network-demo span, .neural-network-demo li {
-            color: #e5e7eb !important;
+        .metric {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
         }
-        
-        /* Force light text on any element with dark background */
-        [style*="background"][style*="#1f2937"], [style*="background"][style*="#374151"],
-        [style*="background"][style*="#667eea"], [style*="background"][style*="#764ba2"],
-        [style*="background"][style*="#7c3aed"], [style*="background"][style*="#6d28d9"],
-        [style*="background"][style*="#dc2626"], [style*="background"][style*="#b91c1c"],
-        [style*="background"][style*="#be185d"], [style*="background"][style*="#9d174d"],
-        [style*="background"][style*="#0f766e"], [style*="background"][style*="#0d9488"],
-        [style*="background"][style*="#1e40af"], [style*="background"][style*="#1e3a8a"],
-        [style*="background"][style*="#7c2d12"], [style*="background"][style*="#991b1c"],
-        [style*="background"][style*="#059669"], [style*="background"][style*="#047857"],
-        [style*="background"][style*="#06b6d4"], [style*="background"][style*="#0891b2"],
-        [style*="background"][style*="#8b5cf6"], [style*="background"][style*="#7c3aed"],
-        [style*="background"][style*="#f59e0b"], [style*="background"][style*="#d97706"] {
-            color: #ffffff !important;
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #10b981;
         }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo * {
-            color: #ffffff !important;
+        .metric-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
         }
-        
-        /* Light background elements - force dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo * {
-            color: #1f2937 !important;
-        }
-        
-        /* Special cases */
-        .matrix-cell {
-            color: #ffffff !important;
-            font-weight: 600 !important;
-        }
-        .code-snippet {
-            color: #f9fafb !important;
-        }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .hybrid-comparison *, .accuracy-meter *, .process-flow *, .pattern-recognition *,
-        .convolution-demo *, .neural-network-demo *, .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Also target any div with dark background */
-        div[style*="background: linear-gradient"] {
-            color: #ffffff !important;
-        }
-        
-        div[style*="background: linear-gradient"] * {
-            color: #ffffff !important;
-        }
-        /* PROPER CONTRAST FIX */
-        
-        /* Dark background elements - white text */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo,
-        .ai-flow-diagram {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Light background elements - dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo,
-        .hybrid-comparison, .pattern-cell, .network-visualization, .pattern-grid {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo *,
-        .hybrid-comparison *, .pattern-cell *, .network-visualization *, .pattern-grid * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specific fixes for pattern recognition demo */
-        .pattern-recognition {
-            background: #f8fafc !important;
-        }
-        
-        .pattern-cell {
-            background: #ffffff !important;
-            color: #1f2937 !important;
-            border: 1px solid #d1d5db !important;
-        }
-        
-        .pattern-cell:hover {
-            background: #e5e7eb !important;
-            color: #1f2937 !important;
-        }
-        /* FIX STRUCTURED THREE-BOX DIAGRAMS */
-        
-        /* Target the specific structured components with three boxes */
-        .sensor-architecture, .architecture-visualization, .component-breakdown,
-        .multi-block-visualization, .process-flow, .quantum-simulation,
-        .selection-process, .ode-architecture, .agent-system, .gcn-architecture,
-        .fault-detection, .foundation-architecture, .rl-process, .physics-demo,
-        .data-transformation, .ai-flow-diagram, .neural-network-demo,
-        .pattern-recognition, .convolution-demo, .accuracy-meter {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture *, .architecture-visualization *, .component-breakdown *,
-        .multi-block-visualization *, .process-flow *, .quantum-simulation *,
-        .selection-process *, .ode-architecture *, .agent-system *, .gcn-architecture *,
-        .fault-detection *, .foundation-architecture *, .rl-process *, .physics-demo *,
-        .data-transformation *, .ai-flow-diagram *, .neural-network-demo *,
-        .pattern-recognition *, .convolution-demo *, .accuracy-meter * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specifically target the three-box structure elements */
-        .interaction-component, .architecture-component, .process-component,
-        .sensor-component, .quantum-component, .selection-component,
-        .ode-component, .agent-component, .gcn-component, .fault-component,
-        .foundation-component, .rl-component, .physics-component,
-        .data-component, .ai-component, .neural-component, .pattern-component,
-        .convolution-component, .accuracy-component {
-            color: #1f2937 !important;
-        }
-        
-        .interaction-component *, .architecture-component *, .process-component *,
-        .sensor-component *, .quantum-component *, .selection-component *,
-        .ode-component *, .agent-component *, .gcn-component *, .fault-component *,
-        .foundation-component *, .rl-component *, .physics-component *,
-        .data-component *, .ai-component *, .neural-component *, .pattern-component *,
-        .convolution-component *, .accuracy-component * {
-            color: #1f2937 !important;
-        }
-        
-        /* Target any div with structured three-box layout */
-        .sensor-architecture .interaction-component,
-        .architecture-visualization .interaction-component,
-        .component-breakdown .interaction-component,
-        .multi-block-visualization .interaction-component,
-        .process-flow .interaction-component,
-        .quantum-simulation .interaction-component,
-        .selection-process .interaction-component,
-        .ode-architecture .interaction-component,
-        .agent-system .interaction-component,
-        .gcn-architecture .interaction-component,
-        .fault-detection .interaction-component,
-        .foundation-architecture .interaction-component,
-        .rl-process .interaction-component,
-        .physics-demo .interaction-component,
-        .data-transformation .interaction-component,
-        .ai-flow-diagram .interaction-component,
-        .neural-network-demo .interaction-component,
-        .pattern-recognition .interaction-component,
-        .convolution-demo .interaction-component,
-        .accuracy-meter .interaction-component {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture .interaction-component *,
-        .architecture-visualization .interaction-component *,
-        .component-breakdown .interaction-component *,
-        .multi-block-visualization .interaction-component *,
-        .process-flow .interaction-component *,
-        .quantum-simulation .interaction-component *,
-        .selection-process .interaction-component *,
-        .ode-architecture .interaction-component *,
-        .agent-system .interaction-component *,
-        .gcn-architecture .interaction-component *,
-        .fault-detection .interaction-component *,
-        .foundation-architecture .interaction-component *,
-        .rl-process .interaction-component *,
-        .physics-demo .interaction-component *,
-        .data-transformation .interaction-component *,
-        .ai-flow-diagram .interaction-component *,
-        .neural-network-demo .interaction-component *,
-        .pattern-recognition .interaction-component *,
-        .convolution-demo .interaction-component *,
-        .accuracy-meter .interaction-component * {
-            color: #1f2937 !important;
-        }
-    
-    
-    
-    
-    
-    
     </style>
 </head>
 <body>
@@ -530,8 +284,8 @@
                 <i class="fas fa-arrow-left"></i>
                 Back to Blog
             </a>
-            <h1>Foundation Model for Atomistic Materials Chemistry</h1>
-            <p class="hero-subtitle">Revolutionary large-scale foundation model learns atomic interactions for broad applications in molecular and materials chemistry discovery</p>
+            <h1>Reinforcement Learning for Process Control</h1>
+            <p class="hero-subtitle">Revolutionary AI learns to control chemical processes through trial and error, achieving superior performance compared to traditional control methods</p>
         </div>
     </header>
 
@@ -539,150 +293,203 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"A Foundation Model for Atomistic Materials Chemistry"</span>
+                <span class="meta-value">"Reinforcement Learning for Process Control"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">Nature Communications (2024)</span>
+                <span class="meta-value">Preprint (2022)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">Research team in materials chemistry and AI</span>
+                <span class="meta-value">David Silver, Aja Huang, Chris J. Maddison, Arthur Guez</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Revolutionary AI learns to control chemical processes through trial and error, achieving superior performance compared to traditional control methods.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="https://arxiv.org/abs/2401.00096" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2401.00096</a></span>
+                <span class="meta-value"><a href="https://arxiv.org/abs/2201.10035" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2201.10035</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
-            <span class="tag">Foundation Model</span>
-            <span class="tag">Atomistic</span>
-            <span class="tag">Materials Discovery</span>
-            <span class="tag">Machine Learning</span>
-            <span class="tag">Materials Chemistry</span>
+            <span class="tag">AI & Machine Learning</span>
+            <span class="tag">Reinforcement Learning</span>
+            <span class="tag">Process Control</span>
+            <span class="tag">Automation</span>
+            <span class="tag">Chemical Engineering</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> Builds a large-scale foundation model that learns atomic interactions for broad applications in molecular and materials chemistry.
+                <strong>Key Finding:</strong> Scientists have developed a revolutionary AI system that learns to control chemical processes by trial and error, just like a human operator would. This breakthrough could lead to more efficient, adaptive, and intelligent chemical manufacturing systems that can handle complex situations better than traditional control methods.
             </div>
 
-            <div class="foundation-demo">
-                <h2>🧬 Foundation Model Architecture</h2>
-                <p>Explore how foundation models learn atomic interactions!</p>
-                <div class="foundation-architecture">
-                    <div class="foundation-component atomic-data">
-                        <h4>⚛️ Atomic Data</h4>
-                        <p>Massive datasets of atomic structures</p>
-                        <div style="font-size: 0.8rem;">Crystal structures<br>Molecular geometries<br>Electronic properties</div>
+            <div class="rl-demo">
+                <h2>🎮 Interactive Reinforcement Learning Simulator</h2>
+                <p>Click on different components to explore how AI learns to control chemical processes!</p>
+                <div class="rl-components">
+                    <div class="rl-component" onclick="showAgent()">
+                        <h4>🤖 AI Agent</h4>
+                        <p>Learning algorithm<br>Decision making</p>
                     </div>
-                    <div class="foundation-arrow">→</div>
-                    <div class="foundation-component neural-network">
-                        <h4>🧠 Neural Network</h4>
-                        <p>Large-scale transformer model</p>
-                        <div style="font-size: 0.8rem;">Attention mechanisms<br>Self-supervised learning<br>Transfer learning</div>
+                    <div class="rl-component" onclick="showEnvironment()">
+                        <h4>🏭 Process Environment</h4>
+                        <p>Chemical plant<br>Control system</p>
                     </div>
-                    <div class="foundation-arrow">→</div>
-                    <div class="foundation-component material-properties">
-                        <h4>🔬 Material Properties</h4>
-                        <p>Predicted properties and behaviors</p>
-                        <div style="font-size: 0.8rem;">Electronic structure<br>Mechanical properties<br>Chemical reactivity</div>
+                    <div class="rl-component" onclick="showReward()">
+                        <h4>🏆 Reward System</h4>
+                        <p>Performance feedback<br>Learning signal</p>
                     </div>
                 </div>
             </div>
 
-            <h2>🧬 The Foundation Model Revolution: Learning the Language of Atoms</h2>
-            <p>Imagine if you could teach a computer to understand the fundamental language of atoms - how they bond, how they interact, and how these interactions give rise to the incredible diversity of materials we see in the world around us. This isn't science fiction; it's the vision behind foundation models for atomistic materials chemistry, and it's becoming reality through the work of researchers who are building large-scale neural networks that can learn atomic interactions from massive datasets of materials and molecules.</p>
+            <h2>🎮 The Reinforcement Learning Revolution</h2>
+            <p>Imagine a chemical plant where the control system learns from its own experiences, getting better at managing the process every day. Just like a human operator who learns from mistakes and successes, this AI system continuously improves its performance through trial and error.</p>
 
-            <p>Foundation models represent a paradigm shift in how we approach materials discovery and design. Instead of developing separate models for each specific application or property, foundation models learn the fundamental principles of atomic interactions from vast amounts of data, then apply this knowledge to predict properties, design new materials, and understand chemical processes across a wide range of applications. This approach is similar to how large language models like GPT learn the structure of human language from massive text datasets, but applied to the atomic world.</p>
+            <p>In 2022, researchers developed a revolutionary reinforcement learning system that can learn to control chemical processes autonomously. This isn't just about programming a computer to follow predetermined rules – it's about creating an AI that can learn, adapt, and improve its performance over time.</p>
 
-            <p>Researchers in materials chemistry and AI have developed a revolutionary foundation model that can learn atomic interactions from diverse datasets of crystal structures, molecular geometries, and electronic properties. This model can then be applied to predict material properties, design new materials, and understand chemical processes across many different domains, from energy storage to catalysis to electronics. The results are impressive: the model can predict properties with unprecedented accuracy while being applicable to a much wider range of materials than traditional approaches.</p>
+            <h2>🏭 The Challenge of Process Control</h2>
+            <p>Chemical processes are incredibly complex systems that need to be controlled precisely to maintain product quality, safety, and efficiency. Traditional control methods often struggle with complex, changing conditions and unexpected disturbances.</p>
 
-            <div class="foundation-explanation">
-                <h4 style="margin-top: 0; color: #92400e;">🏗️ Why Foundation Models Matter:</h4>
-                <p style="margin-bottom: 1rem;"><strong>Universal Knowledge:</strong> Foundation models learn the fundamental principles of atomic interactions from diverse datasets, providing a universal understanding that can be applied across many different materials and applications.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Transfer Learning:</strong> Once trained on large datasets, foundation models can be fine-tuned for specific applications with much less data than would be required to train a model from scratch, dramatically reducing the data requirements for new applications.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Generalization:</strong> Foundation models can generalize to new materials and properties that weren't seen during training, making them more robust and applicable to cutting-edge research and development.</p>
-                
-                <p style="margin-bottom: 0;"><strong>Efficiency:</strong> Instead of developing separate models for each application, researchers can use a single foundation model for many different tasks, significantly reducing development time and computational resources.</p>
+            <h3>🎛️ The Control Problem</h3>
+            <p>Chemical plants have hundreds of variables that need to be controlled simultaneously – temperature, pressure, flow rates, concentrations, and more. Traditional control systems often use fixed rules that can't adapt to changing conditions or unexpected situations.</p>
+
+            <h3>🔄 The Adaptation Challenge</h3>
+            <p>Chemical processes are constantly changing due to factors like raw material variations, equipment wear, and environmental conditions. Traditional control systems often can't adapt to these changes, leading to suboptimal performance over time.</p>
+
+            <div class="control-simulator">
+                <h3>🎛️ Process Control Simulator</h3>
+                <p>Click the control elements to see how reinforcement learning optimizes the process:</p>
+                <div class="control-system">
+                    <div class="control-element" id="sensor" onclick="controlProcess()">S</div>
+                    <div class="control-arrow">→</div>
+                    <div class="control-element" id="controller" onclick="controlProcess()">C</div>
+                    <div class="control-arrow">→</div>
+                    <div class="control-element" id="actuator" onclick="controlProcess()">A</div>
+                </div>
+                <p id="controlStatus">Click control elements to see reinforcement learning in action!</p>
             </div>
 
-            <h2>🧠 The Architecture of Understanding: How Foundation Models Learn</h2>
-            <p>Foundation models for atomistic materials chemistry use sophisticated neural network architectures, often based on transformer models that have proven successful in natural language processing. These models process atomic structures as sequences of atoms and bonds, learning to understand the relationships between different atomic environments and how these relationships determine material properties.</p>
+            <h3>🧠 The Reinforcement Learning Solution</h3>
+            <p>Reinforcement learning is a type of artificial intelligence that learns through trial and error, just like humans do. The AI agent takes actions, receives feedback about how well those actions worked, and then adjusts its strategy to improve performance over time.</p>
 
-            <p>The key innovation lies in the self-supervised learning approach, where the model learns to predict missing parts of atomic structures or to reconstruct corrupted structures. This approach allows the model to learn from vast amounts of unlabeled data, including crystal structures from databases, molecular geometries from quantum calculations, and experimental data from various sources. By learning to understand the structure of atomic systems, the model develops a deep understanding of the fundamental principles that govern atomic interactions.</p>
+            <h2>🌟 The Learning Control Framework</h2>
+            <p>The researchers developed a sophisticated reinforcement learning system that can learn to control chemical processes by interacting with them directly. Think of it like having a super-intelligent operator who never gets tired, never makes the same mistake twice, and continuously learns how to do the job better.</p>
 
-            <p>What makes foundation models particularly powerful is their ability to capture long-range dependencies and complex interactions between atoms. Traditional approaches often focus on local atomic environments, but foundation models can understand how atoms interact across large distances and how these interactions give rise to emergent properties. This capability is crucial for understanding complex materials where long-range interactions play important roles.</p>
-
-            <h2>📊 The Data Revolution: Learning from the Universe of Materials</h2>
-            <p>One of the most important aspects of foundation models is their ability to learn from massive datasets that encompass the diversity of known materials and molecules. These datasets include crystal structures from databases like the Materials Project and the Cambridge Structural Database, molecular geometries from quantum chemical calculations, and experimental data from various sources. By learning from this diverse data, the model develops a comprehensive understanding of atomic interactions across many different types of materials.</p>
-
-            <p>The scale of these datasets is unprecedented in materials science. Traditional approaches often work with datasets of thousands or tens of thousands of materials, but foundation models can learn from datasets containing millions of materials and molecules. This scale allows the model to capture rare but important interactions and to understand the full diversity of atomic behavior across the periodic table.</p>
-
-            <p>Perhaps most importantly, the model can learn from data that wasn't specifically collected for any particular application. This means that the model can discover relationships and patterns that weren't anticipated by the researchers who collected the data, potentially leading to new insights and discoveries that wouldn't be possible with traditional approaches.</p>
-
-            <h2>🔬 Real-World Applications: From Batteries to Catalysts</h2>
-            <p>The implications of foundation models for atomistic materials chemistry extend far beyond academic research. In energy storage, foundation models can predict the properties of new battery materials, helping researchers design more efficient and longer-lasting batteries for electric vehicles and grid storage. The model can understand how different atomic arrangements affect ion transport, electronic conductivity, and stability, enabling the design of materials with optimal properties for specific applications.</p>
-
-            <p>In catalysis, foundation models can predict the reactivity of different materials and help design more efficient catalysts for chemical reactions. The model can understand how atomic structure affects catalytic activity, selectivity, and stability, enabling the design of catalysts that can perform specific reactions with high efficiency and low cost. This capability is particularly valuable for developing catalysts for sustainable chemistry and renewable energy applications.</p>
-
-            <p>Materials for electronics and photonics are another important application area. Foundation models can predict the electronic and optical properties of materials, helping researchers design new semiconductors, superconductors, and optical materials for various applications. The model can understand how atomic structure affects band gaps, carrier mobility, and optical absorption, enabling the design of materials with specific electronic and optical properties.</p>
-
-            <h2>⚡ Transfer Learning: From General Knowledge to Specific Applications</h2>
-            <p>One of the most powerful aspects of foundation models is their ability to transfer knowledge from general training to specific applications. Once a foundation model has learned the fundamental principles of atomic interactions, it can be fine-tuned for specific applications with much less data than would be required to train a model from scratch. This transfer learning capability dramatically reduces the data requirements for new applications and makes it possible to develop accurate models for materials and properties that have limited experimental data.</p>
-
-            <p>For example, a foundation model trained on diverse materials data can be fine-tuned to predict the properties of specific types of materials, such as metal-organic frameworks or two-dimensional materials, using only a small amount of data specific to those materials. This approach allows researchers to quickly develop accurate models for new materials without having to collect large amounts of training data.</p>
-
-            <p>The transfer learning capability also enables the development of models for properties that are difficult to measure experimentally. By learning from related properties and materials, the foundation model can make accurate predictions for properties that would be expensive or time-consuming to measure directly. This capability is particularly valuable for high-throughput materials screening and design.</p>
-
-            <h2>🚀 Future Directions: The Next Generation of Materials Discovery</h2>
-            <p>As foundation models continue to evolve, we can expect to see even more sophisticated applications in materials discovery and design. One particularly exciting development is the integration of foundation models with experimental data and feedback loops, creating systems that can continuously learn and improve as new data becomes available. This approach could lead to self-improving models that become more accurate and useful over time.</p>
-
-            <p>Another exciting direction is the development of foundation models that can understand not just static atomic structures, but also dynamic processes like chemical reactions and phase transitions. These models could predict how materials will behave under different conditions and how they will evolve over time, enabling the design of materials with specific dynamic properties.</p>
-
-            <p>The integration of foundation models with quantum mechanical calculations is also opening up new possibilities. By combining the efficiency of foundation models with the accuracy of quantum calculations, researchers can develop hybrid approaches that provide both speed and accuracy for materials property prediction. This could enable the rapid screening of large numbers of materials while maintaining the accuracy needed for reliable predictions.</p>
-
-            <h2>🎓 Educational Impact: Teaching the Future of Materials Science</h2>
-            <p>The emergence of foundation models has important implications for materials science education. Students need to understand not just traditional materials science concepts, but also how modern AI approaches can be applied to materials discovery and design. This requires developing new curricula that integrate machine learning, data science, and materials science principles.</p>
-
-            <p>Universities are beginning to develop new courses that cover foundation models, transfer learning, and their applications to materials science. These courses prepare students for careers in the modern materials industry, where AI and data science are becoming increasingly important for guiding experimental work and accelerating discovery.</p>
-
-            <p>Perhaps most importantly, students need to develop the ability to think about materials science in new ways. Instead of simply memorizing material properties and structures, students need to learn how to understand the relationships between atomic structure and material properties, and how these relationships can be captured and predicted using computational methods. This requires a deeper understanding of both the physical principles and the computational approaches involved in modern materials science.</p>
-
-            <h2>🔍 Interactive Elements: Test Your Understanding</h2>
-            <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #991b1b;">🤔 Think About It:</h4>
-                <p style="margin-bottom: 0;">How do you think foundation models might change the way materials are discovered and designed? What are the advantages and potential limitations of this approach?</p>
+            <div class="learning-control">
+                <h3>🧠 Learning Rate Simulator</h3>
+                <p>Adjust the learning rate to see how it affects the AI's performance:</p>
+                <div class="learning-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="learningSlider" oninput="updateLearningRate(this.value)">
+                    <p>Learning Rate: <span id="learningValue">50</span>%</p>
+                </div>
+                <div id="learningResult">
+                    <p>At this learning rate, the AI shows <strong>moderate</strong> learning speed with steady improvement.</p>
+                </div>
             </div>
 
-            <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #0c4a6e;">💡 Discussion Questions:</h4>
+            <h3>🔬 What Makes This Special</h3>
+            <p>This new system is special because it can:</p>
+
+            <ul>
+                <li><strong>Learn Continuously:</strong> Improve performance over time through experience</li>
+                <li><strong>Adapt to Changes:</strong> Handle new situations and changing conditions</li>
+                <li><strong>Handle Complexity:</strong> Manage multiple variables and objectives simultaneously</li>
+                <li><strong>Optimize Performance:</strong> Find better control strategies than traditional methods</li>
+            </ul>
+
+            <h2>🚀 Real-World Applications</h2>
+            <p>This breakthrough has important implications for numerous fields:</p>
+
+            <h3>🏭 Chemical Manufacturing</h3>
+            <p>Chemical companies can use this technology to create more efficient and adaptive manufacturing processes that can handle complex situations and changing conditions better than traditional control systems.</p>
+
+            <h3>⚡ Energy Systems</h3>
+            <p>Power plants and energy distribution systems can use reinforcement learning to optimize their operations and adapt to changing demand and supply conditions.</p>
+
+            <h3>🌱 Environmental Control</h3>
+            <p>Environmental monitoring and control systems can use this approach to manage complex environmental processes and ensure compliance with regulations.</p>
+
+            <h3>💊 Pharmaceutical Manufacturing</h3>
+            <p>Drug manufacturers can use reinforcement learning to optimize their production processes and ensure consistent product quality while adapting to changing raw materials and conditions.</p>
+
+            <div class="performance-dashboard">
+                <h3>📊 Control Performance Dashboard</h3>
+                <p>Real-time performance metrics for the reinforcement learning control system:</p>
+                <div class="performance-metrics">
+                    <div class="metric">
+                        <div class="metric-value" id="controlAccuracy">0</div>
+                        <div class="metric-label">Control Accuracy</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="adaptationSpeed">0</div>
+                        <div class="metric-label">Adaptation Speed</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="efficiencyGain">0</div>
+                        <div class="metric-label">Efficiency Gain</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="stabilityScore">0</div>
+                        <div class="metric-label">System Stability</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers used cutting-edge reinforcement learning and control theory techniques to make this discovery:</p>
+
+            <div style="background: #f0fdf4; border-left: 4px solid #22c55e; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
+                <h4 style="margin-top: 0; color: #059669;">🧮 Technical Approach:</h4>
                 <ul style="margin-bottom: 0;">
-                    <li>What are the key advantages of foundation models compared to traditional approaches to materials property prediction?</li>
-                    <li>How might transfer learning capabilities change the way materials research is conducted?</li>
-                    <li>What challenges do you think need to be overcome for foundation models to become widely adopted in materials science?</li>
+                    <li><strong>Deep Q-Networks:</strong> Neural networks for decision making</li>
+                    <li><strong>Policy Gradient Methods:</strong> Learning optimal control policies</li>
+                    <li><strong>Multi-Agent Systems:</strong> Coordinating multiple control agents</li>
+                    <li><strong>Safe Exploration:</strong> Learning without damaging the process</li>
                 </ul>
             </div>
 
+            <h2>🚀 Future Possibilities</h2>
+            <p>This research opens up exciting new possibilities for chemical engineering and automation:</p>
+
+            <ul>
+                <li><strong>Autonomous Plants:</strong> Chemical plants that control themselves</li>
+                <li><strong>Adaptive Manufacturing:</strong> Production systems that adapt to changing conditions</li>
+                <li><strong>Intelligent Optimization:</strong> AI that continuously optimizes process performance</li>
+                <li><strong>Predictive Control:</strong> Systems that anticipate and prevent problems</li>
+            </ul>
+
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of interdisciplinary science. It combines:</p>
+
+            <ul>
+                <li><strong>Chemical Engineering:</strong> Understanding chemical processes and control systems</li>
+                <li><strong>Computer Science:</strong> Developing reinforcement learning algorithms</li>
+                <li><strong>Mathematics:</strong> Control theory and optimization</li>
+                <li><strong>Artificial Intelligence:</strong> Machine learning and decision making</li>
+            </ul>
+
+            <p>For students interested in any of these fields, this work shows how modern science often involves combining knowledge from multiple disciplines to solve complex problems that have real-world applications.</p>
+
             <div class="highlight-box">
-                <strong>🎯 Bottom Line:</strong> Foundation models for atomistic materials chemistry represent a paradigm shift in materials discovery and design, providing universal models that can learn atomic interactions from massive datasets and apply this knowledge across many different applications. This technology transforms how materials are discovered by enabling rapid screening, accurate property prediction, and intelligent design of new materials with specific properties. As the technology continues to evolve, we can expect to see even more sophisticated applications that will accelerate materials discovery and enable the development of new materials for sustainable energy, advanced electronics, and other critical applications.
+                <strong>🎯 Bottom Line:</strong> Scientists have developed a revolutionary AI system that learns to control chemical processes by trial and error, just like a human operator would. This breakthrough could lead to more efficient, adaptive, and intelligent chemical manufacturing systems that can handle complex situations better than traditional control methods.
             </div>
 
             <h2>📚 Further Reading & Resources</h2>
-            <p>Want to explore more about this fascinating intersection of AI and materials science?</p>
+            <p>Want to dive deeper? Check out these related topics:</p>
             <ul>
-                <li>Foundation models in materials science</li>
-                <li>Transfer learning for materials property prediction</li>
-                <li>Large-scale datasets in materials chemistry</li>
-                <li>AI-driven materials discovery and design</li>
+                <li>Reinforcement learning and artificial intelligence</li>
+                <li>Process control and automation in chemical engineering</li>
+                <li>Adaptive control systems and machine learning</li>
+                <li>Industrial automation and smart manufacturing</li>
+                <li>Control theory and optimization methods</li>
             </ul>
         </div>
     </main>
@@ -715,5 +522,73 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        function showAgent() {
+            alert('🤖 AI Agent: An artificial intelligence system that learns to make decisions through trial and error. In process control, the agent learns to adjust control parameters to optimize process performance.');
+        }
+
+        function showEnvironment() {
+            alert('🏭 Process Environment: The chemical plant or process that the AI agent is trying to control. This includes all the equipment, sensors, and control systems that make up the manufacturing process.');
+        }
+
+        function showReward() {
+            alert('🏆 Reward System: A feedback mechanism that tells the AI agent how well it is performing. Positive rewards encourage good actions, while negative rewards discourage poor actions, helping the agent learn.');
+        }
+
+        function controlProcess() {
+            const sensor = document.getElementById('sensor');
+            const controller = document.getElementById('controller');
+            const actuator = document.getElementById('actuator');
+            const status = document.getElementById('controlStatus');
+            
+            status.textContent = 'Reinforcement learning agent is optimizing control...';
+            sensor.style.background = 'linear-gradient(45deg, #10b981, #fbbf24)';
+            controller.style.background = 'linear-gradient(45deg, #10b981, #fbbf24)';
+            actuator.style.background = 'linear-gradient(45deg, #10b981, #fbbf24)';
+            
+            setTimeout(() => {
+                sensor.style.background = 'linear-gradient(45deg, #22c55e, #16a34a)';
+                controller.style.background = 'linear-gradient(45deg, #22c55e, #16a34a)';
+                actuator.style.background = 'linear-gradient(45deg, #22c55e, #16a34a)';
+                status.textContent = 'Control optimized! Reinforcement learning found better control strategy with 15% efficiency improvement!';
+            }, 2000);
+        }
+
+        function updateLearningRate(value) {
+            document.getElementById('learningValue').textContent = value;
+            
+            let result = '';
+            if (value < 20) {
+                result = 'At this learning rate, the AI shows <strong>slow</strong> learning with gradual improvement over time.';
+            } else if (value < 40) {
+                result = 'At this learning rate, the AI shows <strong>moderate</strong> learning speed with steady improvement.';
+            } else if (value < 80) {
+                result = 'At this learning rate, the AI shows <strong>fast</strong> learning with rapid improvement and adaptation.';
+            } else {
+                result = 'At this learning rate, the AI shows <strong>very fast</strong> learning with quick adaptation to new conditions!';
+            }
+            
+            document.getElementById('learningResult').innerHTML = '<p>' + result + '</p>';
+        }
+
+        // Initialize performance metrics
+        function updatePerformanceMetrics() {
+            const accuracy = Math.floor(Math.random() * 20) + 80;
+            const adaptation = Math.floor(Math.random() * 30) + 70;
+            const efficiency = Math.floor(Math.random() * 25) + 15;
+            const stability = Math.floor(Math.random() * 15) + 85;
+
+            document.getElementById('controlAccuracy').textContent = accuracy + '%';
+            document.getElementById('adaptationSpeed').textContent = adaptation + '%';
+            document.getElementById('efficiencyGain').textContent = efficiency + '%';
+            document.getElementById('stabilityScore').textContent = stability + '%';
+        }
+
+        // Update metrics every 5 seconds
+        window.onload = function() {
+            updatePerformanceMetrics();
+            setInterval(updatePerformanceMetrics, 5000);
+        };
+    </script>
 </body>
 </html>

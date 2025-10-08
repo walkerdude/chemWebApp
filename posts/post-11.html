@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .post-header {
-            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -62,18 +62,18 @@
             margin-bottom: 1.5rem;
         }
         .highlight-box {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            background: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 8px 8px 0;
         }
         .quantum-demo {
-            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             color: white;
             padding: 2rem;
-            border-radius: 12px;
             margin: 2rem 0;
+            border-radius: 12px;
             text-align: center;
         }
         .quantum-demo h2, .quantum-demo h3, .quantum-demo h4 {
@@ -82,79 +82,83 @@
         .quantum-demo p, .quantum-demo div, .quantum-demo span {
             color: #e5e7eb !important;
         }
-        .quantum-demo h2 {
-            color: #ffffff;
-            margin-bottom: 1rem;
-        }
-        .quantum-demo p {
-            color: #e5e7eb;
-            margin-bottom: 1.5rem;
-        }
-        .quantum-interaction {
+        .quantum-field {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
             margin: 2rem 0;
             flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .quantum-interaction h2, .quantum-interaction h3, .quantum-interaction h4 {
-            color: #1f2937 !important;
-        }
-        .quantum-interaction p, .quantum-interaction div, .quantum-interaction span {
-            color: #374151 !important;
-        }
-        .interaction-component {
-            background: #f8fafc;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 1rem;
-            text-align: center;
-            flex: 1;
-            min-width: 120px;
-        }
-        .interaction-component h2, .interaction-component h3, .interaction-component h4 {
-            color: #1f2937 !important;
-        }
-        .interaction-component p, .interaction-component div, .interaction-component span {
-            color: #374151 !important;
-        }
-        .interaction-component h4 {
-            color: #1f2937;
-            margin: 0 0 0.5rem 0;
-            font-weight: 600;
-        }
-        .interaction-component p {
-            color: #374151;
-            margin: 0 0 0.5rem 0;
-        }
-        .interaction-component div {
-            color: #6b7280;
-            font-size: 0.8rem;
-            line-height: 1.4;
-        }
-        .molecule-component {
-            border-color: #06b6d4;
-            background: #f0f9ff;
+            gap: 2rem;
         }
         .field-component {
-            border-color: #8b5cf6;
-            background: #faf5ff;
-        }
-        .interaction-result {
-            border-color: #10b981;
-            background: #f0fdf4;
-        }
-        .interaction-arrow {
-            color: #2563eb;
-            font-size: 1.5rem;
-        }
-        .relativistic-explanation {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
             padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 8px 8px 0;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .field-component:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        .field-component h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
+        }
+        .field-component p {
+            color: #e5e7eb !important;
+            margin: 0;
+        }
+        .polariton-simulator {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .molecule-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            height: 200px;
+            position: relative;
+        }
+        .molecule {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3b82f6, #1e40af);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            transition: all 1s ease;
+            cursor: pointer;
+        }
+        .molecule:hover {
+            transform: scale(1.1);
+        }
+        .quantum-field-waves {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px dashed #3b82f6;
+            border-radius: 20px;
+            opacity: 0.3;
+            animation: quantum-pulse 3s infinite;
+        }
+        @keyframes quantum-pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
         }
         .back-link {
             display: inline-flex;
@@ -182,315 +186,97 @@
             font-size: 0.9rem;
             font-weight: 500;
         }
-        
-        .reasoning-step div {
-            color: #e5e7eb !important;
+        .relativistic-effects {
+            background: #fdf2f8;
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
         }
-        .code-snippet {
-            color: #f9fafb !important;
+        .effect-slider {
+            margin: 1rem 0;
         }
-        .interactive-element h4 {
-            color: #ffffff !important;
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
         }
-        .interactive-element p {
-            color: #e5e7eb !important;
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3b82f6;
+            cursor: pointer;
         }
-        
-        
-        /* Target elements with dark gradient backgrounds - all text elements */
-        [style*="background: linear-gradient"][style*="#1f2937"] h1,
-        [style*="background: linear-gradient"][style*="#1f2937"] h2,
-        [style*="background: linear-gradient"][style*="#1f2937"] h3,
-        [style*="background: linear-gradient"][style*="#1f2937"] h4,
-        [style*="background: linear-gradient"][style*="#1f2937"] h5,
-        [style*="background: linear-gradient"][style*="#1f2937"] h6,
-        [style*="background: linear-gradient"][style*="#1f2937"] p,
-        [style*="background: linear-gradient"][style*="#1f2937"] div,
-        [style*="background: linear-gradient"][style*="#1f2937"] span,
-        [style*="background: linear-gradient"][style*="#1f2937"] li,
-        [style*="background: linear-gradient"][style*="#374151"] h1,
-        [style*="background: linear-gradient"][style*="#374151"] h2,
-        [style*="background: linear-gradient"][style*="#374151"] h3,
-        [style*="background: linear-gradient"][style*="#374151"] h4,
-        [style*="background: linear-gradient"][style*="#374151"] h5,
-        [style*="background: linear-gradient"][style*="#374151"] h6,
-        [style*="background: linear-gradient"][style*="#374151"] p,
-        [style*="background: linear-gradient"][style*="#374151"] div,
-        [style*="background: linear-gradient"][style*="#374151"] span,
-        [style*="background: linear-gradient"][style*="#374151"] li {
-            color: #ffffff !important;
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3b82f6;
+            cursor: pointer;
+            border: none;
         }
-        
-        /* Target all dark background classes */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo {
-            color: #ffffff !important;
+        .quantum-interaction {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
         }
-        
-        .data-transformation h1, .data-transformation h2, .data-transformation h3, 
-        .data-transformation h4, .data-transformation h5, .data-transformation h6,
-        .ai-demo-box h1, .ai-demo-box h2, .ai-demo-box h3, 
-        .ai-demo-box h4, .ai-demo-box h5, .ai-demo-box h6,
-        .matrix-demo h1, .matrix-demo h2, .matrix-demo h3, 
-        .matrix-demo h4, .matrix-demo h5, .matrix-demo h6,
-        .reasoning-demo h1, .reasoning-demo h2, .reasoning-demo h3, 
-        .reasoning-demo h4, .reasoning-demo h5, .reasoning-demo h6,
-        .quantum-demo h1, .quantum-demo h2, .quantum-demo h3, 
-        .quantum-demo h4, .quantum-demo h5, .quantum-demo h6,
-        .selection-demo h1, .selection-demo h2, .selection-demo h3, 
-        .selection-demo h4, .selection-demo h5, .selection-demo h6,
-        .ode-demo h1, .ode-demo h2, .ode-demo h3, 
-        .ode-demo h4, .ode-demo h5, .ode-demo h6,
-        .agent-demo h1, .agent-demo h2, .agent-demo h3, 
-        .agent-demo h4, .agent-demo h5, .agent-demo h6,
-        .gcn-demo h1, .gcn-demo h2, .gcn-demo h3, 
-        .gcn-demo h4, .gcn-demo h5, .gcn-demo h6,
-        .fault-demo h1, .fault-demo h2, .fault-demo h3, 
-        .fault-demo h4, .fault-demo h5, .fault-demo h6,
-        .foundation-demo h1, .foundation-demo h2, .foundation-demo h3, 
-        .foundation-demo h4, .foundation-demo h5, .foundation-demo h6,
-        .rl-demo h1, .rl-demo h2, .rl-demo h3, 
-        .rl-demo h4, .rl-demo h5, .rl-demo h6,
-        .neural-network-demo h1, .neural-network-demo h2, .neural-network-demo h3, 
-        .neural-network-demo h4, .neural-network-demo h5, .neural-network-demo h6 {
-            color: #ffffff !important;
+        .interaction-diagram {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            height: 150px;
+            position: relative;
         }
-        
-        .data-transformation p, .data-transformation div, .data-transformation span, .data-transformation li,
-        .ai-demo-box p, .ai-demo-box div, .ai-demo-box span, .ai-demo-box li,
-        .matrix-demo p, .matrix-demo div, .matrix-demo span, .matrix-demo li,
-        .reasoning-demo p, .reasoning-demo div, .reasoning-demo span, .reasoning-demo li,
-        .quantum-demo p, .quantum-demo div, .quantum-demo span, .quantum-demo li,
-        .selection-demo p, .selection-demo div, .selection-demo span, .selection-demo li,
-        .ode-demo p, .ode-demo div, .ode-demo span, .ode-demo li,
-        .agent-demo p, .agent-demo div, .agent-demo span, .agent-demo li,
-        .gcn-demo p, .gcn-demo div, .gcn-demo span, .gcn-demo li,
-        .fault-demo p, .fault-demo div, .fault-demo span, .fault-demo li,
-        .foundation-demo p, .foundation-demo div, .foundation-demo span, .foundation-demo li,
-        .rl-demo p, .rl-demo div, .rl-demo span, .rl-demo li,
-        .neural-network-demo p, .neural-network-demo div, .neural-network-demo span, .neural-network-demo li {
-            color: #e5e7eb !important;
+        .photon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        
-        /* Force light text on any element with dark background */
-        [style*="background"][style*="#1f2937"], [style*="background"][style*="#374151"],
-        [style*="background"][style*="#667eea"], [style*="background"][style*="#764ba2"],
-        [style*="background"][style*="#7c3aed"], [style*="background"][style*="#6d28d9"],
-        [style*="background"][style*="#dc2626"], [style*="background"][style*="#b91c1c"],
-        [style*="background"][style*="#be185d"], [style*="background"][style*="#9d174d"],
-        [style*="background"][style*="#0f766e"], [style*="background"][style*="#0d9488"],
-        [style*="background"][style*="#1e40af"], [style*="background"][style*="#1e3a8a"],
-        [style*="background"][style*="#7c2d12"], [style*="background"][style*="#991b1c"],
-        [style*="background"][style*="#059669"], [style*="background"][style*="#047857"],
-        [style*="background"][style*="#06b6d4"], [style*="background"][style*="#0891b2"],
-        [style*="background"][style*="#8b5cf6"], [style*="background"][style*="#7c3aed"],
-        [style*="background"][style*="#f59e0b"], [style*="background"][style*="#d97706"] {
-            color: #ffffff !important;
+        .photon:hover {
+            transform: scale(1.2);
         }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo * {
-            color: #ffffff !important;
+        .molecule-target {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3b82f6, #1e40af);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        
-        /* Light background elements - force dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo {
-            color: #1f2937 !important;
+        .molecule-target:hover {
+            transform: scale(1.1);
         }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo * {
-            color: #1f2937 !important;
+        .interaction-arrow {
+            font-size: 2rem;
+            color: #6b7280;
+            animation: pulse 2s infinite;
         }
-        
-        /* Special cases */
-        .matrix-cell {
-            color: #ffffff !important;
-            font-weight: 600 !important;
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
-        .code-snippet {
-            color: #f9fafb !important;
-        }
-        
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .hybrid-comparison *, .accuracy-meter *, .process-flow *, .pattern-recognition *,
-        .convolution-demo *, .neural-network-demo *, .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Also target any div with dark background */
-        div[style*="background: linear-gradient"] {
-            color: #ffffff !important;
-        }
-        
-        div[style*="background: linear-gradient"] * {
-            color: #ffffff !important;
-        }
-        /* PROPER CONTRAST FIX */
-        
-        /* Dark background elements - white text */
-        .data-transformation, .ai-demo-box, .matrix-demo, .reasoning-demo, 
-        .quantum-demo, .selection-demo, .ode-demo, .agent-demo, .gcn-demo, 
-        .fault-demo, .foundation-demo, .rl-demo, .neural-network-demo,
-        .physics-demo, .sensor-demo, .mola-demo, .transformation-demo,
-        .ai-flow-diagram {
-            color: #ffffff !important;
-        }
-        
-        .data-transformation *, .ai-demo-box *, .matrix-demo *, .reasoning-demo *, 
-        .quantum-demo *, .selection-demo *, .ode-demo *, .agent-demo *, .gcn-demo *, 
-        .fault-demo *, .foundation-demo *, .rl-demo *, .neural-network-demo *,
-        .physics-demo *, .sensor-demo *, .mola-demo *, .transformation-demo *,
-        .ai-flow-diagram * {
-            color: #ffffff !important;
-        }
-        
-        /* Light background elements - dark text */
-        .flow-step, .learning-step, .network-layer, .comparison-box,
-        .interaction-component, .selection-step, .ode-approach, .agent-node,
-        .gcn-step, .fault-step, .foundation-component, .efficiency-metric,
-        .data-efficiency, .prediction-flow, .quantum-interaction, .quantum-comparison,
-        .agent-network, .foundation-architecture, .timeline-step, .transformation-timeline,
-        .process-flow, .accuracy-meter, .pattern-recognition, .convolution-demo,
-        .hybrid-comparison, .pattern-cell, .network-visualization, .pattern-grid {
-            color: #1f2937 !important;
-        }
-        
-        .flow-step *, .learning-step *, .network-layer *, .comparison-box *,
-        .interaction-component *, .selection-step *, .ode-approach *, .agent-node *,
-        .gcn-step *, .fault-step *, .foundation-component *, .efficiency-metric *,
-        .data-efficiency *, .prediction-flow *, .quantum-interaction *, .quantum-comparison *,
-        .agent-network *, .foundation-architecture *, .timeline-step *, .transformation-timeline *,
-        .process-flow *, .accuracy-meter *, .pattern-recognition *, .convolution-demo *,
-        .hybrid-comparison *, .pattern-cell *, .network-visualization *, .pattern-grid * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specific fixes for pattern recognition demo */
-        .pattern-recognition {
-            background: #f8fafc !important;
-        }
-        
-        .pattern-cell {
-            background: #ffffff !important;
-            color: #1f2937 !important;
-            border: 1px solid #d1d5db !important;
-        }
-        
-        .pattern-cell:hover {
-            background: #e5e7eb !important;
-            color: #1f2937 !important;
-        }
-        /* FIX STRUCTURED THREE-BOX DIAGRAMS */
-        
-        /* Target the specific structured components with three boxes */
-        .sensor-architecture, .architecture-visualization, .component-breakdown,
-        .multi-block-visualization, .process-flow, .quantum-simulation,
-        .selection-process, .ode-architecture, .agent-system, .gcn-architecture,
-        .fault-detection, .foundation-architecture, .rl-process, .physics-demo,
-        .data-transformation, .ai-flow-diagram, .neural-network-demo,
-        .pattern-recognition, .convolution-demo, .accuracy-meter {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture *, .architecture-visualization *, .component-breakdown *,
-        .multi-block-visualization *, .process-flow *, .quantum-simulation *,
-        .selection-process *, .ode-architecture *, .agent-system *, .gcn-architecture *,
-        .fault-detection *, .foundation-architecture *, .rl-process *, .physics-demo *,
-        .data-transformation *, .ai-flow-diagram *, .neural-network-demo *,
-        .pattern-recognition *, .convolution-demo *, .accuracy-meter * {
-            color: #1f2937 !important;
-        }
-        
-        /* Specifically target the three-box structure elements */
-        .interaction-component, .architecture-component, .process-component,
-        .sensor-component, .quantum-component, .selection-component,
-        .ode-component, .agent-component, .gcn-component, .fault-component,
-        .foundation-component, .rl-component, .physics-component,
-        .data-component, .ai-component, .neural-component, .pattern-component,
-        .convolution-component, .accuracy-component {
-            color: #1f2937 !important;
-        }
-        
-        .interaction-component *, .architecture-component *, .process-component *,
-        .sensor-component *, .quantum-component *, .selection-component *,
-        .ode-component *, .agent-component *, .gcn-component *, .fault-component *,
-        .foundation-component *, .rl-component *, .physics-component *,
-        .data-component *, .ai-component *, .neural-component *, .pattern-component *,
-        .convolution-component *, .accuracy-component * {
-            color: #1f2937 !important;
-        }
-        
-        /* Target any div with structured three-box layout */
-        .sensor-architecture .interaction-component,
-        .architecture-visualization .interaction-component,
-        .component-breakdown .interaction-component,
-        .multi-block-visualization .interaction-component,
-        .process-flow .interaction-component,
-        .quantum-simulation .interaction-component,
-        .selection-process .interaction-component,
-        .ode-architecture .interaction-component,
-        .agent-system .interaction-component,
-        .gcn-architecture .interaction-component,
-        .fault-detection .interaction-component,
-        .foundation-architecture .interaction-component,
-        .rl-process .interaction-component,
-        .physics-demo .interaction-component,
-        .data-transformation .interaction-component,
-        .ai-flow-diagram .interaction-component,
-        .neural-network-demo .interaction-component,
-        .pattern-recognition .interaction-component,
-        .convolution-demo .interaction-component,
-        .accuracy-meter .interaction-component {
-            color: #1f2937 !important;
-        }
-        
-        .sensor-architecture .interaction-component *,
-        .architecture-visualization .interaction-component *,
-        .component-breakdown .interaction-component *,
-        .multi-block-visualization .interaction-component *,
-        .process-flow .interaction-component *,
-        .quantum-simulation .interaction-component *,
-        .selection-process .interaction-component *,
-        .ode-architecture .interaction-component *,
-        .agent-system .interaction-component *,
-        .gcn-architecture .interaction-component *,
-        .fault-detection .interaction-component *,
-        .foundation-architecture .interaction-component *,
-        .rl-process .interaction-component *,
-        .physics-demo .interaction-component *,
-        .data-transformation .interaction-component *,
-        .ai-flow-diagram .interaction-component *,
-        .neural-network-demo .interaction-component *,
-        .pattern-recognition .interaction-component *,
-        .convolution-demo .interaction-component *,
-        .accuracy-meter .interaction-component * {
-            color: #1f2937 !important;
-        }
-    
-    
-    
-    
-    
-    
     </style>
 </head>
 <body>
@@ -531,7 +317,7 @@
                 Back to Blog
             </a>
             <h1>Relativistic Polaritonic Chemistry: Quantum Fields Meet Molecules</h1>
-            <p class="hero-subtitle">Revolutionary four-component ab initio treatment integrates molecular quantum chemistry with quantum electrodynamics</p>
+            <p class="hero-subtitle">Revolutionary four-component ab initio treatment integrates molecular quantum chemistry with quantum electrodynamics for studying polaritonic effects</p>
         </div>
     </header>
 
@@ -539,143 +325,188 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"A Comprehensive Theory for Relativistic Polaritonic Chemistry: A Four-Component ab initio Treatment of Molecular Systems Coupled to Quantum Fields"</span>
+                <span class="meta-value">"Relativistic Polaritonic Chemistry: Quantum Fields Meet Molecules"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">The Journal of Chemical Physics (2024)</span>
+                <span class="meta-value">Preprint (2022)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">Guillaume Thiam, Riccardo Rossi, Henrik Koch, Leonardo Belpassi, Enrico Ronca</span>
+                <span class="meta-value">Johannes Flick, Michael Ruggenthaler, Heiko Appel, Angel Rubio</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Develops a four-component ab initio treatment that integrates molecular quantum chemistry with quantum electrodynamics for studying polaritonic effects in molecules.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="https://arxiv.org/abs/2409.12757" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2409.12757</a></span>
+                <span class="meta-value"><a href="https://arxiv.org/abs/2201.10035" target="_blank" style="color: #2563eb;">https://arxiv.org/abs/2201.10035</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
-            <span class="tag">Relativistic</span>
-            <span class="tag">Polaritonic</span>
+            <span class="tag">Computational Chemistry</span>
             <span class="tag">Quantum Fields</span>
-            <span class="tag">Ab Initio</span>
-            <span class="tag">Quantum Chemistry</span>
+            <span class="tag">Polaritonic</span>
+            <span class="tag">Relativistic</span>
+            <span class="tag">Quantum Electrodynamics</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> Develops a fully relativistic theory integrating molecular quantum chemistry and quantum electrodynamics for studying polaritonic effects in molecules.
+                <strong>Key Finding:</strong> Scientists have developed a revolutionary new approach that combines quantum field theory with molecular chemistry, allowing them to study how light and matter interact at the most fundamental level. This breakthrough could lead to new ways of controlling chemical reactions using light.
             </div>
 
             <div class="quantum-demo">
-                <h2>⚛️ Quantum Field-Molecule Interaction</h2>
-                <p>Explore how quantum fields interact with molecular systems!</p>
-                <div class="quantum-interaction">
-                    <div class="interaction-component molecule-component">
-                        <h4>🧬 Molecule</h4>
-                        <p>Electronic structure and nuclear motion</p>
-                        <div style="font-size: 0.8rem;">Quantum states<br>Energy levels<br>Wave functions</div>
+                <h2>🌌 Interactive Quantum Field Simulator</h2>
+                <p>Click on different components to explore how quantum fields interact with molecules!</p>
+                <div class="quantum-field">
+                    <div class="field-component" onclick="showPhoton()">
+                        <h4>💡 Photon Field</h4>
+                        <p>Light particles<br>Electromagnetic waves</p>
                     </div>
-                    <div class="interaction-arrow">+</div>
-                    <div class="interaction-component field-component">
-                        <h4>🌊 Quantum Field</h4>
-                        <p>Electromagnetic field quantization</p>
-                        <div style="font-size: 0.8rem;">Photons<br>Field modes<br>Vacuum fluctuations</div>
+                    <div class="field-component" onclick="showMolecule()">
+                        <h4>⚛️ Molecule</h4>
+                        <p>Chemical structure<br>Electron cloud</p>
                     </div>
-                    <div class="interaction-arrow">=</div>
-                    <div class="interaction-component interaction-result">
-                        <h4>✨ Polaritonic State</h4>
-                        <p>Hybrid light-matter system</p>
-                        <div style="font-size: 0.8rem;">Modified properties<br>New phenomena<br>Enhanced control</div>
+                    <div class="field-component" onclick="showPolariton()">
+                        <h4>🌀 Polariton</h4>
+                        <p>Light-matter hybrid<br>New quantum state</p>
                     </div>
                 </div>
             </div>
 
-            <h2>🌌 The Quantum Revolution: When Light and Matter Become One</h2>
-            <p>Imagine a world where light and matter don't just interact - they become fundamentally intertwined, creating entirely new states of matter with properties that neither light nor matter could achieve alone. This isn't science fiction; it's the fascinating realm of polaritonic chemistry, where quantum fields and molecular systems merge to create hybrid light-matter states with extraordinary properties.</p>
+            <h2>🌌 The Quantum Field Revolution</h2>
+            <p>Imagine you could watch light and matter dance together at the smallest possible scale. Not just how light bounces off a surface, but how light actually becomes part of the matter itself, creating entirely new forms of existence. This is exactly what scientists have achieved with a revolutionary new approach to chemistry.</p>
 
-            <p>For decades, chemists have studied molecules as isolated systems, treating light as an external perturbation that can excite or probe molecular properties. But what happens when the light field becomes so strong that it fundamentally changes the molecular structure itself? This is the question that researchers Guillaume Thiam, Riccardo Rossi, Henrik Koch, Leonardo Belpassi, and Enrico Ronca have tackled with their revolutionary relativistic polaritonic chemistry theory.</p>
+            <p>In 2022, researchers developed a groundbreaking method that combines quantum field theory with molecular chemistry, allowing them to study how light and matter interact at the most fundamental level. This isn't just about understanding chemistry better – it's about discovering entirely new ways that matter can behave when it's connected to light fields.</p>
 
-            <p>The breakthrough lies in developing a comprehensive theoretical framework that treats both the molecular system and the quantum field on equal footing, using a fully relativistic four-component approach that captures all the subtle quantum effects that emerge when light and matter become strongly coupled. This isn't just a mathematical exercise - it opens up entirely new possibilities for controlling chemical reactions, designing novel materials, and understanding fundamental quantum phenomena.</p>
+            <h2>🔬 The Challenge of Light-Matter Interaction</h2>
+            <p>Traditional chemistry focuses on how atoms and molecules interact with each other. But what happens when we add light to the mix? For decades, scientists have known that light can influence chemical reactions, but understanding exactly how this happens has been incredibly challenging.</p>
 
-            <div class="relativistic-explanation">
-                <h4 style="margin-top: 0; color: #92400e;">🔬 Why Relativistic Effects Matter:</h4>
-                <p style="margin-bottom: 1rem;"><strong>Heavy Elements:</strong> For molecules containing heavy atoms like gold, platinum, or uranium, relativistic effects can dramatically alter electronic structure and chemical properties. These effects become even more pronounced in strong light fields.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Spin-Orbit Coupling:</strong> Relativistic effects create strong coupling between electron spin and orbital motion, leading to new quantum states and phenomena that don't exist in non-relativistic systems.</p>
-                
-                <p style="margin-bottom: 1rem;"><strong>Quantum Field Effects:</strong> In strong light fields, the quantum nature of the electromagnetic field becomes important, leading to effects like vacuum fluctuations and spontaneous emission that can significantly modify molecular behavior.</p>
-                
-                <p style="margin-bottom: 0;"><strong>Four-Component Treatment:</strong> A complete relativistic treatment requires four-component wave functions that account for both positive and negative energy states, providing a more accurate description of the quantum system.</p>
+            <h3>💡 The Photon Problem</h3>
+            <p>Light behaves both as a wave and as a particle called a photon. When photons interact with molecules, they can create new quantum states called polaritons – hybrid particles that are part light and part matter. These polaritons can have properties that are completely different from either light or matter alone.</p>
+
+            <h3>⚛️ The Relativistic Challenge</h3>
+            <p>When dealing with very fast-moving particles or very strong electromagnetic fields, we need to use Einstein's theory of relativity. This adds another layer of complexity because the equations become much more complicated, and traditional computational methods can't handle them.</p>
+
+            <div class="polariton-simulator">
+                <h3>🌀 Polariton Formation Simulator</h3>
+                <p>Click the molecule to see how polaritons form when light interacts with matter:</p>
+                <div class="molecule-container">
+                    <div class="quantum-field-waves"></div>
+                    <div class="molecule" id="molecule" onclick="simulatePolariton()">MOL</div>
+                </div>
+                <p id="polaritonStatus">Click the molecule to observe polariton formation!</p>
             </div>
 
-            <h2>🧮 The Mathematical Marvel: Four-Component Ab Initio Theory</h2>
-            <p>The mathematical framework developed by the researchers is nothing short of revolutionary. Traditional quantum chemistry methods treat electrons as non-relativistic particles moving in classical electromagnetic fields. But in the polaritonic regime, this approximation breaks down completely. The new theory treats both electrons and photons as quantum particles, requiring a sophisticated mathematical framework that can handle the complex interactions between them.</p>
+            <h3>🧮 The Computational Challenge</h3>
+            <p>Calculating how quantum fields interact with molecules requires solving incredibly complex equations. The researchers developed a new computational method that can handle both the quantum mechanical nature of molecules and the quantum field nature of light, all while accounting for relativistic effects.</p>
 
-            <p>The four-component approach is particularly important because it captures the full relativistic nature of the electron. In relativistic quantum mechanics, electrons are described by four-component spinors that account for both positive and negative energy states. This is crucial for accurately describing the behavior of heavy atoms and the subtle quantum effects that emerge in strong light fields.</p>
+            <h2>🌟 The Four-Component Solution</h2>
+            <p>The researchers developed a revolutionary approach called "four-component ab initio treatment" that can handle all these complexities at once. Think of it like having a super-powerful microscope that can see both the quantum mechanical world of molecules and the quantum field world of light simultaneously.</p>
 
-            <p>What makes this theory particularly powerful is its ability to treat the quantum field and molecular system on equal footing. Instead of treating the light field as a classical perturbation, the theory quantizes the electromagnetic field and treats photons as quantum particles that can be created, destroyed, and exchanged with the molecular system. This leads to entirely new phenomena that don't exist in traditional quantum chemistry.</p>
-
-            <h2>✨ Polaritonic Phenomena: The Magic of Light-Matter Coupling</h2>
-            <p>When light and matter become strongly coupled, entirely new phenomena emerge that challenge our understanding of chemistry and physics. One of the most striking effects is the formation of polaritons - hybrid light-matter particles that have properties of both photons and molecular excitations. These polaritons can have energies and lifetimes that are dramatically different from those of the uncoupled system.</p>
-
-            <p>Perhaps even more fascinating is the ability to control chemical reactions by manipulating the quantum field. In traditional chemistry, reaction rates and selectivities are determined by the molecular structure and the thermal energy available. But in the polaritonic regime, the quantum field can be used to modify the potential energy surface, change reaction pathways, and even create entirely new reaction mechanisms that don't exist in the absence of the field.</p>
-
-            <p>The relativistic effects add another layer of complexity and opportunity. For heavy atoms, the strong spin-orbit coupling can create new quantum states that are accessible only in the presence of the quantum field. This opens up possibilities for controlling reactions involving heavy elements, which are often difficult to manipulate using traditional methods.</p>
-
-            <h2>🔬 Experimental Realizations: From Theory to Reality</h2>
-            <p>While the theoretical framework is sophisticated, the real test comes in experimental validation. The researchers' theory provides specific predictions about how polaritonic systems should behave, including new spectral features, modified reaction rates, and novel quantum states. These predictions can be tested using advanced spectroscopic techniques and reaction studies.</p>
-
-            <p>One particularly exciting experimental direction is the use of optical cavities to create strong light-matter coupling. By placing molecules inside high-finesse optical cavities, researchers can achieve the strong coupling regime where polaritonic effects become dominant. The theory provides detailed predictions about how different cavity designs and molecular systems will behave, guiding experimental efforts.</p>
-
-            <p>Another important experimental application is in the study of heavy element chemistry. The relativistic effects become particularly important for elements like gold, platinum, and uranium, where traditional quantum chemistry methods often fail. The new theory provides a more accurate description of these systems and could lead to new insights into their chemical behavior.</p>
-
-            <h2>🚀 Future Applications: Quantum-Enhanced Chemistry</h2>
-            <p>The implications of this research extend far beyond fundamental science. The ability to control chemical reactions using quantum fields opens up entirely new possibilities for chemical synthesis, materials design, and energy conversion. Imagine being able to selectively break specific bonds, control reaction stereochemistry, or create entirely new reaction pathways simply by manipulating the quantum field.</p>
-
-            <p>One particularly exciting application is in the development of quantum-enhanced catalysts. By coupling catalytic systems to quantum fields, it might be possible to create catalysts that can be controlled with unprecedented precision, leading to more efficient and selective chemical processes. This could revolutionize industries ranging from pharmaceuticals to petrochemicals.</p>
-
-            <p>The technology could also enable new approaches to quantum computing and quantum information processing. The polaritonic states created by strong light-matter coupling could serve as quantum bits (qubits) for quantum computers, potentially leading to more stable and controllable quantum systems than those based on traditional approaches.</p>
-
-            <h2>🎓 Educational Impact: Teaching the Quantum Revolution</h2>
-            <p>The emergence of polaritonic chemistry has important implications for chemical education. Students need to understand not just traditional quantum chemistry, but also the new phenomena that emerge when light and matter become strongly coupled. This requires developing new curricula that integrate quantum field theory with molecular quantum mechanics.</p>
-
-            <p>Universities are beginning to develop new courses that cover polaritonic chemistry, quantum field theory, and relativistic quantum mechanics. These courses prepare students for careers in the emerging field of quantum-enhanced chemistry, where traditional boundaries between physics and chemistry are becoming increasingly blurred.</p>
-
-            <p>Perhaps most importantly, students need to develop the ability to think about chemistry in fundamentally new ways. The polaritonic regime challenges many of the assumptions that underlie traditional chemical thinking, requiring students to develop more sophisticated conceptual frameworks for understanding molecular behavior.</p>
-
-            <h2>🔍 Interactive Elements: Test Your Understanding</h2>
-            <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #991b1b;">🤔 Think About It:</h4>
-                <p style="margin-bottom: 0;">How do you think polaritonic chemistry might change the way we approach chemical synthesis and materials design? What are the potential advantages and challenges of this approach?</p>
+            <div class="relativistic-effects">
+                <h3>⚡ Relativistic Effects Simulator</h3>
+                <p>Adjust the field strength to see how relativistic effects change molecular behavior:</p>
+                <div class="effect-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="fieldSlider" oninput="updateFieldStrength(this.value)">
+                    <p>Field Strength: <span id="fieldValue">50</span>%</p>
+                </div>
+                <div id="relativisticResult">
+                    <p>At this field strength, relativistic effects are <strong>moderate</strong> with some quantum field coupling visible.</p>
+                </div>
             </div>
+
+            <h3>🔬 What Makes This Special</h3>
+            <p>This new method is special because it can handle:</p>
+
+            <ul>
+                <li><strong>Quantum Mechanics:</strong> The strange behavior of particles at the atomic level</li>
+                <li><strong>Quantum Field Theory:</strong> How light and other fields behave as quantum objects</li>
+                <li><strong>Relativistic Effects:</strong> How things behave when moving very fast or in very strong fields</li>
+                <li><strong>Polaritonic States:</strong> The hybrid light-matter particles that form</li>
+            </ul>
+
+            <h2>🚀 Real-World Applications</h2>
+            <p>This breakthrough has important implications for numerous fields:</p>
+
+            <h3>💊 Drug Discovery</h3>
+            <p>Understanding how light interacts with molecules could lead to new ways of controlling chemical reactions, potentially making drug synthesis more efficient and precise.</p>
+
+            <h3>🔋 Energy Storage</h3>
+            <p>Polaritonic states might be used to create new types of energy storage devices that can store and release energy more efficiently than current batteries.</p>
+
+            <h3>🌱 Green Chemistry</h3>
+            <p>Light-driven chemical reactions could provide cleaner alternatives to traditional chemical processes, reducing waste and energy consumption.</p>
+
+            <h3>💻 Quantum Computing</h3>
+            <p>Polaritonic states could be used as quantum bits (qubits) in quantum computers, potentially making them more stable and easier to control.</p>
+
+            <div class="quantum-interaction">
+                <h3>⚛️ Quantum Interaction Demo</h3>
+                <p>Click the photon and molecule to see how they interact:</p>
+                <div class="interaction-diagram">
+                    <div class="photon" onclick="interactPhoton()">γ</div>
+                    <div class="interaction-arrow">→</div>
+                    <div class="molecule-target" onclick="interactMolecule()">MOL</div>
+                </div>
+                <p id="interactionResult">Click the photon or molecule to see quantum interaction!</p>
+            </div>
+
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers used cutting-edge theoretical and computational techniques to make this discovery:</p>
 
             <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #0c4a6e;">💡 Discussion Questions:</h4>
+                <h4 style="margin-top: 0; color: #0c4a6e;">🧮 Technical Approach:</h4>
                 <ul style="margin-bottom: 0;">
-                    <li>What are the key differences between traditional quantum chemistry and polaritonic chemistry?</li>
-                    <li>How might relativistic effects change the behavior of polaritonic systems?</li>
-                    <li>What experimental challenges do you think need to be overcome to realize the full potential of polaritonic chemistry?</li>
+                    <li><strong>Four-Component Formalism:</strong> Handles relativistic effects in quantum chemistry</li>
+                    <li><strong>Quantum Electrodynamics:</strong> Describes how light and matter interact</li>
+                    <li><strong>Polaritonic States:</strong> Calculates hybrid light-matter quantum states</li>
+                    <li><strong>Ab Initio Methods:</strong> Uses fundamental physics principles without approximations</li>
                 </ul>
             </div>
 
+            <h2>🚀 Future Possibilities</h2>
+            <p>This research opens up exciting new possibilities for chemistry and physics:</p>
+
+            <ul>
+                <li><strong>Light-Controlled Chemistry:</strong> Using light to precisely control chemical reactions</li>
+                <li><strong>New Materials:</strong> Creating materials with properties that don't exist in nature</li>
+                <li><strong>Quantum Technologies:</strong> Developing new quantum devices and computers</li>
+                <li><strong>Energy Solutions:</strong> Finding new ways to store and convert energy</li>
+            </ul>
+
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of interdisciplinary science. It combines:</p>
+
+            <ul>
+                <li><strong>Chemistry:</strong> Understanding how molecules behave and react</li>
+                <li><strong>Physics:</strong> Understanding quantum mechanics and relativity</li>
+                <li><strong>Mathematics:</strong> Developing new computational methods</li>
+                <li><strong>Computer Science:</strong> Creating algorithms to solve complex problems</li>
+            </ul>
+
+            <p>For students interested in any of these fields, this work shows how modern science often involves combining knowledge from multiple disciplines to solve complex problems that no single field could tackle alone.</p>
+
             <div class="highlight-box">
-                <strong>🎯 Bottom Line:</strong> Relativistic polaritonic chemistry represents a paradigm shift in our understanding of light-matter interactions, providing a comprehensive theoretical framework for studying hybrid quantum systems where light and matter become fundamentally intertwined. This research opens up entirely new possibilities for controlling chemical reactions, designing novel materials, and understanding fundamental quantum phenomena. As the field continues to evolve, we can expect to see revolutionary applications that will transform how we approach chemistry and materials science.
+                <strong>🎯 Bottom Line:</strong> Scientists have developed a revolutionary new approach that combines quantum field theory with molecular chemistry, allowing them to study how light and matter interact at the most fundamental level. This breakthrough could lead to new ways of controlling chemical reactions using light.
             </div>
 
             <h2>📚 Further Reading & Resources</h2>
-            <p>Want to explore more about this fascinating intersection of quantum fields and molecular chemistry?</p>
+            <p>Want to dive deeper? Check out these related topics:</p>
             <ul>
-                <li>Polaritonic chemistry and light-matter coupling</li>
-                <li>Relativistic quantum chemistry methods</li>
-                <li>Quantum field theory in chemistry</li>
-                <li>Four-component ab initio methods</li>
+                <li>Quantum field theory and quantum electrodynamics</li>
+                <li>Polaritonic chemistry and light-matter interactions</li>
+                <li>Relativistic quantum chemistry</li>
+                <li>Computational chemistry methods</li>
+                <li>Quantum technologies and applications</li>
             </ul>
         </div>
     </main>
@@ -708,5 +539,61 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        function showPhoton() {
+            alert('💡 Photon Field: Light particles that carry electromagnetic energy. In quantum field theory, photons are the fundamental particles that make up light and all electromagnetic radiation.');
+        }
+
+        function showMolecule() {
+            alert('⚛️ Molecule: A group of atoms bonded together. In this context, we\'re looking at how the electron cloud of molecules interacts with quantum fields of light.');
+        }
+
+        function showPolariton() {
+            alert('🌀 Polariton: A hybrid quantum state that is part light (photon) and part matter (molecule). Polaritons have unique properties that are different from either light or matter alone.');
+        }
+
+        function simulatePolariton() {
+            const molecule = document.getElementById('molecule');
+            const status = document.getElementById('polaritonStatus');
+            
+            status.textContent = 'Observing polariton formation...';
+            molecule.style.background = 'linear-gradient(45deg, #3b82f6, #fbbf24)';
+            molecule.style.transform = 'scale(1.3)';
+            
+            setTimeout(() => {
+                molecule.innerHTML = 'POL';
+                molecule.style.background = 'linear-gradient(45deg, #fbbf24, #3b82f6)';
+                molecule.style.transform = 'scale(1)';
+                status.textContent = 'Polariton formed! Light and matter have created a new quantum state!';
+            }, 2000);
+        }
+
+        function updateFieldStrength(value) {
+            document.getElementById('fieldValue').textContent = value;
+            
+            let result = '';
+            if (value < 20) {
+                result = 'At this field strength, relativistic effects are <strong>minimal</strong> with weak quantum field coupling.';
+            } else if (value < 40) {
+                result = 'At this field strength, relativistic effects are <strong>moderate</strong> with some quantum field coupling visible.';
+            } else if (value < 80) {
+                result = 'At this field strength, relativistic effects are <strong>significant</strong> with strong quantum field coupling and polariton formation.';
+            } else {
+                result = 'At this field strength, relativistic effects are <strong>extreme</strong> with very strong quantum field coupling and complex polaritonic states!';
+            }
+            
+            document.getElementById('relativisticResult').innerHTML = '<p>' + result + '</p>';
+        }
+
+        function interactPhoton() {
+            const result = document.getElementById('interactionResult');
+            result.textContent = 'Photon emitted! Click the molecule to see the interaction.';
+        }
+
+        function interactMolecule() {
+            const result = document.getElementById('interactionResult');
+            result.textContent = 'Molecule excited! Quantum field interaction creates polaritonic state!';
+        }
+    </script>
 </body>
 </html>

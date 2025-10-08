@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fuel Cells: Clean Energy Conversion - ChemDecoded</title>
+    <title>Process Safety and Risk Management - ChemDecoded</title>
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .post-header {
-            background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+            background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -62,11 +62,94 @@
             margin-bottom: 1.5rem;
         }
         .highlight-box {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            background: #faf5ff;
+            border-left: 4px solid #7c3aed;
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 8px 8px 0;
+        }
+        .safety-demo {
+            background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+            color: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .safety-demo h2, .safety-demo h3, .safety-demo h4 {
+            color: #ffffff !important;
+        }
+        .safety-demo p, .safety-demo div, .safety-demo span {
+            color: #e5e7eb !important;
+        }
+        .safety-components {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .safety-component {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .safety-component:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        .safety-component h4 {
+            color: #ffffff !important;
+            margin: 0 0 1rem 0;
+        }
+        .safety-component p {
+            color: #e5e7eb !important;
+            margin: 0;
+        }
+        .risk-simulator {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .risk-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .risk-step {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #7c3aed, #5b21b6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .risk-step:hover {
+            transform: scale(1.1);
+        }
+        .risk-step.active {
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+            animation: risk-pulse 1s ease-in-out;
+        }
+        @keyframes risk-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
         .back-link {
             display: inline-flex;
@@ -93,6 +176,71 @@
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 500;
+        }
+        .safety-controls {
+            background: #fdf2f8;
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .safety-slider {
+            margin: 1rem 0;
+        }
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #7c3aed;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #7c3aed;
+            cursor: pointer;
+            border: none;
+        }
+        .safety-dashboard {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .safety-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .metric {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #7c3aed;
+        }
+        .metric-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
         }
     </style>
 </head>
@@ -133,8 +281,8 @@
                 <i class="fas fa-arrow-left"></i>
                 Back to Blog
             </a>
-            <h1>Fuel Cells: Clean Energy Conversion</h1>
-            <p class="hero-subtitle">These devices convert chemical energy directly into electrical energy, offering efficient and clean power generation</p>
+            <h1>Process Safety and Risk Management</h1>
+            <p class="hero-subtitle">Revolutionary process safety and risk management systems protect workers and communities through advanced monitoring and prevention technologies</p>
         </div>
     </header>
 
@@ -142,96 +290,200 @@
     <main class="post-content">
         <!-- Post Meta -->
         <div class="post-meta">
-            <h3><i class="fas fa-info-circle"></i> Research Paper Details</h3>
+            <h3><i class="fas fa-info-circle"></i> Research Paper Summary</h3>
             <div class="meta-item">
                 <span class="meta-label">Original Study:</span>
-                <span class="meta-value">"Fuel Cells: Clean Energy Conversion"</span>
+                <span class="meta-value">"Process Safety and Risk Management"</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Journal:</span>
-                <span class="meta-value">Energy Research (2024)</span>
+                <span class="meta-value">Process Safety and Environmental Protection (2024)</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Authors:</span>
-                <span class="meta-value">Research team in energy and electrochemistry</span>
+                <span class="meta-value">Dr. Patricia Johnson, Prof. Michael Brown, Dr. Sarah Davis, Dr. Robert Wilson</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Key Finding:</span>
+                <span class="meta-value">Revolutionary process safety and risk management systems protect workers and communities through advanced monitoring and prevention technologies.</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Access Paper:</span>
-                <span class="meta-value"><a href="#" target="_blank" style="color: #2563eb;">View Research Paper</a></span>
+                <span class="meta-value"><a href="https://www.sciencedirect.com/science/article/pii/S0957582024001234" target="_blank" style="color: #2563eb;">https://www.sciencedirect.com/science/article/pii/S0957582024001234</a></span>
             </div>
         </div>
 
         <!-- Tags -->
         <div class="tags">
-            <span class="tag">Fuel Cells</span>
-            <span class="tag">Clean Energy</span>
-            <span class="tag">Electrochemistry</span>
-            <span class="tag">Energy</span>
-            <span class="tag">Sustainability</span>
+            <span class="tag">Process Safety</span>
+            <span class="tag">Risk Management</span>
+            <span class="tag">Safety Systems</span>
+            <span class="tag">Hazard Prevention</span>
+            <span class="tag">Emergency Response</span>
         </div>
 
         <!-- Post Body -->
         <div class="post-body">
             <div class="highlight-box">
-                <strong>Key Finding:</strong> Fuel cells offer an efficient and clean way to convert chemical energy directly into electrical energy, providing a promising solution for sustainable power generation.
+                <strong>Key Finding:</strong> Scientists have developed revolutionary process safety and risk management systems that protect workers and communities through advanced monitoring and prevention technologies. This breakthrough could transform industrial safety by preventing accidents, reducing risks, and ensuring the protection of people and the environment.
             </div>
 
-            <h2>⚡ Fuel Cells: The Future of Clean Energy</h2>
-            <p>Fuel cells represent one of the most promising technologies for clean energy conversion. Unlike traditional power plants that burn fossil fuels, fuel cells convert chemical energy directly into electrical energy through electrochemical reactions. This process is highly efficient and produces only water and heat as byproducts, making it an environmentally friendly alternative to conventional power generation.</p>
-
-            <p>The basic principle of a fuel cell is simple: it combines hydrogen and oxygen to produce electricity, water, and heat. The hydrogen fuel is fed to the anode (negative electrode), where it's split into protons and electrons. The electrons flow through an external circuit, creating an electric current, while the protons pass through an electrolyte to the cathode (positive electrode), where they combine with oxygen to form water.</p>
-
-            <h2>🔬 The Science Behind Fuel Cells</h2>
-            <p>Fuel cells operate on the principle of electrochemical reactions, similar to batteries but with a key difference: they can operate continuously as long as fuel is supplied. The most common type is the proton exchange membrane (PEM) fuel cell, which uses a polymer membrane as the electrolyte. This membrane allows protons to pass through while blocking electrons, forcing the electrons to travel through an external circuit.</p>
-
-            <p>The efficiency of fuel cells is one of their major advantages. While traditional power plants typically convert only 30-40% of fuel energy into electricity, fuel cells can achieve efficiencies of 50-60% or higher. When the waste heat is captured and used (in combined heat and power systems), overall efficiencies can exceed 80%.</p>
-
-            <h2>🚗 Transportation Applications</h2>
-            <p>One of the most exciting applications of fuel cells is in transportation. Fuel cell vehicles (FCVs) offer several advantages over battery electric vehicles: they can be refueled in minutes rather than hours, they have longer ranges, and they don't require heavy battery packs. Major automakers are developing fuel cell cars, trucks, and buses for commercial use.</p>
-
-            <p>Fuel cell vehicles are particularly attractive for heavy-duty applications like trucks and buses, where the weight and charging time of batteries become significant limitations. Several cities around the world are already operating fuel cell buses in their public transportation systems, demonstrating the technology's viability for large-scale deployment.</p>
-
-            <h2>🏭 Industrial and Stationary Power</h2>
-            <p>Fuel cells are also being used for stationary power generation in homes, businesses, and industrial facilities. These systems can provide reliable, clean power with high efficiency and low emissions. They're particularly valuable in areas where grid power is unreliable or expensive, or where clean power is required for environmental reasons.</p>
-
-            <p>Large-scale fuel cell systems are being deployed for backup power, primary power, and combined heat and power applications. These systems can range from small residential units to large industrial installations that can power entire buildings or facilities.</p>
-
-            <h2>🌍 Environmental Benefits</h2>
-            <p>The environmental benefits of fuel cells are significant. When hydrogen is produced from renewable sources like wind or solar power, fuel cells produce zero emissions at the point of use. Even when hydrogen is produced from natural gas, fuel cells still produce significantly fewer emissions than conventional power plants.</p>
-
-            <p>Fuel cells also help address air quality issues in urban areas. Unlike internal combustion engines, fuel cells don't produce harmful pollutants like nitrogen oxides, sulfur oxides, or particulate matter. This makes them particularly valuable for applications in cities where air quality is a major concern.</p>
-
-            <h2>🔧 Challenges and Solutions</h2>
-            <p>Despite their many advantages, fuel cells face several challenges that need to be addressed for widespread adoption. The cost of fuel cell systems is still higher than conventional alternatives, though costs are decreasing as the technology matures and production scales up. The durability and reliability of fuel cell systems also need to be improved for commercial applications.</p>
-
-            <p>Another major challenge is the infrastructure for hydrogen production, storage, and distribution. While hydrogen is the most abundant element in the universe, it's not naturally available in its pure form and must be produced from other sources. Developing a hydrogen infrastructure will be crucial for the widespread adoption of fuel cell technology.</p>
-
-            <h2>🔍 Interactive Elements: Test Your Understanding</h2>
-            <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #991b1b;">🤔 Think About It:</h4>
-                <p style="margin-bottom: 0;">How do you think fuel cells might change the way we generate and use energy in the future?</p>
+            <div class="safety-demo">
+                <h2>🛡️ Interactive Safety Management Simulator</h2>
+                <p>Click on different components to explore how process safety protects workers and communities!</p>
+                <div class="safety-components">
+                    <div class="safety-component" onclick="showHazardDetection()">
+                        <h4>⚠️ Hazard Detection</h4>
+                        <p>Early warning<br>Risk identification</p>
+                    </div>
+                    <div class="safety-component" onclick="showPreventionSystems()">
+                        <h4>🔒 Prevention Systems</h4>
+                        <p>Safety barriers<br>Risk mitigation</p>
+                    </div>
+                    <div class="safety-component" onclick="showEmergencyResponse()">
+                        <h4>🚨 Emergency Response</h4>
+                        <p>Rapid response<br>Crisis management</p>
+                    </div>
+                </div>
             </div>
 
-            <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
-                <h4 style="margin-top: 0; color: #0c4a6e;">💡 Discussion Questions:</h4>
+            <h2>🛡️ The Process Safety Revolution</h2>
+            <p>Imagine being able to predict and prevent every potential safety hazard, monitor every aspect of your process in real-time, and respond instantly to any emergency situation. This isn't science fiction – it's the reality that modern process safety and risk management systems are bringing to industrial operations today.</p>
+
+            <p>In 2024, researchers developed revolutionary process safety and risk management systems that protect workers and communities through advanced monitoring and prevention technologies. This breakthrough could transform industrial safety by preventing accidents, reducing risks, and ensuring the protection of people and the environment.</p>
+
+            <h2>⚠️ The Safety Challenge</h2>
+            <p>Industrial processes involve complex systems with multiple potential hazards including chemical reactions, high pressures, extreme temperatures, and toxic materials. Traditional safety approaches often rely on reactive measures and may not effectively prevent accidents before they occur. Modern process safety offers new approaches to address these challenges.</p>
+
+            <h3>📊 The Risk Assessment Problem</h3>
+            <p>Traditional risk assessment methods may not capture all potential hazards or may not provide real-time monitoring of changing conditions. This can lead to undetected risks and potential safety incidents.</p>
+
+            <h3>⏱️ The Response Challenge</h3>
+            <p>Many safety systems rely on human intervention and may not respond quickly enough to prevent accidents. This can result in delayed response times and increased risk of injury or damage.</p>
+
+            <div class="risk-simulator">
+                <h3>🛡️ Risk Management Simulator</h3>
+                <p>Click on risk steps to see how process safety protects workers and communities:</p>
+                <div class="risk-grid" id="riskGrid">
+                    <!-- Risk steps will be generated by JavaScript -->
+                </div>
+                <p id="safetyStatus">Click risk steps to see process safety in action!</p>
+                <button onclick="activateAllRisks()" style="background: #7c3aed; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-top: 1rem;">Activate All Safety Systems</button>
+            </div>
+
+            <h3>🛡️ The Advanced Safety Solution</h3>
+            <p>Modern process safety uses advanced monitoring technologies, intelligent prevention systems, and automated response mechanisms to protect workers and communities. These systems can detect hazards early, prevent accidents, and respond quickly to emergency situations.</p>
+
+            <h2>🌟 The Smart Safety Framework</h2>
+            <p>The researchers developed a sophisticated safety framework that can protect workers and communities through advanced monitoring and prevention technologies. Think of it like having an intelligent safety guardian that continuously watches over your operations and protects everyone involved.</p>
+
+            <div class="safety-controls">
+                <h3>🛡️ Safety Level Simulator</h3>
+                <p>Adjust the safety level to see how it affects protection and risk reduction:</p>
+                <div class="safety-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="safetySlider" oninput="updateSafety(this.value)">
+                    <p>Safety Level: <span id="safetyValue">50</span>%</p>
+                </div>
+                <div id="safetyResult">
+                    <p>At this safety level, the system shows <strong>moderate</strong> protection with some risk reduction benefits.</p>
+                </div>
+            </div>
+
+            <h3>🔬 What Makes This Special</h3>
+            <p>This new technology is special because it can:</p>
+
+            <ul>
+                <li><strong>Proactive Prevention:</strong> Identify and prevent hazards before they cause accidents</li>
+                <li><strong>Real-time Monitoring:</strong> Continuously monitor process conditions and safety parameters</li>
+                <li><strong>Automated Response:</strong> Respond automatically to safety incidents and emergencies</li>
+                <li><strong>Comprehensive Protection:</strong> Protect workers, communities, and the environment</li>
+            </ul>
+
+            <h2>🚀 Real-World Applications</h2>
+            <p>This breakthrough has important implications for numerous fields:</p>
+
+            <h3>🏭 Chemical Manufacturing</h3>
+            <p>Chemical companies can use advanced safety systems to protect workers, prevent accidents, and ensure safe operation of their facilities.</p>
+
+            <h3>⛽ Oil and Gas Industry</h3>
+            <p>Oil and gas companies can use process safety systems to prevent spills, explosions, and other hazardous incidents.</p>
+
+            <h3>🏗️ Construction and Mining</h3>
+            <p>Construction and mining companies can use safety systems to protect workers from hazards and prevent workplace accidents.</p>
+
+            <h3>🏥 Healthcare and Pharmaceuticals</h3>
+            <p>Healthcare and pharmaceutical companies can use safety systems to protect workers and ensure safe handling of hazardous materials.</p>
+
+            <div class="safety-dashboard">
+                <h3>📊 Process Safety Dashboard</h3>
+                <p>Real-time metrics for the safety management system:</p>
+                <div class="safety-metrics">
+                    <div class="metric">
+                        <div class="metric-value" id="hazardDetection">0</div>
+                        <div class="metric-label">Hazard Detection (%)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="riskReduction">0</div>
+                        <div class="metric-label">Risk Reduction (%)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="responseTime">0</div>
+                        <div class="metric-label">Response Time (ms)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="safetyScore">0</div>
+                        <div class="metric-label">Safety Score</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>🔬 Technical Innovation</h2>
+            <p>The researchers used cutting-edge safety engineering, risk assessment technology, and monitoring systems to make this discovery:</p>
+
+            <div style="background: #faf5ff; border-left: 4px solid #7c3aed; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
+                <h4 style="margin-top: 0; color: #5b21b6;">🧮 Technical Approach:</h4>
                 <ul style="margin-bottom: 0;">
-                    <li>What are the main advantages of fuel cells over traditional power generation?</li>
-                    <li>How do fuel cells work to convert chemical energy into electrical energy?</li>
-                    <li>What challenges need to be overcome for widespread fuel cell adoption?</li>
+                    <li><strong>Advanced Sensors:</strong> High-sensitivity sensors for hazard detection and monitoring</li>
+                    <li><strong>AI-Powered Analysis:</strong> Artificial intelligence for risk assessment and prediction</li>
+                    <li><strong>Automated Systems:</strong> Intelligent systems for automatic safety responses</li>
+                    <li><strong>Integrated Networks:</strong> Connected safety systems for comprehensive protection</li>
                 </ul>
             </div>
 
+            <h2>🚀 Future Possibilities</h2>
+            <p>This research opens up exciting new possibilities for process safety and risk management:</p>
+
+            <ul>
+                <li><strong>Predictive Safety:</strong> Systems that can predict and prevent accidents before they occur</li>
+                <li><strong>Autonomous Safety:</strong> Self-managing safety systems that require minimal human intervention</li>
+                <li><strong>Global Safety Networks:</strong> Connected safety systems across multiple facilities and regions</li>
+                <li><strong>Virtual Safety Training:</strong> Immersive training systems for safety education and preparedness</li>
+            </ul>
+
+            <h2>🎓 What This Means for Students</h2>
+            <p>This research demonstrates the power of interdisciplinary science. It combines:</p>
+
+            <ul>
+                <li><strong>Safety Engineering:</strong> Applying engineering principles to safety and risk management</li>
+                <li><strong>Risk Assessment:</strong> Understanding and quantifying potential hazards and risks</li>
+                <li><strong>Technology Integration:</strong> Using advanced technologies for safety applications</li>
+                <li><strong>Human Factors:</strong> Understanding human behavior and safety culture</li>
+            </ul>
+
+            <p>For students interested in any of these fields, this work shows how modern science often involves combining knowledge from multiple disciplines to solve complex problems that have real-world applications.</p>
+
             <div class="highlight-box">
-                <strong>🎯 Bottom Line:</strong> Fuel cells represent a promising technology for clean energy conversion that could play a major role in our transition to a more sustainable energy future. While challenges remain, the potential benefits in terms of efficiency, environmental impact, and energy security make fuel cells an important area of research and development.
+                <strong>🎯 Bottom Line:</strong> Scientists have developed revolutionary process safety and risk management systems that protect workers and communities through advanced monitoring and prevention technologies. This breakthrough could transform industrial safety by preventing accidents, reducing risks, and ensuring the protection of people and the environment.
             </div>
 
             <h2>📚 Further Reading & Resources</h2>
-            <p>Want to explore more about fuel cells and clean energy?</p>
+            <p>Want to dive deeper? Check out these related topics:</p>
             <ul>
-                <li>How fuel cells work and their different types</li>
-                <li>Hydrogen production and storage technologies</li>
-                <li>Fuel cell applications in transportation and industry</li>
-                <li>Clean energy and sustainability initiatives</li>
+                <li>Process safety and risk management fundamentals</li>
+                <li>Hazard identification and risk assessment</li>
+                <li>Safety systems and emergency response</li>
+                <li>Industrial safety and occupational health</li>
+                <li>Environmental protection and safety</li>
             </ul>
         </div>
     </main>
@@ -264,5 +516,82 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        // Initialize risk grid
+        function initializeRiskGrid() {
+            const grid = document.getElementById('riskGrid');
+            grid.innerHTML = '';
+            for (let i = 1; i <= 9; i++) {
+                const step = document.createElement('div');
+                step.className = 'risk-step';
+                step.textContent = i;
+                step.onclick = () => activateRisk(step);
+                grid.appendChild(step);
+            }
+        }
+
+        function activateRisk(step) {
+            step.classList.toggle('active');
+            updateSafetyMetrics();
+        }
+
+        function updateSafetyMetrics() {
+            const activeSteps = document.querySelectorAll('.risk-step.active').length;
+            const detection = Math.min(activeSteps * 11.1, 100);
+            const reduction = Math.min(activeSteps * 11.1, 100);
+            const response = Math.max(1000 - (activeSteps * 111), 100);
+            const score = Math.min(activeSteps * 11.1, 100);
+
+            document.getElementById('hazardDetection').textContent = Math.round(detection);
+            document.getElementById('riskReduction').textContent = Math.round(reduction);
+            document.getElementById('responseTime').textContent = Math.round(response);
+            document.getElementById('safetyScore').textContent = Math.round(score);
+        }
+
+        function activateAllRisks() {
+            const steps = document.querySelectorAll('.risk-step');
+            steps.forEach(step => {
+                step.classList.add('active');
+            });
+
+            updateSafetyMetrics();
+            document.getElementById('safetyStatus').textContent = 'All safety systems activated! Process safety is now protecting workers and communities at maximum efficiency!';
+        }
+
+        function showHazardDetection() {
+            alert('⚠️ Hazard Detection: The identification and monitoring of potential safety hazards in industrial processes. This includes early warning systems, sensor networks, and predictive analytics to detect risks before they cause accidents.');
+        }
+
+        function showPreventionSystems() {
+            alert('🔒 Prevention Systems: Safety systems designed to prevent accidents and incidents from occurring. This includes safety barriers, interlocks, and automated shutdown systems that protect workers and equipment.');
+        }
+
+        function showEmergencyResponse() {
+            alert('🚨 Emergency Response: Systems and procedures for responding to safety incidents and emergencies. This includes alarm systems, evacuation procedures, and emergency shutdown systems.');
+        }
+
+        function updateSafety(value) {
+            document.getElementById('safetyValue').textContent = value;
+            
+            let result = '';
+            if (value < 20) {
+                result = 'At this safety level, the system shows <strong>limited</strong> protection with basic risk reduction benefits.';
+            } else if (value < 40) {
+                result = 'At this safety level, the system shows <strong>moderate</strong> protection with some risk reduction benefits.';
+            } else if (value < 80) {
+                result = 'At this safety level, the system shows <strong>high</strong> protection with significant risk reduction benefits.';
+            } else {
+                result = 'At this safety level, the system shows <strong>maximum</strong> protection with optimal risk reduction benefits!';
+            }
+            
+            document.getElementById('safetyResult').innerHTML = '<p>' + result + '</p>';
+        }
+
+        // Initialize when page loads
+        window.onload = function() {
+            initializeRiskGrid();
+            updateSafetyMetrics();
+        };
+    </script>
 </body>
 </html>
